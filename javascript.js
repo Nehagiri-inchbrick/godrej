@@ -782,7 +782,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const listingsTitle = document.getElementById("listings-title");
 
   const openListingsSection = () => {
-    if (!listingsSection || listingsSection.classList.contains("is-open")) return;
+    if (!listingsSection) return;
+    if (listingsSection.classList.contains("is-open")) return;
     listingsSection.removeAttribute("hidden");
     requestAnimationFrame(() => {
       listingsSection.classList.add("is-open");
@@ -889,7 +890,11 @@ document.addEventListener("DOMContentLoaded", () => {
     openListingsSection();
     if (city) populateListings(city);
     if (listingsSection) {
-      const scroll = () => window.scrollTo({ top: listingsSection.offsetTop - 80, behavior: "smooth" });
+      const scroll = () => {
+        const headerOffset = 80;
+        const top = listingsSection.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top: Math.max(0, top), behavior: "smooth" });
+      };
       if (wasOpen) scroll();
       else requestAnimationFrame(() => requestAnimationFrame(scroll));
     }
@@ -1697,6 +1702,33 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initJourneyAhead();
+
+  const initOurValues = () => {
+    const section = document.querySelector(".values-creative");
+    if (!section) return;
+
+    const reveal = () => section.classList.add("is-visible");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal();
+              observer.disconnect();
+            }
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -20px 0px" }
+      );
+      observer.observe(section);
+      if (section.getBoundingClientRect().top < window.innerHeight) reveal();
+    } else {
+      reveal();
+    }
+  };
+
+  initOurValues();
 
   // --- Why Invest With Us ---
   const initWhyInvest = () => {
