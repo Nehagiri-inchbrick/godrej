@@ -7627,25 +7627,35 @@ footer {
   overflow: hidden;
 }
 
-.lifestyle-explorer-scene {
+.lifestyle-explorer-bg-img {
   position: absolute;
-  right: 0;
-  top: 0;
-  width: 38%;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  background: url("images/luxe.webp") center / cover no-repeat;
-  opacity: 0.42;
-  -webkit-mask-image: linear-gradient(115deg, transparent 8%, rgba(0, 0, 0, 0.45) 42%, #000 78%);
-  mask-image: linear-gradient(115deg, transparent 8%, rgba(0, 0, 0, 0.45) 42%, #000 78%);
+  object-fit: cover;
+  object-position: center 42%;
+  transform: scale(1.02);
+}
+
+.lifestyle-explorer-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(108deg,
+      rgba(255, 255, 255, 0.97) 0%,
+      rgba(255, 255, 255, 0.9) 34%,
+      rgba(248, 246, 242, 0.62) 58%,
+      rgba(26, 39, 68, 0.38) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 42%);
 }
 
 .lifestyle-explorer-pattern {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 92% 18%, rgba(201, 156, 86, 0.14) 0%, transparent 42%),
-    radial-gradient(circle at 8% 88%, rgba(26, 39, 68, 0.05) 0%, transparent 38%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.97) 0%, rgba(255, 255, 255, 0.88) 55%, rgba(248, 246, 242, 0.75) 100%);
+    radial-gradient(circle at 88% 22%, rgba(201, 156, 86, 0.22) 0%, transparent 40%),
+    radial-gradient(circle at 12% 92%, rgba(26, 39, 68, 0.06) 0%, transparent 36%);
+  pointer-events: none;
 }
 
 .lifestyle-explorer-content {
@@ -7769,8 +7779,11 @@ footer {
   gap: 1rem;
   padding: 1.35rem 1.35rem 1.4rem;
   border-radius: 18px;
-  background: rgba(248, 246, 242, 0.72);
-  border: 1px solid rgba(201, 156, 86, 0.12);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(201, 156, 86, 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 12px 36px rgba(26, 39, 68, 0.06);
 }
 
 .lifestyle-pref-hint {
@@ -8066,14 +8079,17 @@ footer {
     min-height: auto;
   }
 
-  .lifestyle-explorer-scene {
-    width: 100%;
-    height: 42%;
-    top: auto;
-    bottom: 0;
-    opacity: 0.28;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.35) 35%, #000 100%);
-    mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.35) 35%, #000 100%);
+  .lifestyle-explorer-bg-img {
+    object-position: center 55%;
+  }
+
+  .lifestyle-explorer-overlay {
+    background:
+      linear-gradient(180deg,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(255, 255, 255, 0.88) 48%,
+        rgba(248, 246, 242, 0.72) 72%,
+        rgba(26, 39, 68, 0.35) 100%);
   }
 
   .lifestyle-pref-grid {

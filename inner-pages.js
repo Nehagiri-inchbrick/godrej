@@ -1154,4 +1154,39 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (document.body.dataset.page === "media-gallery") initMediaGallery();
+
+  const initLegalPage = () => {
+    const tabs = document.querySelectorAll(".legal-subnav-btn");
+    const panels = document.querySelectorAll(".legal-panel");
+    if (!tabs.length || !panels.length) return;
+
+    const activate = (id) => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.legalTab === id;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
+      panels.forEach((panel) => {
+        const active = panel.dataset.legalPanel === id;
+        panel.classList.toggle("is-active", active);
+        if (active) {
+          panel.removeAttribute("hidden");
+        } else {
+          panel.setAttribute("hidden", "");
+        }
+      });
+      if (history.replaceState) {
+        history.replaceState(null, "", id === "disclaimer" ? "disclaimer.html" : `disclaimer.html#${id}`);
+      }
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activate(tab.dataset.legalTab || "disclaimer"));
+    });
+
+    const hash = window.location.hash.replace("#", "");
+    if (hash === "terms" || hash === "privacy") activate(hash);
+  };
+
+  if (document.body.dataset.page === "disclaimer") initLegalPage();
 });
