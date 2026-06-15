@@ -1299,278 +1299,135 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   initAwardsSlider();
 
-  // --- Signature Developments Showcase ---
-  const initSignatureShowcase = () => {
-    const cardEl = document.getElementById("sig-dev-card");
-    const barEl = document.getElementById("sig-dev-bar");
-    const counterEl = document.getElementById("sig-pager-count");
-    const btnPrev = document.getElementById("signature-prev");
-    const btnNext = document.getElementById("signature-next");
-    const scrollHint = document.getElementById("sig-scroll-hint");
-    const panoModal = document.getElementById("pano-modal");
-    const panoClose = document.getElementById("pano-close");
-    const panoImg = document.getElementById("pano-img");
-    const panoTitle = document.getElementById("pano-title");
-    const panoViewport = document.getElementById("pano-viewport");
+  // --- Featured Projects Showcase ---
+  const initFeaturedProjects = () => {
+    const mediaCurrent = document.getElementById("fp-media-current");
+    const mediaNext = document.getElementById("fp-media-next");
+    const captionEl = document.getElementById("fp-caption");
+    const dotsEl = document.getElementById("fp-dots");
+    const counterEl = document.getElementById("fp-pager-count");
+    const btnPrev = document.getElementById("featured-prev");
+    const btnNext = document.getElementById("featured-next");
 
-    if (!cardEl || !barEl) return;
+    if (!mediaCurrent || !mediaNext || !captionEl) return;
 
     const projects = [
       {
         name: "Godrej Aveline",
-        location: "Bengaluru, Karnataka",
+        location: "Bengaluru",
         cityKey: "bangalore",
-        desc: "A thoughtfully planned community where nature, wellness, and modern living converge — designed for families who value space, serenity, and long-term appreciation.",
-        img: "images/aveline-landing-page-final-550-x-550-project-thumbnail-image-cmmoklhge000qv9phgsrt26nt.webp",
         heroImg: "images/2026-01-30.webp",
-        pano: "images/aveline-landing-page-final-550-x-550-project-thumbnail-image-cmmoklhge000qv9phgsrt26nt.webp",
-        stats: [
-          { value: "4.2 Acres", label: "Land Parcel", tone: "tan" },
-          { value: "3 & 4 BHK", label: "Residences", tone: "blue" },
-          { value: "78%", label: "Open Green Spaces", tone: "green" },
-          { value: "650+", label: "Happy Families", tone: "purple" }
-        ],
-        highlights: ["Sky Clubhouse", "EV Charging Stations", "Smart Home Features", "IGBC Gold Pre-Certified"],
-        primeLocation: "Strategically located in the heart of Bengaluru.",
-        proximity: [
-          { label: "Airport", time: "25 Mins", icon: "plane" },
-          { label: "Tech Park", time: "10 Mins", icon: "briefcase" },
-          { label: "Top Schools", time: "12 Mins", icon: "school" },
-          { label: "Hospitals", time: "10 Mins", icon: "hospital" },
-          { label: "Shopping", time: "15 Mins", icon: "shop" }
-        ]
+        chip: "3 & 4 BHK"
       },
       {
         name: "Godrej Trilogy",
-        location: "Mumbai, Maharashtra",
+        location: "Worli, Mumbai",
         cityKey: "mumbai",
-        desc: "Iconic towers in Worli offering sea-facing residences, world-class amenities, and unmatched connectivity to Mumbai's financial and cultural districts.",
-        img: "images/worli-banner-desktop-v1-cmhx0xuc90000j2phgabi18bx.webp",
         heroImg: "images/worli-banner-desktop-v1-cmhx0xuc90000j2phgabi18bx.webp",
-        pano: "images/worli-banner-desktop-v1-cmhx0xuc90000j2phgabi18bx.webp",
-        stats: [
-          { value: "3 Towers", label: "Landmark Design", tone: "tan" },
-          { value: "3 & 4 BHK", label: "Residences", tone: "blue" },
-          { value: "Sea Views", label: "Premium Aspect", tone: "green" },
-          { value: "INR 5.67 Cr+", label: "Starting Price", tone: "purple" }
-        ],
-        highlights: ["Sky Lounge", "Infinity Pool", "Concierge Services", "Private Elevators"],
-        primeLocation: "Premium micro-market living in Worli, South Mumbai.",
-        proximity: [
-          { label: "Airport", time: "45 Mins", icon: "plane" },
-          { label: "BKC", time: "15 Mins", icon: "briefcase" },
-          { label: "Top Schools", time: "10 Mins", icon: "school" },
-          { label: "Hospitals", time: "8 Mins", icon: "hospital" },
-          { label: "Shopping", time: "12 Mins", icon: "shop" }
-        ]
+        chip: "Sea-facing residences"
       },
       {
         name: "Godrej Connaught One",
-        location: "New Delhi, Delhi",
+        location: "Connaught Place, Delhi",
         cityKey: "delhi",
-        desc: "An address of rare distinction at Connaught Place — where heritage meets contemporary luxury in India's most coveted central business district.",
-        img: "images/a40702e6-3019-4e58-86d9-a854eceb6590.webp",
         heroImg: "images/5436aa76-67c7-4e2d-afb8-8fe3a667a370.webp",
-        pano: "images/a40702e6-3019-4e58-86d9-a854eceb6590.webp",
-        stats: [
-          { value: "CP Address", label: "Prime Zone", tone: "tan" },
-          { value: "3 BHK", label: "Residences", tone: "blue" },
-          { value: "Heritage", label: "City Views", tone: "green" },
-          { value: "INR 18.61 Cr+", label: "Starting Price", tone: "purple" }
-        ],
-        highlights: ["Heritage Views", "Wine Cellar", "Private Spa", "Designer Interiors"],
-        primeLocation: "At the heart of Delhi's most prestigious address.",
-        proximity: [
-          { label: "Airport", time: "35 Mins", icon: "plane" },
-          { label: "CBD", time: "5 Mins", icon: "briefcase" },
-          { label: "Top Schools", time: "15 Mins", icon: "school" },
-          { label: "Hospitals", time: "10 Mins", icon: "hospital" },
-          { label: "Shopping", time: "3 Mins", icon: "shop" }
-        ]
+        chip: "3 BHK"
       },
       {
         name: "Godrej Regal Pavilion",
-        location: "Hyderabad, Telangana",
+        location: "Hyderabad",
         cityKey: "hyderabad",
-        desc: "Royal living inspired by luxury design — expansive homes with landscaped gardens, premium finishes, and a lifestyle curated for discerning families.",
-        img: "images/thumbnail-image-550-x-550-cmeb44mnj0015c8ph41rz3y75.webp",
         heroImg: "images/desktop-banner-image-cmeb411vn0011c8ph267tajv0.webp",
-        pano: "images/thumbnail-image-550-x-550-cmeb44mnj0015c8ph41rz3y75.webp",
-        stats: [
-          { value: "5 Acres", label: "Land Parcel", tone: "tan" },
-          { value: "3 & 4 BHK", label: "Residences", tone: "blue" },
-          { value: "70%", label: "Open Spaces", tone: "green" },
-          { value: "INR 1.99 Cr+", label: "Starting Price", tone: "purple" }
-        ],
-        highlights: ["Royal Pavilion", "Yoga Deck", "Landscaped Gardens", "Smart Homes"],
-        primeLocation: "Premium corridor in Rajendra Nagar, Hyderabad.",
-        proximity: [
-          { label: "Airport", time: "30 Mins", icon: "plane" },
-          { label: "Tech Park", time: "20 Mins", icon: "briefcase" },
-          { label: "Top Schools", time: "8 Mins", icon: "school" },
-          { label: "Hospitals", time: "12 Mins", icon: "hospital" },
-          { label: "Shopping", time: "10 Mins", icon: "shop" }
-        ]
+        chip: "3 & 4 BHK"
       }
     ];
 
-    const proxIcon = (type) => {
-      const icons = {
-        plane: '<path d="M2 16l20-8-8 2-2 8-2-2z"></path>',
-        briefcase: '<rect x="2" y="7" width="20" height="14" rx="2"></rect><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"></path>',
-        school: '<path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"></path>',
-        hospital: '<path d="M12 2v20M2 12h20"></path>',
-        shop: '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line>'
-      };
-      return icons[type] || icons.shop;
+    let fpIndex = 0;
+    let isAnimating = false;
+
+    const setMediaLayer = (layer, img) => {
+      layer.style.backgroundImage = `url('${img}')`;
     };
 
-    let sigIndex = 0;
-
-    const statIcon = (tone) => {
-      const colors = { tan: "#b8954a", blue: "#4a6fa5", green: "#5a9a6e", purple: "#7a6b9a" };
-      const c = colors[tone] || colors.tan;
-      return `<svg viewBox="0 0 24 24" fill="none" stroke="${c}" stroke-width="1.8" width="20" height="20"><circle cx="12" cy="12" r="8"/></svg>`;
-    };
-
-    const renderCard = (p) => {
-      cardEl.innerHTML = `
-        <div class="sig-card-media">
-          <img src="${p.heroImg}" alt="${p.name}" class="sig-card-img" loading="lazy">
-          <span class="sig-badge"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Signature Development</span>
-          <button type="button" class="sig-gallery-btn" data-img="${p.heroImg}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            View Gallery
-          </button>
+    const renderCaption = (p) => {
+      captionEl.innerHTML = `
+        <span class="fp-caption-index" aria-hidden="true">${String(fpIndex + 1).padStart(2, "0")}</span>
+        <div class="fp-caption-body">
+          <h3 class="fp-caption-name">${p.name}</h3>
+          <p class="fp-caption-loc">${p.location}</p>
+          <span class="fp-caption-chip">${p.chip}</span>
         </div>
-        <div class="sig-card-details">
-          <div class="sig-card-head">
-            <h3 class="sig-project-name"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5z"/></svg> ${p.name}</h3>
-            <p class="sig-project-loc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> ${p.location}</p>
-            <p class="sig-project-desc">${p.desc}</p>
-          </div>
-          <div class="sig-stats-row">
-            ${p.stats.map((s) => `
-              <div class="sig-stat">
-                <span class="sig-stat-icon sig-stat-icon--${s.tone}">${statIcon(s.tone)}</span>
-                <span class="sig-stat-value">${s.value}</span>
-                <span class="sig-stat-label">${s.label}</span>
-              </div>
-            `).join("")}
-          </div>
-          <div class="sig-highlights">
-            <span class="sig-highlights-title">Key Highlights</span>
-            <div class="sig-highlights-list">
-              ${p.highlights.map((h) => `<span class="sig-highlight-chip">${h}</span>`).join("")}
-            </div>
-          </div>
-          <button type="button" class="sig-explore-stack" data-city="${p.cityKey}">
-            <span class="sig-explore-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
-            <span class="sig-explore-label">Explore</span>
-          </button>
-        </div>
+        <button type="button" class="fp-caption-explore" data-city="${p.cityKey}">
+          Explore
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
       `;
 
-      barEl.innerHTML = `
-        <div class="sig-bar-prime">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <p><strong>Prime Location</strong> — ${p.primeLocation}</p>
-        </div>
-        <div class="sig-bar-proximity">
-          ${p.proximity.map((item, i) => `
-            ${i > 0 ? '<span class="sig-bar-divider"></span>' : ''}
-            <div class="sig-prox-item">
-              <span class="sig-prox-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">${proxIcon(item.icon)}</svg></span>
-              <span class="sig-prox-label">${item.label}</span>
-              <span class="sig-prox-time">${item.time}</span>
-            </div>
-          `).join("")}
-        </div>
-      `;
-
-      cardEl.querySelector(".sig-gallery-btn")?.addEventListener("click", () => {
-        if (typeof openLightbox === "function") openLightbox(p.heroImg);
-      });
-
-      cardEl.querySelector(".sig-explore-stack")?.addEventListener("click", () => {
+      captionEl.querySelector(".fp-caption-explore")?.addEventListener("click", () => {
         scrollToListings(p.cityKey);
       });
     };
 
-    const updateSig = () => {
-      const total = String(projects.length).padStart(2, "0");
-      const current = String(sigIndex + 1).padStart(2, "0");
-      if (counterEl) counterEl.textContent = `${current} / ${total}`;
-      cardEl.classList.remove("is-visible");
-      barEl.classList.remove("is-visible");
-      requestAnimationFrame(() => {
-        renderCard(projects[sigIndex]);
-        cardEl.classList.add("is-visible");
-        barEl.classList.add("is-visible");
+    const updateDots = () => {
+      if (!dotsEl) return;
+      dotsEl.innerHTML = projects.map((_, i) => `
+        <button type="button" class="fp-dot${i === fpIndex ? " is-active" : ""}" data-index="${i}" role="tab" aria-selected="${i === fpIndex}" aria-label="Project ${i + 1}"></button>
+      `).join("");
+
+      dotsEl.querySelectorAll(".fp-dot").forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const idx = Number(dot.dataset.index);
+          if (!Number.isNaN(idx) && idx !== fpIndex) goToProject(idx);
+        });
       });
     };
 
-    btnNext?.addEventListener("click", () => {
-      sigIndex = (sigIndex + 1) % projects.length;
-      updateSig();
-    });
-
-    btnPrev?.addEventListener("click", () => {
-      sigIndex = (sigIndex - 1 + projects.length) % projects.length;
-      updateSig();
-    });
-
-    scrollHint?.addEventListener("click", () => {
-      document.getElementById("lifestyle")?.scrollIntoView({ behavior: "smooth" });
-    });
-
-    const closePano = () => {
-      if (!panoModal) return;
-      panoModal.classList.remove("active");
-      panoModal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = "";
+    const updateCounter = () => {
+      if (!counterEl) return;
+      const total = String(projects.length).padStart(2, "0");
+      const current = String(fpIndex + 1).padStart(2, "0");
+      counterEl.textContent = `${current} / ${total}`;
     };
 
-    panoClose?.addEventListener("click", closePano);
-    panoModal?.addEventListener("click", (e) => {
-      if (e.target === panoModal) closePano();
-    });
+    const goToProject = (index) => {
+      if (isAnimating || index === fpIndex) return;
+      isAnimating = true;
 
-    let panoDragging = false;
-    let panoStartX = 0;
-    let panoOffset = -25;
+      const nextProject = projects[index];
+      setMediaLayer(mediaNext, nextProject.heroImg);
+      mediaNext.classList.add("is-entering");
+      captionEl.classList.remove("is-visible");
 
-    const setPanoOffset = (pct) => {
-      panoOffset = Math.max(-50, Math.min(0, pct));
-      if (panoImg) panoImg.style.transform = `translateX(${panoOffset}%)`;
+      window.setTimeout(() => {
+        setMediaLayer(mediaCurrent, nextProject.heroImg);
+        mediaNext.classList.remove("is-entering");
+        mediaCurrent.classList.remove("fp-media-layer--current");
+        void mediaCurrent.offsetWidth;
+        mediaCurrent.classList.add("fp-media-layer--current");
+        fpIndex = index;
+        renderCaption(nextProject);
+        updateCounter();
+        updateDots();
+        captionEl.classList.add("is-visible");
+        isAnimating = false;
+      }, 650);
     };
 
-    panoViewport?.addEventListener("mousedown", (e) => {
-      panoDragging = true;
-      panoStartX = e.clientX;
-      panoViewport.classList.add("is-dragging");
-    });
+    const stepProject = (dir) => {
+      goToProject((fpIndex + dir + projects.length) % projects.length);
+    };
 
-    window.addEventListener("mouseup", () => {
-      panoDragging = false;
-      panoViewport?.classList.remove("is-dragging");
-    });
+    btnNext?.addEventListener("click", () => stepProject(1));
+    btnPrev?.addEventListener("click", () => stepProject(-1));
 
-    panoViewport?.addEventListener("mousemove", (e) => {
-      if (!panoDragging) return;
-      const delta = (e.clientX - panoStartX) * 0.08;
-      panoStartX = e.clientX;
-      setPanoOffset(panoOffset + delta);
-    });
-
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && panoModal?.classList.contains("active")) closePano();
-    });
-
-    updateSig();
+    setMediaLayer(mediaCurrent, projects[0].heroImg);
+    renderCaption(projects[0]);
+    updateCounter();
+    updateDots();
+    requestAnimationFrame(() => captionEl.classList.add("is-visible"));
   };
 
-  initSignatureShowcase();
+  initFeaturedProjects();
 
   // --- Lifestyle Explorer ---
   const initLifestyleSection = () => {
