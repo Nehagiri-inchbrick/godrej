@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,7 +37,7 @@
             <a href="locations.html">All Locations</a>
           </div>
         </div>
-        <div class="nav-dropdown">
+                <div class="nav-dropdown">
           <button type="button" class="nav-link nav-dropdown-toggle">NRI Corner</button>
           <div class="nav-dropdown-menu">
             <a href="nri-legal.html">Legal Information</a>
@@ -57,10 +57,26 @@
       </button>
     </div>
   </header>
-  <main class="inner-main projects-page residential-page">
-    <section class="residential-head">
+  <main class="inner-main projects-page residential-page projects-page--creative">
+    <section class="projects-hero projects-hero--residential" aria-labelledby="projects-hero-title">
+      <div class="projects-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85')" aria-hidden="true"></div>
+      <div class="projects-hero-overlay" aria-hidden="true"></div>
+      <span class="projects-hero-watermark" aria-hidden="true">HOME</span>
+      <div class="about-wrap projects-hero-inner">
+        <span class="projects-eyebrow">Residential</span>
+        <h1 class="projects-hero-title" id="projects-hero-title">Find where you <em>belong</em></h1>
+        <p class="projects-hero-lead">Premium apartments, villas and townships across India&rsquo;s finest addresses.</p>
+        <div class="projects-hero-stats">
+          <span><strong>18+</strong> live projects</span>
+          <span><strong>9</strong> cities</span>
+          <span><strong>2&ndash;4.5</strong> BHK options</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="residential-head projects-head-panel">
       <div class="about-wrap">
-        <h1 class="residential-title">Find where you belong</h1>
+        <h1 class="residential-title sr-only">Find where you belong</h1>
 
         <div class="residential-view-toggle" role="tablist" aria-label="Project view">
           <button type="button" class="residential-view-btn is-active" data-view="list" role="tab" aria-selected="true">List View</button>
@@ -151,9 +167,13 @@
       </div>
     </section>
 
-    <section class="residential-listings" id="residential-list-panel">
+    <section class="residential-listings projects-listings-panel" id="residential-list-panel">
       <div class="about-wrap">
-        <h2 class="residential-section-title">Explore Homes</h2>
+        <div class="projects-section-head">
+          <span class="projects-eyebrow">Portfolio</span>
+          <h2 class="residential-section-title">Explore Homes</h2>
+          <p class="projects-result-count" id="residential-result-count" aria-live="polite"></p>
+        </div>
         <div class="listings-grid residential-grid" id="residential-grid" aria-live="polite"></div>
         <p class="residential-empty" id="residential-empty" hidden>No projects match your filters. Try adjusting your search.</p>
         <nav class="residential-pagination" id="residential-pagination" aria-label="Project pages"></nav>
@@ -170,10 +190,19 @@
       </div>
     </section>
 
-    <section class="residential-contact">
-      <div class="about-wrap">
-        <h2 class="residential-contact-title">Get in touch</h2>
-        <p class="residential-contact-lead">If you would like to know more details or something specific, feel free to contact us. Our site representative will give you a call back.</p>
+    <section class="residential-contact projects-contact--creative">
+      <div class="about-wrap projects-contact-grid">
+        <div class="projects-contact-intro">
+          <span class="projects-eyebrow">Get in Touch</span>
+          <h2 class="residential-contact-title">Start your home search</h2>
+          <p class="residential-contact-lead">Share your details and our relationship manager will call you with floor plans, pricing and visit slots.</p>
+          <ul class="projects-contact-perks">
+            <li>Personalised project recommendations</li>
+            <li>Priority site visit scheduling</li>
+            <li>Exclusive pre-launch benefits</li>
+          </ul>
+        </div>
+        <div class="projects-contact-form-wrap">
         <form class="residential-contact-form" id="residential-contact-form" novalidate>
           <label class="residential-contact-field">
             <span>Name*</span>
@@ -203,6 +232,7 @@
           <button type="submit" class="residential-contact-send">Send</button>
         </form>
         <p class="residential-contact-feedback" id="residential-contact-feedback" hidden></p>
+        </div>
       </div>
     </section>
   </main>

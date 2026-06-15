@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,7 +37,7 @@
             <a href="locations.html">All Locations</a>
           </div>
         </div>
-        <div class="nav-dropdown">
+                <div class="nav-dropdown">
           <button type="button" class="nav-link nav-dropdown-toggle">NRI Corner</button>
           <div class="nav-dropdown-menu">
             <a href="nri-legal.html">Legal Information</a>
@@ -58,28 +58,56 @@
     </div>
   </header>
 
-  <main class="inner-main blog-page">
-    <section class="blog-hero" aria-label="Featured articles">
+  <main class="inner-main blog-page blog-page--creative">
+    <section class="blog-masthead" aria-labelledby="blog-masthead-title">
+      <div class="about-wrap blog-masthead-inner">
+        <span class="blog-masthead-watermark" aria-hidden="true">JOURNAL</span>
+        <div class="blog-masthead-copy">
+          <span class="blog-eyebrow">Property Journal</span>
+          <h1 class="blog-masthead-title" id="blog-masthead-title">Insights, guides &amp; <em>stories</em></h1>
+          <p class="blog-masthead-lead">Expert perspectives on real estate investment, premium living and India&rsquo;s property landscape.</p>
+        </div>
+        <div class="blog-masthead-meta">
+          <span class="blog-masthead-stat"><strong>1,000+</strong> articles</span>
+          <span class="blog-masthead-stat"><strong>5</strong> categories</span>
+          <span class="blog-masthead-stat"><strong>Weekly</strong> updates</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="blog-hero blog-hero--editorial" aria-label="Featured articles">
       <div class="blog-hero-track" id="blog-hero-track">
-        <article class="blog-hero-slide is-active" data-slide="0">
+        <article class="blog-hero-slide is-active" data-slide="0" data-category="real-estate">
           <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=85" alt="Stamp duty documents and property paperwork" width="1600" height="520" decoding="async">
+          <div class="blog-hero-gradient" aria-hidden="true"></div>
           <div class="blog-hero-overlay">
+            <span class="blog-hero-cat">Real Estate</span>
+            <span class="blog-hero-slide-num" aria-hidden="true">01</span>
             <h2>All you need to know about Stamp Duty in India</h2>
-            <a href="#" class="blog-hero-read">Read More</a>
+            <p class="blog-hero-dek">A practical guide to rates, exemptions and documentation for homebuyers across states.</p>
+            <a href="#" class="blog-hero-read">Read Article <span aria-hidden="true">&rarr;</span></a>
           </div>
         </article>
-        <article class="blog-hero-slide" data-slide="1">
+        <article class="blog-hero-slide" data-slide="1" data-category="nri">
           <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=85" alt="Modern residential development" width="1600" height="520" loading="lazy" decoding="async">
+          <div class="blog-hero-gradient" aria-hidden="true"></div>
           <div class="blog-hero-overlay">
+            <span class="blog-hero-cat">NRI</span>
+            <span class="blog-hero-slide-num" aria-hidden="true">02</span>
             <h2>Why NRI Investment in Indian Real Estate is at an All-Time High</h2>
-            <a href="#" class="blog-hero-read">Read More</a>
+            <p class="blog-hero-dek">Currency advantages, regulatory clarity and premium inventory are driving record interest.</p>
+            <a href="#" class="blog-hero-read">Read Article <span aria-hidden="true">&rarr;</span></a>
           </div>
         </article>
-        <article class="blog-hero-slide" data-slide="2">
+        <article class="blog-hero-slide" data-slide="2" data-category="commercial">
           <img src="https://images.unsplash.com/photo-1486406146926-c627a92fd1f2?w=1600&q=85" alt="Commercial office towers skyline" width="1600" height="520" loading="lazy" decoding="async">
+          <div class="blog-hero-gradient" aria-hidden="true"></div>
           <div class="blog-hero-overlay">
+            <span class="blog-hero-cat">Commercial</span>
+            <span class="blog-hero-slide-num" aria-hidden="true">03</span>
             <h2>Grade A Commercial Spaces: A Smart Investment for Growing Businesses</h2>
-            <a href="#" class="blog-hero-read">Read More</a>
+            <p class="blog-hero-dek">How flexible floor plates and transit-linked offices are reshaping corporate India.</p>
+            <a href="#" class="blog-hero-read">Read Article <span aria-hidden="true">&rarr;</span></a>
           </div>
         </article>
       </div>
@@ -89,32 +117,44 @@
       <button type="button" class="blog-hero-arrow blog-hero-arrow--next" id="blog-hero-next" aria-label="Next slide">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </button>
-      <div class="blog-hero-dots" id="blog-hero-dots" role="tablist" aria-label="Featured slides">
-        <button type="button" class="is-active" data-slide="0" aria-label="Slide 1" aria-selected="true"></button>
-        <button type="button" data-slide="1" aria-label="Slide 2"></button>
-        <button type="button" data-slide="2" aria-label="Slide 3"></button>
+      <div class="blog-hero-footer">
+        <div class="blog-hero-dots" id="blog-hero-dots" role="tablist" aria-label="Featured slides">
+          <button type="button" class="is-active" data-slide="0" aria-label="Slide 1" aria-selected="true"></button>
+          <button type="button" data-slide="1" aria-label="Slide 2"></button>
+          <button type="button" data-slide="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="blog-hero-progress" aria-hidden="true"><span class="blog-hero-progress-bar" id="blog-hero-progress"></span></div>
       </div>
     </section>
 
-    <div class="about-wrap blog-toolbar">
-      <label class="blog-filter">
-        <span class="sr-only">Filter by category</span>
-        <select id="blog-category-filter" aria-label="All Categories">
-          <option value="all" selected>All Categories</option>
-          <option value="real-estate">Real Estate</option>
-          <option value="investment">Investment</option>
-          <option value="lifestyle">Lifestyle</option>
-          <option value="nri">NRI</option>
-          <option value="commercial">Commercial</option>
-        </select>
-      </label>
+    <div class="blog-toolbar-float">
+      <div class="about-wrap blog-toolbar-inner">
+        <nav class="blog-filter-pills" id="blog-filter-pills" aria-label="Filter by category">
+          <button type="button" class="blog-filter-pill is-active" data-filter="all">All</button>
+          <button type="button" class="blog-filter-pill" data-filter="real-estate">Real Estate</button>
+          <button type="button" class="blog-filter-pill" data-filter="investment">Investment</button>
+          <button type="button" class="blog-filter-pill" data-filter="lifestyle">Lifestyle</button>
+          <button type="button" class="blog-filter-pill" data-filter="nri">NRI</button>
+          <button type="button" class="blog-filter-pill" data-filter="commercial">Commercial</button>
+        </nav>
+        <label class="blog-search">
+          <span class="sr-only">Search articles</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" id="blog-search-inline" placeholder="Search articles&hellip;" autocomplete="off">
+        </label>
+      </div>
     </div>
 
     <section class="blog-featured-wrap">
       <div class="about-wrap">
-        <article class="blog-featured" data-category="real-estate">
+        <div class="blog-section-head">
+          <span class="blog-eyebrow">Editor&rsquo;s Pick</span>
+          <h2 class="blog-section-title">Featured Story</h2>
+        </div>
+        <article class="blog-featured blog-featured--editorial" data-category="real-estate">
           <a href="blog-detail.html" class="blog-featured-media">
             <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=85" alt="Sanpada residential towers" width="640" height="420" loading="lazy" decoding="async">
+            <span class="blog-cat-pill">Real Estate</span>
           </a>
           <div class="blog-featured-body">
             <p class="blog-meta">
@@ -122,7 +162,7 @@
               <span class="blog-meta-sep">|</span>
               <span>Navi Mumbai</span>
               <span class="blog-meta-sep">|</span>
-              <span>Real Estate</span>
+              <span class="blog-read-time">6 min read</span>
             </p>
             <h2 class="blog-featured-title"><a href="blog-detail.html">Sanpada&rsquo;s Emergence as a Mid-Town Residential Micro-Market</a></h2>
             <p class="blog-featured-stats">
@@ -133,6 +173,7 @@
               <span>By Godrej Properties</span>
             </p>
             <p class="blog-featured-excerpt">With seamless connectivity to Mumbai and Navi Mumbai&rsquo;s business hubs, Sanpada is fast emerging as a preferred address for mid-segment homebuyers seeking quality construction, social infrastructure and long-term appreciation.</p>
+            <a href="blog-detail.html" class="blog-featured-cta">Continue Reading</a>
           </div>
         </article>
       </div>
@@ -140,10 +181,15 @@
 
     <section class="blog-grid-section">
       <div class="about-wrap">
-        <div class="blog-card-grid blog-card-grid--media" id="blog-media-grid">
-          <article class="blog-card" data-category="lifestyle">
+        <div class="blog-section-head">
+          <span class="blog-eyebrow">Visual Stories</span>
+          <h2 class="blog-section-title">Latest from the journal</h2>
+        </div>
+        <div class="blog-card-grid blog-card-grid--media blog-card-grid--bento" id="blog-media-grid">
+          <article class="blog-card blog-card--lead" data-category="lifestyle">
             <a href="#" class="blog-card-img-wrap">
               <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=85" alt="Luxury villa with pool" width="400" height="260" loading="lazy" decoding="async">
+              <span class="blog-cat-pill">Lifestyle</span>
             </a>
             <p class="blog-meta">
               <time datetime="2024-05-28">May 28, 2024</time>
@@ -164,6 +210,7 @@
           <article class="blog-card" data-category="investment">
             <a href="#" class="blog-card-img-wrap">
               <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85" alt="Modern apartment interior" width="400" height="260" loading="lazy" decoding="async">
+              <span class="blog-cat-pill">Investment</span>
             </a>
             <p class="blog-meta">
               <time datetime="2024-05-15">May 15, 2024</time>
@@ -184,6 +231,7 @@
           <article class="blog-card" data-category="nri">
             <a href="#" class="blog-card-img-wrap">
               <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=85" alt="Premium residence exterior" width="400" height="260" loading="lazy" decoding="async">
+              <span class="blog-cat-pill">NRI</span>
             </a>
             <p class="blog-meta">
               <time datetime="2024-04-22">Apr 22, 2024</time>
@@ -205,7 +253,7 @@
       </div>
     </section>
 
-    <section class="blog-quote" aria-label="Inspirational quote">
+    <section class="blog-quote blog-quote--editorial" aria-label="Inspirational quote">
       <div class="about-wrap blog-quote-inner">
         <span class="blog-quote-icon" aria-hidden="true">&ldquo;</span>
         <blockquote>
@@ -217,8 +265,12 @@
 
     <section class="blog-text-section">
       <div class="about-wrap">
-        <div class="blog-card-grid blog-card-grid--text" id="blog-text-grid">
-          <article class="blog-text-card" data-category="real-estate">
+        <div class="blog-section-head">
+          <span class="blog-eyebrow">Read More</span>
+          <h2 class="blog-section-title">In-depth articles</h2>
+        </div>
+        <div class="blog-card-grid blog-card-grid--text blog-card-grid--elevated" id="blog-text-grid">
+          <article class="blog-text-card blog-text-card--elevated" data-category="real-estate">
             <p class="blog-meta">
               <time datetime="2024-04-10">Apr 10, 2024</time>
               <span class="blog-meta-sep">|</span>
@@ -230,7 +282,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">The Real Estate Regulation Act has transformed transparency in Indian real estate. Here&rsquo;s what every buyer should know before signing on the dotted line.</p>
           </article>
-          <article class="blog-text-card" data-category="commercial">
+          <article class="blog-text-card blog-text-card--elevated" data-category="commercial">
             <p class="blog-meta">
               <time datetime="2024-03-28">Mar 28, 2024</time>
               <span class="blog-meta-sep">|</span>
@@ -242,7 +294,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">Hybrid work models are reshaping commercial real estate demand. Grade A offices with flexible floor plates are leading the recovery.</p>
           </article>
-          <article class="blog-text-card" data-category="lifestyle">
+          <article class="blog-text-card blog-text-card--elevated" data-category="lifestyle">
             <p class="blog-meta">
               <time datetime="2024-03-15">Mar 15, 2024</time>
               <span class="blog-meta-sep">|</span>
@@ -254,7 +306,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">From solar power to rainwater harvesting, discover how eco-conscious design creates healthier homes and lower utility costs.</p>
           </article>
-          <article class="blog-text-card" data-category="investment">
+          <article class="blog-text-card blog-text-card--elevated" data-category="investment">
             <p class="blog-meta">
               <time datetime="2024-02-20">Feb 20, 2024</time>
               <span class="blog-meta-sep">|</span>
@@ -266,7 +318,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">IT corridor expansion and infrastructure upgrades are driving strong rental yields and capital appreciation across the city.</p>
           </article>
-          <article class="blog-text-card" data-category="nri">
+          <article class="blog-text-card blog-text-card--elevated" data-category="nri">
             <p class="blog-meta">
               <time datetime="2024-02-05">Feb 05, 2024</time>
               <span class="blog-meta-sep">|</span>
@@ -278,7 +330,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">A step-by-step guide to securing a home loan from abroad, including documentation requirements and repayment options.</p>
           </article>
-          <article class="blog-text-card" data-category="real-estate">
+          <article class="blog-text-card blog-text-card--elevated" data-category="real-estate">
             <p class="blog-meta">
               <time datetime="2024-01-18">Jan 18, 2024</time>
               <span class="blog-meta-sep">|</span>
@@ -290,7 +342,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">New metro lines are redefining micro-markets across NCR. We analyse how transit infrastructure influences price growth.</p>
           </article>
-          <article class="blog-text-card" data-category="lifestyle">
+          <article class="blog-text-card blog-text-card--elevated" data-category="lifestyle">
             <p class="blog-meta">
               <time datetime="2024-01-05">Jan 05, 2024</time>
               <span class="blog-meta-sep">|</span>
@@ -302,7 +354,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">Open layouts, smart storage and premium finishes are defining the heart of the home in 2024&rsquo;s luxury residences.</p>
           </article>
-          <article class="blog-text-card" data-category="commercial">
+          <article class="blog-text-card blog-text-card--elevated" data-category="commercial">
             <p class="blog-meta">
               <time datetime="2023-12-20">Dec 20, 2023</time>
               <span class="blog-meta-sep">|</span>
@@ -314,7 +366,7 @@
             <p class="blog-card-author">By Godrej Properties</p>
             <p class="blog-text-excerpt">Branded retail and F&amp;B destinations are driving footfall in integrated townships and mixed-use developments nationwide.</p>
           </article>
-          <article class="blog-text-card" data-category="investment">
+          <article class="blog-text-card blog-text-card--elevated" data-category="investment">
             <p class="blog-meta">
               <time datetime="2023-12-08">Dec 08, 2023</time>
               <span class="blog-meta-sep">|</span>
@@ -328,7 +380,23 @@
           </article>
         </div>
 
-        <nav class="blog-pagination" aria-label="Blog pages">
+        <section class="blog-newsletter" aria-labelledby="blog-newsletter-title">
+          <div class="blog-newsletter-inner">
+            <div class="blog-newsletter-copy">
+              <span class="blog-eyebrow blog-eyebrow--light">Stay Updated</span>
+              <h2 class="blog-newsletter-title" id="blog-newsletter-title">Get property insights in your inbox</h2>
+              <p>Market trends, investment guides and project updates &mdash; curated for discerning homebuyers and investors.</p>
+            </div>
+            <form class="blog-newsletter-form" id="blog-newsletter-form" novalidate>
+              <label class="sr-only" for="blog-newsletter-email">Email address</label>
+              <input type="email" id="blog-newsletter-email" placeholder="Your email address" required autocomplete="email">
+              <button type="submit">Subscribe</button>
+            </form>
+            <p class="blog-newsletter-feedback" id="blog-newsletter-feedback" hidden></p>
+          </div>
+        </section>
+
+        <nav class="blog-pagination blog-pagination--editorial" aria-label="Blog pages">
           <button type="button" class="blog-page-btn is-active" aria-current="page">1</button>
           <a href="#" class="blog-page-btn">2</a>
           <a href="#" class="blog-page-btn">3</a>

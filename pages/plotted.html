@@ -1,10 +1,10 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plotted Projects | Godrej Properties</title>
-  <meta name="description" content="Explore plotted developments by Godrej Properties across India â€” premium land parcels in Pune, Bengaluru, Noida, Gurugram and more." />
+  <meta name="description" content="Explore plotted developments by Godrej Properties across India — premium land parcels in Pune, Bengaluru, Noida, Gurugram and more." />
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="../style.css" rel="stylesheet">
@@ -37,7 +37,7 @@
             <a href="locations.html">All Locations</a>
           </div>
         </div>
-        <div class="nav-dropdown">
+                <div class="nav-dropdown">
           <button type="button" class="nav-link nav-dropdown-toggle">NRI Corner</button>
           <div class="nav-dropdown-menu">
             <a href="nri-legal.html">Legal Information</a>
@@ -58,10 +58,26 @@
     </div>
   </header>
 
-  <main class="inner-main projects-page residential-page plotted-page">
-    <section class="residential-head">
+  <main class="inner-main projects-page residential-page plotted-page projects-page--creative">
+    <section class="projects-hero projects-hero--plotted" aria-labelledby="projects-hero-title">
+      <div class="projects-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&q=85')" aria-hidden="true"></div>
+      <div class="projects-hero-overlay" aria-hidden="true"></div>
+      <span class="projects-hero-watermark" aria-hidden="true">LAND</span>
+      <div class="about-wrap projects-hero-inner">
+        <span class="projects-eyebrow">Plotted Developments</span>
+        <h1 class="projects-hero-title" id="projects-hero-title">Build on <em>trusted</em> ground</h1>
+        <p class="projects-hero-lead">Premium land parcels and plotted townships designed for long-term appreciation and lifestyle.</p>
+        <div class="projects-hero-stats">
+          <span><strong>6</strong> cities</span>
+          <span><strong>Plots</strong> &amp; villas</span>
+          <span><strong>RERA</strong> approved</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="residential-head projects-head-panel">
       <div class="about-wrap">
-        <h1 class="residential-title">Find where you belong</h1>
+        <h1 class="residential-title sr-only">Plotted Projects</h1>
 
         <div class="residential-view-toggle" role="tablist" aria-label="Project view">
           <button type="button" class="residential-view-btn residential-view-btn--icon is-active" data-view="list" role="tab" aria-selected="true">
@@ -144,9 +160,13 @@
       </div>
     </section>
 
-    <section class="residential-listings" id="plotted-list-panel">
+    <section class="residential-listings projects-listings-panel" id="plotted-list-panel">
       <div class="about-wrap">
-        <h2 class="residential-section-title">Explore Projects</h2>
+        <div class="projects-section-head">
+          <span class="projects-eyebrow">Portfolio</span>
+          <h2 class="residential-section-title">Explore Projects</h2>
+          <p class="projects-result-count" id="plotted-result-count" aria-live="polite"></p>
+        </div>
         <div class="listings-grid residential-grid" id="plotted-grid" aria-live="polite"></div>
         <p class="residential-empty" id="plotted-empty" hidden>No projects match your filters. Try adjusting your search.</p>
         <nav class="residential-pagination" id="plotted-pagination" aria-label="Project pages"></nav>
@@ -163,10 +183,19 @@
       </div>
     </section>
 
-    <section class="residential-contact">
-      <div class="about-wrap">
-        <h2 class="residential-contact-title">Get in touch</h2>
-        <p class="residential-contact-lead">If you would like to know more about our projects, please fill in your details and our representative will get in touch with you.</p>
+    <section class="residential-contact projects-contact--creative">
+      <div class="about-wrap projects-contact-grid">
+        <div class="projects-contact-intro">
+          <span class="projects-eyebrow">Get in Touch</span>
+          <h2 class="residential-contact-title">Explore plotted developments</h2>
+          <p class="residential-contact-lead">Tell us your preferred location and budget — our team will share master plans, payment schedules and site visit slots.</p>
+          <ul class="projects-contact-perks">
+            <li>Master plan &amp; layout details</li>
+            <li>Flexible payment plans</li>
+            <li>Guided site visits</li>
+          </ul>
+        </div>
+        <div class="projects-contact-form-wrap">
         <form class="residential-contact-form" id="plotted-contact-form" novalidate>
           <label class="residential-contact-field">
             <span>Name*</span>
@@ -196,6 +225,7 @@
           <button type="submit" class="residential-contact-send residential-contact-send--next">Next</button>
         </form>
         <p class="residential-contact-feedback" id="plotted-contact-feedback" hidden></p>
+        </div>
       </div>
     </section>
   </main>

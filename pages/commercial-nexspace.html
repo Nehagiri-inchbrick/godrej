@@ -1,4 +1,4 @@
-ï»¿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,7 +37,7 @@
             <a href="locations.html">All Locations</a>
           </div>
         </div>
-        <div class="nav-dropdown">
+                <div class="nav-dropdown">
           <button type="button" class="nav-link nav-dropdown-toggle">NRI Corner</button>
           <div class="nav-dropdown-menu">
             <a href="nri-legal.html">Legal Information</a>
@@ -73,8 +73,8 @@
     </div>
   </div>
 
-  <main class="inner-main project-detail-page">
-    <section class="project-detail-hero project-detail-hero--nexspace" aria-label="Project banner">
+  <main class="inner-main project-detail-page nexspace-page">
+    <section class="project-detail-hero project-detail-hero--nexspace nx-hero" aria-label="Project banner">
       <img
         class="project-detail-banner-img"
         src="https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/nexspace-digntal-banners-1166x550-p-desktop-1920x900-px-cmkr4ft530000yophdg-cmpky636x0004svph6dpmfzwi.webp"
@@ -83,25 +83,65 @@
         height="900"
         decoding="async"
       >
+      <div class="nx-hero-overlay" aria-hidden="true"></div>
+      <div class="nx-hero-watermark" aria-hidden="true">NEX</div>
       <div class="about-wrap project-detail-hero-content">
-        <div class="project-detail-info-card project-detail-info-card--plain">
+        <div class="project-detail-info-card project-detail-info-card--plain nx-hero-copy">
+          <span class="nx-hero-eyebrow">Godrej City · Premium Commercial</span>
           <h1>Nexspace</h1>
           <p class="project-detail-location">Panvel, Mumbai</p>
-          <p class="project-detail-price-line">
-            <span class="project-detail-price">INR 81.00 Lakh* onwards</span>
-            <span class="project-detail-pipe" aria-hidden="true">|</span>
-            <span class="project-detail-possession">Possession December 2031</span>
-            <span class="project-detail-pipe" aria-hidden="true">|</span>
-            <span class="project-detail-type">Premium Office Spaces</span>
-          </p>
-          <div class="project-detail-meta-row">
-            <button type="button" class="project-detail-meta-btn">Share</button>
-            <button type="button" class="project-detail-meta-btn" onclick="openScheduleTourModal(); return false;">Schedule a Visit</button>
-            <button type="button" class="project-detail-meta-btn" onclick="openVipModal()">Contact Us</button>
-            <button type="button" class="project-detail-meta-btn">EMI Calculator</button>
+          <div class="nx-hero-chips">
+            <span class="nx-hero-chip"><strong>INR 81 Lakh*</strong> onwards</span>
+            <span class="nx-hero-chip">Possession <strong>Dec 2031</strong></span>
+            <span class="nx-hero-chip">Premium <strong>Office Spaces</strong></span>
+          </div>
+          <div class="nx-hero-actions">
+            <button type="button" class="nx-hero-btn nx-hero-btn--gold" onclick="openVipModal()">Enquire Now</button>
+            <button type="button" class="nx-hero-btn nx-hero-btn--ghost" onclick="openScheduleTourModal(); return false;">Schedule a Visit</button>
           </div>
         </div>
-        <button type="button" class="project-detail-enquire-btn" aria-label="Enquire about Nexspace" onclick="openVipModal()">+</button>
+        <button type="button" class="project-detail-enquire-btn nx-hero-fab" aria-label="Enquire about Nexspace" onclick="openVipModal()">+</button>
+      </div>
+    </section>
+
+    <section class="nx-stats-strip" aria-label="Project highlights at a glance">
+      <div class="about-wrap nx-stats-inner">
+        <article class="nx-stat">
+          <span class="nx-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </span>
+          <div>
+            <strong class="nx-stat-val">INR 81 Lakh*</strong>
+            <span class="nx-stat-label">Starting price</span>
+          </div>
+        </article>
+        <article class="nx-stat">
+          <span class="nx-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </span>
+          <div>
+            <strong class="nx-stat-val">Dec 2031</strong>
+            <span class="nx-stat-label">Possession</span>
+          </div>
+        </article>
+        <article class="nx-stat">
+          <span class="nx-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M6 21V7l6-4 6 4v14"></path></svg>
+          </span>
+          <div>
+            <strong class="nx-stat-val">Grade A</strong>
+            <span class="nx-stat-label">Office spaces</span>
+          </div>
+        </article>
+        <article class="nx-stat">
+          <span class="nx-stat-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </span>
+          <div>
+            <strong class="nx-stat-val">Panvel</strong>
+            <span class="nx-stat-label">Mumbai corridor</span>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -117,47 +157,81 @@
       </nav>
     </div>
 
-    <section class="project-detail-section" id="overview">
+    <section class="project-detail-section nx-section" id="overview">
       <div class="about-wrap">
-        <h2 class="project-detail-section-title">Overview</h2>
-        <div class="project-detail-overview-grid">
-          <div>
+        <div class="nx-section-head">
+          <span class="nx-section-eyebrow">The Vision</span>
+          <h2 class="project-detail-section-title">Workspaces built for tomorrow</h2>
+        </div>
+        <div class="nx-overview-bento">
+          <div class="nx-overview-copy">
             <p class="project-detail-section-text">Godrej City Nexspace brings thoughtfully designed premium office spaces to Panvel, Mumbai&rsquo;s fast-growing commercial corridor. Set within the larger Godrej City masterplan, Nexspace offers modern workspaces with efficient floor plates, excellent connectivity to Navi Mumbai and the Mumbai-Pune Expressway, and the trusted backing of Godrej Properties.</p>
             <p class="project-detail-section-text">Whether you are expanding your business footprint or investing in Grade-A commercial real estate, Nexspace delivers flexible office configurations, world-class infrastructure, and a vibrant neighbourhood designed for long-term growth.</p>
-            <p class="project-detail-section-text"><strong>Possession:</strong> December 2031 &nbsp;|&nbsp; <strong>Configuration:</strong> Premium Office Spaces</p>
+            <div class="nx-fact-grid">
+              <div class="nx-fact">
+                <span class="nx-fact-num">2031</span>
+                <span class="nx-fact-label">Possession</span>
+              </div>
+              <div class="nx-fact">
+                <span class="nx-fact-num">Grade A</span>
+                <span class="nx-fact-label">Construction</span>
+              </div>
+              <div class="nx-fact">
+                <span class="nx-fact-num">Panvel</span>
+                <span class="nx-fact-label">Location</span>
+              </div>
+            </div>
           </div>
-          <div class="project-detail-overview-media">
+          <div class="nx-overview-visual">
             <img src="https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/web-site-desktop-1920x894-cmkp4exgw0019p4or104950e2-cmkr514i1000dyoph418sdt-cmpky80tm0006svph6gg29zke.webp" alt="Nexspace premium office interior overview" width="720" height="540" loading="lazy" decoding="async">
+            <div class="nx-overview-badge">
+              <span class="nx-overview-badge-label">Part of</span>
+              <strong>Godrej City</strong>
+              <span class="nx-overview-badge-sub">Masterplanned township</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="project-detail-section project-detail-neighbourhood" id="location">
+    <section class="nx-vision-band" aria-hidden="true">
       <div class="about-wrap">
-        <div class="project-detail-neighbourhood-head">
-          <h2 class="project-detail-section-title">Neighbourhood</h2>
+        <blockquote class="nx-vision-quote">
+          <p>&ldquo;Where enterprise meets connectivity &mdash; premium offices in Mumbai&rsquo;s fastest-growing commercial belt.&rdquo;</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="project-detail-section project-detail-neighbourhood nx-section nx-section--muted" id="location">
+      <div class="about-wrap">
+        <div class="nx-section-head">
+          <span class="nx-section-eyebrow">Location</span>
+          <h2 class="project-detail-section-title">Neighbourhood &amp; Connectivity</h2>
           <p class="project-detail-neighbourhood-tagline">Strategically connected to Mumbai&rsquo;s fastest-growing commercial corridor</p>
         </div>
-        <p class="project-detail-section-text">Strategically located in Panvel, Nexspace benefits from proximity to key transport hubs, social infrastructure, and Mumbai&rsquo;s expanding commercial belt. The location offers seamless access to Navi Mumbai, the JNPT corridor, and the upcoming Navi Mumbai International Airport.</p>
+        <p class="project-detail-section-text nx-location-intro">Strategically located in Panvel, Nexspace benefits from proximity to key transport hubs, social infrastructure, and Mumbai&rsquo;s expanding commercial belt. The location offers seamless access to Navi Mumbai, the JNPT corridor, and the upcoming Navi Mumbai International Airport.</p>
 
-        <div class="project-detail-connectivity">
-          <div class="project-detail-connect-chip">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="1" y="6" width="22" height="12" rx="2"></rect><path d="M6 10h.01M10 10h.01M14 10h.01"></path></svg>
-            <span>Panvel Railway &mdash; 15 mins</span>
-          </div>
-          <div class="project-detail-connect-chip">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M22 2L11 13"></path><path d="M22 2l-7 20-4-9-9-4 20-7z"></path></svg>
-            <span>Navi Mumbai Airport &mdash; Upcoming</span>
-          </div>
-          <div class="project-detail-connect-chip">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 17h18M5 17V7l7-4 7 4v10"></path></svg>
-            <span>Mumbai-Pune Expressway</span>
-          </div>
-          <div class="project-detail-connect-chip">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
-            <span>JNPT Corridor Access</span>
-          </div>
+        <div class="nx-connect-grid">
+          <article class="nx-connect-card">
+            <span class="nx-connect-time">15 min</span>
+            <strong>Panvel Railway</strong>
+            <span>Direct suburban connectivity</span>
+          </article>
+          <article class="nx-connect-card nx-connect-card--accent">
+            <span class="nx-connect-time">Soon</span>
+            <strong>Navi Mumbai Airport</strong>
+            <span>Upcoming international hub</span>
+          </article>
+          <article class="nx-connect-card">
+            <span class="nx-connect-time">Express</span>
+            <strong>Mumbai-Pune Highway</strong>
+            <span>Sion-Panvel corridor access</span>
+          </article>
+          <article class="nx-connect-card">
+            <span class="nx-connect-time">Port</span>
+            <strong>JNPT Corridor</strong>
+            <span>Logistics &amp; trade access</span>
+          </article>
         </div>
 
         <div class="project-detail-map-wrap">
@@ -216,53 +290,69 @@
       </div>
     </section>
 
-    <section class="project-detail-section" id="highlights">
+    <section class="project-detail-section nx-section" id="highlights">
       <div class="about-wrap">
-        <h2 class="project-detail-section-title">Highlights</h2>
+        <div class="nx-section-head">
+          <span class="nx-section-eyebrow">Amenities</span>
+          <h2 class="project-detail-section-title">Designed for modern enterprise</h2>
+        </div>
         <p class="project-detail-section-text">Designed for modern enterprises, Nexspace office spaces combine efficiency with premium aesthetics &mdash; featuring expansive floor plates, abundant natural light, and thoughtfully planned common areas that elevate the everyday work experience.</p>
-        <div class="project-detail-highlights-grid">
-          <div class="project-detail-highlight">
-            <div class="project-detail-highlight-icon">
+        <div class="nx-highlight-bento">
+          <article class="nx-highlight-card nx-highlight-card--featured">
+            <div class="nx-highlight-card-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="1"></rect><path d="M3 9h18M9 21V9"></path></svg>
             </div>
-            <span>Flexible Office Spaces</span>
-          </div>
-          <div class="project-detail-highlight">
-            <div class="project-detail-highlight-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M6 21V7l6-4 6 4v14"></path><path d="M9 10h.01M15 10h.01"></path></svg>
+            <h3>Flexible Office Spaces</h3>
+            <p>Configurable floor plates tailored to growing teams and evolving business needs.</p>
+          </article>
+          <article class="nx-highlight-card">
+            <div class="nx-highlight-card-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 21h18M6 21V7l6-4 6 4v14"></path></svg>
             </div>
-            <span>Grade A Construction</span>
-          </div>
-          <div class="project-detail-highlight">
-            <div class="project-detail-highlight-icon">
+            <h3>Grade A Construction</h3>
+            <p>Built to international standards with premium finishes throughout.</p>
+          </article>
+          <article class="nx-highlight-card">
+            <div class="nx-highlight-card-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
             </div>
-            <span>Water and Electricity Supply</span>
-          </div>
-          <div class="project-detail-highlight">
-            <div class="project-detail-highlight-icon">
+            <h3>Utilities &amp; Power</h3>
+            <p>Reliable water and electricity supply with backup infrastructure.</p>
+          </article>
+          <article class="nx-highlight-card">
+            <div class="nx-highlight-card-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
             </div>
-            <span>Ample Parking Space</span>
-          </div>
+            <h3>Ample Parking</h3>
+            <p>Dedicated parking bays for tenants, visitors and retail patrons.</p>
+          </article>
         </div>
-        <div class="project-detail-amenity-banner">
+        <div class="nx-amenity-showcase">
           <img src="https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/web-site-inside-amenities-section-images-1166x550-05-cmkr4ynkz0006yophdbc9cpjc.webp" alt="Lifestyle amenities at Godrej City" width="1200" height="400" loading="lazy" decoding="async">
-          <button type="button" class="project-detail-amenity-btn">Experience of Lifestyle Amenities</button>
+          <div class="nx-amenity-showcase-overlay">
+            <span class="nx-amenity-showcase-tag">Lifestyle at Godrej City</span>
+            <p>Experience world-class amenities within the masterplanned township</p>
+            <button type="button" class="nx-amenity-showcase-btn">Explore Amenities</button>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="project-detail-section" id="downloads">
+    <section class="project-detail-section nx-section nx-section--dark" id="downloads">
       <div class="about-wrap">
-        <h2 class="project-detail-section-title">Download</h2>
-        <div class="project-detail-downloads">
-          <a href="#" class="project-detail-brochure" onclick="openVipModal(); return false;">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-            Brochure PDF
-          </a>
-          <div class="project-detail-qr">
+        <div class="nx-download-panel">
+          <div class="nx-download-copy">
+            <span class="nx-section-eyebrow nx-section-eyebrow--light">Resources</span>
+            <h2 class="nx-download-title">Download the Nexspace brochure</h2>
+            <p>Get detailed floor plans, payment schedules, and project specifications in one comprehensive PDF.</p>
+            <a href="#" class="nx-download-btn" onclick="openVipModal(); return false;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="20" height="20" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Download Brochure PDF
+            </a>
+          </div>
+          <div class="nx-download-qr">
             <img src="https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/qr-code-next-gen-cmkr513c0000byophcbht5478.jpeg" alt="QR code for Nexspace project" width="120" height="120" loading="lazy" decoding="async">
+            <span>Scan for mobile access</span>
           </div>
         </div>
       </div>
@@ -275,10 +365,19 @@
       </div>
     </section>
 
-    <section class="residential-contact" id="contact">
-      <div class="about-wrap">
-        <h2 class="residential-contact-title">Get in touch</h2>
-        <p class="residential-contact-lead">If you would like to know more details or something specific, feel free to contact us. Our site representative will give you a call back.</p>
+    <section class="residential-contact nx-contact" id="contact">
+      <div class="about-wrap nx-contact-grid">
+        <div class="nx-contact-intro">
+          <span class="nx-section-eyebrow">Get in Touch</span>
+          <h2 class="residential-contact-title">Start your Nexspace journey</h2>
+          <p class="residential-contact-lead">Share your details and our site representative will call you back with floor plans, pricing and visit slots.</p>
+          <ul class="nx-contact-perks">
+            <li>Priority site visit scheduling</li>
+            <li>Exclusive pre-launch benefits</li>
+            <li>Dedicated relationship manager</li>
+          </ul>
+        </div>
+        <div class="nx-contact-form-wrap">
         <form class="residential-contact-form" id="project-detail-contact-form" novalidate>
           <label class="residential-contact-field">
             <span>Name*</span>
@@ -307,6 +406,7 @@
           <button type="submit" class="residential-contact-send">Send</button>
         </form>
         <p class="residential-contact-feedback" id="project-detail-contact-feedback" hidden></p>
+        </div>
       </div>
     </section>
   </main>

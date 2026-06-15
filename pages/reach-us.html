@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,7 +37,7 @@
             <a href="locations.html">All Locations</a>
           </div>
         </div>
-        <div class="nav-dropdown">
+                <div class="nav-dropdown">
           <button type="button" class="nav-link nav-dropdown-toggle">NRI Corner</button>
           <div class="nav-dropdown-menu">
             <a href="nri-legal.html">Legal Information</a>
@@ -58,8 +58,8 @@
     </div>
   </header>
 
-  <main class="inner-main reach-us-page">
-    <section class="reach-hero" aria-label="Reach Us">
+  <main class="inner-main reach-us-page reach-us-page--creative">
+    <section class="reach-hero reach-hero--creative" aria-labelledby="reach-hero-title">
       <img
         class="reach-hero-bg"
         src="https://www.godrejproperties.com/images/reach-us/banner.jpg"
@@ -67,18 +67,80 @@
         width="1920"
         height="420"
         decoding="async"
-        onerror="this.onerror=null;this.src='../images/reach-us-banner-fallback.jpg';"
+        onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1486406146926-c627a92fd1f2?w=1600&q=85';"
       >
-      <div class="reach-hero-panel">
-        <h1>Reach Us</h1>
-        <p>We&rsquo;re here to help and answer any question you might have. We look forward to hearing from you&hellip;</p>
+      <div class="reach-hero-overlay" aria-hidden="true"></div>
+      <span class="reach-hero-watermark" aria-hidden="true">REACH</span>
+      <div class="about-wrap reach-hero-content">
+        <div class="reach-hero-copy">
+          <span class="reach-eyebrow">We&rsquo;re here for you</span>
+          <h1 id="reach-hero-title">Reach Us</h1>
+          <p>Questions about a project, site visit or investment? Our teams across India, Singapore and Dubai are ready to help.</p>
+          <div class="reach-hero-actions">
+            <a href="tel:18001025601" class="reach-hero-btn reach-hero-btn--gold">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              Call Toll Free
+            </a>
+            <a href="mailto:smart-support@godrejproperties.com" class="reach-hero-btn reach-hero-btn--ghost">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              Email Us
+            </a>
+            <button type="button" class="reach-hero-btn reach-hero-btn--ghost" onclick="openEnquireModal()">Enquire Now</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="reach-quick-strip" aria-label="Contact highlights">
+      <div class="about-wrap reach-quick-inner">
+        <article class="reach-quick-stat">
+          <span class="reach-quick-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </span>
+          <div>
+            <strong>24/7</strong>
+            <span>Smart support</span>
+          </div>
+        </article>
+        <article class="reach-quick-stat">
+          <span class="reach-quick-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </span>
+          <div>
+            <strong>3</strong>
+            <span>Global offices</span>
+          </div>
+        </article>
+        <article class="reach-quick-stat">
+          <span class="reach-quick-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          </span>
+          <div>
+            <strong>1800 102 5601</strong>
+            <span>India toll free</span>
+          </div>
+        </article>
+        <article class="reach-quick-stat">
+          <span class="reach-quick-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+          </span>
+          <div>
+            <strong>9:30&ndash;6:30</strong>
+            <span>IST support hours</span>
+          </div>
+        </article>
       </div>
     </section>
 
     <section class="reach-offices">
       <div class="about-wrap">
+        <div class="reach-section-head">
+          <span class="reach-eyebrow">Global Presence</span>
+          <h2 class="reach-section-title">Our offices worldwide</h2>
+        </div>
         <div class="reach-offices-grid">
-          <article class="reach-office-card">
+          <article class="reach-office-card reach-office-card--featured">
+            <span class="reach-office-badge">Head Office</span>
             <img class="reach-office-flag" src="https://flagcdn.com/w80/in.png" alt="India" width="56" height="56" loading="lazy" decoding="async">
             <h2>India</h2>
             <p class="reach-office-detail">
@@ -122,6 +184,10 @@
 
     <section class="reach-support">
       <div class="about-wrap">
+        <div class="reach-section-head">
+          <span class="reach-eyebrow">Support Channels</span>
+          <h2 class="reach-section-title">How can we help?</h2>
+        </div>
         <div class="reach-support-top">
           <article class="reach-support-card">
             <div class="reach-support-img">
@@ -157,8 +223,8 @@
           </article>
         </div>
 
-        <div class="reach-inquiries">
-          <article class="reach-inquiry-card">
+        <div class="reach-inquiries reach-inquiries--cards">
+          <article class="reach-inquiry-card reach-inquiry-card--elevated">
             <span class="reach-inquiry-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
             </span>
@@ -166,7 +232,7 @@
             <a href="#" class="reach-inquiry-btn">Click Here</a>
           </article>
 
-          <article class="reach-inquiry-card">
+          <article class="reach-inquiry-card reach-inquiry-card--elevated">
             <span class="reach-inquiry-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
             </span>
@@ -184,7 +250,7 @@
             </label>
           </article>
 
-          <article class="reach-inquiry-card">
+          <article class="reach-inquiry-card reach-inquiry-card--elevated">
             <span class="reach-inquiry-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
             </span>
@@ -210,12 +276,15 @@
       </div>
     </section>
 
-    <section class="reach-helpline" aria-labelledby="reach-helpline-title">
+    <section class="reach-helpline reach-helpline--creative" aria-labelledby="reach-helpline-title">
       <div class="about-wrap">
-        <h2 id="reach-helpline-title" class="reach-helpline-title">Customer care helpline</h2>
+        <div class="reach-section-head reach-section-head--light">
+          <span class="reach-eyebrow reach-eyebrow--light">Customer Care</span>
+          <h2 id="reach-helpline-title" class="reach-helpline-title">Customer care helpline</h2>
+        </div>
 
-        <div class="reach-helpline-main">
-          <div class="reach-helpline-india">
+        <div class="reach-helpline-main reach-helpline-main--panel">
+          <div class="reach-helpline-india reach-helpline-panel">
             <h3>India Toll Free Number</h3>
             <label class="reach-helpline-select">
               <span class="sr-only">Select city</span>
@@ -242,7 +311,7 @@
             </p>
           </div>
 
-          <div class="reach-helpline-intl">
+          <div class="reach-helpline-intl reach-helpline-panel reach-helpline-panel--dark">
             <h3>International Numbers</h3>
             <p class="reach-helpline-intl-text">You can call us from anywhere in the world. Our operating hours are 9:30 am to 6:30 pm IST (Indian Standard Time). You can also reach us through the GPL Mobile App.</p>
             <div class="reach-helpline-apps">
@@ -258,8 +327,8 @@
           </div>
         </div>
 
-        <div class="reach-helpline-grid">
-          <article class="reach-helpline-region">
+        <div class="reach-helpline-grid reach-helpline-grid--cards">
+          <article class="reach-helpline-region reach-helpline-region--card">
             <h4>USA Toll Free Number</h4>
             <p class="reach-helpline-contact">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -271,7 +340,7 @@
             </p>
           </article>
 
-          <article class="reach-helpline-region">
+          <article class="reach-helpline-region reach-helpline-region--card">
             <h4>UAE Toll Free Number</h4>
             <p class="reach-helpline-contact">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -283,7 +352,7 @@
             </p>
           </article>
 
-          <article class="reach-helpline-region">
+          <article class="reach-helpline-region reach-helpline-region--card">
             <h4>Australia Toll Free Number</h4>
             <p class="reach-helpline-contact">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -295,7 +364,7 @@
             </p>
           </article>
 
-          <article class="reach-helpline-region">
+          <article class="reach-helpline-region reach-helpline-region--card">
             <h4>Rest of Countries</h4>
             <p class="reach-helpline-contact">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -306,6 +375,20 @@
               <span>9:30 am to 6:30 pm</span>
             </p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="reach-cta-band" aria-labelledby="reach-cta-title">
+      <div class="about-wrap reach-cta-inner">
+        <div class="reach-cta-copy">
+          <span class="reach-eyebrow reach-eyebrow--light">Get Started</span>
+          <h2 id="reach-cta-title">Ready to find your next home?</h2>
+          <p>Schedule a site visit or speak with our sales team for personalised project recommendations.</p>
+        </div>
+        <div class="reach-cta-actions">
+          <button type="button" class="reach-cta-btn reach-cta-btn--gold" onclick="openScheduleTourModal()">Schedule a Visit</button>
+          <button type="button" class="reach-cta-btn reach-cta-btn--outline" onclick="openEnquireModal()">Enquire Now</button>
         </div>
       </div>
     </section>

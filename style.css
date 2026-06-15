@@ -3372,6 +3372,12 @@ footer {
   cursor: pointer;
 }
 
+.listing-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .listing-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
@@ -7592,8 +7598,31 @@ footer {
 .lifestyle-section.lifestyle-explorer {
   position: relative;
   padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1.25rem, 4vw, 5%);
-  background: linear-gradient(180deg, #f8f6f2 0%, #eef1f5 100%);
+  background:
+    linear-gradient(165deg, #faf8f4 0%, #f0ebe3 42%, #eef1f5 100%);
   overflow: hidden;
+}
+
+.lifestyle-section-glow {
+  position: absolute;
+  width: min(420px, 55vw);
+  height: min(420px, 55vw);
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: 0;
+}
+
+.lifestyle-section-glow--left {
+  top: -8%;
+  left: -6%;
+  background: rgba(201, 156, 86, 0.18);
+}
+
+.lifestyle-section-glow--right {
+  bottom: -12%;
+  right: -4%;
+  background: rgba(26, 39, 68, 0.1);
 }
 
 .lifestyle-section.lifestyle-explorer::before,
@@ -7613,11 +7642,27 @@ footer {
   border-radius: 28px;
   overflow: hidden;
   background: #fff;
-  border: 1px solid rgba(201, 156, 86, 0.2);
+  border: 1px solid rgba(201, 156, 86, 0.28);
   box-shadow:
-    0 24px 60px rgba(26, 39, 68, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.8) inset;
-  min-height: clamp(600px, 54vh, 680px);
+    0 28px 70px rgba(26, 39, 68, 0.14),
+    0 0 0 1px rgba(255, 255, 255, 0.85) inset;
+  min-height: clamp(620px, 58vh, 720px);
+}
+
+.lifestyle-explorer-watermark {
+  position: absolute;
+  right: 2%;
+  top: 50%;
+  transform: translateY(-52%);
+  z-index: 1;
+  font-family: "Cormorant Garamond", var(--font-heading), serif;
+  font-size: clamp(5rem, 16vw, 10rem);
+  font-weight: 700;
+  line-height: 0.9;
+  color: rgba(255, 255, 255, 0.14);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
 }
 
 .lifestyle-explorer-bg {
@@ -7633,8 +7678,14 @@ footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 42%;
-  transform: scale(1.02);
+  object-position: center 38%;
+  transform: scale(1.06);
+  animation: lifestyle-kenburns 18s ease-in-out infinite alternate;
+}
+
+@keyframes lifestyle-kenburns {
+  0% { transform: scale(1.06) translate(0, 0); }
+  100% { transform: scale(1.12) translate(-1.2%, -0.8%); }
 }
 
 .lifestyle-explorer-overlay {
@@ -7643,10 +7694,28 @@ footer {
   background:
     linear-gradient(108deg,
       rgba(255, 255, 255, 0.97) 0%,
-      rgba(255, 255, 255, 0.9) 34%,
-      rgba(248, 246, 242, 0.62) 58%,
-      rgba(26, 39, 68, 0.38) 100%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 42%);
+      rgba(255, 255, 255, 0.88) 30%,
+      rgba(248, 246, 242, 0.45) 52%,
+      rgba(26, 39, 68, 0.55) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 40%);
+}
+
+.lifestyle-explorer-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.12) 48%,
+    transparent 56%
+  );
+  animation: lifestyle-shine 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes lifestyle-shine {
+  0%, 100% { opacity: 0.3; transform: translateX(-8%); }
+  50% { opacity: 0.7; transform: translateX(8%); }
 }
 
 .lifestyle-explorer-pattern {
@@ -7660,12 +7729,13 @@ footer {
 
 .lifestyle-explorer-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 1.75rem;
   min-height: inherit;
+  max-width: min(720px, 100%);
   padding: clamp(2.25rem, 3.8vw, 3rem) clamp(1.75rem, 3.2vw, 2.5rem) clamp(2rem, 3vw, 2.75rem);
 }
 
@@ -7684,14 +7754,30 @@ footer {
 }
 
 .lifestyle-header-badge {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.75rem;
   flex-shrink: 0;
-  padding: 0.85rem 1.1rem;
-  border-radius: 18px;
+  padding: 0.95rem 1.2rem;
+  border-radius: 20px;
   background: linear-gradient(145deg, #1a2744 0%, #243456 100%);
-  box-shadow: 0 10px 28px rgba(26, 39, 68, 0.22);
+  box-shadow: 0 14px 36px rgba(26, 39, 68, 0.28);
+  border: 1px solid rgba(201, 156, 86, 0.25);
+}
+
+.lifestyle-header-badge-ring {
+  position: absolute;
+  inset: -3px;
+  border-radius: 22px;
+  border: 1px solid rgba(201, 156, 86, 0.35);
+  animation: lifestyle-badge-pulse 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes lifestyle-badge-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.02); }
 }
 
 .lifestyle-header-badge-num {
@@ -7741,10 +7827,10 @@ footer {
 
 .lifestyle-title {
   font-family: "Cormorant Garamond", var(--font-heading), serif;
-  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-size: clamp(2.35rem, 4.2vw, 3.35rem);
   font-weight: 600;
   color: #1a2744;
-  line-height: 1.08;
+  line-height: 1.06;
   margin-bottom: 0;
   letter-spacing: -0.03em;
 }
@@ -7753,6 +7839,10 @@ footer {
   color: #c99c56;
   font-style: italic;
   font-weight: 500;
+  background: linear-gradient(135deg, #d4b06a 0%, #c99c56 50%, #a67c3d 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .lifestyle-title-accent {
@@ -7766,11 +7856,29 @@ footer {
 
 .lifestyle-intro {
   font-family: var(--font-body, "Outfit", sans-serif);
-  font-size: 0.88rem;
-  color: #6b7280;
-  line-height: 1.5;
-  max-width: 340px;
-  margin: 0;
+  font-size: 0.92rem;
+  color: #5a6478;
+  line-height: 1.65;
+  max-width: 420px;
+  margin: 0 0 1rem;
+}
+
+.lifestyle-hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.lifestyle-hero-chip {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #1a2744;
+  padding: 0.38rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(201, 156, 86, 0.3);
+  backdrop-filter: blur(6px);
 }
 
 .lifestyle-pref-panel {
@@ -7778,12 +7886,34 @@ footer {
   flex-direction: column;
   gap: 1rem;
   padding: 1.35rem 1.35rem 1.4rem;
-  border-radius: 18px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(201, 156, 86, 0.14);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 12px 36px rgba(26, 39, 68, 0.06);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(201, 156, 86, 0.22);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    0 16px 44px rgba(26, 39, 68, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+.lifestyle-pref-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.lifestyle-pref-step {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #c99c56;
+  white-space: nowrap;
+}
+
+.lifestyle-pref-grid-wrap {
+  min-width: 0;
 }
 
 .lifestyle-pref-hint {
@@ -7809,15 +7939,30 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  min-height: 128px;
+  min-height: 132px;
   padding: 1rem 0.55rem 0.9rem;
   border: 1.5px solid rgba(226, 232, 240, 0.95);
-  border-radius: 16px;
+  border-radius: 18px;
   background: rgba(255, 255, 255, 0.96);
   color: #8a94a6;
   cursor: pointer;
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 4px 16px rgba(26, 39, 68, 0.05);
+  overflow: hidden;
+}
+
+.lifestyle-pref::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(201, 156, 86, 0.12), transparent 65%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.lifestyle-pref.is-selected::before {
+  opacity: 1;
 }
 
 .lifestyle-pref:hover {
@@ -7969,10 +8114,10 @@ footer {
   justify-content: space-between;
   gap: 1.5rem;
   padding: 1.25rem 1.5rem;
-  background: #fff;
-  border: 1px solid rgba(201, 156, 86, 0.18);
+  background: linear-gradient(135deg, #ffffff 0%, #faf8f5 100%);
+  border: 1px solid rgba(201, 156, 86, 0.22);
   border-radius: 999px;
-  box-shadow: 0 12px 36px rgba(26, 39, 68, 0.08);
+  box-shadow: 0 14px 40px rgba(26, 39, 68, 0.1);
 }
 
 .lifestyle-action-status {
@@ -8023,19 +8168,35 @@ footer {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.9rem 1.65rem;
+  padding: 0.95rem 1.75rem;
   border: none;
   border-radius: 999px;
-  background: linear-gradient(135deg, #d4b06a 0%, #c99c56 50%, #b08842 100%);
+  background: linear-gradient(135deg, #1a2744 0%, #2a3d5c 55%, #1a2744 100%);
+  background-size: 200% 100%;
   color: #fff;
   font-family: var(--font-body, "Outfit", sans-serif);
   font-size: 0.88rem;
   font-weight: 600;
   cursor: pointer;
   white-space: nowrap;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.4s ease;
   flex-shrink: 0;
-  box-shadow: 0 8px 24px rgba(201, 156, 86, 0.35);
+  box-shadow: 0 10px 28px rgba(26, 39, 68, 0.28);
+  position: relative;
+  overflow: hidden;
+}
+
+.lifestyle-explore-btn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, rgba(201, 156, 86, 0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lifestyle-explore-btn:hover::after {
+  opacity: 1;
 }
 
 .lifestyle-explore-btn svg {
@@ -8046,7 +8207,8 @@ footer {
 
 .lifestyle-explore-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 32px rgba(201, 156, 86, 0.45);
+  box-shadow: 0 14px 36px rgba(26, 39, 68, 0.35);
+  background-position: 100% 0;
 }
 
 .lifestyle-explore-btn:hover svg {
@@ -8079,8 +8241,14 @@ footer {
     min-height: auto;
   }
 
+  .lifestyle-explorer-watermark {
+    display: none;
+  }
+
   .lifestyle-explorer-bg-img {
     object-position: center 55%;
+    animation: none;
+    transform: scale(1.04);
   }
 
   .lifestyle-explorer-overlay {
@@ -8092,8 +8260,38 @@ footer {
         rgba(26, 39, 68, 0.35) 100%);
   }
 
+  .lifestyle-explorer-content {
+    max-width: none;
+  }
+
+  .lifestyle-hero-chips {
+    display: none;
+  }
+
+  .lifestyle-pref-grid-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    margin: 0 -0.25rem;
+    padding: 0.25rem 0.25rem 0.5rem;
+  }
+
+  .lifestyle-pref-grid-wrap::-webkit-scrollbar {
+    display: none;
+  }
+
   .lifestyle-pref-grid {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    gap: 0.65rem;
+    width: max-content;
+    min-width: 100%;
+  }
+
+  .lifestyle-pref {
+    flex: 0 0 min(140px, 42vw);
+    scroll-snap-align: start;
+    min-height: 118px;
   }
 
   .lifestyle-header-badge {

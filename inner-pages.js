@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(`.nri-subnav a[data-page="${pageId}"]`).forEach((a) => {
       a.classList.add("is-active");
     });
-    document.querySelectorAll(`.about-hero-nav-links a[href*="${pageId}"]`).forEach((a) => {
+    document.querySelectorAll(`.about-hero-nav-links a[href*="${pageId}"], .about-creative-subnav a[href*="${pageId}"]`).forEach((a) => {
       a.classList.add("is-active");
     });
   }
@@ -226,6 +226,37 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const updateProjectsResultCount = (el, count) => {
+    if (!el) return;
+    el.textContent = count === 0 ? "No projects match your filters" : `${count} project${count === 1 ? "" : "s"} found`;
+  };
+
+  const PROJECT_DETAIL_PAGE = "commercial-nexspace.html";
+
+  const initProjectsCreativePage = () => {
+    const page = document.querySelector(".projects-page--creative");
+    if (!page) return;
+
+    const revealEls = page.querySelectorAll(
+      ".projects-head-panel, .projects-listings-panel, .projects-contact--creative, .listing-card, .commercial-card"
+    );
+    revealEls.forEach((el) => el.classList.add("projects-reveal"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+    );
+
+    revealEls.forEach((el) => observer.observe(el));
+  };
+
   const initResidentialPage = () => {
     const grid = document.getElementById("residential-grid");
     if (!grid) return;
@@ -263,6 +294,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterBudget = document.getElementById("filter-budget");
     const filterReady = document.getElementById("filter-ready");
     const emptyMsg = document.getElementById("residential-empty");
+    const resultCount = document.getElementById("residential-result-count");
     const pagination = document.getElementById("residential-pagination");
     const listPanel = document.getElementById("residential-list-panel");
     const mapPanel = document.getElementById("residential-map-panel");
@@ -296,6 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderCard = (project) => `
+      <a href="${PROJECT_DETAIL_PAGE}" class="listing-card-link">
       <article class="listing-card" data-project="${project.name}">
         <div class="listing-img-wrap">
           <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async">
@@ -315,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="listing-bhk">${project.bhk}</p>
         </div>
       </article>
+      </a>
     `;
 
     const getPageItems = () => {
@@ -378,13 +412,16 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = items.map(renderCard).join("");
       if (emptyMsg) emptyMsg.hidden = items.length > 0;
       grid.hidden = items.length === 0;
+      updateProjectsResultCount(resultCount, filtered.length);
       renderPagination();
     };
 
     grid.addEventListener("click", (e) => {
-      const card = e.target.closest(".listing-card");
-      if (!card) return;
-      if (typeof window.openVipModal === "function") window.openVipModal();
+      if (e.target.closest(".listing-plus-btn")) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof window.openVipModal === "function") window.openVipModal();
+      }
     });
 
     searchInput?.addEventListener("input", applyFilters);
@@ -437,6 +474,59 @@ document.addEventListener("DOMContentLoaded", () => {
     nextId: "about-ref-next",
   });
 
+  const initAboutPage = () => {
+    const page = document.querySelector(".about-page--creative");
+    if (!page) return;
+
+    const revealEls = page.querySelectorAll(
+      ".about-story, .about-purpose-band, .about-values, .about-milestones, .about-recognized--creative, .about-cta-band, .about-value-card, .about-story-card"
+    );
+    revealEls.forEach((el) => el.classList.add("about-reveal"));
+
+    const revealObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+    );
+
+    revealEls.forEach((el) => revealObserver.observe(el));
+  };
+
+  if (document.body.dataset.page === "about") initAboutPage();
+
+  const initNriCreativePage = () => {
+    const page = document.querySelector(".nri-page--creative");
+    if (!page) return;
+
+    const revealEls = page.querySelectorAll(
+      ".nri-page-body, .nri-contact-bar, .nri-creative-stats, .nri-hub-card, .nri-office-card, .inner-cta-band"
+    );
+    revealEls.forEach((el) => el.classList.add("nri-reveal"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08, rootMargin: "0px 0px -30px 0px" }
+    );
+
+    revealEls.forEach((el) => observer.observe(el));
+  };
+
+  const nriPages = ["nri-legal", "nri-loan", "nri-faqs", "international-offices", "nri-enquire", "nri-home-fest", "nri-corner"];
+  if (nriPages.includes(document.body.dataset.page)) initNriCreativePage();
+
   initRefSlider({
     trackId: "sustain-ref-track",
     dotsId: "sustain-ref-dots",
@@ -476,6 +566,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterStatus = document.getElementById("commercial-filter-status");
     const filterBudget = document.getElementById("commercial-filter-budget");
     const emptyMsg = document.getElementById("commercial-empty");
+    const resultCount = document.getElementById("commercial-result-count");
 
     let filtered = [...projects];
 
@@ -493,7 +584,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderCard = (project) => `
-      <a href="${project.slug}.html" class="commercial-card-link">
+      <a href="${PROJECT_DETAIL_PAGE}" class="commercial-card-link">
         <article class="commercial-card" data-project="${project.name}">
           <div class="commercial-card-media">
             <img src="${project.img}" alt="${project.name}" loading="lazy" decoding="async">
@@ -510,6 +601,7 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = filtered.map(renderCard).join("");
       if (emptyMsg) emptyMsg.hidden = filtered.length > 0;
       grid.hidden = filtered.length === 0;
+      updateProjectsResultCount(resultCount, filtered.length);
     };
 
     searchInput?.addEventListener("input", applyFilters);
@@ -551,6 +643,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterBudget = document.getElementById("plotted-filter-budget");
     const filterNew = document.getElementById("plotted-filter-new");
     const emptyMsg = document.getElementById("plotted-empty");
+    const resultCount = document.getElementById("plotted-result-count");
     const pagination = document.getElementById("plotted-pagination");
     const listPanel = document.getElementById("plotted-list-panel");
     const mapPanel = document.getElementById("plotted-map-panel");
@@ -577,6 +670,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderCard = (project) => `
+      <a href="${PROJECT_DETAIL_PAGE}" class="listing-card-link">
       <article class="listing-card" data-project="${project.name}">
         <div class="listing-img-wrap">
           <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async">
@@ -596,6 +690,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="listing-bhk">${project.typeLabel}</p>
         </div>
       </article>
+      </a>
     `;
 
     const getPageItems = () => {
@@ -659,13 +754,16 @@ document.addEventListener("DOMContentLoaded", () => {
       grid.innerHTML = items.map(renderCard).join("");
       if (emptyMsg) emptyMsg.hidden = items.length > 0;
       grid.hidden = items.length === 0;
+      updateProjectsResultCount(resultCount, filtered.length);
       renderPagination();
     };
 
     grid.addEventListener("click", (e) => {
-      const card = e.target.closest(".listing-card");
-      if (!card) return;
-      if (typeof window.openVipModal === "function") window.openVipModal();
+      if (e.target.closest(".listing-plus-btn")) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (typeof window.openVipModal === "function") window.openVipModal();
+      }
     });
 
     searchInput?.addEventListener("input", applyFilters);
@@ -724,6 +822,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initPlottedPage();
+  initProjectsCreativePage();
 
   const initProjectDetailPage = () => {
     const subnav = document.querySelector(".project-detail-tabs, .project-detail-subnav");
@@ -784,6 +883,36 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initProjectDetailPage();
+
+  const initNexspacePage = () => {
+    const page = document.querySelector(".nexspace-page");
+    if (!page) return;
+
+    const revealEls = page.querySelectorAll(
+      ".nx-section, .nx-stats-strip, .nx-vision-band, .nx-stat, .nx-highlight-card, .nx-connect-card, .nx-fact"
+    );
+    revealEls.forEach((el) => el.classList.add("nx-reveal"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    revealEls.forEach((el) => observer.observe(el));
+
+    page.querySelector(".nx-amenity-showcase-btn")?.addEventListener("click", () => {
+      if (typeof window.openVipModal === "function") window.openVipModal();
+    });
+  };
+
+  initNexspacePage();
 
   const initNriEnquireForm = () => {
     const form = document.getElementById("nri-enquire-form");
@@ -883,13 +1012,22 @@ document.addEventListener("DOMContentLoaded", () => {
   initNriFestForm();
 
   const initBlogPage = () => {
+    const page = document.querySelector(".blog-page");
+    if (!page) return;
+
     const slides = document.querySelectorAll(".blog-hero-slide");
     const dots = document.querySelectorAll(".blog-hero-dots button");
     const prevBtn = document.getElementById("blog-hero-prev");
     const nextBtn = document.getElementById("blog-hero-next");
-    const filter = document.getElementById("blog-category-filter");
+    const progressBar = document.getElementById("blog-hero-progress");
+    const filterPills = document.querySelectorAll(".blog-filter-pill");
+    const searchInput = document.getElementById("blog-search-inline");
+    const newsletterForm = document.getElementById("blog-newsletter-form");
+    const newsletterFeedback = document.getElementById("blog-newsletter-feedback");
     let current = 0;
     let timer;
+    let progressTimer;
+    const autoplayMs = 6000;
 
     const goToSlide = (index) => {
       if (!slides.length) return;
@@ -899,11 +1037,25 @@ document.addEventListener("DOMContentLoaded", () => {
         dot.classList.toggle("is-active", i === current);
         dot.setAttribute("aria-selected", i === current ? "true" : "false");
       });
+      resetProgress();
+    };
+
+    const resetProgress = () => {
+      if (!progressBar) return;
+      clearInterval(progressTimer);
+      progressBar.style.width = "0%";
+      const start = Date.now();
+      progressTimer = setInterval(() => {
+        const pct = Math.min(((Date.now() - start) / autoplayMs) * 100, 100);
+        progressBar.style.width = `${pct}%`;
+        if (pct >= 100) clearInterval(progressTimer);
+      }, 50);
     };
 
     const startAutoplay = () => {
       clearInterval(timer);
-      timer = setInterval(() => goToSlide(current + 1), 6000);
+      timer = setInterval(() => goToSlide(current + 1), autoplayMs);
+      resetProgress();
     };
 
     if (slides.length) {
@@ -918,13 +1070,66 @@ document.addEventListener("DOMContentLoaded", () => {
       startAutoplay();
     }
 
-    filter?.addEventListener("change", () => {
-      const value = filter.value;
+    const applyFilters = () => {
+      const activePill = document.querySelector(".blog-filter-pill.is-active");
+      const category = activePill?.dataset.filter || "all";
+      const query = (searchInput?.value || "").trim().toLowerCase();
+
       document.querySelectorAll("[data-category]").forEach((card) => {
-        const match = value === "all" || card.dataset.category === value;
-        card.classList.toggle("is-hidden", !match);
+        const matchCategory = category === "all" || card.dataset.category === category;
+        const title = card.querySelector(".blog-card-title a, .blog-featured-title a")?.textContent.toLowerCase() || "";
+        const excerpt = card.querySelector(".blog-text-excerpt, .blog-featured-excerpt")?.textContent.toLowerCase() || "";
+        const matchSearch = !query || title.includes(query) || excerpt.includes(query);
+        card.classList.toggle("is-hidden", !(matchCategory && matchSearch));
+      });
+    };
+
+    filterPills.forEach((pill) => {
+      pill.addEventListener("click", () => {
+        filterPills.forEach((p) => p.classList.toggle("is-active", p === pill));
+        applyFilters();
       });
     });
+
+    searchInput?.addEventListener("input", applyFilters);
+
+    newsletterForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("blog-newsletter-email");
+      if (!email?.value.trim() || !email.validity.valid) {
+        if (newsletterFeedback) {
+          newsletterFeedback.hidden = false;
+          newsletterFeedback.textContent = "Please enter a valid email address.";
+        }
+        return;
+      }
+      if (newsletterFeedback) {
+        newsletterFeedback.hidden = false;
+        newsletterFeedback.textContent = "Thank you for subscribing!";
+      }
+      newsletterForm.reset();
+    });
+
+    if (page.classList.contains("blog-page--creative")) {
+      const revealEls = page.querySelectorAll(
+        ".blog-featured-wrap, .blog-grid-section, .blog-quote, .blog-text-section, .blog-card, .blog-text-card, .blog-newsletter"
+      );
+      revealEls.forEach((el) => el.classList.add("blog-reveal"));
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+      );
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+    }
   };
 
   initBlogPage();
@@ -978,6 +1183,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (document.body.dataset.page === "blog-detail") initBlogDetailPage();
 
   const initReachUsPage = () => {
+    const page = document.querySelector(".reach-us-page");
     const officeData = {
       ahmedabad: "Godrej Garden City, Jagatpur Road, Ahmedabad – 382470",
       mumbai: "Godrej One, Pirojshanagar, Vikhroli East, Mumbai – 400 079",
@@ -1023,6 +1229,27 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (indiaHours) indiaHours.textContent = data.hours;
     });
+
+    if (page?.classList.contains("reach-us-page--creative")) {
+      const revealEls = page.querySelectorAll(
+        ".reach-offices, .reach-support, .reach-inquiry-card, .reach-helpline, .reach-cta-band, .reach-office-card, .reach-support-card"
+      );
+      revealEls.forEach((el) => el.classList.add("reach-reveal"));
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              revealObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -30px 0px" }
+      );
+
+      revealEls.forEach((el) => revealObserver.observe(el));
+    }
   };
 
   if (document.body.dataset.page === "reach-us") initReachUsPage();

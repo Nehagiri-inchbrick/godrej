@@ -1588,6 +1588,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const updateStatus = () => {
       const selected = [...prefs].filter((btn) => btn.classList.contains("is-selected"));
       const count = selected.length;
+      const badgeCount = document.getElementById("lifestyle-badge-count");
+
+      if (badgeCount) badgeCount.textContent = String(count);
 
       if (countEl) {
         countEl.textContent = count === 0

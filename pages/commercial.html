@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -37,7 +37,7 @@
             <a href="locations.html">All Locations</a>
           </div>
         </div>
-        <div class="nav-dropdown">
+                <div class="nav-dropdown">
           <button type="button" class="nav-link nav-dropdown-toggle">NRI Corner</button>
           <div class="nav-dropdown-menu">
             <a href="nri-legal.html">Legal Information</a>
@@ -57,10 +57,26 @@
       </button>
     </div>
   </header>
-  <main class="inner-main projects-page commercial-page">
-    <section class="residential-head">
+  <main class="inner-main projects-page commercial-page projects-page--creative">
+    <section class="projects-hero projects-hero--commercial" aria-labelledby="projects-hero-title">
+      <div class="projects-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92fd1f2?w=1600&q=85')" aria-hidden="true"></div>
+      <div class="projects-hero-overlay" aria-hidden="true"></div>
+      <span class="projects-hero-watermark" aria-hidden="true">WORK</span>
+      <div class="about-wrap projects-hero-inner">
+        <span class="projects-eyebrow">Commercial</span>
+        <h1 class="projects-hero-title" id="projects-hero-title">Spaces that <em>scale</em> your business</h1>
+        <p class="projects-hero-lead">Grade A offices, retail destinations and mixed-use developments in India&rsquo;s top business corridors.</p>
+        <div class="projects-hero-stats">
+          <span><strong>Office</strong> &amp; retail</span>
+          <span><strong>4</strong> cities</span>
+          <span><strong>Lease</strong> &amp; purchase</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="residential-head projects-head-panel">
       <div class="about-wrap">
-        <h1 class="residential-title">Find where you belong</h1>
+        <h1 class="residential-title sr-only">Commercial Projects</h1>
 
         <div class="residential-view-toggle">
           <span class="residential-view-label">
@@ -131,27 +147,43 @@
       </div>
     </section>
 
-    <section class="residential-listings">
+    <section class="residential-listings projects-listings-panel">
       <div class="about-wrap">
-        <h2 class="residential-section-title">Explore Projects</h2>
+        <div class="projects-section-head">
+          <span class="projects-eyebrow">Portfolio</span>
+          <h2 class="residential-section-title">Explore Projects</h2>
+          <p class="projects-result-count" id="commercial-result-count" aria-live="polite"></p>
+        </div>
         <div class="listings-grid commercial-grid" id="commercial-grid" aria-live="polite"></div>
         <p class="residential-empty" id="commercial-empty" hidden>No projects match your filters. Try adjusting your search.</p>
       </div>
     </section>
 
-    <section class="residential-contact">
-      <div class="about-wrap">
-        <h2 class="residential-contact-title">Get in touch</h2>
-        <p class="residential-contact-lead">For purchase and lease related queries, feel free to contact us.</p>
-        <div class="commercial-contact-links">
-          <a href="mailto:leasing@godrejfunds.com" class="commercial-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            leasing@godrejfunds.com
-          </a>
-          <a href="tel:+18447453125" class="commercial-contact-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            +1 844 745 3125
-          </a>
+    <section class="residential-contact projects-contact--creative">
+      <div class="about-wrap projects-contact-grid">
+        <div class="projects-contact-intro">
+          <span class="projects-eyebrow">Leasing &amp; Sales</span>
+          <h2 class="residential-contact-title">Talk to our commercial team</h2>
+          <p class="residential-contact-lead">For purchase and lease related queries across offices and retail, reach out to our dedicated commercial desk.</p>
+          <div class="commercial-contact-links commercial-contact-links--stacked">
+            <a href="mailto:leasing@godrejfunds.com" class="commercial-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              leasing@godrejfunds.com
+            </a>
+            <a href="tel:+18447453125" class="commercial-contact-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              +1 844 745 3125
+            </a>
+          </div>
+          <button type="button" class="projects-cta-btn" onclick="openEnquireModal()">Enquire Now</button>
+        </div>
+        <div class="projects-contact-highlight">
+          <span class="projects-contact-highlight-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M6 21V7l6-4 6 4v14"></path></svg>
+          </span>
+          <h3>Grade A workspaces</h3>
+          <p>Flexible floor plates, premium amenities and locations built for enterprise growth.</p>
+          <a href="commercial-nexspace.html" class="projects-featured-link">Explore Nexspace &rarr;</a>
         </div>
       </div>
     </section>
