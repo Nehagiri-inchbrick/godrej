@@ -1071,6 +1071,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --- Featured Destinations ---
+  const fdTrackWrap = document.querySelector(".fd-track-wrap");
   const fdTrack = document.getElementById("fd-track");
   const fdCards = document.querySelectorAll(".fd-card");
   const fdPrev = document.getElementById("fd-prev");
@@ -1098,13 +1099,104 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  const setActiveDestination = (card) => {
-    fdCards.forEach((c) => c.classList.toggle("is-active", c === card));
-    card?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  const scrollFdToCard = (card, smooth = true) => {
+    if (!fdTrackWrap || !card) return;
+    const wrapRect = fdTrackWrap.getBoundingClientRect();
+    const cardRect = card.getBoundingClientRect();
+    const target = fdTrackWrap.scrollLeft + (cardRect.left - wrapRect.left) - (wrapRect.width - cardRect.width) / 2;
+    fdTrackWrap.scrollTo({ left: Math.max(0, target), behavior: smooth ? "smooth" : "auto" });
   };
+
+  const setActiveDestination = (card, smooth = true) => {
+    if (!card) return;
+    fdCards.forEach((c) => c.classList.toggle("is-active", c === card));
+    scrollFdToCard(card, smooth);
+  };
+
+  const getFdCardIndex = () => {
+    const active = fdTrack?.querySelector(".fd-card.is-active");
+    return active ? [...fdCards].indexOf(active) : 0;
+  };
+
+  const syncActiveFromScroll = () => {
+    if (!fdTrackWrap || !fdCards.length) return;
+    const center = fdTrackWrap.scrollLeft + fdTrackWrap.clientWidth / 2;
+    let closest = fdCards[0];
+    let minDist = Infinity;
+
+    fdCards.forEach((card) => {
+      const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+      const dist = Math.abs(center - cardCenter);
+      if (dist < minDist) {
+        minDist = dist;
+        closest = card;
+      }
+    });
+
+    fdCards.forEach((c) => c.classList.toggle("is-active", c === closest));
+  };
+
+  let fdTouchStartX = 0;
+  let fdTouchStartY = 0;
+  let fdDidSwipe = false;
+  let fdScrollSyncTimer;
+
+  fdTrackWrap?.addEventListener("touchstart", (e) => {
+    fdTouchStartX = e.touches[0].clientX;
+    fdTouchStartY = e.touches[0].clientY;
+    fdDidSwipe = false;
+  }, { passive: true });
+
+  fdTrackWrap?.addEventListener("touchmove", (e) => {
+    const dx = Math.abs(e.touches[0].clientX - fdTouchStartX);
+    const dy = Math.abs(e.touches[0].clientY - fdTouchStartY);
+    if (dx > dy && dx > 8) fdDidSwipe = true;
+  }, { passive: true });
+
+  fdTrackWrap?.addEventListener("scroll", () => {
+    clearTimeout(fdScrollSyncTimer);
+    fdScrollSyncTimer = setTimeout(syncActiveFromScroll, 100);
+  }, { passive: true });
+
+  let fdDragPointerId = null;
+  let fdDragStartX = 0;
+  let fdDragScrollLeft = 0;
+
+  fdTrackWrap?.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    if (e.target.closest(".fd-explore-mini, .fd-explore-all, .fd-thumb-more")) return;
+    fdDragPointerId = e.pointerId;
+    fdDragStartX = e.clientX;
+    fdDragScrollLeft = fdTrackWrap.scrollLeft;
+    fdTrackWrap.classList.add("is-dragging");
+    fdTrackWrap.setPointerCapture?.(e.pointerId);
+  });
+
+  fdTrackWrap?.addEventListener("pointermove", (e) => {
+    if (e.pointerType !== "mouse" || fdDragPointerId !== e.pointerId) return;
+    const dx = e.clientX - fdDragStartX;
+    if (Math.abs(dx) > 5) fdDidSwipe = true;
+    fdTrackWrap.scrollLeft = fdDragScrollLeft - dx;
+  });
+
+  const endFdDrag = (e) => {
+    if (e.pointerType !== "mouse" || fdDragPointerId !== e.pointerId) return;
+    fdDragPointerId = null;
+    fdTrackWrap.classList.remove("is-dragging");
+    fdTrackWrap.releasePointerCapture?.(e.pointerId);
+    syncActiveFromScroll();
+    scrollFdToCard(fdTrack?.querySelector(".fd-card.is-active"), true);
+  };
+
+  fdTrackWrap?.addEventListener("pointerup", endFdDrag);
+  fdTrackWrap?.addEventListener("pointercancel", endFdDrag);
 
   fdCards.forEach((card) => {
     card.addEventListener("click", (e) => {
+      if (fdDidSwipe) {
+        fdDidSwipe = false;
+        return;
+      }
       if (e.target.closest(".fd-explore-mini, .fd-explore-all, .fd-thumb-more")) return;
       setActiveDestination(card);
     });
@@ -1126,14 +1218,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   fdPrev?.addEventListener("click", () => {
-    fdTrack?.scrollBy({ left: -280, behavior: "smooth" });
+    const idx = getFdCardIndex();
+    const prevIdx = idx > 0 ? idx - 1 : fdCards.length - 1;
+    setActiveDestination(fdCards[prevIdx]);
   });
 
   fdNext?.addEventListener("click", () => {
-    fdTrack?.scrollBy({ left: 280, behavior: "smooth" });
+    const idx = getFdCardIndex();
+    const nextIdx = idx < fdCards.length - 1 ? idx + 1 : 0;
+    setActiveDestination(fdCards[nextIdx]);
   });
 
-  if (fdCards.length) fillDestinationMedia();
+  if (fdCards.length) {
+    fillDestinationMedia();
+    requestAnimationFrame(() => {
+      const active = fdTrack?.querySelector(".fd-card.is-active");
+      if (active) scrollFdToCard(active, false);
+    });
+  }
 
   // --- Awards Slider ---
   const initAwardsSlider = () => {
@@ -1526,10 +1628,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const initJourneyAhead = () => {
     const years = document.querySelectorAll(".journey-year");
     const cards = document.querySelectorAll(".journey-card");
+    const columnsWrap = document.getElementById("journey-columns-wrap");
     const fill = document.getElementById("journey-timeline-fill");
     if (!years.length || !cards.length) return;
 
-    const setYear = (year) => {
+    const isMobileCarousel = () => window.matchMedia("(max-width: 1024px)").matches;
+
+    const scrollToYearCard = (year, smooth = true) => {
+      if (!columnsWrap || !isMobileCarousel()) return;
+      const card = columnsWrap.querySelector(`.journey-card[data-year="${year}"]`);
+      if (!card) return;
+      const wrapRect = columnsWrap.getBoundingClientRect();
+      const cardRect = card.getBoundingClientRect();
+      const target = columnsWrap.scrollLeft + (cardRect.left - wrapRect.left) - (wrapRect.width - cardRect.width) / 2;
+      columnsWrap.scrollTo({ left: Math.max(0, target), behavior: smooth ? "smooth" : "auto" });
+    };
+
+    const setYear = (year, { smooth = true, scroll = true } = {}) => {
       years.forEach((btn, i) => {
         const isActive = btn.dataset.year === year;
         btn.classList.toggle("is-active", isActive);
@@ -1539,10 +1654,42 @@ document.addEventListener("DOMContentLoaded", () => {
       cards.forEach((card) => {
         card.classList.toggle("is-active", card.dataset.year === year);
       });
+      if (scroll) scrollToYearCard(year, smooth);
     };
+
+    const syncYearFromScroll = () => {
+      if (!columnsWrap || !isMobileCarousel()) return;
+      const center = columnsWrap.scrollLeft + columnsWrap.clientWidth / 2;
+      let closest = cards[0];
+      let minDist = Infinity;
+
+      cards.forEach((card) => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const dist = Math.abs(center - cardCenter);
+        if (dist < minDist) {
+          minDist = dist;
+          closest = card;
+        }
+      });
+
+      if (closest?.dataset.year) {
+        setYear(closest.dataset.year, { smooth: false, scroll: false });
+      }
+    };
+
+    let journeyScrollTimer;
+    columnsWrap?.addEventListener("scroll", () => {
+      clearTimeout(journeyScrollTimer);
+      journeyScrollTimer = setTimeout(syncYearFromScroll, 100);
+    }, { passive: true });
 
     years.forEach((btn) => {
       btn.addEventListener("click", () => setYear(btn.dataset.year));
+    });
+
+    requestAnimationFrame(() => {
+      const active = document.querySelector(".journey-year.is-active");
+      if (active) scrollToYearCard(active.dataset.year, false);
     });
   };
 

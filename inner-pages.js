@@ -1026,4 +1026,132 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   if (document.body.dataset.page === "reach-us") initReachUsPage();
+
+  const initMediaGallery = () => {
+    const grid = document.getElementById("media-gallery-grid");
+    const filters = document.querySelectorAll(".media-gallery-filter");
+    const modal = document.getElementById("media-video-modal");
+    const iframe = document.getElementById("media-video-iframe");
+    const modalTitle = document.getElementById("media-video-title");
+    const modalClose = document.getElementById("media-video-close");
+    const modalBackdrop = document.getElementById("media-video-backdrop");
+    const emptyState = document.getElementById("media-gallery-empty");
+    if (!grid || !filters.length) return;
+
+    const items = [
+      { title: "Bloomberg UTV Final Word 22 March 2012 Mr Pirojsha Godrej MD & CEO, Godrej Properties", link: "https://www.youtube.com/watch?v=7jvwEVMNi1w", filter: "in-the-news", date: "2012-03-22" },
+      { title: "38th Annual General Meeting of Godrej Properties Limited", link: "https://youtu.be/eqLBx_-QiXo", filter: "properties", date: "2023-08-02" },
+      { title: "ET Now Earnings with Pirojsha Godrej Executive Chairperson, Godrej Properties, 4 May, 2023", link: "https://youtu.be/K8dk1XjoA2I", filter: "in-the-news", date: "2023-05-03" },
+      { title: "Godrej Properties raises INR 475 Cr", link: "https://youtu.be/7jvwEVMNi1w", filter: "in-the-news", date: "2012-03-22" },
+      { title: "Godrej Properties: INR 475 Cr IPP", link: "https://youtu.be/DtuLXDxsn3Q", filter: "in-the-news", date: "2012-03-22" },
+      { title: "Godrej Properties IPP Successful", link: "https://youtu.be/aCUXZkbzURw", filter: "in-the-news", date: "2012-03-22" },
+      { title: "To use IPP proceeds for growth, debt repayment", link: "https://youtu.be/e7svwuTli7M", filter: "in-the-news", date: "2012-03-22" },
+      { title: "CNBC TV18 - Godrej Properties Q4 earnings", link: "https://youtu.be/nn9FQ8VMl7s", filter: "in-the-news", date: "2012-05-04" },
+      { title: "ZEE Business - Godrej Properties Q4 Mr Adi Godrej", link: "https://youtu.be/KaeJxb8PBEQ", filter: "in-the-news", date: "2012-05-04" },
+      { title: "NDTV Profit - Godrej Properties Q4 Review Mr Pirojsha", link: "https://youtu.be/WdGGea5sv6s", filter: "in-the-news", date: "2012-05-04" },
+      { title: "CNBC AWAAZ - Mr Adi Godrej & Mr Pirojsha Godrej", link: "https://youtu.be/-ADs4zLAlBg", filter: "in-the-news", date: "2012-05-04" },
+      { title: "CNBC TV18 - Markets & Macros", link: "https://youtu.be/blUqxHcwmi0", filter: "in-the-news", date: "2012-07-02" },
+      { title: "ET Now Business Day 11 Sept 2012", link: "https://youtu.be/1PJloDPK8c8", filter: "in-the-news", date: "2012-09-10" },
+      { title: "NDTV Profit - Launch of Godrej Summit, Gurgaon", link: "https://youtu.be/65qBrh5uIsw", filter: "in-the-news", date: "2012-09-13" },
+      { title: "ET Now Business Today 11 Sept 2012", link: "https://youtu.be/bdt1jGFt2_k", filter: "in-the-news", date: "2011-09-10" },
+      { title: "Zee Business - Godrej launches 2nd project in Gurgaon", link: "https://youtu.be/S9B_daxaDO8", filter: "in-the-news", date: "2012-09-13" },
+      { title: "Bloomberg TV - Godrej Summit Phase 1 sold out", link: "https://youtu.be/6AmkTcxWH_U", filter: "in-the-news", date: "2012-09-13" },
+      { title: "40th Annual General Meeting of the Godrej Properties Limited", link: "https://youtu.be/4-CD5H1DgUc", filter: "properties", date: "2025-08-07" },
+    ];
+
+    const youtubeId = (url) => {
+      const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([^&?#]+)/);
+      return match ? match[1] : "";
+    };
+
+    const formatDate = (iso) => new Date(iso).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    const filterLabel = (filter) => (filter === "properties" ? "Properties" : "In the News");
+
+    const playIcon = `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="8 5 19 12 8 19 8 5"></polygon></svg>`;
+
+    grid.innerHTML = items.map((item) => {
+      const id = youtubeId(item.link);
+      const thumb = id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : "";
+      return `
+        <article class="media-gallery-card" role="listitem" data-filter="${item.filter}" data-video-id="${id}" data-title="${item.title.replace(/"/g, "&quot;")}">
+          <button type="button" class="media-gallery-thumb" aria-label="Play: ${item.title.replace(/"/g, "&quot;")}">
+            <img src="${thumb}" alt="" width="480" height="270" loading="lazy" decoding="async">
+            <span class="media-gallery-play"><span>${playIcon}</span></span>
+          </button>
+          <div class="media-gallery-body">
+            <span class="media-gallery-tag">${filterLabel(item.filter)}</span>
+            <h3>${item.title}</h3>
+            <time class="media-gallery-date" datetime="${item.date}">${formatDate(item.date)}</time>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    const cards = grid.querySelectorAll(".media-gallery-card");
+    let activeFilter = "all";
+
+    const applyFilter = (filter) => {
+      activeFilter = filter;
+      let visible = 0;
+      cards.forEach((card) => {
+        const show = filter === "all" || card.dataset.filter === filter;
+        card.classList.toggle("is-hidden", !show);
+        if (show) visible += 1;
+      });
+      if (emptyState) emptyState.hidden = visible > 0;
+    };
+
+    filters.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter || "all";
+        filters.forEach((el) => {
+          const active = el === btn;
+          el.classList.toggle("is-active", active);
+          el.setAttribute("aria-selected", active ? "true" : "false");
+        });
+        applyFilter(filter);
+      });
+    });
+
+    const closeModal = () => {
+      if (!modal || !iframe) return;
+      modal.hidden = true;
+      modal.setAttribute("aria-hidden", "true");
+      iframe.src = "";
+      document.body.style.overflow = "";
+    };
+
+    const openModal = (videoId, title) => {
+      if (!modal || !iframe || !videoId) return;
+      if (modalTitle) modalTitle.textContent = title;
+      iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      modalClose?.focus();
+    };
+
+    grid.addEventListener("click", (e) => {
+      const card = e.target.closest(".media-gallery-card");
+      if (!card || card.classList.contains("is-hidden")) return;
+      const btn = e.target.closest(".media-gallery-thumb");
+      if (!btn) return;
+      openModal(card.dataset.videoId, card.dataset.title || "");
+    });
+
+    modalClose?.addEventListener("click", closeModal);
+    modalBackdrop?.addEventListener("click", closeModal);
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal && !modal.hidden) closeModal();
+    });
+
+    applyFilter(activeFilter);
+  };
+
+  if (document.body.dataset.page === "media-gallery") initMediaGallery();
 });
