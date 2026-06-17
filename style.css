@@ -1,4 +1,4 @@
-﻿*,
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -2545,25 +2545,47 @@ footer {
   --wi-navy: #1a2744;
   --wi-gold: #c99c56;
   position: relative;
-  padding: clamp(3.5rem, 7vw, 5.5rem) clamp(1rem, 3vw, 3rem);
-  background:
-    linear-gradient(165deg, #faf8f5 0%, #f3f0ea 45%, #eef1f6 100%);
+  padding: clamp(5rem, 9vw, 7.5rem) clamp(1rem, 3vw, 3rem);
+  background: #fdfaf5;
   overflow: hidden;
+}
+
+.why-invest-bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.15; /* Very subtle for light theme */
+}
+
+.why-invest-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(1.2);
+}
+
+.why-invest-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 20%, #fdfaf5 85%);
 }
 
 .why-invest-watermark {
   position: absolute;
   right: -2%;
-  top: 6%;
+  top: 10%;
   font-family: "Cormorant Garamond", var(--font-heading), serif;
-  font-size: clamp(5rem, 16vw, 11rem);
+  font-size: clamp(8rem, 20vw, 14rem);
   font-weight: 700;
-  line-height: 0.9;
-  color: rgba(26, 39, 68, 0.04);
+  line-height: 0.8;
+  color: rgba(201, 156, 86, 0.05);
   letter-spacing: -0.04em;
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  transform: rotate(-10deg);
 }
 
 .why-invest-grid-bg {
@@ -2656,12 +2678,12 @@ footer {
 
 .why-invest-title {
   font-family: "Cormorant Garamond", var(--font-heading), serif;
-  font-size: clamp(2rem, 4.2vw, 3.15rem);
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
   font-weight: 600;
   color: var(--wi-navy);
-  line-height: 1.12;
-  margin-bottom: 0.55rem;
-  letter-spacing: -0.02em;
+  line-height: 1.1;
+  margin-bottom: 0.85rem;
+  letter-spacing: -0.03em;
 }
 
 .why-invest-title-gold {
@@ -2732,13 +2754,22 @@ footer {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
-  border-radius: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 12px;
   overflow: visible;
   min-height: 0;
-  border: 1px solid rgba(26, 39, 68, 0.08);
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.04);
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.5s ease, border-color 0.4s ease;
+  border: 1px solid rgba(201, 156, 86, 0.15);
+  box-shadow: 0 15px 45px rgba(26, 39, 68, 0.06);
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.2, 1);
+}
+
+.invest-stat-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--wi-gold);
+  background: #fff;
+  box-shadow: 0 30px 65px rgba(26, 39, 68, 0.12);
 }
 
 .invest-stat-card::after {
