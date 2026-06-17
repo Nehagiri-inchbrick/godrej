@@ -1463,7 +1463,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (subEl) {
         subEl.textContent = count === 0
           ? "Select preferences to find matching homes"
-          : "Showing homes that match your lifestyle";
+          : "We'll find homes that truly match your lifestyle";
       }
     };
 

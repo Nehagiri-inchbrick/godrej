@@ -48,11 +48,11 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
     rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript>
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet">
   </noscript>
   <link href="style.css" rel="stylesheet">
@@ -528,20 +528,24 @@
 
     <!-- Lifestyle Explorer -->
     <section class="lifestyle-section lifestyle-explorer" id="lifestyle">
-      <div class="lifestyle-section-glow lifestyle-section-glow--left" aria-hidden="true"></div>
-      <div class="lifestyle-section-glow lifestyle-section-glow--right" aria-hidden="true"></div>
+      <div class="lifestyle-section-glow lifestyle-section-glow--left" aria-hidden="true" style="display:none"></div>
+      <div class="lifestyle-section-glow lifestyle-section-glow--right" aria-hidden="true" style="display:none"></div>
       <div class="lifestyle-inner">
         <div class="lifestyle-explorer-banner">
           <div class="lifestyle-explorer-bg" aria-hidden="true">
             <img src="images/lifestyle_luxury_bg.png" alt="Luxury home interior" class="lifestyle-explorer-bg-img"
-              loading="lazy">
+              loading="eager" fetchpriority="high" decoding="async" width="1920" height="1080">
             <div class="lifestyle-explorer-overlay"></div>
             <div class="lifestyle-explorer-pattern"></div>
             <div class="lifestyle-explorer-shine" aria-hidden="true"></div>
           </div>
           <span class="lifestyle-explorer-watermark" aria-hidden="true">LIFESTYLE</span>
           <div class="lifestyle-explorer-content">
-            <header class="lifestyle-explorer-header">
+            <header class="lifestyle-explorer-hero">
+              <div class="lifestyle-header-badge" aria-live="polite">
+                <span class="lifestyle-header-badge-num" id="lifestyle-badge-count">3</span>
+                <span class="lifestyle-header-badge-label">Selected<br>Priorities</span>
+              </div>
               <div class="lifestyle-explorer-intro">
                 <div class="lifestyle-tag-row">
                   <span class="lifestyle-tag-line" aria-hidden="true"></span>
@@ -549,25 +553,27 @@
                   <span class="lifestyle-tag-line" aria-hidden="true"></span>
                 </div>
                 <h2 class="lifestyle-title">Homes that<br><span class="lifestyle-title-gold">fit your life.</span></h2>
-                <span class="lifestyle-title-accent" aria-hidden="true"></span>
-                <p class="lifestyle-intro">Tell us what matters most � schools, green spaces, connectivity � and
-                  we&rsquo;ll surface homes shaped around your everyday rhythm.</p>
+                <p class="lifestyle-intro">Tell us what matters most&mdash;schools, green spaces, connectivity and more&mdash;and we&rsquo;ll surface homes shaped around your everyday rhythm.</p>
                 <div class="lifestyle-hero-chips" aria-hidden="true">
-                  <span class="lifestyle-hero-chip">6 lifestyle filters</span>
-                  <span class="lifestyle-hero-chip">Smart matching</span>
-                  <span class="lifestyle-hero-chip">Pan-India homes</span>
+                  <span class="lifestyle-hero-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                    6 Lifestyle Filters
+                  </span>
+                  <span class="lifestyle-hero-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="3"></circle><line x1="12" y1="2" x2="12" y2="5"></line></svg>
+                    Smart Matching
+                  </span>
+                  <span class="lifestyle-hero-chip">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    Pan-India Homes
+                  </span>
                 </div>
-              </div>
-              <div class="lifestyle-header-badge" aria-live="polite">
-                <span class="lifestyle-header-badge-ring" aria-hidden="true"></span>
-                <span class="lifestyle-header-badge-num" id="lifestyle-badge-count">3</span>
-                <span class="lifestyle-header-badge-label">Selected<br>Priorities</span>
               </div>
             </header>
 
             <div class="lifestyle-pref-panel">
               <div class="lifestyle-pref-panel-head">
-                <p class="lifestyle-pref-hint">Tap to select your priorities</p>
+                <p class="lifestyle-pref-hint">Choose what matters most to you</p>
                 <span class="lifestyle-pref-step" aria-hidden="true">Step 1 of 2</span>
               </div>
               <div class="lifestyle-pref-grid-wrap">
@@ -614,7 +620,7 @@
                     </span>
                     <span class="pref-label">Work Hubs</span>
                   </button>
-                  <button type="button" class="lifestyle-pref" data-pref="retail" data-tone="slate"
+                  <button type="button" class="lifestyle-pref" data-pref="retail" data-tone="purple"
                     aria-pressed="false">
                     <span class="pref-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="3">
@@ -629,7 +635,7 @@
                     </span>
                     <span class="pref-label">Retail</span>
                   </button>
-                  <button type="button" class="lifestyle-pref" data-pref="healthcare" data-tone="slate"
+                  <button type="button" class="lifestyle-pref" data-pref="healthcare" data-tone="orange"
                     aria-pressed="false">
                     <span class="pref-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="3">
@@ -665,238 +671,31 @@
                   </button>
                 </div>
               </div>
-            </div>
 
-            <div class="lifestyle-action-bar">
-              <div class="lifestyle-action-status">
-                <span class="lifestyle-filter-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                    <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              <div class="lifestyle-action-bar">
+                <div class="lifestyle-action-status">
+                  <span class="lifestyle-filter-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                  </span>
+                  <div class="lifestyle-action-copy">
+                    <strong id="lifestyle-pref-count">3 Preferences Selected</strong>
+                    <span id="lifestyle-pref-sub">We&rsquo;ll find homes that truly match your lifestyle</span>
+                  </div>
+                </div>
+                <button type="button" class="lifestyle-explore-btn" id="lifestyle-explore-btn">
+                  Explore Homes
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
                   </svg>
-                </span>
-                <div class="lifestyle-action-copy">
-                  <strong id="lifestyle-pref-count">3 Preferences Selected</strong>
-                  <span id="lifestyle-pref-sub">Showing homes that match your lifestyle</span>
-                </div>
+                </button>
               </div>
-              <button type="button" class="lifestyle-explore-btn" id="lifestyle-explore-btn">
-                Explore Homes
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </button>
             </div>
+
           </div>
         </div>
       </div>
     </section>
-
-    <!-- The Journey Ahead -->
-    <section class="journey-ahead" id="future-vision">
-      <div class="journey-decor journey-decor--left" aria-hidden="true"></div>
-      <div class="journey-decor journey-decor--right" aria-hidden="true"></div>
-      <div class="journey-inner">
-        <header class="journey-header">
-          <span class="journey-tag">Future Vision</span>
-          <h2 class="journey-title">The Journey Ahead</h2>
-          <p class="journey-subtitle">Expanding horizons. Building communities. Creating lasting value.</p>
-        </header>
-
-        <div class="journey-timeline" role="tablist" aria-label="Future milestones by year">
-          <div class="journey-timeline-track" aria-hidden="true">
-            <span class="journey-timeline-fill" id="journey-timeline-fill"></span>
-          </div>
-          <button type="button" class="journey-year is-active" data-year="2026" role="tab" aria-selected="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            2026
-          </button>
-          <button type="button" class="journey-year" data-year="2027" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            2027
-          </button>
-          <button type="button" class="journey-year" data-year="2028" role="tab" aria-selected="false">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-              <rect x="3" y="4" width="18" height="18" rx="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            2028
-          </button>
-        </div>
-
-        <div class="journey-columns-wrap" id="journey-columns-wrap">
-          <div class="journey-columns" id="journey-columns">
-            <article class="journey-card is-active" data-year="2026">
-              <div class="journey-card-img-wrap">
-                <img src="images/worli-banner-desktop-v1-cmhx0xuc90000j2phgabi18bx.webp"
-                  alt="Godrej skyline developments 2026" class="journey-card-img" loading="lazy">
-                <span class="journey-card-year">2026</span>
-              </div>
-              <div class="journey-card-body">
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--gold">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">Upcoming Cities</h3>
-                    <p class="journey-row-text">Mumbai &bull; Pune &bull; Bengaluru</p>
-                  </div>
-                </div>
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--navy">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <rect x="4" y="2" width="16" height="20" rx="2"></rect>
-                      <path d="M9 22v-4h6v4"></path>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">New Communities</h3>
-                    <p class="journey-row-text">4 Signature Projects, 8,000+ Homes</p>
-                  </div>
-                </div>
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--cream">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path d="M12 22c5-3 8-7 8-12a8 8 0 1 0-16 0c0 5 3 9 8 12z"></path>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">Future Developments</h3>
-                    <p class="journey-row-text">Luxury Towers &bull; Clubhouses &bull; Retail Hubs</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="journey-card" data-year="2027">
-              <div class="journey-card-img-wrap">
-                <img src="images/5436aa76-67c7-4e2d-afb8-8fe3a667a370.webp" alt="Godrej communities 2027"
-                  class="journey-card-img" loading="lazy">
-                <span class="journey-card-year">2027</span>
-              </div>
-              <div class="journey-card-body">
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--gold">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">Upcoming Cities</h3>
-                    <p class="journey-row-text">Delhi NCR &bull; Hyderabad &bull; Ahmedabad</p>
-                  </div>
-                </div>
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--navy">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <rect x="4" y="2" width="16" height="20" rx="2"></rect>
-                      <path d="M9 22v-4h6v4"></path>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">New Communities</h3>
-                    <p class="journey-row-text">5 Gated Townships, 12,000+ Homes</p>
-                  </div>
-                </div>
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--cream">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path d="M12 22c5-3 8-7 8-12a8 8 0 1 0-16 0c0 5 3 9 8 12z"></path>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">Future Developments</h3>
-                    <p class="journey-row-text">Golf Communities &bull; Smart Parks &bull; Wellness Zones</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-
-            <article class="journey-card" data-year="2028">
-              <div class="journey-card-img-wrap">
-                <img src="images/2026-01-30.webp" alt="Godrej future townships 2028" class="journey-card-img"
-                  loading="lazy">
-                <span class="journey-card-year">2028</span>
-              </div>
-              <div class="journey-card-body">
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--gold">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">Upcoming Cities</h3>
-                    <p class="journey-row-text">Kolkata &bull; Chennai &bull; Pan-India</p>
-                  </div>
-                </div>
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--navy">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <rect x="4" y="2" width="16" height="20" rx="2"></rect>
-                      <path d="M9 22v-4h6v4"></path>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">New Communities</h3>
-                    <p class="journey-row-text">6 Integrated Townships, 15,000+ Homes</p>
-                  </div>
-                </div>
-                <div class="journey-row">
-                  <span class="journey-row-icon journey-row-icon--cream">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                      <path d="M12 22c5-3 8-7 8-12a8 8 0 1 0-16 0c0 5 3 9 8 12z"></path>
-                    </svg>
-                  </span>
-                  <div>
-                    <h3 class="journey-row-title">Future Developments</h3>
-                    <p class="journey-row-text">Green Cities &bull; Mixed-Use Hubs &bull; Sustainable Living</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          </div>
-        </div>
-
-        <div class="journey-footer-bar">
-          <span class="journey-footer-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="currentColor">
-              <polygon
-                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-            </svg>
-          </span>
-          <p class="journey-footer-text">
-            <strong>Building More Than Homes, We're Building Futures.</strong>
-            <span class="journey-footer-divider" aria-hidden="true"></span>
-            <span>Exciting places. Thriving communities. Timeless value.</span>
-          </p>
-          <span class="journey-footer-build" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
-              <rect x="3" y="3" width="7" height="18" rx="1"></rect>
-              <rect x="14" y="7" width="7" height="14" rx="1"></rect>
-            </svg>
-          </span>
-        </div>
-      </div>
-    </section>
-    <!-- Featured Projects -->
     <section class="featured-projects" id="featured-projects" aria-labelledby="featured-projects-title">
       <div class="fp-inner">
         <header class="fp-head">
@@ -946,598 +745,378 @@
       </div>
     </div>
 
-    <!-- NRI Investment Section (Image Match) -->
-    <section class="nri-investment-cta" id="nri">
-      <div class="nri-cta-container">
-        <div class="nri-cta-content">
-          <div class="nri-badge-top">
-            <span class="nri-badge-icon">
+
+
+
+    <!-- Property Journal � Blogs -->
+    <section class="home-blog-journal" id="insights">
+      <div class="hbj-watermark" aria-hidden="true">Journal</div>
+      <div class="hbj-inner">
+        <header class="hbj-header">
+          <div class="hbj-header-left">
+            <span class="hbj-eyebrow">The Property Journal</span>
+            <h2 class="hbj-title">Stories, Insights &amp; <span class="hbj-gold">Market Wisdom</span></h2>
+            <p class="hbj-intro">Expert perspectives on buying, investing, and living well � curated for homebuyers and
+              NRIs.</p>
+          </div>
+          <div class="hbj-header-right">
+            <span class="hbj-issue">Vol. 2024 � Issue 06</span>
+            <a href="pages/blog.html" class="hbj-view-all">
+              View All Articles
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </span>
-            <span class="nri-badge-text">FOR NRI INVESTORS</span>
-          </div>
-
-          <h2 class="nri-cta-title">
-            INVEST IN YOUR
-            <span class="gold-text">HOME COUNTRY.</span>
-          </h2>
-          <p class="nri-cta-subtitle">FROM ANYWHERE IN THE WORLD.</p>
-
-          <div class="nri-cta-divider"></div>
-
-          <p class="nri-cta-hook">Get <span class="gold-text-bold">priority access</span> to exclusive benefits</p>
-
-          <div class="nri-benefits-wrap" id="nri-benefits-wrap">
-            <div class="nri-benefits-row">
-              <div class="nri-benefit-card">
-                <div class="nb-icon-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
-                    <line x1="7" y1="7" x2="7.01" y2="7"></line>
-                  </svg>
-                </div>
-                <h4 class="nb-title">PRICING</h4>
-                <div class="nb-line"></div>
-                <p class="nb-desc">Pre-Launch Prices <br> (Not Available Later)</p>
-              </div>
-
-              <div class="nri-benefit-card">
-                <div class="nb-icon-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"></path>
-                  </svg>
-                </div>
-                <h4 class="nb-title">PRIVILEGE</h4>
-                <div class="nb-line"></div>
-                <p class="nb-desc">Exclusive <br> NRI Discounts</p>
-              </div>
-
-              <div class="nri-benefit-card">
-                <div class="nb-icon-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                    </polygon>
-                  </svg>
-                </div>
-                <h4 class="nb-title">PRIORITY</h4>
-                <div class="nb-line"></div>
-                <p class="nb-desc">Priority <br> Unit Selection</p>
-              </div>
-
-              <div class="nri-benefit-card">
-                <div class="nb-icon-circle">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="20 12 20 22 4 22 4 12"></polyline>
-                    <rect x="2" y="7" width="20" height="5"></rect>
-                    <line x1="12" y1="22" x2="12" y2="7"></line>
-                    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
-                    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
-                  </svg>
-                </div>
-                <h4 class="nb-title">PERKS</h4>
-                <div class="nb-line"></div>
-                <p class="nb-desc">Limited-Time <br> Booking Offers</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="nri-cta-actions">
-            <button type="button" class="nri-btn-dark" onclick="openVipModal()">
-              <span class="btn-icon-circle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2.5">
-                  <polyline points="9 18 15 12 9 6"></polyline>
-                </svg></span>
-              EXPLORE NRI OPPORTUNITIES
-              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
               </svg>
-            </button>
+            </a>
+          </div>
+        </header>
 
-            <button type="button" class="nri-btn-outline vip-trigger" onclick="openVipModal()">
-              <svg class="btn-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-              DOWNLOAD VIP PASS
-            </button>
+        <div class="hbj-filter-row" role="tablist" aria-label="Filter articles by topic">
+          <button type="button" class="hbj-filter is-active" data-filter="all" role="tab" aria-selected="true">All
+            Stories</button>
+          <button type="button" class="hbj-filter" data-filter="real-estate" role="tab" aria-selected="false">Real
+            Estate</button>
+          <button type="button" class="hbj-filter" data-filter="investment" role="tab"
+            aria-selected="false">Investment</button>
+          <button type="button" class="hbj-filter" data-filter="nri" role="tab" aria-selected="false">NRI</button>
+          <button type="button" class="hbj-filter" data-filter="lifestyle" role="tab"
+            aria-selected="false">Lifestyle</button>
+        </div>
+
+        <div class="hbj-marquee" aria-hidden="true">
+          <div class="hbj-marquee-track">
+            <span>Stamp Duty Guide</span><span class="hbj-marquee-dot"></span>
+            <span>NRI Investment Trends</span><span class="hbj-marquee-dot"></span>
+            <span>RERA Explained</span><span class="hbj-marquee-dot"></span>
+            <span>Green Living</span><span class="hbj-marquee-dot"></span>
+            <span>Pre-Launch Benefits</span><span class="hbj-marquee-dot"></span>
+            <span>Commercial Grade A</span><span class="hbj-marquee-dot"></span>
+            <span>Stamp Duty Guide</span><span class="hbj-marquee-dot"></span>
+            <span>NRI Investment Trends</span><span class="hbj-marquee-dot"></span>
+            <span>RERA Explained</span><span class="hbj-marquee-dot"></span>
+            <span>Green Living</span><span class="hbj-marquee-dot"></span>
+            <span>Pre-Launch Benefits</span><span class="hbj-marquee-dot"></span>
+            <span>Commercial Grade A</span><span class="hbj-marquee-dot"></span>
           </div>
         </div>
 
+        <div class="hbj-grid-wrap" id="hbj-grid-wrap">
+          <div class="hbj-grid" id="hbj-grid">
+            <article class="hbj-card hbj-card--featured" data-category="real-estate">
+              <a href="pages/blog-detail.html" class="hbj-card-media">
+                <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=85"
+                  alt="Sanpada residential towers" width="720" height="480" loading="lazy" decoding="async">
+                <span class="hbj-card-index">Featured</span>
+              </a>
+              <div class="hbj-card-body">
+                <div class="hbj-card-meta">
+                  <span class="hbj-pill">Real Estate</span>
+                  <time datetime="2024-06-11">Jun 11, 2024</time>
+                  <span class="hbj-read-time">6 min read</span>
+                </div>
+                <h3 class="hbj-card-title"><a href="pages/blog-detail.html">Sanpada&rsquo;s Emergence as a Mid-Town
+                    Residential Micro-Market</a></h3>
+                <p class="hbj-card-excerpt">With seamless connectivity to Mumbai and Navi Mumbai&rsquo;s business hubs,
+                  Sanpada is fast emerging as a preferred address for quality construction and long-term appreciation.
+                </p>
+                <a href="pages/blog-detail.html" class="hbj-card-link">Read Story <svg viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                  </svg></a>
+              </div>
+            </article>
+
+            <article class="hbj-card hbj-card--tall" data-category="nri">
+              <a href="pages/blog.html" class="hbj-card-media">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=85"
+                  alt="Premium residence exterior" width="400" height="520" loading="lazy" decoding="async">
+              </a>
+              <div class="hbj-card-body">
+                <div class="hbj-card-meta">
+                  <span class="hbj-pill hbj-pill--navy">NRI</span>
+                  <time datetime="2024-04-22">Apr 22, 2024</time>
+                </div>
+                <h3 class="hbj-card-title"><a href="pages/blog.html">NRI Guide: FEMA Rules, Repatriation &amp; Property
+                    Ownership</a></h3>
+                <span class="hbj-views">2.1K views</span>
+              </div>
+            </article>
+
+            <article class="hbj-card hbj-card--compact" data-category="investment">
+              <div class="hbj-card-body hbj-card-body--solo">
+                <div class="hbj-card-meta">
+                  <span class="hbj-pill hbj-pill--gold">Investment</span>
+                  <time datetime="2024-05-15">May 15, 2024</time>
+                </div>
+                <h3 class="hbj-card-title"><a href="pages/blog.html">Top 5 Reasons to Invest in Pre-Launch Properties in
+                    2024</a></h3>
+                <p class="hbj-card-excerpt hbj-card-excerpt--short">Early pricing, flexible plans, and stronger
+                  appreciation potential for savvy investors.</p>
+              </div>
+            </article>
+
+            <article class="hbj-card hbj-card--wide" data-category="real-estate">
+              <a href="pages/blog.html" class="hbj-card-media hbj-card-media--wide">
+                <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=85"
+                  alt="Stamp duty documents" width="560" height="280" loading="lazy" decoding="async">
+              </a>
+              <div class="hbj-card-body">
+                <div class="hbj-card-meta">
+                  <span class="hbj-pill">Real Estate</span>
+                  <time datetime="2024-05-02">May 02, 2024</time>
+                </div>
+                <h3 class="hbj-card-title"><a href="pages/blog.html">All You Need to Know About Stamp Duty in India</a>
+                </h3>
+              </div>
+            </article>
+
+            <article class="hbj-card hbj-card--quote" data-category="all">
+              <span class="hbj-quote-mark" aria-hidden="true">&ldquo;</span>
+              <blockquote>
+                <p>Success in real estate starts when you believe you are worthy of it.</p>
+                <cite>&mdash; Michael Ferrara</cite>
+              </blockquote>
+            </article>
+
+            <article class="hbj-card hbj-card--mini" data-category="lifestyle">
+              <a href="pages/blog.html" class="hbj-card-media">
+                <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=85"
+                  alt="Luxury villa with pool" width="320" height="200" loading="lazy" decoding="async">
+              </a>
+              <div class="hbj-card-body">
+                <span class="hbj-pill">Lifestyle</span>
+                <h3 class="hbj-card-title hbj-card-title--sm"><a href="pages/blog.html">Family Living at Godrej Eternal
+                    Palms</a></h3>
+              </div>
+            </article>
+
+
+          </div>
+        </div>
+
+        <div class="hbj-footer-cta">
+          <p>Stay informed on markets, regulations, and premium living.</p>
+          <a href="pages/blog.html" class="hbj-cta-btn">Explore the Full Blog</a>
+        </div>
       </div>
-  </div>
-  </section>
+    </section>
 
-  <section class="why-invest" id="values">
-    <div class="why-invest-bg-wrap" aria-hidden="true">
-      <img src="images/why-invest-light-bg.png" alt="" class="why-invest-bg-img" loading="lazy">
-      <div class="why-invest-overlay"></div>
-    </div>
-    <div class="why-invest-watermark" aria-hidden="true">Trust</div>
-    <div class="why-invest-grid-bg" aria-hidden="true"></div>
-    <div class="why-invest-glow why-invest-glow--gold" aria-hidden="true"></div>
-    <div class="why-invest-glow why-invest-glow--navy" aria-hidden="true"></div>
-    <div class="why-invest-inner">
-      <header class="why-invest-header">
-        <span class="why-invest-crown" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M3 21h18" />
-            <path d="M5 21V7l7-4 7 4v14" />
-            <path d="M9 21v-6h6v6" />
-          </svg>
-        </span>
-        <div class="why-invest-tag-row">
-          <span class="why-invest-tag-line" aria-hidden="true"></span>
-          <span class="why-invest-tag">Why Invest With Us</span>
-          <span class="why-invest-tag-line" aria-hidden="true"></span>
-        </div>
-        <h2 class="why-invest-title">Built on Trust.<br><span class="why-invest-title-gold">Driven by Excellence.</span>
-        </h2>
-        <p class="why-invest-sub">Proven legacy. Strong numbers. Greater returns.</p>
-        <div class="why-invest-divider" aria-hidden="true">
-          <span class="why-invest-divider-line"></span>
-          <span class="why-invest-divider-diamond"></span>
-          <span class="why-invest-divider-line"></span>
-        </div>
-      </header>
+    <section class="awards-section" id="awards">
+      <div class="awards-bg" aria-hidden="true"></div>
+      <div class="awards-container">
+        <header class="awards-header">
+          <span class="awards-tag">Legacy &amp; Recognition</span>
+          <h2 class="awards-title">A Brand Trusted Across <span class="awards-title-gold">Generations</span></h2>
+          <p class="awards-sub">Milestones built on trust, quality, and innovation � honoured year after year.</p>
+        </header>
 
-      <div class="why-invest-showcase">
-        <div class="why-invest-stats" aria-label="Key investment metrics">
-          <article class="invest-stat-card invest-stat-card--blue">
-            <span class="invest-stat-index" aria-hidden="true">01</span>
-            <span class="invest-stat-badge invest-stat-badge--navy" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <path d="m9 12 2 2 4-4" />
-              </svg>
-            </span>
-            <div class="invest-stat-body">
-              <span class="invest-stat-num">25+</span>
-              <h3 class="invest-stat-label">Years of Excellence</h3>
-              <p class="invest-stat-desc">A legacy built on trust and quality standards</p>
-            </div>
-            <div class="invest-stat-foot invest-stat-foot--navy" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="invest-stat-card invest-stat-card--gold">
-            <span class="invest-stat-index" aria-hidden="true">02</span>
-            <span class="invest-stat-badge invest-stat-badge--gold" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M3 21h18" />
-                <path d="M6 21V9l6-3 6 3v12" />
-                <path d="M9 21v-4h6v4" />
-              </svg>
-            </span>
-            <div class="invest-stat-body">
-              <span class="invest-stat-num">100+</span>
-              <h3 class="invest-stat-label">Delivered Developments</h3>
-              <p class="invest-stat-desc">Across residential, commercial &amp; mixed-use spaces</p>
-            </div>
-            <div class="invest-stat-foot invest-stat-foot--gold" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="invest-stat-card invest-stat-card--blue">
-            <span class="invest-stat-index" aria-hidden="true">03</span>
-            <span class="invest-stat-badge invest-stat-badge--navy" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10" />
-                <path d="M12 2v4M12 18v4M2 12h4M18 12h4" />
-              </svg>
-            </span>
-            <div class="invest-stat-body">
-              <span class="invest-stat-num">50M+</span>
-              <h3 class="invest-stat-label">Sq. Ft. Developed</h3>
-              <p class="invest-stat-desc">Shaping skylines. Creating landmarks</p>
-            </div>
-            <div class="invest-stat-foot invest-stat-foot--navy" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-
-          <article class="invest-stat-card invest-stat-card--gold">
-            <span class="invest-stat-index" aria-hidden="true">04</span>
-            <span class="invest-stat-badge invest-stat-badge--gold" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
-            </span>
-            <div class="invest-stat-body">
-              <span class="invest-stat-num">98%</span>
-              <h3 class="invest-stat-label">Customer Satisfaction</h3>
-              <p class="invest-stat-desc">Happy customers. Stronger relationships</p>
-            </div>
-            <div class="invest-stat-foot invest-stat-foot--gold" aria-hidden="true">
-              <span></span><span></span><span></span>
-            </div>
-          </article>
-        </div>
-
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Property Journal � Blogs -->
-  <section class="home-blog-journal" id="insights">
-    <div class="hbj-watermark" aria-hidden="true">Journal</div>
-    <div class="hbj-inner">
-      <header class="hbj-header">
-        <div class="hbj-header-left">
-          <span class="hbj-eyebrow">The Property Journal</span>
-          <h2 class="hbj-title">Stories, Insights &amp; <span class="hbj-gold">Market Wisdom</span></h2>
-          <p class="hbj-intro">Expert perspectives on buying, investing, and living well � curated for homebuyers and
-            NRIs.</p>
-        </div>
-        <div class="hbj-header-right">
-          <span class="hbj-issue">Vol. 2024 � Issue 06</span>
-          <a href="pages/blog.html" class="hbj-view-all">
-            View All Articles
+        <div class="awards-slider-wrap">
+          <button class="awards-nav prev" aria-label="Previous award" id="awards-prev">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
+              <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
+          </button>
+
+          <div class="awards-track-container">
+            <div class="awards-track" id="awards-track">
+              <article class="award-card award-card--navy">
+                <span class="award-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                    <circle cx="9" cy="7" r="4" />
+                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                  </svg>
+                </span>
+                <span class="award-stat">100,000+</span>
+                <h4 class="award-name">Happy Customers</h4>
+                <p class="award-desc">Families across India and abroad who chose Godrej as home</p>
+              </article>
+
+              <article class="award-card award-card--gold">
+                <span class="award-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <circle cx="12" cy="8" r="7" />
+                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                  </svg>
+                </span>
+                <span class="award-stat">500+</span>
+                <h4 class="award-name">Awards &amp; Recognitions</h4>
+                <p class="award-desc">Honoured for design, delivery, and customer excellence</p>
+              </article>
+
+              <article class="award-card award-card--light">
+                <span class="award-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+                    <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+                    <path d="M4 22h16" />
+                    <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
+                  </svg>
+                </span>
+                <span class="award-stat">#1</span>
+                <h4 class="award-name">Leading Developer</h4>
+                <p class="award-desc">India's most trusted real estate brand nationwide</p>
+              </article>
+
+              <article class="award-card award-card--navy">
+                <span class="award-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <polygon
+                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                </span>
+                <span class="award-stat">IGBC</span>
+                <h4 class="award-name">Sustainability Leader</h4>
+                <p class="award-desc">Green-certified projects with smart, future-ready living</p>
+              </article>
+            </div>
+          </div>
+
+          <button class="awards-nav next" aria-label="Next award" id="awards-next">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div class="awards-dots" id="awards-dots">
+          <button type="button" class="award-dot active" aria-label="Award 1"></button>
+          <button type="button" class="award-dot" aria-label="Award 2"></button>
+          <button type="button" class="award-dot" aria-label="Award 3"></button>
+          <button type="button" class="award-dot" aria-label="Award 4"></button>
+        </div>
+      </div>
+    </section>
+
+
+
+    <footer class="main-footer-section gpl-footer" id="contact">
+      <div class="gpl-footer-body">
+        <div class="footer-container">
+          <div class="gpl-footer-grid">
+            <div class="gpl-footer-about">
+              <h3 class="gpl-footer-heading">About Godrej Properties</h3>
+              <p class="gpl-footer-about-text">Established in 1990, Godrej Properties Limited is one of India&rsquo;s
+                leading real estate companies. It became the first real estate entity in the country to achieve an ISO
+                9001:2000 certification for its operations. Since then, it has delivered multiple projects across major
+                cities in India and currently operates at a scale of around 95 million sq. ft. of development.</p>
+            </div>
+
+            <nav class="gpl-footer-col" aria-label="Work With Us">
+              <h3 class="gpl-footer-heading">Work With Us</h3>
+              <ul class="gpl-footer-links">
+                <li><a href="#" class="gpl-footer-link-strong" onclick="openEnquireModal(); return false;">Enquire</a>
+                </li>
+                <li><a href="#" class="gpl-footer-link-strong" onclick="openScheduleTourModal(); return false;">Schedule
+                    A
+                    Site Visit</a></li>
+              </ul>
+            </nav>
+
+            <nav class="gpl-footer-col" aria-label="Know Us">
+              <h3 class="gpl-footer-heading">Know Us</h3>
+              <ul class="gpl-footer-links">
+                <li><a href="pages/about.html">About Us</a></li>
+                <li><a href="pages/leadership.html">Leadership</a></li>
+                <li><a href="pages/sustainability.html">Sustainability</a></li>
+                <li><a href="pages/design.html">Design</a></li>
+              </ul>
+            </nav>
+
+            <nav class="gpl-footer-col" aria-label="Projects">
+              <h3 class="gpl-footer-heading">Projects</h3>
+              <ul class="gpl-footer-links">
+                <li><a href="pages/residential.html">Residential</a></li>
+                <li><a href="pages/commercial.html">Commercial</a></li>
+                <li><a href="pages/plotted.html">Plotted</a></li>
+              </ul>
+            </nav>
+
+            <nav class="gpl-footer-col" aria-label="Media Center">
+              <h3 class="gpl-footer-heading">Media Center</h3>
+              <ul class="gpl-footer-links">
+                <li><a href="#awards">In The News</a></li>
+                <li><a href="#awards">Press Release</a></li>
+                <li><a href="pages/media-gallery.html">Media Gallery</a></li>
+              </ul>
+            </nav>
+
+            <nav class="gpl-footer-col" aria-label="Investor Section">
+              <h3 class="gpl-footer-heading">Investor Section</h3>
+              <ul class="gpl-footer-links">
+                <li><a href="#values">Financials</a></li>
+                <li><a href="#values">Investor Information</a></li>
+                <li><a href="pages/leadership.html">Governance &amp; Leadership</a></li>
+                <li><a href="#values">Compliances</a></li>
+                <li><a href="pages/sustainability.html">CSR</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="gpl-footer-mid">
+            <div class="gpl-footer-social-wrap">
+              <span class="gpl-footer-social-label">Follow us on</span>
+              <div class="gpl-footer-social" aria-label="Social media">
+                <a href="#" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
+                    </path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="Twitter">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                    </path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z">
+                    </path>
+                  </svg>
+                </a>
+                <a href="#" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <path
+                      d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
+                    </path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="gpl-footer-divider" aria-hidden="true">
+            <span class="gpl-footer-chevron">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="gpl-footer-bar">
+        <div class="footer-container gpl-footer-bar-inner">
+          <a href="#home" class="gpl-footer-bar-logo">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0gkqUayZ0zT54vogvYWyYPoPOSjTGLl1sKQ&s"
+              alt="Godrej Properties" width="160" height="44" loading="lazy" decoding="async">
           </a>
-        </div>
-      </header>
-
-      <div class="hbj-filter-row" role="tablist" aria-label="Filter articles by topic">
-        <button type="button" class="hbj-filter is-active" data-filter="all" role="tab" aria-selected="true">All
-          Stories</button>
-        <button type="button" class="hbj-filter" data-filter="real-estate" role="tab" aria-selected="false">Real
-          Estate</button>
-        <button type="button" class="hbj-filter" data-filter="investment" role="tab"
-          aria-selected="false">Investment</button>
-        <button type="button" class="hbj-filter" data-filter="nri" role="tab" aria-selected="false">NRI</button>
-        <button type="button" class="hbj-filter" data-filter="lifestyle" role="tab"
-          aria-selected="false">Lifestyle</button>
-      </div>
-
-      <div class="hbj-marquee" aria-hidden="true">
-        <div class="hbj-marquee-track">
-          <span>Stamp Duty Guide</span><span class="hbj-marquee-dot"></span>
-          <span>NRI Investment Trends</span><span class="hbj-marquee-dot"></span>
-          <span>RERA Explained</span><span class="hbj-marquee-dot"></span>
-          <span>Green Living</span><span class="hbj-marquee-dot"></span>
-          <span>Pre-Launch Benefits</span><span class="hbj-marquee-dot"></span>
-          <span>Commercial Grade A</span><span class="hbj-marquee-dot"></span>
-          <span>Stamp Duty Guide</span><span class="hbj-marquee-dot"></span>
-          <span>NRI Investment Trends</span><span class="hbj-marquee-dot"></span>
-          <span>RERA Explained</span><span class="hbj-marquee-dot"></span>
-          <span>Green Living</span><span class="hbj-marquee-dot"></span>
-          <span>Pre-Launch Benefits</span><span class="hbj-marquee-dot"></span>
-          <span>Commercial Grade A</span><span class="hbj-marquee-dot"></span>
-        </div>
-      </div>
-
-      <div class="hbj-grid-wrap" id="hbj-grid-wrap">
-        <div class="hbj-grid" id="hbj-grid">
-          <article class="hbj-card hbj-card--featured" data-category="real-estate">
-            <a href="pages/blog-detail.html" class="hbj-card-media">
-              <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=85"
-                alt="Sanpada residential towers" width="720" height="480" loading="lazy" decoding="async">
-              <span class="hbj-card-index">Featured</span>
-            </a>
-            <div class="hbj-card-body">
-              <div class="hbj-card-meta">
-                <span class="hbj-pill">Real Estate</span>
-                <time datetime="2024-06-11">Jun 11, 2024</time>
-                <span class="hbj-read-time">6 min read</span>
-              </div>
-              <h3 class="hbj-card-title"><a href="pages/blog-detail.html">Sanpada&rsquo;s Emergence as a Mid-Town
-                  Residential Micro-Market</a></h3>
-              <p class="hbj-card-excerpt">With seamless connectivity to Mumbai and Navi Mumbai&rsquo;s business hubs,
-                Sanpada is fast emerging as a preferred address for quality construction and long-term appreciation.</p>
-              <a href="pages/blog-detail.html" class="hbj-card-link">Read Story <svg viewBox="0 0 24 24" fill="none"
-                  stroke="currentColor" stroke-width="2">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg></a>
-            </div>
-          </article>
-
-          <article class="hbj-card hbj-card--tall" data-category="nri">
-            <a href="pages/blog.html" class="hbj-card-media">
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=85"
-                alt="Premium residence exterior" width="400" height="520" loading="lazy" decoding="async">
-            </a>
-            <div class="hbj-card-body">
-              <div class="hbj-card-meta">
-                <span class="hbj-pill hbj-pill--navy">NRI</span>
-                <time datetime="2024-04-22">Apr 22, 2024</time>
-              </div>
-              <h3 class="hbj-card-title"><a href="pages/blog.html">NRI Guide: FEMA Rules, Repatriation &amp; Property
-                  Ownership</a></h3>
-              <span class="hbj-views">2.1K views</span>
-            </div>
-          </article>
-
-          <article class="hbj-card hbj-card--compact" data-category="investment">
-            <div class="hbj-card-body hbj-card-body--solo">
-              <div class="hbj-card-meta">
-                <span class="hbj-pill hbj-pill--gold">Investment</span>
-                <time datetime="2024-05-15">May 15, 2024</time>
-              </div>
-              <h3 class="hbj-card-title"><a href="pages/blog.html">Top 5 Reasons to Invest in Pre-Launch Properties in
-                  2024</a></h3>
-              <p class="hbj-card-excerpt hbj-card-excerpt--short">Early pricing, flexible plans, and stronger
-                appreciation potential for savvy investors.</p>
-            </div>
-          </article>
-
-          <article class="hbj-card hbj-card--wide" data-category="real-estate">
-            <a href="pages/blog.html" class="hbj-card-media hbj-card-media--wide">
-              <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&q=85"
-                alt="Stamp duty documents" width="560" height="280" loading="lazy" decoding="async">
-            </a>
-            <div class="hbj-card-body">
-              <div class="hbj-card-meta">
-                <span class="hbj-pill">Real Estate</span>
-                <time datetime="2024-05-02">May 02, 2024</time>
-              </div>
-              <h3 class="hbj-card-title"><a href="pages/blog.html">All You Need to Know About Stamp Duty in India</a>
-              </h3>
-            </div>
-          </article>
-
-          <article class="hbj-card hbj-card--quote" data-category="all">
-            <span class="hbj-quote-mark" aria-hidden="true">&ldquo;</span>
-            <blockquote>
-              <p>Success in real estate starts when you believe you are worthy of it.</p>
-              <cite>&mdash; Michael Ferrara</cite>
-            </blockquote>
-          </article>
-
-          <article class="hbj-card hbj-card--mini" data-category="lifestyle">
-            <a href="pages/blog.html" class="hbj-card-media">
-              <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=500&q=85"
-                alt="Luxury villa with pool" width="320" height="200" loading="lazy" decoding="async">
-            </a>
-            <div class="hbj-card-body">
-              <span class="hbj-pill">Lifestyle</span>
-              <h3 class="hbj-card-title hbj-card-title--sm"><a href="pages/blog.html">Family Living at Godrej Eternal
-                  Palms</a></h3>
-            </div>
-          </article>
-
-
-        </div>
-      </div>
-
-      <div class="hbj-footer-cta">
-        <p>Stay informed on markets, regulations, and premium living.</p>
-        <a href="pages/blog.html" class="hbj-cta-btn">Explore the Full Blog</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="awards-section" id="awards">
-    <div class="awards-bg" aria-hidden="true"></div>
-    <div class="awards-container">
-      <header class="awards-header">
-        <span class="awards-tag">Legacy &amp; Recognition</span>
-        <h2 class="awards-title">A Brand Trusted Across <span class="awards-title-gold">Generations</span></h2>
-        <p class="awards-sub">Milestones built on trust, quality, and innovation � honoured year after year.</p>
-      </header>
-
-      <div class="awards-slider-wrap">
-        <button class="awards-nav prev" aria-label="Previous award" id="awards-prev">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="15 18 9 12 15 6"></polyline>
-          </svg>
-        </button>
-
-        <div class="awards-track-container">
-          <div class="awards-track" id="awards-track">
-            <article class="award-card award-card--navy">
-              <span class="award-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                  <circle cx="9" cy="7" r="4" />
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                </svg>
-              </span>
-              <span class="award-stat">100,000+</span>
-              <h4 class="award-name">Happy Customers</h4>
-              <p class="award-desc">Families across India and abroad who chose Godrej as home</p>
-            </article>
-
-            <article class="award-card award-card--gold">
-              <span class="award-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <circle cx="12" cy="8" r="7" />
-                  <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
-                </svg>
-              </span>
-              <span class="award-stat">500+</span>
-              <h4 class="award-name">Awards &amp; Recognitions</h4>
-              <p class="award-desc">Honoured for design, delivery, and customer excellence</p>
-            </article>
-
-            <article class="award-card award-card--light">
-              <span class="award-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-                  <path d="M4 22h16" />
-                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
-                </svg>
-              </span>
-              <span class="award-stat">#1</span>
-              <h4 class="award-name">Leading Developer</h4>
-              <p class="award-desc">India's most trusted real estate brand nationwide</p>
-            </article>
-
-            <article class="award-card award-card--navy">
-              <span class="award-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <polygon
-                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                </svg>
-              </span>
-              <span class="award-stat">IGBC</span>
-              <h4 class="award-name">Sustainability Leader</h4>
-              <p class="award-desc">Green-certified projects with smart, future-ready living</p>
-            </article>
+          <div class="gpl-footer-bar-meta">
+            <span class="gpl-footer-copy">Copyright &copy; 2026. Godrej Properties</span>
+            <nav class="gpl-footer-legal" aria-label="Legal links">
+              <a href="pages/disclaimer.html">Disclaimer</a>
+              <a href="#">Sitemap</a>
+            </nav>
           </div>
         </div>
-
-        <button class="awards-nav next" aria-label="Next award" id="awards-next">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="9 18 15 12 9 6"></polyline>
-          </svg>
-        </button>
       </div>
-
-      <div class="awards-dots" id="awards-dots">
-        <button type="button" class="award-dot active" aria-label="Award 1"></button>
-        <button type="button" class="award-dot" aria-label="Award 2"></button>
-        <button type="button" class="award-dot" aria-label="Award 3"></button>
-        <button type="button" class="award-dot" aria-label="Award 4"></button>
-      </div>
-    </div>
-  </section>
-
-
-
-  <footer class="main-footer-section gpl-footer" id="contact">
-    <div class="gpl-footer-body">
-      <div class="footer-container">
-        <div class="gpl-footer-grid">
-          <div class="gpl-footer-about">
-            <h3 class="gpl-footer-heading">About Godrej Properties</h3>
-            <p class="gpl-footer-about-text">Established in 1990, Godrej Properties Limited is one of India&rsquo;s
-              leading real estate companies. It became the first real estate entity in the country to achieve an ISO
-              9001:2000 certification for its operations. Since then, it has delivered multiple projects across major
-              cities in India and currently operates at a scale of around 95 million sq. ft. of development.</p>
-          </div>
-
-          <nav class="gpl-footer-col" aria-label="Work With Us">
-            <h3 class="gpl-footer-heading">Work With Us</h3>
-            <ul class="gpl-footer-links">
-              <li><a href="#" class="gpl-footer-link-strong" onclick="openEnquireModal(); return false;">Enquire</a>
-              </li>
-              <li><a href="#" class="gpl-footer-link-strong" onclick="openScheduleTourModal(); return false;">Schedule A
-                  Site Visit</a></li>
-            </ul>
-          </nav>
-
-          <nav class="gpl-footer-col" aria-label="Know Us">
-            <h3 class="gpl-footer-heading">Know Us</h3>
-            <ul class="gpl-footer-links">
-              <li><a href="pages/about.html">About Us</a></li>
-              <li><a href="pages/leadership.html">Leadership</a></li>
-              <li><a href="pages/sustainability.html">Sustainability</a></li>
-              <li><a href="pages/design.html">Design</a></li>
-            </ul>
-          </nav>
-
-          <nav class="gpl-footer-col" aria-label="Projects">
-            <h3 class="gpl-footer-heading">Projects</h3>
-            <ul class="gpl-footer-links">
-              <li><a href="pages/residential.html">Residential</a></li>
-              <li><a href="pages/commercial.html">Commercial</a></li>
-              <li><a href="pages/plotted.html">Plotted</a></li>
-            </ul>
-          </nav>
-
-          <nav class="gpl-footer-col" aria-label="Media Center">
-            <h3 class="gpl-footer-heading">Media Center</h3>
-            <ul class="gpl-footer-links">
-              <li><a href="#awards">In The News</a></li>
-              <li><a href="#awards">Press Release</a></li>
-              <li><a href="pages/media-gallery.html">Media Gallery</a></li>
-            </ul>
-          </nav>
-
-          <nav class="gpl-footer-col" aria-label="Investor Section">
-            <h3 class="gpl-footer-heading">Investor Section</h3>
-            <ul class="gpl-footer-links">
-              <li><a href="#values">Financials</a></li>
-              <li><a href="#values">Investor Information</a></li>
-              <li><a href="pages/leadership.html">Governance &amp; Leadership</a></li>
-              <li><a href="#values">Compliances</a></li>
-              <li><a href="pages/sustainability.html">CSR</a></li>
-            </ul>
-          </nav>
-        </div>
-
-        <div class="gpl-footer-mid">
-          <div class="gpl-footer-social-wrap">
-            <span class="gpl-footer-social-label">Follow us on</span>
-            <div class="gpl-footer-social" aria-label="Social media">
-              <a href="#" aria-label="Facebook">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path
-                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
-                  </path>
-                </svg>
-              </a>
-              <a href="#" aria-label="Twitter">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path
-                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
-                  </path>
-                </svg>
-              </a>
-              <a href="#" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path
-                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z">
-                  </path>
-                </svg>
-              </a>
-              <a href="#" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path
-                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z">
-                  </path>
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="gpl-footer-divider" aria-hidden="true">
-          <span class="gpl-footer-chevron">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="gpl-footer-bar">
-      <div class="footer-container gpl-footer-bar-inner">
-        <a href="#home" class="gpl-footer-bar-logo">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0gkqUayZ0zT54vogvYWyYPoPOSjTGLl1sKQ&s"
-            alt="Godrej Properties" width="160" height="44" loading="lazy" decoding="async">
-        </a>
-        <div class="gpl-footer-bar-meta">
-          <span class="gpl-footer-copy">Copyright &copy; 2026. Godrej Properties</span>
-          <nav class="gpl-footer-legal" aria-label="Legal links">
-            <a href="pages/disclaimer.html">Disclaimer</a>
-            <a href="#">Sitemap</a>
-          </nav>
-        </div>
-      </div>
-    </div>
-  </footer>
+    </footer>
   </div> <!-- End snap-container -->
 
 
