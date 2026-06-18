@@ -2946,7 +2946,6 @@ footer {
 
 .listing-card {
   background: #fff;
-  border-radius: 4px;
   overflow: hidden;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   cursor: pointer;

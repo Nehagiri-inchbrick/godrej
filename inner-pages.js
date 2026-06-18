@@ -297,8 +297,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultCount = document.getElementById("residential-result-count");
     const pagination = document.getElementById("residential-pagination");
     const listPanel = document.getElementById("residential-list-panel");
-    const mapPanel = document.getElementById("residential-map-panel");
-    const viewBtns = document.querySelectorAll(".residential-view-btn");
     const contactForm = document.getElementById("residential-contact-form");
     const contactFeedback = document.getElementById("residential-contact-feedback");
 
@@ -331,7 +329,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="${PROJECT_DETAIL_PAGE}" class="listing-card-link">
       <article class="listing-card" data-project="${project.name}">
         <div class="listing-img-wrap">
-          <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async">
+          <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async" width="900" height="675">
           <div class="listing-img-overlay">
             <span class="listing-location">${project.location}</span>
             <button type="button" class="listing-plus-btn" title="Enquire about ${project.name}" aria-label="Enquire about ${project.name}">+</button>
@@ -429,19 +427,6 @@ document.addEventListener("DOMContentLoaded", () => {
     filterReady?.addEventListener("change", applyFilters);
     filterForm?.addEventListener("reset", () => {
       setTimeout(applyFilters, 0);
-    });
-
-    viewBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const view = btn.dataset.view;
-        viewBtns.forEach((b) => {
-          const active = b.dataset.view === view;
-          b.classList.toggle("is-active", active);
-          b.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        if (listPanel) listPanel.hidden = view === "map";
-        if (mapPanel) mapPanel.hidden = view !== "map";
-      });
     });
 
     contactForm?.addEventListener("submit", (e) => {
@@ -550,13 +535,13 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!grid) return;
 
     const projects = [
-      { name: "Nexspace", slug: "commercial-nexspace", location: "Panvel, Mumbai", city: "mumbai", type: "office", status: "ready", budget: "premium", img: "https://images.unsplash.com/photo-1486406146926-c627a92fd1f2?w=600&q=85" },
-      { name: "Godrej Carnival", slug: "commercial-nexspace", location: "Mumbai-Pune Expressway, Pune", city: "pune", type: "mixed", status: "under-construction", budget: "mid", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=600&q=85" },
-      { name: "Godrej Avenue 11", slug: "commercial-nexspace", location: "Sector 27, Noida", city: "noida", type: "office", status: "new-launch", budget: "premium", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=85" },
-      { name: "Godrej Square", slug: "commercial-nexspace", location: "LBS Marg, Mumbai", city: "mumbai", type: "retail", status: "ready", budget: "luxury", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=85" },
-      { name: "Godrej One", slug: "commercial-nexspace", location: "Vikhroli, Mumbai", city: "mumbai", type: "office", status: "ready", budget: "luxury", img: "https://images.unsplash.com/photo-1554464037-db9368459810?w=600&q=85" },
-      { name: "Godrej BKC", slug: "commercial-nexspace", location: "Bandra, Mumbai", city: "mumbai", type: "office", status: "under-construction", budget: "luxury", img: "https://images.unsplash.com/photo-1577495501747-42542e815591?w=600&q=85" },
-      { name: "Godrej Eternia", slug: "commercial-nexspace", location: "Chandigarh, Chandigarh", city: "chandigarh", type: "retail", status: "ready", budget: "mid", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=85" },
+      { name: "Nexspace", slug: "commercial-nexspace", location: "Panvel, Mumbai", city: "mumbai", type: "office", status: "ready", budget: "premium", img: "https://images.unsplash.com/photo-1486406146926-c627a92fd1f2?w=900&q=90" },
+      { name: "Godrej Carnival", slug: "commercial-nexspace", location: "Mumbai-Pune Expressway, Pune", city: "pune", type: "mixed", status: "under-construction", budget: "mid", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=90" },
+      { name: "Godrej Avenue 11", slug: "commercial-nexspace", location: "Sector 27, Noida", city: "noida", type: "office", status: "new-launch", budget: "premium", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=90" },
+      { name: "Godrej Square", slug: "commercial-nexspace", location: "LBS Marg, Mumbai", city: "mumbai", type: "retail", status: "ready", budget: "luxury", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=90" },
+      { name: "Godrej One", slug: "commercial-nexspace", location: "Vikhroli, Mumbai", city: "mumbai", type: "office", status: "ready", budget: "luxury", img: "https://images.unsplash.com/photo-1554464037-db9368459810?w=900&q=90" },
+      { name: "Godrej BKC", slug: "commercial-nexspace", location: "Bandra, Mumbai", city: "mumbai", type: "office", status: "under-construction", budget: "luxury", img: "https://images.unsplash.com/photo-1577495501747-42542e815591?w=900&q=90" },
+      { name: "Godrej Eternia", slug: "commercial-nexspace", location: "Chandigarh, Chandigarh", city: "chandigarh", type: "retail", status: "ready", budget: "mid", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=90" },
     ];
 
     const searchInput = document.getElementById("commercial-search");
@@ -587,7 +572,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="${PROJECT_DETAIL_PAGE}" class="commercial-card-link">
         <article class="commercial-card" data-project="${project.name}">
           <div class="commercial-card-media">
-            <img src="${project.img}" alt="${project.name}" loading="lazy" decoding="async">
+            <img src="${project.img}" alt="${project.name}" loading="lazy" decoding="async" width="900" height="675">
           </div>
           <div class="commercial-card-body">
             <p class="commercial-card-location">${project.location}</p>
@@ -623,17 +608,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const TOTAL_PAGES = 2;
 
     const projects = [
-      { name: "Godrej Woodside Estate", location: "Hinjewadi, Pune", city: "pune", state: "maharashtra", status: "new-launch", budget: "mid", price: "INR 1.25 Cr. onwards", possession: "Dec 2026", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=85" },
-      { name: "Godrej Woodscapes", location: "Devanahalli, Bengaluru", city: "bangalore", state: "karnataka", status: "new-launch", budget: "mid", price: "INR 1.60 Cr. onwards", possession: "Oct 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=600&q=85" },
-      { name: "Godrej Reserve", location: "Devanahalli, Bengaluru", city: "bangalore", state: "karnataka", status: "new-launch", budget: "mid", price: "INR 1.80 Cr. onwards", possession: "Dec 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=85" },
-      { name: "Godrej Golf Links", location: "Greater Noida, Noida", city: "noida", state: "uttar-pradesh", status: "under-construction", budget: "mid", price: "INR 1.70 Cr. onwards", possession: "Mar 2031", typeLabel: "Plots", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cd7a?w=600&q=85" },
-      { name: "Godrej Courtyard Shopense", location: "Sanand, Ahmedabad", city: "ahmedabad", state: "gujarat", status: "under-construction", budget: "affordable", price: "INR 16.99 Lac onwards", possession: "Mar 2031", typeLabel: "Project", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=85" },
-      { name: "Godrej Shantivan Eden Phase II (Pali)", location: "Pali, Mumbai", city: "mumbai", state: "maharashtra", status: "under-construction", budget: "mid", price: "INR 1.18 Cr. onwards", possession: "Jan 2025", typeLabel: "Plots", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=85" },
-      { name: "Godrej Golf Hills", location: "Sector 27, Gurugram", city: "gurgaon", state: "haryana", status: "new-launch", budget: "premium", price: "INR 4.75 Cr. onwards", possession: "Dec 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=600&q=85" },
-      { name: "Godrej Highland", location: "Devanahalli, Bengaluru", city: "bangalore", state: "karnataka", status: "under-construction", budget: "premium", price: "INR 3.82 Cr. onwards", possession: "Dec 2033", typeLabel: "Plots", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&q=85" },
-      { name: "Godrej MSR City", location: "Shettigere, Bengaluru", city: "bangalore", state: "karnataka", status: "new-launch", budget: "affordable", price: "INR 79.56 Lac onwards", possession: "Dec 2026", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600585152915-d208bec867a1?w=600&q=85" },
-      { name: "Godrej Green Cove", location: "Talegaon, Pune", city: "pune", state: "maharashtra", status: "new-launch", budget: "affordable", price: "INR 55 Lac onwards", possession: "Jun 2027", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=600&q=85" },
-      { name: "Godrej Palm Retreat", location: "Sector 150, Noida", city: "noida", state: "uttar-pradesh", status: "new-launch", budget: "mid", price: "INR 1.45 Cr. onwards", possession: "Sep 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600210492486-724fe41c1d4a?w=600&q=85" },
+      { name: "Godrej Woodside Estate", location: "Hinjewadi, Pune", city: "pune", state: "maharashtra", status: "new-launch", budget: "mid", price: "INR 1.25 Cr. onwards", possession: "Dec 2026", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=90" },
+      { name: "Godrej Woodscapes", location: "Devanahalli, Bengaluru", city: "bangalore", state: "karnataka", status: "new-launch", budget: "mid", price: "INR 1.60 Cr. onwards", possession: "Oct 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=900&q=90" },
+      { name: "Godrej Reserve", location: "Devanahalli, Bengaluru", city: "bangalore", state: "karnataka", status: "new-launch", budget: "mid", price: "INR 1.80 Cr. onwards", possession: "Dec 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=90" },
+      { name: "Godrej Golf Links", location: "Greater Noida, Noida", city: "noida", state: "uttar-pradesh", status: "under-construction", budget: "mid", price: "INR 1.70 Cr. onwards", possession: "Mar 2031", typeLabel: "Plots", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cd7a?w=900&q=90" },
+      { name: "Godrej Courtyard Shopense", location: "Sanand, Ahmedabad", city: "ahmedabad", state: "gujarat", status: "under-construction", budget: "affordable", price: "INR 16.99 Lac onwards", possession: "Mar 2031", typeLabel: "Project", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=90" },
+      { name: "Godrej Shantivan Eden Phase II (Pali)", location: "Pali, Mumbai", city: "mumbai", state: "maharashtra", status: "under-construction", budget: "mid", price: "INR 1.18 Cr. onwards", possession: "Jan 2025", typeLabel: "Plots", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=90" },
+      { name: "Godrej Golf Hills", location: "Sector 27, Gurugram", city: "gurgaon", state: "haryana", status: "new-launch", budget: "premium", price: "INR 4.75 Cr. onwards", possession: "Dec 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?w=900&q=90" },
+      { name: "Godrej Highland", location: "Devanahalli, Bengaluru", city: "bangalore", state: "karnataka", status: "under-construction", budget: "premium", price: "INR 3.82 Cr. onwards", possession: "Dec 2033", typeLabel: "Plots", badge: "Under Construction", badgeClass: "badge-dot--construction", img: "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=900&q=90" },
+      { name: "Godrej MSR City", location: "Shettigere, Bengaluru", city: "bangalore", state: "karnataka", status: "new-launch", budget: "affordable", price: "INR 79.56 Lac onwards", possession: "Dec 2026", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600585152915-d208bec867a1?w=900&q=90" },
+      { name: "Godrej Green Cove", location: "Talegaon, Pune", city: "pune", state: "maharashtra", status: "new-launch", budget: "affordable", price: "INR 55 Lac onwards", possession: "Jun 2027", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=900&q=90" },
+      { name: "Godrej Palm Retreat", location: "Sector 150, Noida", city: "noida", state: "uttar-pradesh", status: "new-launch", budget: "mid", price: "INR 1.45 Cr. onwards", possession: "Sep 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600210492486-724fe41c1d4a?w=900&q=90" },
     ];
 
     const searchInput = document.getElementById("plotted-search");
@@ -646,8 +631,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const resultCount = document.getElementById("plotted-result-count");
     const pagination = document.getElementById("plotted-pagination");
     const listPanel = document.getElementById("plotted-list-panel");
-    const mapPanel = document.getElementById("plotted-map-panel");
-    const viewBtns = document.querySelectorAll(".plotted-page .residential-view-btn");
     const contactForm = document.getElementById("plotted-contact-form");
     const contactFeedback = document.getElementById("plotted-contact-feedback");
     const nextBtn = contactForm?.querySelector(".residential-contact-send--next");
@@ -673,7 +656,7 @@ document.addEventListener("DOMContentLoaded", () => {
       <a href="${PROJECT_DETAIL_PAGE}" class="listing-card-link">
       <article class="listing-card" data-project="${project.name}">
         <div class="listing-img-wrap">
-          <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async">
+          <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async" width="900" height="675">
           <div class="listing-img-overlay">
             <span class="listing-location">${project.location} | Plotted</span>
             <button type="button" class="listing-plus-btn" title="Enquire about ${project.name}" aria-label="Enquire about ${project.name}">+</button>
@@ -771,19 +754,6 @@ document.addEventListener("DOMContentLoaded", () => {
     filterNew?.addEventListener("change", applyFilters);
     filterForm?.addEventListener("reset", () => {
       setTimeout(applyFilters, 0);
-    });
-
-    viewBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const view = btn.dataset.view;
-        viewBtns.forEach((b) => {
-          const active = b.dataset.view === view;
-          b.classList.toggle("is-active", active);
-          b.setAttribute("aria-selected", active ? "true" : "false");
-        });
-        if (listPanel) listPanel.hidden = view === "map";
-        if (mapPanel) mapPanel.hidden = view !== "map";
-      });
     });
 
     const updateNextBtn = () => {

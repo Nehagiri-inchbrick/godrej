@@ -59,8 +59,6 @@
   </header>
   <main class="inner-main projects-page residential-page projects-page--creative">
     <section class="projects-hero projects-hero--residential" aria-labelledby="projects-hero-title">
-      <div class="projects-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1600&q=85')" aria-hidden="true"></div>
-      <div class="projects-hero-overlay" aria-hidden="true"></div>
       <span class="projects-hero-watermark" aria-hidden="true">HOME</span>
       <div class="about-wrap projects-hero-inner">
         <span class="projects-eyebrow">Residential</span>
@@ -77,11 +75,6 @@
     <section class="residential-head projects-head-panel">
       <div class="about-wrap">
         <h1 class="residential-title sr-only">Find where you belong</h1>
-
-        <div class="residential-view-toggle" role="tablist" aria-label="Project view">
-          <button type="button" class="residential-view-btn is-active" data-view="list" role="tab" aria-selected="true">List View</button>
-          <button type="button" class="residential-view-btn" data-view="map" role="tab" aria-selected="false">Map View</button>
-        </div>
 
         <nav class="residential-breadcrumb" aria-label="Breadcrumb">
           <a href="../index.html">Home</a>
@@ -153,26 +146,16 @@
           <button type="reset" class="residential-reset" id="residential-reset">Reset</button>
         </form>
 
-        <div class="residential-filters-extra">
-          <label class="residential-ready-toggle">
-            <input type="checkbox" id="filter-ready">
-            <span class="residential-ready-switch" aria-hidden="true"></span>
-            <span>Ready projects only</span>
-          </label>
-          <button type="button" class="residential-more-filters" id="residential-more-filters">
-            More Filters
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-          </button>
-        </div>
+  
       </div>
     </section>
 
     <section class="residential-listings projects-listings-panel" id="residential-list-panel">
       <div class="about-wrap">
         <div class="projects-section-head">
-          <span class="projects-eyebrow">Portfolio</span>
+         
           <h2 class="residential-section-title">Explore Homes</h2>
-          <p class="projects-result-count" id="residential-result-count" aria-live="polite"></p>
+          
         </div>
         <div class="listings-grid residential-grid" id="residential-grid" aria-live="polite"></div>
         <p class="residential-empty" id="residential-empty" hidden>No projects match your filters. Try adjusting your search.</p>
@@ -180,65 +163,42 @@
       </div>
     </section>
 
-    <section class="residential-map-panel" id="residential-map-panel" hidden>
+    <section class="projects-contact--creative projects-contact--info" aria-labelledby="projects-contact-title">
       <div class="about-wrap">
-        <div class="residential-map-placeholder">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-          <h2>Map View</h2>
-          <p>Browse Godrej residential projects across India. Switch to List View to explore project details.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="residential-contact projects-contact--creative">
-      <div class="about-wrap projects-contact-grid">
-        <div class="projects-contact-intro">
-          <span class="projects-eyebrow">Get in Touch</span>
-          <h2 class="residential-contact-title">Start your home search</h2>
-          <p class="residential-contact-lead">Share your details and our relationship manager will call you with floor plans, pricing and visit slots.</p>
-          <ul class="projects-contact-perks">
-            <li>Personalised project recommendations</li>
-            <li>Priority site visit scheduling</li>
-            <li>Exclusive pre-launch benefits</li>
+        <div class="projects-contact-info-card">
+          <h2 id="projects-contact-title" class="projects-contact-info-title">Get in touch</h2>
+          <p class="projects-contact-info-lead">For purchase and lease related queries, feel free to contact us.</p>
+          <ul class="projects-contact-info-list">
+            <li>
+              <a href="mailto:leasing@godrejfunds.com" class="projects-contact-info-link">
+                <span class="projects-contact-info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </span>
+                <span class="projects-contact-info-text">
+                  <span class="projects-contact-info-label">Email</span>
+                  <span class="projects-contact-info-value">leasing@godrejfunds.com</span>
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="tel:+18447463126" class="projects-contact-info-link">
+                <span class="projects-contact-info-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                </span>
+                <span class="projects-contact-info-text">
+                  <span class="projects-contact-info-label">Phone</span>
+                  <span class="projects-contact-info-value">18447463126</span>
+                </span>
+              </a>
+            </li>
           </ul>
-        </div>
-        <div class="projects-contact-form-wrap">
-        <form class="residential-contact-form" id="residential-contact-form" novalidate>
-          <label class="residential-contact-field">
-            <span>Name*</span>
-            <input type="text" id="res-contact-name" placeholder="Name" required>
-          </label>
-          <label class="residential-contact-field residential-contact-field--phone">
-            <span>Mobile*</span>
-            <div class="residential-phone-wrap">
-              <select id="res-contact-code" aria-label="Country code">
-                <option value="+91">+91</option>
-                <option value="+971">+971</option>
-                <option value="+1">+1</option>
-                <option value="+44">+44</option>
-                <option value="+65">+65</option>
-              </select>
-              <input type="tel" id="res-contact-mobile" placeholder="Mobile" required>
-            </div>
-          </label>
-          <label class="residential-contact-field">
-            <span>Email*</span>
-            <input type="email" id="res-contact-email" placeholder="Email" required>
-          </label>
-          <label class="residential-contact-consent">
-            <input type="checkbox" id="res-contact-consent">
-            <span>Yes, I would like to receive updates &amp; promotions from Godrej Properties Limited.</span>
-          </label>
-          <button type="submit" class="residential-contact-send">Send</button>
-        </form>
-        <p class="residential-contact-feedback" id="residential-contact-feedback" hidden></p>
         </div>
       </div>
     </section>
   </main>
-          <footer class="main-footer-section gpl-footer" id="contact">
+  <footer class="main-footer-section gpl-footer" id="contact">
     <div class="gpl-footer-body">
-    <div class="footer-container">
+      <div class="footer-container">
         <div class="gpl-footer-grid">
           <div class="gpl-footer-about">
             <h3 class="gpl-footer-heading">About Godrej Properties</h3>
