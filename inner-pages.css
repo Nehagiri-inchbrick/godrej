@@ -3823,6 +3823,20 @@ main.nri-page {
   margin-bottom: 1.35rem;
 }
 
+@media (max-width: 600px) {
+  .nri-enquire-row {
+    grid-template-columns: 1fr;
+  }
+  .nri-enquire-phone {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nri-enquire-phone input {
+    width: 100%;
+  }
+}
+
+
 .nri-enquire-form label {
   display: flex;
   flex-direction: column;
@@ -8460,7 +8474,7 @@ main.disclaimer-page {
 }
 
 .reach-quick-stat span {
-  display: block;
+  display: flex;
   font-size: 0.7rem;
   color: #6b7280;
   margin-top: 0.1rem;
@@ -10681,8 +10695,6 @@ main.projects-page--creative {
 
 .nri-page--creative .nri-enquire-form {
   border-radius: 14px;
-  border: 1px solid #ebe5dc;
-  box-shadow: 0 8px 28px rgba(26, 39, 68, 0.06);
 }
 
 .nri-page--creative .fest-img {
