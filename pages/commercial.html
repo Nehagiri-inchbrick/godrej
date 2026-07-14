@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Commercial Projects | Godrej Properties</title>
-  <meta name="description" content="Explore commercial properties by Godrej Properties &mdash; offices, retail and mixed-use developments across India." />
+  <meta name="description" content="Explore commercial properties by Godrej Properties — offices, retail and mixed-use across India." />
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="../style.css" rel="stylesheet">
@@ -34,8 +34,7 @@
             <a href="residential.html">Residential</a>
             <a href="commercial.html">Commercial</a>
             <a href="plotted.html">Plotted</a>
-            <a href="locations.html">All Locations</a>
-          </div>
+</div>
         </div>
                 <div class="nav-dropdown">
           <button type="button" class="nav-link nav-dropdown-toggle">NRI Corner</button>
@@ -57,93 +56,108 @@
       </button>
     </div>
   </header>
-  <main class="inner-main projects-page commercial-page projects-page--creative">
-    <section class="projects-hero projects-hero--commercial" aria-labelledby="projects-hero-title">
-      <span class="projects-hero-watermark" aria-hidden="true">WORK</span>
-      <div class="about-wrap projects-hero-inner">
-        <span class="projects-eyebrow">Commercial</span>
-        <h1 class="projects-hero-title" id="projects-hero-title">Spaces that <em>scale</em> your business</h1>
-        <p class="projects-hero-lead">Grade A offices, retail destinations and mixed-use developments in India&rsquo;s top business corridors.</p>
-        <div class="projects-hero-stats">
-          <span><strong>Office</strong> &amp; retail</span>
-          <span><strong>4</strong> cities</span>
-          <span><strong>Lease</strong> &amp; purchase</span>
-        </div>
+  <main class="inner-main projects-page commercial-page projects-page--creative projects-page--ref projects-page--premium">
+        <section class="projects-hero-band projects-hero-band--commercial" aria-labelledby="projects-hero-title">
+      <div class="projects-hero-band-bg" aria-hidden="true"></div>
+      <div class="about-wrap projects-hero-band-inner">
+        <h1 class="residential-title" id="projects-hero-title">Spaces that <em>scale</em> your business</h1>
+        <p class="projects-hero-sub">Grade A offices, retail destinations and mixed-use developments in top corridors.</p>
+        <nav class="residential-breadcrumb residential-breadcrumb--pill" aria-label="Breadcrumb">
+          <a href="../index.html">Home</a>
+          <span aria-hidden="true">&raquo;</span>
+          <span>Projects</span>
+          <span aria-hidden="true">&raquo;</span>
+          <span aria-current="page">Commercial</span>
+        </nav>
       </div>
     </section>
 
-    <section class="residential-head projects-head-panel">
+    <section class="residential-head projects-head-panel projects-head-panel--ref">
       <div class="about-wrap">
-        <h1 class="residential-title sr-only">Commercial Projects</h1>
+        <div class="projects-filter-card">
+          <div class="residential-search projects-search--card">
+            <span class="projects-search-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></span>
+            <input type="search" id="commercial-search" placeholder="Enter Project Name" aria-label="Search projects by name">
+          </div>
 
-        <nav class="residential-breadcrumb" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span aria-hidden="true">&gt;</span>
-          <span>Projects</span>
-          <span aria-hidden="true">&gt;</span>
-          <span aria-current="page">Commercial</span>
-        </nav>
-
-        <div class="residential-search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-          <input type="search" id="commercial-search" placeholder="Enter Project Name" aria-label="Search projects by name">
-        </div>
-
-        <form class="residential-filters" id="commercial-filters">
-          <label class="residential-filter">
-            <span class="sr-only">Property segment</span>
-            <select id="commercial-filter-segment" disabled aria-disabled="true">
+          <form class="residential-filters residential-filters--card" id="commercial-filters">
+          <label class="projects-filter-field">
+            <span class="projects-filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 21h18"></path><path d="M5 21V7l7-4 7 4v14"></path><path d="M9 21v-6h6v6"></path></svg></span>
+            <span class="projects-filter-content">
+              <span class="projects-filter-label">Segment</span>
+              <select class="projects-filter-select" id="commercial-filter-segment" disabled aria-disabled="true">
               <option value="commercial" selected>Commercial</option>
             </select>
+            </span>
           </label>
-          <label class="residential-filter">
-            <span class="sr-only">City</span>
-            <select id="commercial-filter-city">
-              <option value="">Cities</option>
+          <label class="projects-filter-field">
+            <span class="projects-filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="2" width="16" height="20" rx="1"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01M16 6h.01M12 6h.01M8 10h.01M16 10h.01M12 10h.01M8 14h.01M16 14h.01M12 14h.01"></path></svg></span>
+            <span class="projects-filter-content">
+              <span class="projects-filter-label">Cities</span>
+              <select class="projects-filter-select" id="commercial-filter-city">
+              <option value="">All Cities</option>
               <option value="mumbai">Mumbai</option>
               <option value="pune">Pune</option>
               <option value="noida">Noida</option>
               <option value="chandigarh">Chandigarh</option>
             </select>
+            </span>
           </label>
-          <label class="residential-filter">
-            <span class="sr-only">Type</span>
-            <select id="commercial-filter-type">
-              <option value="">Types</option>
+          <label class="projects-filter-field">
+            <span class="projects-filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg></span>
+            <span class="projects-filter-content">
+              <span class="projects-filter-label">Types</span>
+              <select class="projects-filter-select" id="commercial-filter-type">
+              <option value="">All Types</option>
               <option value="office">Office</option>
               <option value="retail">Retail</option>
               <option value="mixed">Mixed Use</option>
             </select>
+            </span>
           </label>
-          <label class="residential-filter">
-            <span class="sr-only">Status</span>
-            <select id="commercial-filter-status">
-              <option value="">Status</option>
+          <label class="projects-filter-field">
+            <span class="projects-filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></span>
+            <span class="projects-filter-content">
+              <span class="projects-filter-label">Status</span>
+              <select class="projects-filter-select" id="commercial-filter-status">
+              <option value="">All Status</option>
               <option value="new-launch">New Launch</option>
               <option value="under-construction">Under Construction</option>
               <option value="ready">Ready</option>
             </select>
+            </span>
           </label>
-          <label class="residential-filter">
-            <span class="sr-only">Budget</span>
-            <select id="commercial-filter-budget">
-              <option value="">Budget</option>
+          <label class="projects-filter-field">
+            <span class="projects-filter-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg></span>
+            <span class="projects-filter-content">
+              <span class="projects-filter-label">Budget</span>
+              <select class="projects-filter-select" id="commercial-filter-budget">
+              <option value="">Select Budget</option>
               <option value="mid">Mid Range</option>
               <option value="premium">Premium</option>
               <option value="luxury">Luxury</option>
             </select>
+            </span>
           </label>
-          <button type="reset" class="residential-reset">Reset</button>
-        </form>
+          <button type="reset" class="residential-reset residential-reset--pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 4 23 10 17 10"></polyline><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path></svg> RESET</button>
+          </form>
+        </div>
+
+        <div class="residential-filters-extra">
+          <label class="residential-ready-toggle">
+            <input type="checkbox" id="commercial-filter-new">
+            <span class="residential-ready-switch" aria-hidden="true"></span>
+            New Launches Only
+          </label>
+        </div>
       </div>
     </section>
-
-    <section class="residential-listings projects-listings-panel">
+<section class="residential-listings projects-listings-panel" id="commercial-list-panel">
       <div class="about-wrap">
-        <div class="projects-section-head">
-         
-          <h2 class="residential-section-title">Explore Projects</h2>
+        <div class="projects-section-head projects-section-head--premium">
           
+          <h2 class="residential-section-title">Explore Workspaces</h2>
+        
         </div>
         <div class="listings-grid commercial-grid" id="commercial-grid" aria-live="polite"></div>
         <p class="residential-empty" id="commercial-empty" hidden>No projects match your filters. Try adjusting your search.</p>

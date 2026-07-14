@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(`.nri-subnav a[data-page="${pageId}"]`).forEach((a) => {
       a.classList.add("is-active");
     });
-    document.querySelectorAll(`.about-hero-nav-links a[href*="${pageId}"], .about-creative-subnav a[href*="${pageId}"]`).forEach((a) => {
+    document.querySelectorAll(`.about-hero-nav-links a[href*="${pageId}"], .about-creative-subnav a[href*="${pageId}"], .projects-subnav a[data-page="${pageId}"]`).forEach((a) => {
       a.classList.add("is-active");
     });
   }
@@ -238,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!page) return;
 
     const revealEls = page.querySelectorAll(
-      ".projects-head-panel, .projects-listings-panel, .projects-contact--creative, .listing-card, .commercial-card"
+      ".projects-hero-band, .projects-head-panel, .projects-listings-panel, .projects-contact--creative, .listing-card, .commercial-card"
     );
     revealEls.forEach((el) => el.classList.add("projects-reveal"));
 
@@ -318,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (filterBhk?.value && !matchesBhk(project, filterBhk.value)) return false;
         if (filterStatus?.value && project.status !== filterStatus.value) return false;
         if (filterBudget?.value && project.budget !== filterBudget.value) return false;
-        if (filterReady?.checked && !project.ready) return false;
+        if (filterReady?.checked && project.status !== "new-launch") return false;
         return true;
       });
       currentPage = 1;
@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!page) return;
 
     const revealEls = page.querySelectorAll(
-      ".about-story, .about-purpose-band, .about-values, .about-milestones, .about-recognized--creative, .about-cta-band, .about-value-card, .about-story-card"
+      ".about-story--pro, .about-purpose-band, .about-values, .about-footprint, .about-milestones, .about-recognized--creative, .about-cta-band, .about-value-card, .about-heritage-bar"
     );
     revealEls.forEach((el) => el.classList.add("about-reveal"));
 
@@ -490,7 +490,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!page) return;
 
     const revealEls = page.querySelectorAll(
-      ".nri-page-body, .nri-contact-bar, .nri-creative-stats, .nri-hub-card, .nri-office-card, .inner-cta-band"
+      ".nri-page-body, .nri-contact-bar, .nri-hub-card, .nri-office-card, .nri-legal-card, .nri-enquire-layout, .inner-cta-band, .nri-fest-why, .nri-fest-unmissable, .nri-fest-register-stage, .nri-fest-showcase-wrap, .nri-fest-why-item, .nri-fest-unmissable-item"
     );
     revealEls.forEach((el) => el.classList.add("nri-reveal"));
 
@@ -550,6 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const filterType = document.getElementById("commercial-filter-type");
     const filterStatus = document.getElementById("commercial-filter-status");
     const filterBudget = document.getElementById("commercial-filter-budget");
+    const filterNew = document.getElementById("commercial-filter-new");
     const emptyMsg = document.getElementById("commercial-empty");
     const resultCount = document.getElementById("commercial-result-count");
 
@@ -563,6 +564,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (filterType?.value && project.type !== filterType.value) return false;
         if (filterStatus?.value && project.status !== filterStatus.value) return false;
         if (filterBudget?.value && project.budget !== filterBudget.value) return false;
+        if (filterNew?.checked && project.status !== "new-launch") return false;
         return true;
       });
       render();
@@ -591,6 +593,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     searchInput?.addEventListener("input", applyFilters);
     filterForm?.addEventListener("change", applyFilters);
+    filterNew?.addEventListener("change", applyFilters);
     filterForm?.addEventListener("reset", () => {
       setTimeout(applyFilters, 0);
     });

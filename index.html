@@ -135,8 +135,7 @@
             <a href="pages/residential.html">Residential</a>
             <a href="pages/commercial.html">Commercial</a>
             <a href="pages/plotted.html">Plotted</a>
-            <a href="pages/locations.html">All Locations</a>
-            <a href="#listings">View on Homepage</a>
+<a href="#listings">View on Homepage</a>
           </div>
         </div>
         <div class="nav-dropdown">
@@ -527,65 +526,32 @@
 
 
     <!-- Lifestyle Explorer -->
-    <section class="lifestyle-section lifestyle-explorer" id="lifestyle">
-      <div class="lifestyle-section-glow lifestyle-section-glow--left" aria-hidden="true" style="display:none"></div>
-      <div class="lifestyle-section-glow lifestyle-section-glow--right" aria-hidden="true" style="display:none"></div>
+    <section class="lifestyle-section lifestyle-explorer lifestyle-explorer--compact lifestyle-explorer--noimg" id="lifestyle">
+      <div class="lifestyle-section-glow lifestyle-section-glow--left" aria-hidden="true"></div>
+      <div class="lifestyle-section-glow lifestyle-section-glow--right" aria-hidden="true"></div>
       <div class="lifestyle-inner">
         <div class="lifestyle-explorer-banner">
-          <div class="lifestyle-explorer-bg" aria-hidden="true">
-            <img src="images/lifestyle_luxury_bg.png" alt="Luxury home interior" class="lifestyle-explorer-bg-img"
-              loading="eager" fetchpriority="high" decoding="async" width="1920" height="1080">
-            <div class="lifestyle-explorer-overlay"></div>
-            <div class="lifestyle-explorer-pattern"></div>
-            <div class="lifestyle-explorer-shine" aria-hidden="true"></div>
-          </div>
-          <span class="lifestyle-explorer-watermark" aria-hidden="true">LIFESTYLE</span>
+       
           <div class="lifestyle-explorer-content">
             <header class="lifestyle-explorer-hero">
-              <div class="lifestyle-header-badge" aria-live="polite">
-                <span class="lifestyle-header-badge-num" id="lifestyle-badge-count">3</span>
-                <span class="lifestyle-header-badge-label">Selected<br>Priorities</span>
-              </div>
               <div class="lifestyle-explorer-intro">
                 <div class="lifestyle-tag-row">
                   <span class="lifestyle-tag-line" aria-hidden="true"></span>
-                  <span class="lifestyle-eyebrow">Lifestyle Explorer</span>
+                  <span class="lifestyle-eyebrow">Lifestyle</span>
                   <span class="lifestyle-tag-line" aria-hidden="true"></span>
                 </div>
-                <h2 class="lifestyle-title">Homes that<br><span class="lifestyle-title-gold">fit your life.</span></h2>
-                <p class="lifestyle-intro">Tell us what matters most&mdash;schools, green spaces, connectivity and
-                  more&mdash;and we&rsquo;ll surface homes shaped around your everyday rhythm.</p>
-                <div class="lifestyle-hero-chips" aria-hidden="true">
-                  <span class="lifestyle-hero-chip">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-                    </svg>
-                    6 Lifestyle Filters
-                  </span>
-                  <span class="lifestyle-hero-chip">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                      <circle cx="12" cy="12" r="10"></circle>
-                      <circle cx="12" cy="12" r="3"></circle>
-                      <line x1="12" y1="2" x2="12" y2="5"></line>
-                    </svg>
-                    Smart Matching
-                  </span>
-                  <span class="lifestyle-hero-chip">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
-                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                    Pan-India Homes
-                  </span>
+                <div class="lifestyle-title-row">
+                  <h2 class="lifestyle-title">Homes that <span class="lifestyle-title-gold">fit your life.</span></h2>
+                  <div class="lifestyle-header-badge" aria-live="polite">
+                    <span class="lifestyle-header-badge-num" id="lifestyle-badge-count">3</span>
+                    <span class="lifestyle-header-badge-label">Selected</span>
+                  </div>
                 </div>
+                <p class="lifestyle-intro">Pick what matters&mdash;we&rsquo;ll match homes around <span class="lifestyle-intro-kw">schools</span>, <span class="lifestyle-intro-kw">parks</span> &amp; <span class="lifestyle-intro-kw">connectivity</span>.</p>
               </div>
             </header>
 
             <div class="lifestyle-pref-panel">
-              <div class="lifestyle-pref-panel-head">
-                <p class="lifestyle-pref-hint">Choose what matters most to you</p>
-                <span class="lifestyle-pref-step" aria-hidden="true">Step 1 of 2</span>
-              </div>
               <div class="lifestyle-pref-grid-wrap">
                 <div class="lifestyle-pref-grid" id="lifestyle-prefs" role="group" aria-label="Lifestyle preferences">
                   <button type="button" class="lifestyle-pref" data-pref="education" data-tone="slate"
@@ -692,7 +658,7 @@
                   </span>
                   <div class="lifestyle-action-copy">
                     <strong id="lifestyle-pref-count">3 Preferences Selected</strong>
-                    <span id="lifestyle-pref-sub">We&rsquo;ll find homes that truly match your lifestyle</span>
+                    <span id="lifestyle-pref-sub">Matched to how you live</span>
                   </div>
                 </div>
                 <button type="button" class="lifestyle-explore-btn" id="lifestyle-explore-btn">
@@ -704,19 +670,14 @@
                 </button>
               </div>
             </div>
-
           </div>
         </div>
       </div>
     </section>
-    <section class="featured-projects" id="featured-projects" aria-labelledby="featured-projects-title">
+    <section class="featured-projects featured-projects--slim" id="featured-projects" aria-labelledby="featured-projects-title">
       <div class="fp-inner">
         <header class="fp-head">
-          <span class="fp-tag">Featured Projects</span>
-          <h2 class="fp-title" id="featured-projects-title">Exceptional Homes.<br><span class="fp-gold">Iconic
-              Addresses.</span></h2>
-          <p class="fp-sub">Curated residences in India's most coveted pin codes. Built for those who settle for nothing
-            but the extraordinary.</p>
+          <h2 class="fp-title" id="featured-projects-title">Featured Projects</h2>
         </header>
 
         <div class="fp-stage">
