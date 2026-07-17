@@ -490,8 +490,14 @@ footer {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 1rem 1.5rem;
   padding-bottom: 1.5rem;
+}
+
+.gpl-footer-mid .gpl-footer-bar-meta {
+  margin-left: auto;
+  justify-content: flex-end;
+  text-align: right;
 }
 
 .gpl-footer-social-wrap {
@@ -555,26 +561,6 @@ footer {
 .gpl-footer-chevron svg {
   width: 16px;
   height: 16px;
-}
-
-.gpl-footer-bar {
-  background: #fff;
-  border-top: 1px solid #e5e5e5;
-  padding: 1rem clamp(1.25rem, 4vw, 5%);
-}
-
-.gpl-footer-bar-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.gpl-footer-bar-logo img {
-  height: 40px;
-  width: auto;
-  display: block;
 }
 
 .gpl-footer-bar-meta {
@@ -682,9 +668,10 @@ footer {
     align-items: flex-start;
   }
 
-  .gpl-footer-bar-inner {
-    flex-direction: column;
-    align-items: flex-start;
+  .gpl-footer-mid .gpl-footer-bar-meta {
+    margin-left: 0;
+    justify-content: flex-start;
+    text-align: left;
   }
 
   .gpl-footer-bar-meta {
@@ -10696,7 +10683,3 @@ footer {
   padding-right: 0;
 }
 
-.home-page .gpl-footer-bar {
-  padding-left: 0;
-  padding-right: 0;
-}

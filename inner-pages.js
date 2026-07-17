@@ -45,13 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const pageId = document.body.dataset.page;
   if (pageId) {
-    document.querySelectorAll(`.inner-subnav a[data-page="${pageId}"]`).forEach((a) => {
+    const navPageId = pageId === "nri-expo" ? "nri-home-fest" : pageId;
+    document.querySelectorAll(`.inner-subnav a[data-page="${navPageId}"]`).forEach((a) => {
       a.classList.add("is-active");
     });
-    document.querySelectorAll(`.nri-subnav a[data-page="${pageId}"]`).forEach((a) => {
+    document.querySelectorAll(`.nri-subnav a[data-page="${navPageId}"]`).forEach((a) => {
       a.classList.add("is-active");
     });
-    document.querySelectorAll(`.about-hero-nav-links a[href*="${pageId}"], .about-creative-subnav a[href*="${pageId}"], .projects-subnav a[data-page="${pageId}"]`).forEach((a) => {
+    document.querySelectorAll(`.about-hero-nav-links a[href*="${navPageId}"], .about-creative-subnav a[href*="${navPageId}"], .projects-subnav a[data-page="${navPageId}"]`).forEach((a) => {
       a.classList.add("is-active");
     });
   }
@@ -490,7 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!page) return;
 
     const revealEls = page.querySelectorAll(
-      ".nri-page-body, .nri-contact-bar, .nri-hub-card, .nri-office-card, .nri-legal-card, .nri-enquire-layout, .inner-cta-band, .nri-fest-why, .nri-fest-unmissable, .nri-fest-register-stage, .nri-fest-showcase-wrap, .nri-fest-why-item, .nri-fest-unmissable-item"
+      ".nri-page-body, .nri-contact-bar, .nri-hub-card, .nri-office-card, .nri-legal-card, .nri-enquire-layout, .inner-cta-band, .nri-fest-why, .nri-fest-vip, .nri-fest-vip-card, .nri-fest-past-expos, .nri-fest-drag, .nri-fest-upcoming, .nri-fest-countdown, .nri-fest-register-stage, .nri-fest-why-item, .nri-fest-expo-card, .nri-fest-ticket"
     );
     revealEls.forEach((el) => el.classList.add("nri-reveal"));
 
@@ -509,8 +510,714 @@ document.addEventListener("DOMContentLoaded", () => {
     revealEls.forEach((el) => observer.observe(el));
   };
 
-  const nriPages = ["nri-legal", "nri-loan", "nri-faqs", "international-offices", "nri-enquire", "nri-home-fest", "nri-corner"];
+  const nriPages = ["nri-legal", "nri-loan", "nri-faqs", "international-offices", "nri-enquire", "nri-home-fest", "nri-corner", "nri-expo"];
   if (nriPages.includes(document.body.dataset.page)) initNriCreativePage();
+
+  const nriFestExpoSlug = (city, date, month) =>
+    `${city}-${date}-${month}`
+      .toLowerCase()
+      .replace(/[–—]/g, "-")
+      .replace(/&amp;/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const NRI_FEST_EXPO_IMAGES = {
+    default: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=80&auto=format&fit=crop",
+    Singapore: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1400&q=80&auto=format&fit=crop",
+    Dubai: "../images/past-expos/dubai.jpg",
+    Sydney: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1400&q=80&auto=format&fit=crop",
+    Lagos: "../images/past-expos/lagos.jpg",
+    London: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80&auto=format&fit=crop",
+    Tokyo: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=80&auto=format&fit=crop",
+    Amsterdam: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1400&q=80&auto=format&fit=crop",
+    Atlanta: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?w=1400&q=80&auto=format&fit=crop",
+    Chicago: "https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=1400&q=80&auto=format&fit=crop",
+    Austin: "https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=1400&q=80&auto=format&fit=crop",
+    Perth: "../images/past-expos/perth.jpg",
+    Leicester: "../images/past-expos/leicester.jpg"
+  };
+
+  const buildNriFestExpo = (partial) => {
+    const venueMap = {
+      Singapore: "Marina Bay Convention District",
+      Dubai: "Downtown Dubai Expo Hall",
+      Sydney: "Darling Harbour Exhibition Centre",
+      Manama: "Bahrain International Exhibition Centre",
+      Brisbane: "Brisbane Convention & Exhibition Centre",
+      Doha: "DECC Exhibition Hall",
+      Lagos: "Eko Convention Centre",
+      Atlanta: "Atlanta Metro Convention Venue",
+      Vancouver: "Vancouver Convention Centre",
+      "Ho Chi Minh City": "Saigon Exhibition & Convention Centre",
+      Amsterdam: "RAI Amsterdam",
+      Chicago: "McCormick Place District",
+      Jakarta: "Jakarta Convention Center",
+      "Kuwait City": "Kuwait International Fairground",
+      Munich: "Messe München",
+      Frankfurt: "Messe Frankfurt",
+      Tokyo: "Tokyo International Forum",
+      Dublin: "RDS Convention Centre",
+      "New Jersey": "Meadowlands Expo Venue",
+      "Kuala Lumpur": "KL Convention Centre",
+      London: "ExCeL London",
+      Riyadh: "Riyadh Front Exhibition & Conference Center",
+      Austin: "Austin Convention Center"
+    };
+
+    const image = NRI_FEST_EXPO_IMAGES[partial.city] || NRI_FEST_EXPO_IMAGES.default;
+    const exclusive = !!partial.exclusive;
+    return {
+      ...partial,
+      id: nriFestExpoSlug(partial.city, partial.date, partial.month),
+      year: "2026",
+      venue: venueMap[partial.city] || `${partial.city} Convention Venue`,
+      image,
+      access: exclusive ? "Exclusive VIP Access" : "Open Registration",
+      about: `Join Godrej Properties in ${partial.city} for ${partial.title}. Discover premium Indian homes, meet on-ground experts and unlock NRI-focused pricing, loan guidance and legal support at this ${partial.region} stop.`,
+      highlights: [
+        "Portfolio walkthrough of residential & commercial launches",
+        exclusive ? "Priority VIP lounge and private consultations" : "One-on-one project consultations",
+        "Home loan desk with partner bank specialists",
+        "Legal, tax and repatriation guidance for NRIs"
+      ]
+    };
+  };
+
+  const NRI_FEST_EXPOS = [
+    buildNriFestExpo({ city: "Singapore", country: "Singapore", region: "APAC", date: "18–19", month: "Jul", title: "Investor Meetings", exclusive: true }),
+    buildNriFestExpo({ city: "Dubai", country: "UAE", region: "GCC", date: "25", month: "Jul", title: "Office Investor Event", exclusive: true }),
+    buildNriFestExpo({ city: "Singapore", country: "Singapore", region: "APAC", date: "25–26", month: "Jul", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "Sydney", country: "Australia", region: "APAC", date: "8–9", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Manama", country: "Bahrain", region: "GCC", date: "14–15", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Dubai", country: "UAE", region: "GCC", date: "15–16", month: "Aug", title: "Dubai Real Estate Expo — Sobha", exclusive: true }),
+    buildNriFestExpo({ city: "Brisbane", country: "Australia", region: "APAC", date: "15–16", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Doha", country: "Qatar", region: "GCC", date: "21–22", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Lagos", country: "Nigeria", region: "Africa", date: "22–23", month: "Aug", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "Atlanta", country: "USA", region: "NA", date: "22–23", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Vancouver", country: "Canada", region: "NA", date: "22–23", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Ho Chi Minh City", country: "Vietnam", region: "APAC", date: "22–23", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Amsterdam", country: "Netherlands", region: "Europe", date: "29–30", month: "Aug", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "Chicago", country: "USA", region: "NA", date: "29–30", month: "Aug", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Jakarta", country: "Indonesia", region: "APAC", date: "29–30", month: "Aug", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "Kuwait City", country: "Kuwait", region: "GCC", date: "4–5", month: "Sep", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Munich", country: "Germany", region: "Europe", date: "5–6", month: "Sep", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "Frankfurt", country: "Germany", region: "Europe", date: "5–6", month: "Sep", title: "Financial Hub Investor Networking", exclusive: true }),
+    buildNriFestExpo({ city: "Tokyo", country: "Japan", region: "APAC", date: "5–6", month: "Sep", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "Dublin", country: "Ireland", region: "UK & Ireland", date: "5–6", month: "Sep", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "New Jersey", country: "USA", region: "NA", date: "12–13", month: "Sep", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "Kuala Lumpur", country: "Malaysia", region: "APAC", date: "12–13", month: "Sep", title: "Godrej Property Expo", exclusive: true }),
+    buildNriFestExpo({ city: "London", country: "United Kingdom", region: "UK", date: "12–13", month: "Sep", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Riyadh", country: "Saudi Arabia", region: "GCC", date: "18–19", month: "Sep", title: "Godrej Property Expo" }),
+    buildNriFestExpo({ city: "Austin", country: "USA", region: "NA", date: "18–19", month: "Sep", title: "Godrej Property Expo", exclusive: true })
+  ];
+
+  const findNriFestExpo = (id) => NRI_FEST_EXPOS.find((expo) => expo.id === id) || NRI_FEST_EXPOS[0];
+
+  const initUpcomingExpoBoard = () => {
+    const board = document.querySelector("[data-upcoming-board]");
+    if (!board) return;
+
+    const tabs = [...board.querySelectorAll(".nri-fest-upcoming-tab")];
+    const panels = [...board.querySelectorAll(".nri-fest-upcoming-panel")];
+    if (!tabs.length || !panels.length) return;
+
+    const activate = (month) => {
+      tabs.forEach((tab) => {
+        const active = tab.dataset.month === month;
+        tab.classList.toggle("is-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      });
+
+      panels.forEach((panel) => {
+        const active = panel.dataset.panel === month;
+        panel.classList.toggle("is-active", active);
+        if (active) panel.removeAttribute("hidden");
+        else panel.setAttribute("hidden", "");
+      });
+    };
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => activate(tab.dataset.month));
+    });
+
+    board.querySelectorAll(".nri-fest-ticket").forEach((ticket) => {
+      const city = ticket.querySelector("h3")?.textContent?.trim() || "";
+      const date = ticket.querySelector(".nri-fest-ticket-date strong")?.textContent?.trim() || "";
+      const month = ticket.querySelector(".nri-fest-ticket-date span")?.textContent?.trim() || "";
+      const id = nriFestExpoSlug(city, date, month);
+      ticket.classList.add("nri-fest-ticket--link");
+      ticket.setAttribute("role", "link");
+      ticket.tabIndex = 0;
+      ticket.setAttribute("aria-label", `View ${city} expo details`);
+      const openExpo = () => {
+        window.location.href = `nri-expo.html?id=${encodeURIComponent(id)}`;
+      };
+      ticket.addEventListener("click", openExpo);
+      ticket.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openExpo();
+        }
+      });
+    });
+  };
+
+  initUpcomingExpoBoard();
+
+  const initNriExpoDetailPage = () => {
+    const root = document.querySelector("[data-expo-detail]");
+    if (!root) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const expo = findNriFestExpo(params.get("id") || "");
+    const dateLabel = `${expo.date} ${expo.month} ${expo.year}`;
+
+    root.querySelectorAll("[data-expo-city]").forEach((el) => {
+      el.textContent = expo.city;
+    });
+    root.querySelectorAll("[data-expo-city-inline]").forEach((el) => {
+      el.textContent = expo.city;
+    });
+    root.querySelectorAll("[data-expo-country]").forEach((el) => {
+      el.textContent = expo.country;
+    });
+    root.querySelectorAll("[data-expo-region]").forEach((el) => {
+      el.textContent = expo.region;
+    });
+    root.querySelectorAll("[data-expo-event]").forEach((el) => {
+      el.textContent = expo.title;
+    });
+    root.querySelectorAll("[data-expo-date]").forEach((el) => {
+      el.textContent = dateLabel;
+    });
+    root.querySelectorAll("[data-expo-venue]").forEach((el) => {
+      el.textContent = expo.venue;
+    });
+    root.querySelectorAll("[data-expo-access]").forEach((el) => {
+      el.textContent = expo.access;
+    });
+    root.querySelectorAll("[data-expo-about]").forEach((el) => {
+      el.textContent = expo.about;
+    });
+
+    const exclusiveChip = root.querySelector("[data-expo-exclusive]");
+    if (exclusiveChip) {
+      if (expo.exclusive) exclusiveChip.hidden = false;
+      else exclusiveChip.hidden = true;
+    }
+
+    const imageEl = root.querySelector("[data-expo-image]");
+    if (imageEl) imageEl.style.backgroundImage = `url("${expo.image}")`;
+
+    const list = root.querySelector("[data-expo-highlights]");
+    if (list) {
+      list.innerHTML = expo.highlights.map((item) => `<li>${item}</li>`).join("");
+    }
+
+    document.title = `${expo.city} Expo | NRI Home Fest | Godrej Properties`;
+  };
+
+  initNriExpoDetailPage();
+
+  const initFestCountdown = () => {
+    const section = document.getElementById("nri-fest-countdown");
+    if (!section) return;
+
+    const targetRaw = section.getAttribute("data-countdown-to");
+    const target = targetRaw ? new Date(targetRaw).getTime() : NaN;
+    if (Number.isNaN(target)) return;
+
+    const daysEl = section.querySelector('[data-unit="days"]');
+    const hoursEl = section.querySelector('[data-unit="hours"]');
+    const minsEl = section.querySelector('[data-unit="minutes"]');
+    const secsEl = section.querySelector('[data-unit="seconds"]');
+    const leadEl = section.querySelector(".nri-fest-countdown-lead");
+    if (!daysEl || !hoursEl || !minsEl || !secsEl) return;
+
+    const pad = (n) => String(Math.max(0, n)).padStart(2, "0");
+
+    const tick = () => {
+      const diff = target - Date.now();
+      if (diff <= 0) {
+        daysEl.textContent = "00";
+        hoursEl.textContent = "00";
+        minsEl.textContent = "00";
+        secsEl.textContent = "00";
+        section.classList.add("is-ended");
+        if (leadEl) leadEl.textContent = "Registration is open — secure your VIP access now.";
+        return false;
+      }
+
+      const totalSec = Math.floor(diff / 1000);
+      const days = Math.floor(totalSec / 86400);
+      const hours = Math.floor((totalSec % 86400) / 3600);
+      const minutes = Math.floor((totalSec % 3600) / 60);
+      const seconds = totalSec % 60;
+
+      daysEl.textContent = pad(days);
+      hoursEl.textContent = pad(hours);
+      minsEl.textContent = pad(minutes);
+      secsEl.textContent = pad(seconds);
+      return true;
+    };
+
+    if (!tick()) return;
+    const id = window.setInterval(() => {
+      if (!tick()) window.clearInterval(id);
+    }, 1000);
+  };
+
+  initFestCountdown();
+
+  const initNriFestRegisterModal = () => {
+    const modal = document.getElementById("nri-fest-register-modal");
+    if (!modal) return;
+
+    const dialog = modal.querySelector(".nri-fest-register-modal-dialog");
+    let lastFocus = null;
+
+    const openModal = () => {
+      lastFocus = document.activeElement;
+      modal.hidden = false;
+      modal.setAttribute("aria-hidden", "false");
+      requestAnimationFrame(() => modal.classList.add("is-open"));
+      document.body.classList.add("nri-fest-register-open");
+      const focusTarget =
+        modal.querySelector("#nri-fest-fname") ||
+        modal.querySelector(".nri-fest-register-modal-close");
+      focusTarget?.focus?.();
+    };
+
+    const closeModal = () => {
+      modal.classList.remove("is-open");
+      document.body.classList.remove("nri-fest-register-open");
+      modal.setAttribute("aria-hidden", "true");
+      window.setTimeout(() => {
+        if (!modal.classList.contains("is-open")) modal.hidden = true;
+      }, 280);
+      if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    };
+
+    document.addEventListener("click", (e) => {
+      const trigger = e.target.closest('a[href="#nri-fest-form"], a[href="#nri-fest-form-stage"], [data-open-register]');
+      if (!trigger) return;
+      e.preventDefault();
+      openModal();
+    });
+
+    modal.querySelectorAll("[data-close-register]").forEach((el) => {
+      el.addEventListener("click", closeModal);
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) closeModal();
+    });
+
+    dialog?.addEventListener("click", (e) => e.stopPropagation());
+
+    if (window.location.hash === "#nri-fest-form" || window.location.hash === "#nri-fest-form-stage") {
+      openModal();
+    }
+
+    window.openNriFestRegister = openModal;
+    window.closeNriFestRegister = closeModal;
+  };
+
+  initNriFestRegisterModal();
+
+  const initNriFestHeroLights = () => {
+    const mosaic = document.querySelector("[data-hero-mosaic]");
+    if (!mosaic) return;
+
+    const images = [
+      "../images/past-expos/dubai.jpg",
+      "../images/past-expos/perth.jpg",
+      "../images/past-expos/leicester.jpg",
+      "../images/past-expos/lagos.jpg",
+      "../images/past-expos/dubai-invite.png",
+      "../images/past-expos/perth-invite.png",
+      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=70&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=70&auto=format&fit=crop"
+    ];
+
+    const tileCount = window.innerWidth < 640 ? 24 : window.innerWidth < 900 ? 36 : 48;
+    const frag = document.createDocumentFragment();
+
+    for (let i = 0; i < tileCount; i += 1) {
+      const tile = document.createElement("div");
+      tile.className = "nri-fest-hero-tile";
+      tile.style.animationDelay = `${(i % 12) * 0.35}s`;
+      const img = document.createElement("img");
+      img.src = images[i % images.length];
+      img.alt = "";
+      img.loading = i < 12 ? "eager" : "lazy";
+      img.decoding = "async";
+      tile.appendChild(img);
+      frag.appendChild(tile);
+    }
+
+    mosaic.appendChild(frag);
+
+    const tiles = [...mosaic.querySelectorAll(".nri-fest-hero-tile")];
+    if (!tiles.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let lit = 0;
+    window.setInterval(() => {
+      tiles.forEach((t) => t.classList.remove("is-lit"));
+      for (let n = 0; n < 6; n += 1) {
+        const idx = (lit + n * 7) % tiles.length;
+        tiles[idx].classList.add("is-lit");
+      }
+      lit = (lit + 1) % tiles.length;
+    }, 900);
+  };
+
+  initNriFestHeroLights();
+
+  const initNriFestDragGallery = () => {
+    const section = document.querySelector("[data-drag-gallery]");
+    const viewport = document.getElementById("nri-fest-drag-viewport");
+    const canvas = document.getElementById("nri-fest-drag-canvas");
+    const overlay = document.getElementById("nri-fest-drag-overlay");
+    if (!section || !viewport || !canvas || typeof gsap === "undefined") return;
+
+    const imageUrls = [
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cd00?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80&auto=format&fit=crop"
+    ];
+
+    const settings = {
+      baseWidth: 280,
+      smallHeight: 220,
+      largeHeight: 340,
+      itemGap: 28,
+      dragEase: 0.08,
+      momentumFactor: 180,
+      bufferZone: 2.2,
+      expandedScale: 0.42,
+      zoomDuration: 0.55,
+      overlayOpacity: 0.86
+    };
+
+    let itemSizes = [
+      { width: settings.baseWidth, height: settings.smallHeight },
+      { width: settings.baseWidth, height: settings.largeHeight }
+    ];
+    const columns = 4;
+    const itemCount = imageUrls.length;
+    let cellWidth = settings.baseWidth + settings.itemGap;
+    let cellHeight = Math.max(settings.smallHeight, settings.largeHeight) + settings.itemGap;
+
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let dragVelocityX = 0;
+    let dragVelocityY = 0;
+    let lastDragTime = 0;
+    let mouseHasMoved = false;
+    let visibleItems = new Set();
+    let lastUpdateTime = 0;
+    let lastX = 0;
+    let lastY = 0;
+    let isExpanded = false;
+    let activeItem = null;
+    let activeItemId = null;
+    let canDrag = true;
+    let originalPosition = null;
+    let expandedItem = null;
+    let overlayTween = null;
+
+    const getItemSize = (row, col) => itemSizes[Math.abs((row * columns + col) % itemSizes.length)];
+    const getItemId = (col, row) => `${col},${row}`;
+    const getItemPosition = (col, row) => ({ x: col * cellWidth, y: row * cellHeight });
+
+    const updateVisibleItems = () => {
+      const buffer = settings.bufferZone;
+      const viewWidth = viewport.clientWidth * (1 + buffer);
+      const viewHeight = viewport.clientHeight * (1 + buffer);
+      const startCol = Math.floor((-currentX - viewWidth / 2) / cellWidth);
+      const endCol = Math.ceil((-currentX + viewWidth * 1.5) / cellWidth);
+      const startRow = Math.floor((-currentY - viewHeight / 2) / cellHeight);
+      const endRow = Math.ceil((-currentY + viewHeight * 1.5) / cellHeight);
+      const currentItems = new Set();
+
+      for (let row = startRow; row <= endRow; row += 1) {
+        for (let col = startCol; col <= endCol; col += 1) {
+          const itemId = getItemId(col, row);
+          currentItems.add(itemId);
+          if (visibleItems.has(itemId)) continue;
+          if (activeItemId === itemId && isExpanded) continue;
+
+          const itemSize = getItemSize(row, col);
+          const position = getItemPosition(col, row);
+          const itemNum = Math.abs((row * columns + col) % itemCount);
+
+          const item = document.createElement("div");
+          item.className = "nri-fest-drag-item";
+          item.id = `drag-${itemId}`;
+          item.style.width = `${itemSize.width}px`;
+          item.style.height = `${itemSize.height}px`;
+          item.style.left = `${position.x}px`;
+          item.style.top = `${position.y}px`;
+          item.dataset.col = String(col);
+          item.dataset.row = String(row);
+          item.dataset.width = String(itemSize.width);
+          item.dataset.height = String(itemSize.height);
+          item.dataset.itemId = itemId;
+
+          const media = document.createElement("div");
+          media.className = "nri-fest-drag-item-media";
+          const img = document.createElement("img");
+          img.src = imageUrls[itemNum % imageUrls.length];
+          img.alt = "";
+          img.draggable = false;
+          img.loading = "lazy";
+          img.decoding = "async";
+          media.appendChild(img);
+          item.appendChild(media);
+
+          item.addEventListener("click", () => {
+            if (mouseHasMoved || isDragging) return;
+            if (isExpanded) closeExpandedItem();
+            else expandItem(item);
+          });
+
+          canvas.appendChild(item);
+          visibleItems.add(itemId);
+        }
+      }
+
+      visibleItems.forEach((itemId) => {
+        if (!currentItems.has(itemId) || (activeItemId === itemId && isExpanded)) {
+          const el = document.getElementById(`drag-${itemId}`);
+          if (el && el.parentNode === canvas) canvas.removeChild(el);
+          visibleItems.delete(itemId);
+        }
+      });
+    };
+
+    const animateOverlay = (opacity) => {
+      if (overlayTween) overlayTween.kill();
+      overlayTween = gsap.to(overlay, {
+        opacity,
+        duration: 0.55,
+        ease: "power2.inOut",
+        overwrite: true
+      });
+    };
+
+    const expandItem = (item) => {
+      isExpanded = true;
+      activeItem = item;
+      activeItemId = item.dataset.itemId;
+      canDrag = false;
+      viewport.classList.remove("is-grabbing");
+
+      const imgSrc = item.querySelector("img").src;
+      const itemWidth = Number(item.dataset.width);
+      const itemHeight = Number(item.dataset.height);
+      const rect = item.getBoundingClientRect();
+
+      originalPosition = {
+        id: activeItemId,
+        rect,
+        width: itemWidth,
+        height: itemHeight
+      };
+
+      overlay.classList.add("is-active");
+      animateOverlay(settings.overlayOpacity);
+
+      expandedItem = document.createElement("div");
+      expandedItem.className = "nri-fest-drag-expanded";
+      expandedItem.style.width = `${itemWidth}px`;
+      expandedItem.style.height = `${itemHeight}px`;
+      const img = document.createElement("img");
+      img.src = imgSrc;
+      img.alt = "";
+      expandedItem.appendChild(img);
+      expandedItem.addEventListener("click", closeExpandedItem);
+      document.body.appendChild(expandedItem);
+
+      canvas.querySelectorAll(".nri-fest-drag-item").forEach((el) => {
+        if (el !== activeItem) gsap.to(el, { opacity: 0, duration: 0.45, ease: "power2.inOut" });
+      });
+
+      const targetWidth = Math.min(window.innerWidth * settings.expandedScale, 560);
+      const targetHeight = targetWidth * (itemHeight / itemWidth);
+
+      gsap.fromTo(
+        expandedItem,
+        {
+          width: itemWidth,
+          height: itemHeight,
+          xPercent: -50,
+          yPercent: -50,
+          x: rect.left + itemWidth / 2 - window.innerWidth / 2,
+          y: rect.top + itemHeight / 2 - window.innerHeight / 2
+        },
+        {
+          width: targetWidth,
+          height: targetHeight,
+          xPercent: -50,
+          yPercent: -50,
+          x: 0,
+          y: 0,
+          duration: settings.zoomDuration,
+          ease: "power3.inOut"
+        }
+      );
+    };
+
+    const closeExpandedItem = () => {
+      if (!expandedItem || !originalPosition) return;
+
+      animateOverlay(0);
+
+      canvas.querySelectorAll(".nri-fest-drag-item").forEach((el) => {
+        if (el.dataset.itemId !== activeItemId) {
+          gsap.to(el, { opacity: 1, duration: 0.45, delay: 0.2, ease: "power2.inOut" });
+        }
+      });
+
+      const originalRect = originalPosition.rect;
+      gsap.to(expandedItem, {
+        width: originalPosition.width,
+        height: originalPosition.height,
+        xPercent: -50,
+        yPercent: -50,
+        x: originalRect.left + originalPosition.width / 2 - window.innerWidth / 2,
+        y: originalRect.top + originalPosition.height / 2 - window.innerHeight / 2,
+        duration: settings.zoomDuration,
+        ease: "power3.inOut",
+        onComplete: () => {
+          expandedItem?.remove();
+          expandedItem = null;
+          isExpanded = false;
+          activeItem = null;
+          activeItemId = null;
+          originalPosition = null;
+          canDrag = true;
+          overlay.classList.remove("is-active");
+          updateVisibleItems();
+        }
+      });
+    };
+
+    const animate = () => {
+      if (canDrag) {
+        const ease = settings.dragEase;
+        currentX += (targetX - currentX) * ease;
+        currentY += (targetY - currentY) * ease;
+        canvas.style.transform = `translate(${currentX}px, ${currentY}px)`;
+
+        const now = Date.now();
+        const distMoved = Math.hypot(currentX - lastX, currentY - lastY);
+        if (distMoved > 80 || now - lastUpdateTime > 120) {
+          updateVisibleItems();
+          lastX = currentX;
+          lastY = currentY;
+          lastUpdateTime = now;
+        }
+      }
+      requestAnimationFrame(animate);
+    };
+
+    const onPointerDown = (clientX, clientY) => {
+      if (!canDrag) return;
+      isDragging = true;
+      mouseHasMoved = false;
+      startX = clientX;
+      startY = clientY;
+      lastDragTime = Date.now();
+      viewport.classList.add("is-grabbing");
+    };
+
+    const onPointerMove = (clientX, clientY) => {
+      if (!isDragging || !canDrag) return;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+      if (Math.abs(dx) > 5 || Math.abs(dy) > 5) {
+        mouseHasMoved = true;
+        viewport.classList.add("has-moved");
+      }
+      const now = Date.now();
+      const dt = Math.max(10, now - lastDragTime);
+      lastDragTime = now;
+      dragVelocityX = dx / dt;
+      dragVelocityY = dy / dt;
+      targetX += dx;
+      targetY += dy;
+      startX = clientX;
+      startY = clientY;
+    };
+
+    const onPointerUp = () => {
+      if (!isDragging) return;
+      isDragging = false;
+      viewport.classList.remove("is-grabbing");
+      if (canDrag && (Math.abs(dragVelocityX) > 0.1 || Math.abs(dragVelocityY) > 0.1)) {
+        targetX += dragVelocityX * settings.momentumFactor;
+        targetY += dragVelocityY * settings.momentumFactor;
+      }
+    };
+
+    viewport.addEventListener("mousedown", (e) => onPointerDown(e.clientX, e.clientY));
+    window.addEventListener("mousemove", (e) => onPointerMove(e.clientX, e.clientY));
+    window.addEventListener("mouseup", onPointerUp);
+
+    viewport.addEventListener("touchstart", (e) => {
+      if (!e.touches[0]) return;
+      onPointerDown(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    window.addEventListener("touchmove", (e) => {
+      if (!e.touches[0] || !isDragging) return;
+      onPointerMove(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    window.addEventListener("touchend", onPointerUp);
+
+    overlay.addEventListener("click", () => {
+      if (isExpanded) closeExpandedItem();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && isExpanded) closeExpandedItem();
+    });
+
+    // Center the first view a bit
+    targetX = viewport.clientWidth * 0.2;
+    targetY = viewport.clientHeight * 0.15;
+    currentX = targetX;
+    currentY = targetY;
+    updateVisibleItems();
+    animate();
+  };
+
+  initNriFestDragGallery();
 
   initRefSlider({
     trackId: "sustain-ref-track",

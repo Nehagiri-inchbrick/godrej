@@ -12414,13 +12414,17 @@ main.projects-page--ref {
   margin-top: -1.5rem;
 }
 
+.nri-fest-page--expo.nri-fest-page .nri-creative-subnav-band,
+.nri-fest-page--expo .nri-creative-subnav-band {
+  margin-top: 0;
+}
+
 .nri-fest-page .nri-page-body > .about-wrap,
 .nri-fest-body > .about-wrap {
   background: transparent;
   border: none;
   box-shadow: none;
   padding: 1rem clamp(1.25rem, 5vw, 5%);
-  padding:auto 5% !important;
 }
 
 .nri-fest-page .nri-fest-form-card .nri-fest-section-title {
@@ -12479,10 +12483,14 @@ main.projects-page--ref {
   --fest-gold: #c99c56;
   --fest-ink: #243046;
   --fest-muted: #6b7280;
-  background: #f7f4ef;
+  --fest-cream: #f7f4ef;
+  --fest-cream-deep: #efe8dc;
+  --fest-dark: #0a101c;
+  --fest-dark-mid: #121c2e;
+  background: var(--fest-cream);
 }
 
-/* Centered Homeluxe-style NRI Fest banner (no image) */
+/* Centered NRI Fest banner — small event mosaic + light show */
 .nri-fest-hero--center {
   --fest-gold: #c99c56;
   position: relative;
@@ -12494,15 +12502,223 @@ main.projects-page--ref {
   align-items: center;
   justify-content: center;
   text-align: center;
+  background: #08111f;
+}
+
+.nri-fest-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nri-fest-hero-mosaic {
+  position: absolute;
+  inset: -2%;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-auto-rows: minmax(72px, 11vh);
+  gap: 6px;
+  padding: 6px;
+  transform: rotate(-2deg) scale(1.06);
+  opacity: 0.9;
+}
+
+.nri-fest-hero-tile {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  background: #121a28;
+  box-shadow: 0 0 0 1px rgba(201, 156, 86, 0.12);
+  animation: nri-fest-tile-twinkle 5.5s ease-in-out infinite;
+}
+
+.nri-fest-hero-tile:nth-child(3n) {
+  grid-row: span 2;
+}
+
+.nri-fest-hero-tile:nth-child(5n) {
+  grid-column: span 2;
+}
+
+.nri-fest-hero-tile:nth-child(7n) {
+  grid-row: span 2;
+  grid-column: span 1;
+}
+
+.nri-fest-hero-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.72) saturate(1.05);
+  transition: filter 0.6s ease, transform 4s ease;
+  transform: scale(1.04);
+}
+
+.nri-fest-hero-tile.is-lit img {
+  filter: brightness(1.05) saturate(1.2);
+  transform: scale(1.1);
+}
+
+.nri-fest-hero-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(201, 156, 86, 0.18), transparent 45%, rgba(80, 140, 220, 0.12));
+  opacity: 0.35;
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.nri-fest-hero-bg-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   background:
-    radial-gradient(ellipse 55% 60% at 50% 45%, rgba(36, 58, 96, 0.55) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 35% at 50% 100%, rgba(201, 156, 86, 0.12) 0%, transparent 60%),
-    linear-gradient(180deg, #08111f 0%, #10233d 48%, #0a1628 100%);
+    radial-gradient(ellipse 48% 52% at 50% 46%, rgba(8, 17, 31, 0.88) 0%, rgba(8, 17, 31, 0.62) 48%, rgba(8, 17, 31, 0.42) 100%),
+    linear-gradient(180deg, rgba(8, 17, 31, 0.55) 0%, rgba(8, 17, 31, 0.28) 40%, rgba(8, 17, 31, 0.75) 100%);
+}
+
+.nri-fest-hero-lightshow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  overflow: hidden;
+  mix-blend-mode: screen;
+  opacity: 0.75;
+}
+
+.nri-fest-hero-beam {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: min(28vw, 220px);
+  height: 140%;
+  transform-origin: 50% 0%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 230, 170, 0.55) 0%,
+    rgba(201, 156, 86, 0.22) 35%,
+    rgba(120, 180, 255, 0.08) 70%,
+    transparent 100%
+  );
+  filter: blur(18px);
+  opacity: 0.55;
+  animation: nri-fest-beam-sweep 9s ease-in-out infinite;
+}
+
+.nri-fest-hero-beam--1 {
+  transform: translateX(-50%) rotate(-18deg);
+  animation-delay: 0s;
+}
+
+.nri-fest-hero-beam--2 {
+  width: min(22vw, 160px);
+  background: linear-gradient(
+    180deg,
+    rgba(180, 220, 255, 0.5) 0%,
+    rgba(90, 140, 220, 0.2) 40%,
+    transparent 100%
+  );
+  transform: translateX(-50%) rotate(12deg);
+  animation-delay: -3s;
+  animation-duration: 11s;
+}
+
+.nri-fest-hero-beam--3 {
+  width: min(18vw, 140px);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 200, 120, 0.45) 0%,
+    rgba(201, 156, 86, 0.18) 45%,
+    transparent 100%
+  );
+  transform: translateX(-50%) rotate(28deg);
+  animation-delay: -6s;
+  animation-duration: 10s;
+}
+
+.nri-fest-hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: nri-fest-glow-pulse 6s ease-in-out infinite;
+}
+
+.nri-fest-hero-glow--gold {
+  width: min(48vw, 420px);
+  height: min(48vw, 420px);
+  left: 8%;
+  bottom: -12%;
+  background: radial-gradient(circle, rgba(201, 156, 86, 0.45), transparent 68%);
+}
+
+.nri-fest-hero-glow--cyan {
+  width: min(40vw, 360px);
+  height: min(40vw, 360px);
+  right: 6%;
+  top: -8%;
+  background: radial-gradient(circle, rgba(110, 170, 255, 0.35), transparent 70%);
+  animation-delay: -3s;
+}
+
+@keyframes nri-fest-beam-sweep {
+  0%, 100% { opacity: 0.25; filter: blur(22px); }
+  40% { opacity: 0.7; filter: blur(14px); }
+  70% { opacity: 0.4; filter: blur(20px); }
+}
+
+@keyframes nri-fest-glow-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.12); }
+}
+
+@keyframes nri-fest-tile-twinkle {
+  0%, 100% { opacity: 0.78; }
+  50% { opacity: 1; }
+}
+
+@media (max-width: 900px) {
+  .nri-fest-hero-mosaic {
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: minmax(64px, 10vh);
+    gap: 4px;
+  }
+}
+
+@media (max-width: 640px) {
+  .nri-fest-hero-mosaic {
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(58px, 9vh);
+  }
+
+  .nri-fest-hero-tile:nth-child(3n),
+  .nri-fest-hero-tile:nth-child(5n),
+  .nri-fest-hero-tile:nth-child(7n) {
+    grid-row: span 1;
+    grid-column: span 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nri-fest-hero-tile,
+  .nri-fest-hero-beam,
+  .nri-fest-hero-glow {
+    animation: none !important;
+  }
+
+  .nri-fest-hero-tile img {
+    transform: none;
+    transition: none;
+  }
 }
 
 .nri-fest-hero-stage {
   position: absolute;
   inset: 0;
+  z-index: 1;
   pointer-events: none;
   overflow: hidden;
 }
@@ -12560,7 +12776,7 @@ main.projects-page--ref {
 
 .nri-fest-hero-center-inner {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12764,6 +12980,23 @@ main.projects-page--ref {
   color: #fff;
 }
 
+.nri-fest-hero-pill--link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nri-fest-hero-pill--link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(226, 196, 138, 0.95);
+  background: rgba(201, 156, 86, 0.14);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+}
+
+.nri-fest-hero-pill--link em {
+  color: #e2c48a;
+}
+
 .nri-fest-hero-ctas {
   display: flex;
   flex-wrap: wrap;
@@ -12858,6 +13091,9 @@ main.projects-page--ref {
   margin-top: 0;
   position: relative;
   z-index: 3;
+  padding: 1.35rem 0 0.35rem;
+  background: linear-gradient(180deg, #f7f4ef 0%, #f7f4ef 100%);
+  border-top: 1px solid rgba(201, 156, 86, 0.18);
 }
 
 .nri-fest-eyebrow {
@@ -12872,6 +13108,82 @@ main.projects-page--ref {
 
 .nri-fest-block-head {
   margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+.nri-fest-jump-highlight {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-top: 1.15rem;
+  padding: 0.65rem 1rem 0.65rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 156, 86, 0.45);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 248, 236, 0.98));
+  color: #1a2744;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(26, 39, 68, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.nri-fest-jump-highlight:hover {
+  transform: translateY(-2px);
+  border-color: rgba(201, 156, 86, 0.8);
+  box-shadow: 0 14px 32px rgba(201, 156, 86, 0.18);
+}
+
+.nri-fest-jump-pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c99c56;
+  box-shadow: 0 0 0 0 rgba(201, 156, 86, 0.55);
+  animation: nri-fest-jump-pulse 1.8s ease-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes nri-fest-jump-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 156, 86, 0.55); }
+  70% { box-shadow: 0 0 0 10px rgba(201, 156, 86, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 156, 86, 0); }
+}
+
+.nri-fest-jump-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #c99c56;
+}
+
+.nri-fest-jump-highlight strong {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #1a2744;
+}
+
+.nri-fest-jump-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(201, 156, 86, 0.15);
+  color: #9a7134;
+  font-size: 0.85rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.nri-fest-jump-highlight:hover .nri-fest-jump-arrow {
+  transform: translateY(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nri-fest-jump-pulse {
+    animation: none;
+  }
 }
 
 .nri-fest-block-head--center {
@@ -12914,7 +13226,7 @@ main.projects-page--ref {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, #f7f4ef 0%, rgba(247, 244, 239, 0.92) 42%, rgba(247, 244, 239, 0.55) 70%, rgba(26, 39, 68, 0.35) 100%),
+    linear-gradient(180deg, #f7f4ef 0%, rgba(247, 244, 239, 0.94) 48%, rgba(247, 244, 239, 0.88) 100%),
     url("../images/luxe.webp") center / cover no-repeat;
   opacity: 1;
   pointer-events: none;
@@ -12926,8 +13238,8 @@ main.projects-page--ref {
   inset: 0;
   background-image: radial-gradient(rgba(201, 156, 86, 0.12) 1px, transparent 1px);
   background-size: 18px 18px;
-  opacity: 0.45;
-  mask-image: linear-gradient(180deg, #000 0%, transparent 70%);
+  opacity: 0.4;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 75%);
 }
 
 .nri-fest-why-inner {
@@ -13320,172 +13632,2224 @@ main.projects-page--ref {
   }
 }
 
-/* What Makes NRI Home Fest Truly Unmissable */
-.nri-fest-unmissable {
-  padding: clamp(2.75rem, 5vw, 4rem) 0;
+/* VIP Access — invitation + pass */
+.nri-fest-vip {
+  --vip-gold: #c99c56;
+  --vip-gold-soft: #e8c98a;
+  position: relative;
+  padding: clamp(3rem, 6vw, 4.75rem) 0;
+  overflow: hidden;
+  color: #fff;
   background:
-    radial-gradient(ellipse 80% 40% at 50% 0%, rgba(201, 156, 86, 0.08), transparent 55%),
-    repeating-linear-gradient(
-      135deg,
-      transparent 0,
-      transparent 14px,
-      rgba(201, 156, 86, 0.045) 14px,
-      rgba(201, 156, 86, 0.045) 15px
-    ),
-    #f5f1e8;
+    radial-gradient(ellipse 50% 40% at 20% 20%, rgba(201, 156, 86, 0.16), transparent 60%),
+    radial-gradient(ellipse 45% 45% at 90% 70%, rgba(40, 70, 120, 0.28), transparent 58%),
+    linear-gradient(165deg, #0a101c 0%, #121c2e 46%, #0a101c 100%);
 }
 
-.nri-fest-unmissable-head {
+.nri-fest-vip-art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nri-fest-vip-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.nri-fest-vip-orb--gold {
+  width: min(420px, 55vw);
+  height: min(420px, 55vw);
+  top: -18%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(201, 156, 86, 0.28), transparent 68%);
+  animation: nri-fest-vip-drift 12s ease-in-out infinite alternate;
+}
+
+.nri-fest-vip-orb--blue {
+  width: min(380px, 50vw);
+  height: min(380px, 50vw);
+  bottom: -20%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(70, 110, 180, 0.22), transparent 70%);
+  animation: nri-fest-vip-drift 15s ease-in-out infinite alternate-reverse;
+}
+
+.nri-fest-vip-sparkles {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 12% 28%, rgba(232, 201, 138, 0.7), transparent),
+    radial-gradient(1.5px 1.5px at 78% 18%, rgba(232, 201, 138, 0.55), transparent),
+    radial-gradient(1px 1px at 64% 72%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1.5px 1.5px at 30% 80%, rgba(232, 201, 138, 0.5), transparent);
+  opacity: 0.65;
+}
+
+.nri-fest-vip-watermark {
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(7rem, 22vw, 14rem);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.03);
+  user-select: none;
+  white-space: nowrap;
+}
+
+@keyframes nri-fest-vip-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(16px, -12px) scale(1.06); }
+}
+
+.nri-fest-vip-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.nri-fest-vip-head {
   text-align: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
 }
 
-.nri-fest-unmissable-rule {
+.nri-fest-vip-eyebrow {
+  display: inline-block;
+  margin: 0 0 0.55rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 156, 86, 0.35);
+  background: rgba(201, 156, 86, 0.08);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--vip-gold-soft);
+}
+
+.nri-fest-vip-head h2 {
+  margin: 0 0 0.55rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.7rem, 3.6vw, 2.65rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: #fff;
+  text-transform: none;
+}
+
+.nri-fest-vip-head h2 em {
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(135deg, #f0d39a 0%, #c99c56 50%, #a67b3a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.nri-fest-vip-head > p {
+  margin: 0 auto;
+  max-width: 36rem;
+  font-size: clamp(0.88rem, 1.3vw, 0.98rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.nri-fest-vip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2.5vw, 1.6rem);
+  align-items: stretch;
+}
+
+.nri-fest-vip-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(1.35rem, 2.8vw, 1.85rem) clamp(1.1rem, 2.4vw, 1.6rem) 1.5rem;
+  border-radius: 22px;
+  border: 1px solid rgba(201, 156, 86, 0.28);
+  background:
+    linear-gradient(165deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.015)),
+    rgba(10, 14, 22, 0.85);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.nri-fest-vip-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: linear-gradient(125deg, transparent 40%, rgba(201, 156, 86, 0.08) 50%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.nri-fest-vip-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 156, 86, 0.55);
+  box-shadow:
+    0 32px 70px rgba(0, 0, 0, 0.42),
+    0 0 40px rgba(201, 156, 86, 0.12);
+}
+
+.nri-fest-vip-card:hover::before {
+  opacity: 1;
+}
+
+.nri-fest-vip-card-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 1rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--vip-gold);
+}
+
+.nri-fest-vip-card-label i {
+  width: 5px;
+  height: 5px;
+  transform: rotate(45deg);
+  background: var(--vip-gold);
+  box-shadow: 0 0 10px rgba(201, 156, 86, 0.65);
+}
+
+.nri-fest-vip-invite-stage {
+  position: relative;
+  width: min(100%, 280px);
+  margin: 0 auto 1rem;
+}
+
+.nri-fest-vip-invite-glow {
+  position: absolute;
+  inset: 8% 6%;
+  border-radius: 18px;
+  background: radial-gradient(circle, rgba(201, 156, 86, 0.45), transparent 70%);
+  filter: blur(18px);
+  animation: nri-fest-vip-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes nri-fest-vip-pulse {
+  0%, 100% { opacity: 0.45; transform: scale(0.96); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.nri-fest-vip-invite-frame {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 156, 86, 0.45);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  background: #f4ebe0;
+  transform: rotate(-1.5deg);
+  transition: transform 0.4s ease;
+}
+
+.nri-fest-vip-card--invite:hover .nri-fest-vip-invite-frame {
+  transform: rotate(0deg) scale(1.02);
+}
+
+.nri-fest-vip-invite-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.nri-fest-vip-card-note {
+  margin: 0;
+  max-width: 22rem;
+  text-align: center;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.nri-fest-vip-pass-title {
+  margin: 0 0 1.1rem;
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+}
+
+.nri-fest-vip-pass {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 88px;
+  width: 100%;
+  max-width: 420px;
+  min-height: 168px;
+  margin: 0 auto 1.15rem;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 156, 86, 0.55);
+  background:
+    linear-gradient(135deg, rgba(201, 156, 86, 0.12), transparent 40%),
+    linear-gradient(160deg, #121824 0%, #0a0f18 100%);
+  box-shadow:
+    0 16px 36px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.nri-fest-vip-pass-shine {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.14) 48%, transparent 62%);
+  transform: translateX(-120%);
+  animation: nri-fest-vip-shine 4.5s ease-in-out infinite;
+}
+
+@keyframes nri-fest-vip-shine {
+  0%, 55% { transform: translateX(-120%); }
+  80%, 100% { transform: translateX(120%); }
+}
+
+.nri-fest-vip-pass-spine {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.55rem;
-  margin-bottom: 0.85rem;
+  background: linear-gradient(180deg, #e2c48a, #c99c56 50%, #9a7438);
+  color: #1a1408;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.28em;
 }
 
-.nri-fest-unmissable-rule span {
-  width: min(120px, 22vw);
+.nri-fest-vip-pass-main {
+  position: relative;
+  padding: 0.85rem 0.9rem 0.75rem;
+  border-right: 1px dashed rgba(201, 156, 86, 0.4);
+}
+
+.nri-fest-vip-pass-brand strong {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.nri-fest-vip-pass-brand em {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--vip-gold-soft);
+  line-height: 1.15;
+}
+
+.nri-fest-vip-pass-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45rem 0.7rem;
+  margin-top: 0.7rem;
+}
+
+.nri-fest-vip-pass-fields span {
+  display: block;
+  font-size: 0.55rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.nri-fest-vip-pass-fields strong {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nri-fest-vip-pass-seal {
+  position: absolute;
+  top: 0.65rem;
+  right: 0.65rem;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid rgba(201, 156, 86, 0.65);
+  background: radial-gradient(circle at 35% 30%, #f0d39a, #c99c56 60%, #8a6428);
+  color: #1a1408;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  box-shadow: 0 4px 12px rgba(201, 156, 86, 0.35);
+}
+
+.nri-fest-vip-pass-stub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.65rem 0.45rem;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(201, 156, 86, 0.18), transparent 60%),
+    #0d121c;
+}
+
+.nri-fest-vip-pass-stub-tag {
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 156, 86, 0.45);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--vip-gold);
+}
+
+.nri-fest-vip-pass-stub strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.nri-fest-vip-pass-stub span:not(.nri-fest-vip-pass-stub-tag) {
+  font-size: 0.58rem;
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.nri-fest-vip-perks {
+  list-style: none;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.nri-fest-vip-perks li {
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.68rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.nri-fest-vip-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  width: 100%;
+  max-width: 320px;
+  margin-top: auto;
+  padding: 0.95rem 1.4rem;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #f0d39a 0%, #c99c56 48%, #a67b3a 100%);
+  color: #1a1408;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow:
+    0 12px 28px rgba(201, 156, 86, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.nri-fest-vip-cta:hover {
+  transform: translateY(-2px) scale(1.02);
+  filter: brightness(1.05);
+  box-shadow:
+    0 16px 36px rgba(201, 156, 86, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.nri-fest-vip-cta span {
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.nri-fest-vip-cta:hover span {
+  transform: translateX(3px);
+}
+
+@media (max-width: 900px) {
+  .nri-fest-vip-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .nri-fest-vip-pass {
+    grid-template-columns: 36px minmax(0, 1fr) 78px;
+    min-height: 152px;
+  }
+}
+
+@media (max-width: 520px) {
+  .nri-fest-vip-pass {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+
+  .nri-fest-vip-pass-spine {
+    writing-mode: horizontal-tb;
+    transform: none;
+    padding: 0.45rem;
+    letter-spacing: 0.2em;
+  }
+
+  .nri-fest-vip-pass-main {
+    border-right: none;
+    border-bottom: 1px dashed rgba(201, 156, 86, 0.4);
+  }
+
+  .nri-fest-vip-pass-stub {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.7rem;
+    padding: 0.7rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nri-fest-vip-orb--gold,
+  .nri-fest-vip-orb--blue,
+  .nri-fest-vip-invite-glow,
+  .nri-fest-vip-pass-shine {
+    animation: none;
+  }
+}
+
+/* Past India Property Expos — light legacy gallery */
+.nri-fest-past-expos {
+  --fest-gold: #c99c56;
+  position: relative;
+  padding: clamp(2.5rem, 4.5vw, 3.5rem) 0 clamp(3rem, 5.5vw, 4.5rem);
+  overflow: hidden;
+  color: #1a2744;
+  text-align: center;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(201, 156, 86, 0.14) 0%, transparent 58%),
+    radial-gradient(ellipse 40% 40% at 100% 85%, rgba(26, 39, 68, 0.05) 0%, transparent 55%),
+    linear-gradient(165deg, #f7f4ef 0%, #efe8dc 52%, #f7f4ef 100%);
+}
+
+.nri-fest-past-expos-art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.nri-fest-past-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+.nri-fest-past-orb--gold {
+  width: min(420px, 55vw);
+  height: min(420px, 55vw);
+  top: -12%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(201, 156, 86, 0.22) 0%, transparent 68%);
+  animation: nri-fest-past-drift 14s ease-in-out infinite alternate;
+}
+
+.nri-fest-past-orb--navy {
+  width: min(380px, 50vw);
+  height: min(380px, 50vw);
+  bottom: -18%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(26, 39, 68, 0.1) 0%, transparent 70%);
+  animation: nri-fest-past-drift 16s ease-in-out infinite alternate-reverse;
+}
+
+.nri-fest-past-arc {
+  position: absolute;
+  top: 48%;
+  width: min(46vw, 480px);
+  height: min(72vh, 560px);
+  border-radius: 50%;
+  transform: translateY(-50%);
+  border: 1px solid transparent;
+}
+
+.nri-fest-past-arc--left {
+  left: -18%;
+  border-right-color: rgba(201, 156, 86, 0.35);
+  border-top-color: rgba(201, 156, 86, 0.12);
+}
+
+.nri-fest-past-arc--right {
+  right: -18%;
+  border-left-color: rgba(201, 156, 86, 0.35);
+  border-bottom-color: rgba(201, 156, 86, 0.12);
+}
+
+.nri-fest-past-watermark {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -50%);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(5rem, 18vw, 12rem);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: rgba(26, 39, 68, 0.045);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.nri-fest-past-route {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 58%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 156, 86, 0.45), transparent);
+  opacity: 0.7;
+}
+
+.nri-fest-past-route::before,
+.nri-fest-past-route::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c99c56;
+  box-shadow: 0 0 12px rgba(201, 156, 86, 0.7);
+  transform: translateY(-50%);
+}
+
+.nri-fest-past-route::before { left: 18%; }
+.nri-fest-past-route::after { right: 18%; }
+
+@keyframes nri-fest-past-drift {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-18px, 14px) scale(1.08); }
+}
+
+.nri-fest-past-expos-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.nri-fest-past-expos-head {
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+}
+
+.nri-fest-past-expos-rule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-bottom: 0.45rem;
+}
+
+.nri-fest-past-expos-rule span {
+  width: min(64px, 14vw);
   height: 1px;
   background: linear-gradient(90deg, transparent, #c99c56, transparent);
 }
 
-.nri-fest-unmissable-rule i {
-  width: 7px;
-  height: 7px;
-  transform: rotate(45deg);
+.nri-fest-past-expos-rule i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
   background: #c99c56;
+  box-shadow: 0 0 10px rgba(201, 156, 86, 0.7);
 }
 
-.nri-fest-unmissable-head h2 {
-  margin: 0;
-  font-family: "Outfit", system-ui, sans-serif;
-  font-size: clamp(0.95rem, 2vw, 1.2rem);
+.nri-fest-past-expos-eyebrow {
+  display: block;
+  margin: 0 0 0.35rem;
+  font-size: 0.65rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: var(--fest-gold);
 }
 
-.nri-fest-unmissable-panel {
+.nri-fest-past-expos-head h2 {
+  margin: 0 0 0.4rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.55rem, 3.2vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: #1a2744;
+  line-height: 1.15;
+}
+
+.nri-fest-past-expos-head h2 em {
+  display: inline;
+  font-style: italic;
+  font-weight: 500;
+  background: linear-gradient(135deg, #d4b07a 0%, #c99c56 48%, #a67b3a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.nri-fest-past-expos-head > p {
+  margin: 0 auto 0.75rem;
+  max-width: 32rem;
+  font-size: clamp(0.82rem, 1.2vw, 0.92rem);
+  line-height: 1.45;
+  color: #5c6678;
+}
+
+.nri-fest-past-regions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.nri-fest-past-regions li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(26, 39, 68, 0.1);
+  background: rgba(255, 255, 255, 0.72);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1a2744;
+  box-shadow: 0 4px 14px rgba(26, 39, 68, 0.06);
+}
+
+.nri-fest-past-regions img {
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(26, 39, 68, 0.1);
+}
+
+.nri-fest-past-expos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(0.9rem, 2vw, 1.35rem);
+  margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  align-items: end;
+}
+
+.nri-fest-expo-card {
   position: relative;
-  padding: clamp(1.75rem, 3.5vw, 2.5rem) clamp(1.15rem, 3vw, 2rem) 1.25rem;
-  background: #0f2748;
-  border: 2px solid #c99c56;
-  border-radius: 10px;
-  box-shadow: 0 18px 48px rgba(15, 39, 72, 0.2);
+  aspect-ratio: 3 / 4.2;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #121821;
+  isolation: isolate;
+  box-shadow:
+    0 18px 40px rgba(26, 39, 68, 0.14),
+    0 0 0 1px rgba(26, 39, 68, 0.08);
+  transform: translateY(calc(var(--i, 0) * 12px));
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
 }
 
-.nri-fest-unmissable-corner {
+.nri-fest-expo-card:nth-child(even) {
+  transform: translateY(calc(var(--i, 0) * -4px - 18px));
+}
+
+.nri-fest-expo-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  z-index: 2;
+  box-shadow:
+    0 28px 56px rgba(26, 39, 68, 0.2),
+    0 0 0 1px rgba(201, 156, 86, 0.45),
+    0 0 32px rgba(201, 156, 86, 0.14);
+}
+
+.nri-fest-expo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1), filter 0.45s ease;
+  filter: saturate(1.05) contrast(1.02);
+}
+
+.nri-fest-expo-card:hover img {
+  transform: scale(1.08);
+  filter: saturate(1.12) contrast(1.05);
+}
+
+.nri-fest-expo-index {
   position: absolute;
-  width: 28px;
-  height: 28px;
+  top: 0.85rem;
+  left: 0.9rem;
+  z-index: 3;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.55);
+  text-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nri-fest-expo-card:hover .nri-fest-expo-index {
+  color: #e2c48a;
+  transform: translateY(-2px);
+}
+
+.nri-fest-expo-card-frame {
+  position: absolute;
+  inset: 10px;
+  z-index: 2;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  pointer-events: none;
+  opacity: 0.55;
+  transition: opacity 0.35s ease, border-color 0.35s ease;
+}
+
+.nri-fest-expo-card:hover .nri-fest-expo-card-frame {
+  opacity: 1;
+  border-color: rgba(201, 156, 86, 0.55);
+}
+
+.nri-fest-expo-card-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(to top, rgba(5, 8, 14, 0.96) 0%, rgba(5, 8, 14, 0.62) 32%, rgba(5, 8, 14, 0.1) 58%, transparent 78%),
+    linear-gradient(135deg, rgba(201, 156, 86, 0.12) 0%, transparent 40%);
   pointer-events: none;
 }
 
-.nri-fest-unmissable-corner::before,
-.nri-fest-unmissable-corner::after {
-  content: "";
+.nri-fest-expo-card-body {
   position: absolute;
-  background: #c99c56;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 1.15rem 1.05rem 1.2rem;
+  text-align: left;
+  transform: translateY(4px);
+  transition: transform 0.35s ease;
 }
 
-.nri-fest-unmissable-corner--tl { top: 8px; left: 8px; }
-.nri-fest-unmissable-corner--tr { top: 8px; right: 8px; }
-.nri-fest-unmissable-corner--bl { bottom: 8px; left: 8px; }
-.nri-fest-unmissable-corner--br { bottom: 8px; right: 8px; }
-
-.nri-fest-unmissable-corner--tl::before,
-.nri-fest-unmissable-corner--tr::before,
-.nri-fest-unmissable-corner--bl::before,
-.nri-fest-unmissable-corner--br::before {
-  width: 16px;
-  height: 2px;
+.nri-fest-expo-card:hover .nri-fest-expo-card-body {
+  transform: translateY(0);
 }
 
-.nri-fest-unmissable-corner--tl::after,
-.nri-fest-unmissable-corner--tr::after,
-.nri-fest-unmissable-corner--bl::after,
-.nri-fest-unmissable-corner--br::after {
-  width: 2px;
-  height: 16px;
+.nri-fest-expo-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 0.45rem;
+  padding: 0.3rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 156, 86, 0.8);
+  background: linear-gradient(135deg, rgba(20, 28, 42, 0.75), rgba(8, 12, 20, 0.55));
+  color: #e8c98a;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-.nri-fest-unmissable-corner--tl::before,
-.nri-fest-unmissable-corner--tl::after { top: 0; left: 0; }
-.nri-fest-unmissable-corner--tr::before,
-.nri-fest-unmissable-corner--tr::after { top: 0; right: 0; }
-.nri-fest-unmissable-corner--bl::before,
-.nri-fest-unmissable-corner--bl::after { bottom: 0; left: 0; }
-.nri-fest-unmissable-corner--br::before,
-.nri-fest-unmissable-corner--br::after { bottom: 0; right: 0; }
+.nri-fest-expo-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
 
-.nri-fest-unmissable-grid {
+.nri-fest-expo-meta img {
+  width: 18px;
+  height: 13px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.nri-fest-expo-card-body h3 {
+  margin: 0 0 0.2rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.65rem, 2.6vw, 2.15rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1;
+}
+
+.nri-fest-expo-card-body p {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.nri-fest-past-expos-foot {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 1.5rem 0.75rem;
+  gap: 1rem 1.35rem;
 }
 
-.nri-fest-unmissable-item {
+.nri-fest-past-next {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 0.7rem;
-  flex: 0 1 calc(16.666% - 0.75rem);
-  max-width: 170px;
-  min-width: 120px;
+  align-items: flex-start;
+  gap: 0.25rem;
+  padding: 0.85rem 1.2rem;
+  border-radius: 16px;
+  border: 1px solid rgba(201, 156, 86, 0.35);
+  background:
+    linear-gradient(135deg, rgba(201, 156, 86, 0.12), rgba(255, 255, 255, 0.85));
+  text-align: left;
+  box-shadow: 0 10px 28px rgba(26, 39, 68, 0.08);
 }
 
-.nri-fest-unmissable-icon {
+.nri-fest-past-next-label {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c99c56;
+}
+
+.nri-fest-past-next p {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 600;
+  color: #1a2744;
+  line-height: 1.2;
+}
+
+.nri-fest-past-next em {
+  display: block;
+  margin-top: 0.15rem;
+  font-family: "Outfit", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #5c6678;
+}
+
+.nri-fest-past-expos-cta {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 52px;
-  height: 52px;
+  gap: 0.45rem;
+  min-width: 220px;
+  padding: 0.9rem 1.55rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e2c48a 0%, #c99c56 55%, #b8894a 100%);
+  color: #111827;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 14px 32px rgba(201, 156, 86, 0.32);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.nri-fest-past-expos-cta svg {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.25s ease;
+}
+
+.nri-fest-past-expos-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 40px rgba(201, 156, 86, 0.42);
+}
+
+.nri-fest-past-expos-cta:hover svg {
+  transform: translateX(3px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nri-fest-past-orb--gold,
+  .nri-fest-past-orb--navy {
+    animation: none;
+  }
+
+  .nri-fest-expo-card,
+  .nri-fest-expo-card:nth-child(even) {
+    transform: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .nri-fest-past-expos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .nri-fest-expo-card,
+  .nri-fest-expo-card:nth-child(even) {
+    transform: none;
+  }
+
+  .nri-fest-past-arc,
+  .nri-fest-past-route {
+    opacity: 0.35;
+  }
+}
+
+@media (max-width: 560px) {
+  .nri-fest-past-expos-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 0.9rem;
+    padding-bottom: 0.4rem;
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nri-fest-expo-card {
+    flex: 0 0 min(74vw, 270px);
+    scroll-snap-align: start;
+    aspect-ratio: 3 / 4.05;
+  }
+
+  .nri-fest-past-watermark {
+    font-size: 22vw;
+  }
+
+  .nri-fest-past-expos-foot {
+    flex-direction: column;
+  }
+
+  .nri-fest-past-next {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nri-fest-past-expos-cta {
+    width: 100%;
+  }
+}
+
+/* Infinite Draggable Gallery (CodePen-style) */
+.nri-fest-drag {
+  --drag-gold: #c99c56;
+  --border-radius: 12px;
+  --hover-scale: 1.04;
+  position: relative;
+  background:
+    radial-gradient(ellipse 55% 35% at 50% 0%, rgba(201, 156, 86, 0.1), transparent 55%),
+    linear-gradient(180deg, #0a101c 0%, #121c2e 40%, #0a101c 100%);
   color: #fff;
+  padding: clamp(2.5rem, 5vw, 3.5rem) 0 0;
+  overflow: hidden;
+  border-top: 1px solid rgba(201, 156, 86, 0.2);
 }
 
-.nri-fest-unmissable-icon svg {
-  width: 42px;
-  height: 42px;
+.nri-fest-drag-head {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  pointer-events: none;
 }
 
-.nri-fest-unmissable-item p {
-  margin: 0;
-  max-width: 11rem;
-  font-size: 0.78rem;
-  line-height: 1.45;
+.nri-fest-drag-eyebrow {
+  display: block;
+  margin: 0 0 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--drag-gold);
+}
+
+.nri-fest-drag-head h2 {
+  margin: 0 0 0.4rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.7rem, 3.6vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.12;
+  color: #fff;
+  text-transform: none;
+}
+
+.nri-fest-drag-head h2 em {
+  font-style: italic;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--drag-gold);
 }
 
-.nri-fest-unmissable-note {
-  margin: 1.35rem 0 0;
-  text-align: right;
+.nri-fest-drag-head > p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.nri-fest-drag-viewport {
+  position: relative;
+  width: 100%;
+  height: min(78vh, 720px);
+  min-height: 480px;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  background:
+    radial-gradient(ellipse 50% 40% at 50% 40%, rgba(201, 156, 86, 0.08), transparent 60%),
+    #0a101c;
+}
+
+.nri-fest-drag-viewport.is-grabbing {
+  cursor: grabbing;
+}
+
+.nri-fest-drag-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.nri-fest-drag-item {
+  position: absolute;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  background: #151b28;
+  cursor: pointer;
+}
+
+.nri-fest-drag-item-media {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.nri-fest-drag-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+  transform: scale(1);
+}
+
+.nri-fest-drag-item:hover img {
+  transform: scale(var(--hover-scale));
+}
+
+.nri-fest-drag-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.nri-fest-drag-overlay.is-active {
+  pointer-events: auto;
+}
+
+.nri-fest-drag-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 1.1rem;
+  z-index: 6;
+  margin: 0;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.nri-fest-drag-viewport.has-moved .nri-fest-drag-hint {
+  opacity: 0;
+}
+
+.nri-fest-drag-expanded {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  z-index: 10004;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  cursor: zoom-out;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.nri-fest-drag-expanded img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .nri-fest-drag-viewport {
+    height: min(70vh, 560px);
+    min-height: 420px;
+  }
+}
+
+
+/* Upcoming Expos — month itinerary board */
+.nri-fest-upcoming {
+  --fest-gold: #c99c56;
+  position: relative;
+  padding: clamp(3.5rem, 6.5vw, 5.5rem) 0;
+  overflow: hidden;
+  scroll-margin-top: 96px;
+  background:
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(201, 156, 86, 0.1), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 100%, rgba(26, 39, 68, 0.05), transparent 50%),
+    linear-gradient(165deg, #f7f4ef 0%, #efe8dc 50%, #f7f4ef 100%);
+}
+
+.nri-fest-upcoming-glow {
+  position: absolute;
+  width: min(480px, 60vw);
+  height: min(480px, 60vw);
+  top: -18%;
+  right: -8%;
+  border-radius: 50%;
+  background: rgba(201, 156, 86, 0.14);
+  filter: blur(70px);
+  pointer-events: none;
+}
+
+.nri-fest-upcoming-inner {
+  position: relative;
+  z-index: 1;
+}
+
+.nri-fest-upcoming-head {
+  text-align: center;
+  margin-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.nri-fest-upcoming-eyebrow {
+  display: inline-block;
+  margin: 0 0 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fest-gold);
+}
+
+.nri-fest-upcoming-head h2 {
+  margin: 0 0 0.7rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 4.8vw, 3.5rem);
+  font-weight: 600;
+  color: #1a2744;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.nri-fest-upcoming-head h2 em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--fest-gold);
+}
+
+.nri-fest-upcoming-head p {
+  margin: 0 auto;
+  max-width: 38rem;
+  font-size: clamp(0.92rem, 1.5vw, 1.02rem);
+  line-height: 1.6;
+  color: #5c6678;
+}
+
+.nri-fest-upcoming-board {
+  border-radius: 24px;
+  border: 1px solid rgba(201, 156, 86, 0.28);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 252, 247, 0.96));
+  box-shadow:
+    0 28px 70px rgba(26, 39, 68, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  overflow: hidden;
+}
+
+.nri-fest-upcoming-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-bottom: 1px solid rgba(26, 39, 68, 0.08);
+  background: #10192b;
+}
+
+.nri-fest-upcoming-tab {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 1.05rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.nri-fest-upcoming-tab + .nri-fest-upcoming-tab {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nri-fest-upcoming-tab-month {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.nri-fest-upcoming-tab-count {
   font-size: 0.62rem;
-  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.nri-fest-upcoming-tab:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.nri-fest-upcoming-tab.is-active {
+  color: #1a2744;
+  background: linear-gradient(180deg, #e8c98a 0%, #c99c56 100%);
+}
+
+.nri-fest-upcoming-tab.is-active .nri-fest-upcoming-tab-count {
+  color: rgba(26, 39, 68, 0.7);
+}
+
+.nri-fest-upcoming-tab.is-active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -1px;
+  width: 14px;
+  height: 14px;
+  background: #c99c56;
+  transform: translate(-50%, 50%) rotate(45deg);
+  border-radius: 2px;
+}
+
+.nri-fest-upcoming-panels {
+  position: relative;
+  min-height: 244px;
+}
+
+.nri-fest-upcoming-panel {
+  display: none;
+  grid-template-columns: 88px minmax(0, 1fr);
+  gap: 0;
+  padding: clamp(1.15rem, 2.5vw, 1.6rem);
+  animation: nri-fest-upcoming-in 0.45s ease;
+}
+
+.nri-fest-upcoming-panel.is-active {
+  display: grid;
+}
+
+.nri-fest-upcoming-panel[hidden] {
+  display: none !important;
+}
+
+@keyframes nri-fest-upcoming-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nri-fest-upcoming-rail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  padding-top: 0.35rem;
+  color: #1a2744;
+}
+
+.nri-fest-upcoming-rail span {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 2.6rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  background: linear-gradient(180deg, #1a2744, #3a4d6e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.nri-fest-upcoming-rail em {
+  font-style: normal;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c99c56;
+}
+
+.nri-fest-upcoming-rail::after {
+  content: "";
+  width: 2px;
+  flex: 1;
+  min-height: 80px;
+  margin-top: 0.75rem;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #c99c56, transparent);
+}
+
+.nri-fest-upcoming-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.85rem;
+}
+
+.nri-fest-ticket {
+  position: relative;
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  min-height: 118px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(26, 39, 68, 0.08);
+  box-shadow: 0 10px 28px rgba(26, 39, 68, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.nri-fest-ticket::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 72px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #f7f3ec;
+  box-shadow: 0 0 0 1px rgba(26, 39, 68, 0.08);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.nri-fest-ticket--link {
+  cursor: pointer;
+}
+
+.nri-fest-ticket--link:hover {
+  transform: translateY(-4px);
+  border-color: rgba(201, 156, 86, 0.45);
+  box-shadow: 0 18px 36px rgba(26, 39, 68, 0.12);
+}
+
+.nri-fest-ticket--link:focus-visible {
+  outline: 2px solid #c99c56;
+  outline-offset: 3px;
+}
+
+/* Single expo detail page */
+.nri-expo-hero {
+  position: relative;
+  min-height: min(72vh, 620px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  color: #fff;
+  background: #0a101c;
+}
+
+.nri-expo-hero-media {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.04);
+}
+
+.nri-expo-hero-shade {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(100deg, rgba(8, 17, 31, 0.92) 0%, rgba(8, 17, 31, 0.72) 48%, rgba(8, 17, 31, 0.45) 100%),
+    linear-gradient(180deg, rgba(8, 17, 31, 0.2) 0%, rgba(8, 17, 31, 0.85) 100%);
+}
+
+.nri-expo-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding: clamp(4.5rem, 10vw, 6.5rem) 0 clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.nri-expo-back {
+  display: inline-flex;
+  margin-bottom: 1.1rem;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.nri-expo-back:hover {
+  color: #e2c48a;
+}
+
+.nri-expo-hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.nri-expo-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nri-expo-chip--gold {
+  border-color: rgba(201, 156, 86, 0.55);
+  background: rgba(201, 156, 86, 0.18);
+  color: #e2c48a;
+}
+
+.nri-expo-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.nri-expo-hero h1 {
+  margin: 0 0 0.25rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+
+.nri-expo-country {
+  margin: 0 0 1.35rem;
+  font-size: 1rem;
+  color: #e2c48a;
+}
+
+.nri-expo-hero-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, max-content));
+  gap: 1rem 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.nri-expo-hero-facts span {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: rgba(255, 255, 255, 0.55);
 }
 
+.nri-expo-hero-facts strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.nri-expo-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.nri-expo-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 160px;
+  padding: 0.85rem 1.35rem;
+  border-radius: 8px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.nri-expo-cta--primary {
+  background: linear-gradient(135deg, #e2c48a 0%, #c99c56 55%, #b8894a 100%);
+  color: #102033;
+  box-shadow: 0 12px 28px rgba(201, 156, 86, 0.3);
+}
+
+.nri-expo-cta--primary:hover {
+  transform: translateY(-2px);
+}
+
+.nri-expo-cta--ghost {
+  border: 1.5px solid rgba(201, 156, 86, 0.85);
+  color: #fff;
+}
+
+.nri-expo-cta--ghost:hover {
+  background: rgba(201, 156, 86, 0.12);
+}
+
+.nri-expo-body {
+  padding: clamp(2.75rem, 6vw, 4.5rem) 0;
+  background: #f7f4ef;
+}
+
+.nri-expo-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.75fr);
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: start;
+}
+
+.nri-expo-block-head {
+  margin-bottom: 1rem;
+}
+
+.nri-expo-block-head h2 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.5rem);
+  font-weight: 600;
+  color: #1a2744;
+  line-height: 1.15;
+}
+
+.nri-expo-block-head h2 em {
+  font-style: italic;
+  color: #c99c56;
+}
+
+.nri-expo-lead {
+  margin: 0 0 1.35rem;
+  max-width: 42rem;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #5c6678;
+}
+
+.nri-expo-highlights {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.nri-expo-highlights li {
+  position: relative;
+  padding: 0.95rem 1rem 0.95rem 2.4rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(26, 39, 68, 0.08);
+  color: #243046;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  box-shadow: 0 10px 24px rgba(26, 39, 68, 0.05);
+}
+
+.nri-expo-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 1rem;
+  top: 1.2rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #c99c56;
+  box-shadow: 0 0 0 4px rgba(201, 156, 86, 0.15);
+}
+
+.nri-expo-card {
+  padding: 1.35rem 1.25rem;
+  border-radius: 16px;
+  background: #fff;
+  border: 1px solid rgba(26, 39, 68, 0.08);
+  box-shadow: 0 14px 34px rgba(26, 39, 68, 0.07);
+}
+
+.nri-expo-card + .nri-expo-card {
+  margin-top: 1rem;
+}
+
+.nri-expo-card h3 {
+  margin: 0 0 1rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #1a2744;
+}
+
+.nri-expo-dl {
+  margin: 0 0 1.2rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.nri-expo-dl div {
+  display: grid;
+  grid-template-columns: 88px 1fr;
+  gap: 0.5rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(26, 39, 68, 0.08);
+}
+
+.nri-expo-dl dt {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8b93a3;
+}
+
+.nri-expo-dl dd {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #1a2744;
+}
+
+.nri-expo-side-cta {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background: #1a2744;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nri-expo-side-cta:hover {
+  background: #243656;
+}
+
+.nri-expo-card--soft {
+  background: linear-gradient(160deg, #fffdf8, #f3ebe0);
+}
+
+.nri-expo-card--soft p {
+  margin: 0 0 0.85rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: #5c6678;
+}
+
+.nri-expo-card--soft a {
+  color: #1a2744;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nri-expo-card--soft a:hover {
+  color: #c99c56;
+}
+
 @media (max-width: 900px) {
-  .nri-fest-unmissable-item {
-    flex: 0 1 calc(33.333% - 0.75rem);
+  .nri-expo-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .nri-expo-hero-facts {
+    grid-template-columns: 1fr;
+    gap: 0.85rem;
+  }
+}
+
+
+.nri-fest-ticket-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  padding: 0.75rem 0.4rem;
+  background:
+    linear-gradient(165deg, #1a2744 0%, #243552 100%);
+  color: #fff;
+  text-align: center;
+}
+
+.nri-fest-ticket-date strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.nri-fest-ticket-date span {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e2c48a;
+}
+
+.nri-fest-ticket-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 0.85rem 0.95rem 0.85rem 1.05rem;
+  text-align: left;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 10px,
+      rgba(201, 156, 86, 0.04) 10px,
+      rgba(201, 156, 86, 0.04) 11px
+    );
+}
+
+.nri-fest-ticket-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem;
+  margin-bottom: 0.15rem;
+}
+
+.nri-fest-ticket-region {
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.nri-fest-ticket-stamp {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.48rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 156, 86, 0.65);
+  color: #9a7134;
+  background: rgba(201, 156, 86, 0.12);
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nri-fest-ticket-body h3 {
+  margin: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-weight: 600;
+  color: #1a2744;
+  line-height: 1.1;
+}
+
+.nri-fest-ticket-body p {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #5c6678;
+  line-height: 1.35;
+}
+
+.nri-fest-ticket-city {
+  margin-top: 0.15rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #c99c56;
+}
+
+.nri-fest-ticket--exclusive {
+  border-color: rgba(201, 156, 86, 0.35);
+  box-shadow:
+    0 12px 30px rgba(201, 156, 86, 0.1),
+    0 0 0 1px rgba(201, 156, 86, 0.12);
+}
+
+.nri-fest-ticket--exclusive .nri-fest-ticket-date {
+  background: linear-gradient(165deg, #2a2116 0%, #1a2744 55%, #243552 100%);
+}
+
+.nri-fest-upcoming-note {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  padding: 1rem 1.25rem 1.2rem;
+  border-top: 1px dashed rgba(201, 156, 86, 0.35);
+  background: rgba(26, 39, 68, 0.03);
+}
+
+.nri-fest-upcoming-note p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #5c6678;
+}
+
+.nri-fest-upcoming-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.35rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #e2c48a 0%, #c99c56 55%, #b8894a 100%);
+  color: #111827;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(201, 156, 86, 0.28);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nri-fest-upcoming-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(201, 156, 86, 0.38);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nri-fest-upcoming-panel {
+    animation: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .nri-fest-upcoming-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .nri-fest-upcoming-panel.is-active {
+    grid-template-columns: 1fr;
+  }
+
+  .nri-fest-upcoming-rail {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 0.65rem;
+    padding: 0 0 0.35rem;
+  }
+
+  .nri-fest-upcoming-rail span {
+    font-size: 1.8rem;
+  }
+
+  .nri-fest-upcoming-rail::after {
+    display: none;
+  }
+
+  .nri-fest-upcoming-list {
+    grid-template-columns: 1fr;
+  }
+
+  .nri-fest-upcoming-tab-count {
+    display: none;
+  }
+
+  .nri-fest-upcoming-note {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .nri-fest-upcoming-cta {
+    width: 100%;
+  }
+}
+
+/* Countdown urgency band — compact */
+.nri-fest-countdown {
+  --fest-gold: #c99c56;
+  position: relative;
+  padding: 1.15rem 0;
+  overflow: hidden;
+  color: #fff;
+  background:
+    radial-gradient(ellipse 50% 120% at 85% 50%, rgba(201, 156, 86, 0.14), transparent 55%),
+    linear-gradient(90deg, #0a101c 0%, #121c2e 50%, #0a101c 100%);
+  border-top: 1px solid rgba(201, 156, 86, 0.28);
+  border-bottom: 1px solid rgba(201, 156, 86, 0.28);
+}
+
+.nri-fest-countdown-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) auto auto;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+.nri-fest-countdown-copy {
+  text-align: left;
+  min-width: 0;
+}
+
+.nri-fest-countdown-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0 0 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #c99c56;
+}
+
+.nri-fest-countdown-eyebrow i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c99c56;
+  box-shadow: 0 0 0 0 rgba(201, 156, 86, 0.5);
+  animation: nri-fest-countdown-pulse 1.8s ease-out infinite;
+}
+
+@keyframes nri-fest-countdown-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(201, 156, 86, 0.5); }
+  70% { box-shadow: 0 0 0 8px rgba(201, 156, 86, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(201, 156, 86, 0); }
+}
+
+.nri-fest-countdown-copy h2 {
+  margin: 0 0 0.25rem;
+  max-width: none;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.nri-fest-countdown-copy h2 em {
+  font-style: italic;
+  font-weight: 500;
+  color: #e2c48a;
+  background: none;
+  -webkit-text-fill-color: #e2c48a;
+}
+
+.nri-fest-countdown-lead {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.nri-fest-countdown-timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+  margin: 0;
+}
+
+.nri-fest-countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  min-width: 52px;
+  padding: 0.45rem 0.4rem 0.4rem;
+  border-radius: 10px;
+  border: 1px solid rgba(201, 156, 86, 0.35);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.nri-fest-countdown-value {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.35rem, 2.4vw, 1.75rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.nri-fest-countdown-label {
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c99c56;
+}
+
+.nri-fest-countdown-sep {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: rgba(201, 156, 86, 0.55);
+  margin: 0 0.1rem 0.65rem;
+  line-height: 1;
+}
+
+.nri-fest-countdown-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  min-width: 0;
+  padding: 0.72rem 1.15rem;
+  border-radius: 999px;
+  border: 1.5px solid rgba(201, 156, 86, 0.9);
+  background: linear-gradient(135deg, #e2c48a 0%, #c99c56 55%, #b8894a 100%);
+  color: #111827;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(201, 156, 86, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nri-fest-countdown-cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(201, 156, 86, 0.35);
+}
+
+.nri-fest-countdown.is-ended .nri-fest-countdown-lead {
+  color: #e2c48a;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nri-fest-countdown-eyebrow i {
+    animation: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .nri-fest-countdown-inner {
+    grid-template-columns: 1fr auto;
+    gap: 0.85rem 1rem;
+  }
+
+  .nri-fest-countdown-cta {
+    grid-column: 1 / -1;
+    justify-self: start;
   }
 }
 
 @media (max-width: 640px) {
-  .nri-fest-unmissable-item {
-    flex: 0 1 calc(50% - 0.75rem);
+  .nri-fest-countdown {
+    padding: 1rem 0;
   }
 
-  .nri-fest-unmissable-note {
-    text-align: left;
+  .nri-fest-countdown-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .nri-fest-countdown-copy {
+    text-align: center;
+  }
+
+  .nri-fest-countdown-timer {
+    justify-content: center;
+  }
+
+  .nri-fest-countdown-cta {
+    width: 100%;
+    justify-self: stretch;
   }
 }
 
@@ -13495,13 +15859,97 @@ main.projects-page--ref {
   gap: 0;
   width: 100%;
   max-width: none;
-  margin: 0 0 clamp(2rem, 4vw, 3rem);
+  margin: 0;
   overflow: hidden;
   border-radius: 14px;
   border: 1px solid rgba(26, 39, 68, 0.08);
   box-shadow:
     0 14px 36px rgba(26, 39, 68, 0.1),
     0 1px 0 rgba(201, 156, 86, 0.2) inset;
+}
+
+/* Register modal */
+.nri-fest-register-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+
+.nri-fest-register-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.nri-fest-register-modal[hidden] {
+  display: none !important;
+}
+
+.nri-fest-register-modal.is-open[hidden] {
+  display: flex !important;
+}
+
+.nri-fest-register-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 12, 20, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.nri-fest-register-modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(960px, 100%);
+  max-height: min(92vh, 900px);
+  overflow: auto;
+  border-radius: 18px;
+  transform: translateY(18px) scale(0.98);
+  transition: transform 0.3s ease;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.nri-fest-register-modal.is-open .nri-fest-register-modal-dialog {
+  transform: translateY(0) scale(1);
+}
+
+.nri-fest-register-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.85rem;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(201, 156, 86, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #1a2744;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(26, 39, 68, 0.12);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.nri-fest-register-modal-close:hover {
+  background: #c99c56;
+  color: #111827;
+  transform: scale(1.04);
+}
+
+.nri-fest-register-modal .nri-fest-register-stage {
+  margin: 0;
+}
+
+body.nri-fest-register-open {
+  overflow: hidden;
 }
 
 .nri-fest-register-aside {
@@ -13736,36 +16184,46 @@ main.projects-page--ref {
   margin: 0;
 }
 
+.nri-fest-page--expo .nri-fest-form-card .nri-enquire-submit.nri-fest-submit,
 .nri-fest-page--expo .nri-fest-submit {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
-  min-width: 160px;
-  min-height: 40px;
-  padding: 0.6rem 1.25rem;
+  gap: 0.35rem;
+  width: auto;
+  max-width: max-content;
+  min-width: 0;
+  min-height: 0;
+  height: auto;
+  padding: 0.55rem 1.1rem;
   border: none;
-  border-radius: 999px;
+  border-radius: 8px;
   background: linear-gradient(135deg, #d4b07a 0%, #c99c56 55%, #b8894a 100%);
   color: #1a2744;
   font-family: inherit;
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  box-shadow: 0 6px 18px rgba(201, 156, 86, 0.3);
+  line-height: 1.2;
+  box-shadow: 0 4px 14px rgba(201, 156, 86, 0.28);
   cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.nri-fest-page--expo .nri-fest-form-card .nri-enquire-submit.nri-fest-submit svg,
 .nri-fest-page--expo .nri-fest-submit svg {
-  width: 14px;
-  height: 14px;
+  width: 10px !important;
+  height: 10px !important;
+  max-width: 10px;
+  max-height: 10px;
+  flex-shrink: 0;
+  stroke-width: 2.25;
 }
 
 .nri-fest-page--expo .nri-fest-submit:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(201, 156, 86, 0.4);
+  box-shadow: 0 8px 18px rgba(201, 156, 86, 0.38);
 }
 
 .nri-fest-page--expo .nri-fest-feedback {
@@ -13838,12 +16296,24 @@ main.projects-page--ref {
     grid-template-columns: 1fr;
   }
 
+  .nri-fest-register-modal {
+    padding: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .nri-fest-register-modal-dialog {
+    max-height: calc(100vh - 1.5rem);
+    margin-top: 0.5rem;
+  }
+
   .nri-fest-form-grid {
     grid-template-columns: 1fr;
   }
 
+  .nri-fest-page--expo .nri-fest-form-card .nri-enquire-submit.nri-fest-submit,
   .nri-fest-page--expo .nri-fest-submit {
-    width: 100%;
+    width: auto;
+    max-width: max-content;
   }
 
 }

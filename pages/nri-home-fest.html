@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -63,7 +63,19 @@
     </div>
   </header>
   <main class="inner-main nri-page nri-page--creative nri-fest-page nri-fest-page--expo">
-    <section class="nri-fest-hero nri-fest-hero--center" aria-labelledby="nri-fest-hero-title">
+    <section class="nri-fest-hero nri-fest-hero--center" aria-labelledby="nri-fest-hero-title" data-hero-lights>
+      <div class="nri-fest-hero-bg" aria-hidden="true">
+        <div class="nri-fest-hero-mosaic" data-hero-mosaic></div>
+        <div class="nri-fest-hero-bg-shade"></div>
+        <div class="nri-fest-hero-lightshow">
+          <span class="nri-fest-hero-beam nri-fest-hero-beam--1"></span>
+          <span class="nri-fest-hero-beam nri-fest-hero-beam--2"></span>
+          <span class="nri-fest-hero-beam nri-fest-hero-beam--3"></span>
+          <span class="nri-fest-hero-glow nri-fest-hero-glow--gold"></span>
+          <span class="nri-fest-hero-glow nri-fest-hero-glow--cyan"></span>
+        </div>
+      </div>
+
       <div class="nri-fest-hero-stage" aria-hidden="true">
         <span class="nri-fest-hero-arc nri-fest-hero-arc--left"></span>
         <span class="nri-fest-hero-arc nri-fest-hero-arc--right"></span>
@@ -114,39 +126,24 @@
               <em>Jan &ndash; Mar 2026</em>
             </span>
           </div>
-          <div class="nri-fest-hero-pill">
+          <a href="#nri-fest-upcoming" class="nri-fest-hero-pill nri-fest-hero-pill--link" title="View upcoming expos">
             <span class="nri-fest-hero-pill-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"></circle><path d="M2 12h20"></path><path d="M12 2a15 15 0 0 1 0 20"></path><path d="M12 2a15 15 0 0 0 0 20"></path></svg>
             </span>
             <span>
               <strong>Global Expos</strong>
-              <em>UAE &middot; UK &middot; USA &middot; Canada &middot; Australia</em>
+              <em>View upcoming cities &rarr;</em>
             </span>
-          </div>
+          </a>
         </div>
 
         <div class="nri-fest-hero-ctas">
           <a href="#nri-fest-form" class="nri-fest-hero-cta nri-fest-hero-cta--primary">Register Now <span aria-hidden="true">&rarr;</span></a>
-          <a href="#nri-fest-why" class="nri-fest-hero-cta nri-fest-hero-cta--ghost nri-fest-hero-cta--play">
-            <span class="nri-fest-hero-play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 7.5v9l8-4.5-8-4.5z"/></svg>
-            </span>
-            Why Attend?
+          <a href="#nri-fest-upcoming" class="nri-fest-hero-cta nri-fest-hero-cta--ghost">
+            Upcoming Expos
+            <span aria-hidden="true">&darr;</span>
           </a>
         </div>
-      </div>
-    </section>
-
-    <section class="nri-creative-subnav-band" aria-label="NRI Corner navigation">
-      <div class="about-wrap nri-creative-subnav-panel">
-        <nav class="nri-subnav nri-subnav--creative" aria-label="NRI Corner">
-          <a href="nri-legal.html" data-page="nri-legal">Legal Information</a>
-          <a href="nri-loan.html" data-page="nri-loan">Loan for NRIs</a>
-          <a href="nri-faqs.html" data-page="nri-faqs">NRI FAQs</a>
-          <a href="international-offices.html" data-page="international-offices">International Offices</a>
-          <a href="nri-enquire.html" data-page="nri-enquire">Enquire Now</a>
-          <a href="nri-home-fest.html" data-page="nri-home-fest">NRI Home Fest</a>
-        </nav>
       </div>
     </section>
 
@@ -156,6 +153,12 @@
         <header class="nri-fest-block-head">
           <span class="nri-fest-eyebrow">Why Attend</span>
           <h2 id="nri-fest-why-title" class="nri-fest-block-title">Unmatched benefits. Expert guidance. Trusted worldwide.</h2>
+          <a href="#nri-fest-upcoming" class="nri-fest-jump-highlight">
+            <span class="nri-fest-jump-pulse" aria-hidden="true"></span>
+            <span class="nri-fest-jump-label">Q2 World Circuit</span>
+            <strong>Explore Upcoming Expos</strong>
+            <span class="nri-fest-jump-arrow" aria-hidden="true">&darr;</span>
+          </a>
         </header>
         <div class="nri-fest-why-grid">
           <article class="nri-fest-why-item">
@@ -190,282 +193,752 @@
       </div>
     </section>
 
-    <section class="nri-fest-unmissable" id="nri-fest-unmissable" aria-labelledby="nri-fest-unmissable-title">
-      <div class="about-wrap">
-        <header class="nri-fest-unmissable-head">
-          <div class="nri-fest-unmissable-rule" aria-hidden="true">
-            <span></span>
-            <i></i>
-            <span></span>
+    
+
+
+    <section class="nri-fest-countdown nri-fest-countdown--compact" id="nri-fest-countdown" aria-labelledby="nri-fest-countdown-title" data-countdown-to="2026-07-25T10:00:00+05:30">
+      <div class="about-wrap nri-fest-countdown-inner">
+        <div class="nri-fest-countdown-copy">
+          <span class="nri-fest-countdown-eyebrow"><i aria-hidden="true"></i> The Clock Is Ticking</span>
+          <h2 id="nri-fest-countdown-title">India&rsquo;s Biggest Real Estate Expo Is Coming to <em>Your City</em></h2>
+          <p class="nri-fest-countdown-lead">Only a few days left to secure your exclusive expo benefits.</p>
+        </div>
+        <div class="nri-fest-countdown-timer" role="timer" aria-live="polite" aria-atomic="true">
+          <div class="nri-fest-countdown-unit">
+            <span class="nri-fest-countdown-value" data-unit="days">00</span>
+            <span class="nri-fest-countdown-label">Days</span>
           </div>
-          <h2 id="nri-fest-unmissable-title">What Makes NRI Home Fest Truly Unmissable</h2>
+          <span class="nri-fest-countdown-sep" aria-hidden="true">:</span>
+          <div class="nri-fest-countdown-unit">
+            <span class="nri-fest-countdown-value" data-unit="hours">00</span>
+            <span class="nri-fest-countdown-label">Hours</span>
+          </div>
+          <span class="nri-fest-countdown-sep" aria-hidden="true">:</span>
+          <div class="nri-fest-countdown-unit">
+            <span class="nri-fest-countdown-value" data-unit="minutes">00</span>
+            <span class="nri-fest-countdown-label">Mins</span>
+          </div>
+          <span class="nri-fest-countdown-sep" aria-hidden="true">:</span>
+          <div class="nri-fest-countdown-unit">
+            <span class="nri-fest-countdown-value" data-unit="seconds">00</span>
+            <span class="nri-fest-countdown-label">Secs</span>
+          </div>
+        </div>
+        <a href="#nri-fest-form" class="nri-fest-countdown-cta">Register for VIP Pass</a>
+      </div>
+    </section>
+
+    <section class="nri-fest-upcoming" id="nri-fest-upcoming" aria-labelledby="nri-fest-upcoming-title">
+      <div class="nri-fest-upcoming-glow" aria-hidden="true"></div>
+      <div class="about-wrap nri-fest-upcoming-inner">
+        <header class="nri-fest-upcoming-head">
+          <span class="nri-fest-upcoming-eyebrow">Q2 World Circuit 2026</span>
+          <h2 id="nri-fest-upcoming-title">Upcoming <em>Expos</em></h2>
+          <p>Plan your city stop. Switch months to explore exclusive investor events and Godrej Property Expos worldwide.</p>
         </header>
 
-        <div class="nri-fest-unmissable-panel">
-          <div class="nri-fest-unmissable-corner nri-fest-unmissable-corner--tl" aria-hidden="true"></div>
-          <div class="nri-fest-unmissable-corner nri-fest-unmissable-corner--tr" aria-hidden="true"></div>
-          <div class="nri-fest-unmissable-corner nri-fest-unmissable-corner--bl" aria-hidden="true"></div>
-          <div class="nri-fest-unmissable-corner nri-fest-unmissable-corner--br" aria-hidden="true"></div>
-
-          <div class="nri-fest-unmissable-grid">
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 24c4-4 8-6 14-6s10 2 14 6"/><path d="M14 28c3 3 6 4 10 4s7-1 10-4"/><path d="M18 20c1.5-3 4-5 6-5s4.5 2 6 5"/><circle cx="18" cy="18" r="2"/><circle cx="30" cy="18" r="2"/></svg>
-              </span>
-              <p>Trusted brand with over 128 years of legacy</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 38V18l8-6 8 6v20"/><path d="M16 38V24h8v14"/><path d="M24 38V16l8-6 8 6v22"/><path d="M8 38h32"/></svg>
-              </span>
-              <p>India&rsquo;s No. 1 Real Estate Developer*</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M24 42s12-8 12-18a12 12 0 1 0-24 0c0 10 12 18 12 18z"/><path d="M18 22h4v8h-2v-4h-2v-4zm8 0h4l-2 8h-2l2-8z"/></svg>
-              </span>
-              <p>Presence across prime cities</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="26" r="10"/><path d="M24 18v16M20 22h7a3 3 0 0 1 0 6h-6a3 3 0 0 0 0 6h8"/><path d="M30 12l4-4 4 4M34 8v8"/></svg>
-              </span>
-              <p>Exclusive NRI benefits</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M10 22l14-10 14 10v16a2 2 0 0 1-2 2H12a2 2 0 0 1-2-2V22z"/><path d="M20 40V26h8v14"/><text x="24" y="24" text-anchor="middle" font-size="9" fill="currentColor" stroke="none" font-family="Arial, sans-serif">%</text></svg>
-              </span>
-              <p>Special Home Fest offers</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="10" y="14" width="22" height="22" rx="2"/><path d="M16 12v4M26 12v4M10 22h22"/><circle cx="34" cy="34" r="8"/><path d="M34 30v5l3 2"/></svg>
-              </span>
-              <p>Flexible payment plans</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 20h14l4 6v12H14V20z"/><path d="M18 20v-4a6 6 0 0 1 12 0v4"/><path d="M32 28l8 4v4l-4 2-4-2v-8z"/><path d="M28 18l6-4 2 3-6 4"/></svg>
-              </span>
-              <p>Diverse asset classes: Residential, Commercial, Retail &amp; Plots</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 28a10 10 0 0 1 20 0v4H12v-4z"/><path d="M16 28v-2a8 8 0 0 1 16 0v2"/><path d="M32 24c2 0 6 2 6 6v4h-4"/><circle cx="34" cy="18" r="3"/></svg>
-              </span>
-              <p>Dedicated Teams Delivering Support</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="24" cy="18" r="6"/><circle cx="12" cy="34" r="4"/><circle cx="24" cy="36" r="4"/><circle cx="36" cy="34" r="4"/><path d="M24 24v4M18 32l4 2M30 32l-4 2"/></svg>
-              </span>
-              <p>Hassle free booking process</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 12h14v24H14z"/><path d="M18 18h6M18 24h6M18 30h4"/><path d="M34 18l4-4 4 4M38 14v10M34 32l4 4 4-4M38 36V26"/></svg>
-              </span>
-              <p>Priority access</p>
-            </article>
-            <article class="nri-fest-unmissable-item">
-              <span class="nri-fest-unmissable-icon" aria-hidden="true">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 38l2-8 6-14 6 14 2 8H16z"/><path d="M18 30h12"/><path d="M24 16l2 4h4l-3 3 1 4-4-2-4 2 1-4-3-3h4l2-4z"/></svg>
-              </span>
-              <p>On spot benefits</p>
-            </article>
+        <div class="nri-fest-upcoming-board" data-upcoming-board>
+          <div class="nri-fest-upcoming-tabs" role="tablist" aria-label="Expo months">
+            <button type="button" class="nri-fest-upcoming-tab is-active" role="tab" id="upcoming-tab-july" aria-selected="true" aria-controls="upcoming-panel-july" data-month="july">
+              <span class="nri-fest-upcoming-tab-month">July</span>
+              <span class="nri-fest-upcoming-tab-count">03 stops</span>
+            </button>
+            <button type="button" class="nri-fest-upcoming-tab" role="tab" id="upcoming-tab-august" aria-selected="false" aria-controls="upcoming-panel-august" data-month="august">
+              <span class="nri-fest-upcoming-tab-month">August</span>
+              <span class="nri-fest-upcoming-tab-count">12 stops</span>
+            </button>
+            <button type="button" class="nri-fest-upcoming-tab" role="tab" id="upcoming-tab-september" aria-selected="false" aria-controls="upcoming-panel-september" data-month="september">
+              <span class="nri-fest-upcoming-tab-month">September</span>
+              <span class="nri-fest-upcoming-tab-count">10 stops</span>
+            </button>
           </div>
 
-          <p class="nri-fest-unmissable-note">*As per booking value achieved in FY 2023-24, reported until May 3, 2024.</p>
+          <div class="nri-fest-upcoming-panels">
+            <div class="nri-fest-upcoming-panel is-active" role="tabpanel" id="upcoming-panel-july" aria-labelledby="upcoming-tab-july" data-panel="july">
+              <aside class="nri-fest-upcoming-rail" aria-hidden="true">
+                <span>07</span>
+                <em>2026</em>
+              </aside>
+              <div class="nri-fest-upcoming-list">
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>18–19</strong><span>Jul</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Singapore</h3>
+                    <p>Investor Meetings</p>
+                    <span class="nri-fest-ticket-city">Singapore</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>25</strong><span>Jul</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">GCC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Dubai</h3>
+                    <p>Office Investor Event</p>
+                    <span class="nri-fest-ticket-city">UAE</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>25–26</strong><span>Jul</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Singapore</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Singapore</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="nri-fest-upcoming-panel" role="tabpanel" id="upcoming-panel-august" aria-labelledby="upcoming-tab-august" data-panel="august" hidden>
+              <aside class="nri-fest-upcoming-rail" aria-hidden="true">
+                <span>08</span>
+                <em>2026</em>
+              </aside>
+              <div class="nri-fest-upcoming-list">
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>8–9</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">APAC</span></div>
+                    <h3>Sydney</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Australia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>14–15</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Manama</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Bahrain</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>15–16</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">GCC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Dubai</h3>
+                    <p>Dubai Real Estate Expo — Sobha</p>
+                    <span class="nri-fest-ticket-city">UAE</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>15–16</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">APAC</span></div>
+                    <h3>Brisbane</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Australia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>21–22</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Doha</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Qatar</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Africa</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Lagos</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Nigeria</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">NA</span></div>
+                    <h3>Atlanta</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">NA</span></div>
+                    <h3>Vancouver</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Canada</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">APAC</span></div>
+                    <h3>Ho Chi Minh City</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Vietnam</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>29–30</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Europe</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Amsterdam</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Netherlands</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>29–30</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">NA</span></div>
+                    <h3>Chicago</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>29–30</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Jakarta</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Indonesia</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="nri-fest-upcoming-panel" role="tabpanel" id="upcoming-panel-september" aria-labelledby="upcoming-tab-september" data-panel="september" hidden>
+              <aside class="nri-fest-upcoming-rail" aria-hidden="true">
+                <span>09</span>
+                <em>2026</em>
+              </aside>
+              <div class="nri-fest-upcoming-list">
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>4–5</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Kuwait City</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Kuwait</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Europe</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Munich</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Germany</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Europe</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Frankfurt</h3>
+                    <p>Financial Hub Investor Networking</p>
+                    <span class="nri-fest-ticket-city">Germany</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Tokyo</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Japan</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">UK &amp; Ireland</span></div>
+                    <h3>Dublin</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Ireland</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>12–13</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">NA</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>New Jersey</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>12–13</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Kuala Lumpur</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Malaysia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>12–13</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">UK</span></div>
+                    <h3>London</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">United Kingdom</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>18–19</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Riyadh</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Saudi Arabia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>18–19</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">NA</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Austin</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <footer class="nri-fest-upcoming-note">
+            <p>Additional UK destinations TBA &mdash; Q2 FY 2026–27</p>
+            <a href="#nri-fest-form" class="nri-fest-upcoming-cta">Reserve Your Slot</a>
+          </footer>
         </div>
       </div>
     </section>
 
-    <section class="nri-page-body nri-fest-body">
-      <div class="about-wrap">
-        <div class="nri-fest-register-stage" id="nri-fest-form-stage">
-          <aside class="nri-fest-register-aside">
-            <span class="nri-fest-eyebrow">VIP Access</span>
-            <h2 class="nri-fest-block-title nri-fest-block-title--light">Register for exclusive access</h2>
-            <p>Book your consultation slot and unlock pre-launch pricing, portfolio walkthroughs and dedicated NRI managers.</p>
-            <ul class="nri-fest-register-perks">
-              <li>Priority VIP lounge entry</li>
-              <li>Project matching with experts</li>
-              <li>Loan &amp; legal desk on-site</li>
-            </ul>
-          </aside>
-          <div class="nri-fest-form-card">
-            <header class="nri-fest-form-head">
-              <span class="nri-fest-eyebrow">NRI Home Fest 2026</span>
-              <h2 class="nri-fest-section-title">Reserve Your Slot</h2>
-              <p class="nri-fest-form-lead">Share a few details and our team will confirm your VIP consultation.</p>
-            </header>
-            <form class="nri-enquire-form nri-fest-register nri-fest-register--pro" id="nri-fest-form" novalidate>
-              <div class="nri-fest-form-grid">
-                <label class="nri-fest-field">
-                  <span>First Name*</span>
-                  <input type="text" id="nri-fest-fname" required autocomplete="given-name" placeholder="Enter first name">
-                </label>
-                <label class="nri-fest-field">
-                  <span>Last Name*</span>
-                  <input type="text" id="nri-fest-lname" required autocomplete="family-name" placeholder="Enter last name">
-                </label>
-                <label class="nri-fest-field">
-                  <span>Email Id*</span>
-                  <input type="email" id="nri-fest-email" required autocomplete="email" placeholder="name@email.com">
-                </label>
-                <label class="nri-fest-field">
-                  <span>Mobile*</span>
-                  <div class="nri-enquire-phone nri-fest-phone">
-                    <div class="nri-enquire-country">
-                      <img src="https://flagcdn.com/w40/in.png" alt="India" width="22" height="16" id="nri-fest-flag" decoding="async">
-                      <span class="nri-enquire-country-dial" id="nri-fest-dial">+91</span>
-                      <select id="nri-fest-country-code" aria-label="Country code">
-                        <option value="+91" data-flag="in" selected>India (+91)</option>
-                        <option value="+971" data-flag="ae">UAE (+971)</option>
-                        <option value="+1" data-flag="us">USA (+1)</option>
-                        <option value="+44" data-flag="gb">UK (+44)</option>
-                        <option value="+65" data-flag="sg">Singapore (+65)</option>
-                        <option value="+61" data-flag="au">Australia (+61)</option>
-                        <option value="+974" data-flag="qa">Qatar (+974)</option>
-                        <option value="+965" data-flag="kw">Kuwait (+965)</option>
-                        <option value="+973" data-flag="bh">Bahrain (+973)</option>
-                        <option value="+966" data-flag="sa">Saudi Arabia (+966)</option>
-                        <option value="+81" data-flag="jp">Japan (+81)</option>
-                        <option value="+852" data-flag="hk">Hong Kong (+852)</option>
-                        <option value="+82" data-flag="kr">South Korea (+82)</option>
-                        <option value="+49" data-flag="de">Germany (+49)</option>
-                        <option value="+234" data-flag="ng">Nigeria (+234)</option>
-                        <option value="+1" data-flag="ca">Canada (+1)</option>
-                      </select>
-                    </div>
-                    <input type="tel" id="nri-fest-phone" required autocomplete="tel-national" placeholder="Mobile number">
+    
+
+    <section class="nri-fest-vip" id="nri-fest-vip" aria-labelledby="nri-fest-vip-title">
+      <div class="nri-fest-vip-art" aria-hidden="true">
+        <span class="nri-fest-vip-orb nri-fest-vip-orb--gold"></span>
+        <span class="nri-fest-vip-orb nri-fest-vip-orb--blue"></span>
+        <span class="nri-fest-vip-sparkles"></span>
+        <span class="nri-fest-vip-watermark">VIP</span>
+      </div>
+
+      <div class="about-wrap nri-fest-vip-inner">
+        <header class="nri-fest-vip-head">
+          <span class="nri-fest-vip-eyebrow">Exclusive Global Events</span>
+          <h2 id="nri-fest-vip-title">Get VIP Access to <em>Global Investment Expos</em></h2>
+          <p>Your private invitation and premium entry pass for India&rsquo;s most sought-after property showcases worldwide.</p>
+        </header>
+
+        <div class="nri-fest-vip-grid">
+          <article class="nri-fest-vip-card nri-fest-vip-card--invite">
+            <span class="nri-fest-vip-card-label"><i aria-hidden="true"></i> VIP Invitation <i aria-hidden="true"></i></span>
+            <div class="nri-fest-vip-invite-stage">
+              <div class="nri-fest-vip-invite-glow" aria-hidden="true"></div>
+              <div class="nri-fest-vip-invite-frame">
+                <img src="../images/past-expos/perth-invite.png" alt="Godrej Properties VIP invitation to India Property Expo" width="480" height="640" loading="lazy" decoding="async">
+              </div>
+            </div>
+            <p class="nri-fest-vip-card-note">Cordially inviting you to exclusive offers and high-potential Indian real estate opportunities.</p>
+          </article>
+
+          <article class="nri-fest-vip-card nri-fest-vip-card--pass">
+            <span class="nri-fest-vip-card-label"><i aria-hidden="true"></i> Premium Access <i aria-hidden="true"></i></span>
+            <h3 class="nri-fest-vip-pass-title">Exclusive VIP Entry</h3>
+
+            <div class="nri-fest-vip-pass" aria-hidden="true">
+              <div class="nri-fest-vip-pass-spine">
+                <span>VIP PASS</span>
+              </div>
+              <div class="nri-fest-vip-pass-main">
+                <div class="nri-fest-vip-pass-brand">
+                  <strong>Godrej Properties</strong>
+                  <em>India Property Expo</em>
+                </div>
+                <div class="nri-fest-vip-pass-fields">
+                  <div>
+                    <span>Date</span>
+                    <strong>2026 Circuit</strong>
                   </div>
-                </label>
-                <label class="nri-fest-field">
-                  <span>Residential Country*</span>
-                  <select id="nri-fest-res-country" required>
-                    <option value="" disabled selected>Select Country</option>
-                    <option value="UAE">United Arab Emirates</option>
-                    <option value="USA">United States</option>
-                    <option value="UK">United Kingdom</option>
-                    <option value="Singapore">Singapore</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Canada">Canada</option>
-                    <option value="Qatar">Qatar</option>
-                    <option value="Kuwait">Kuwait</option>
-                    <option value="Bahrain">Bahrain</option>
-                    <option value="Saudi Arabia">Saudi Arabia</option>
-                    <option value="Hong Kong">Hong Kong</option>
-                    <option value="Japan">Japan</option>
-                    <option value="South Korea">South Korea</option>
-                    <option value="Germany">Germany</option>
-                    <option value="Nigeria">Nigeria</option>
-                    <option value="Kenya">Kenya</option>
-                    <option value="Thailand">Thailand</option>
-                    <option value="Other">Other</option>
-                  </select>
-                </label>
-                <label class="nri-fest-field">
-                  <span>Preferred City in India*</span>
-                  <select id="nri-fest-city" required>
-                    <option value="" disabled selected>Select City</option>
-                    <option value="Mumbai">Mumbai</option>
-                    <option value="Pune">Pune</option>
-                    <option value="Bengaluru">Bengaluru</option>
-                    <option value="Hyderabad">Hyderabad</option>
-                    <option value="Gurugram">Gurugram</option>
-                    <option value="Noida">Noida</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Kolkata">Kolkata</option>
-                    <option value="Ahmedabad">Ahmedabad</option>
-                    <option value="Chennai">Chennai</option>
-                  </select>
-                </label>
-                <label class="nri-fest-field">
-                  <span>Select Project*</span>
-                  <select id="nri-fest-project" required>
-                    <option value="" disabled selected>Select Project</option>
-                    <option value="Crown Residences at Godrej Golf Links">Crown Residences at Godrej Golf Links</option>
-                    <option value="Godrej Astra">Godrej Astra</option>
-                    <option value="Godrej Vanantara">Godrej Vanantara</option>
-                    <option value="Godrej Meridien">Godrej Meridien</option>
-                    <option value="Godrej Altus">Godrej Altus</option>
-                    <option value="Godrej Aveline">Godrej Aveline</option>
-                    <option value="Godrej Ivara">Godrej Ivara</option>
-                    <option value="Godrej Horizon">Godrej Horizon</option>
-                    <option value="Godrej Parkshire">Godrej Parkshire</option>
-                    <option value="Godrej Connaught One">Godrej Connaught One</option>
-                    <option value="Godrej Regal Pavilion">Godrej Regal Pavilion</option>
-                    <option value="Godrej Arden">Godrej Arden</option>
-                    <option value="Godrej Vrikshya">Godrej Vrikshya</option>
-                    <option value="Godrej Rejuve">Godrej Rejuve</option>
-                    <option value="Godrej Blue">Godrej Blue</option>
-                    <option value="Godrej South Estate">Godrej South Estate</option>
-                    <option value="Godrej Tiara">Godrej Tiara</option>
-                    <option value="Godrej Exquisite">Godrej Exquisite</option>
-                  </select>
-                </label>
-                <label class="nri-fest-field">
-                  <span>Event Location*</span>
-                  <select id="nri-fest-event" required>
-                    <option value="" disabled selected>Select a city</option>
-                    <option value="Doha - 23rd &amp; 24th January">Doha &mdash; 23rd &amp; 24th January</option>
-                    <option value="Singapore - 24th &amp; 25th January">Singapore &mdash; 24th &amp; 25th January</option>
-                    <option value="Kuwait - 30th &amp; 31st January">Kuwait &mdash; 30th &amp; 31st January</option>
-                    <option value="Seoul - 31st January &amp; 1st February">Seoul &mdash; 31st January &amp; 1st February</option>
-                    <option value="Hong Kong - 31st January &amp; 1st February">Hong Kong &mdash; 31st January &amp; 1st February</option>
-                    <option value="Dubai - 7th &amp; 8th February">Dubai &mdash; 7th &amp; 8th February</option>
-                    <option value="Perth - 7th &amp; 8th February">Perth &mdash; 7th &amp; 8th February</option>
-                    <option value="Bahrain - 13th &amp; 14th February">Bahrain &mdash; 13th &amp; 14th February</option>
-                    <option value="Dammam - 13th &amp; 14th February">Dammam &mdash; 13th &amp; 14th February</option>
-                    <option value="Adelaide - 14th &amp; 15th February">Adelaide &mdash; 14th &amp; 15th February</option>
-                    <option value="Frisco - 14th &amp; 15th February">Frisco &mdash; 14th &amp; 15th February</option>
-                    <option value="Abu Dhabi - 21st &amp; 22nd February">Abu Dhabi &mdash; 21st &amp; 22nd February</option>
-                    <option value="Santa Clara - 21st &amp; 22nd February">Santa Clara &mdash; 21st &amp; 22nd February</option>
-                    <option value="London - 21st &amp; 22nd February">London &mdash; 21st &amp; 22nd February</option>
-                    <option value="Sydney - 21st &amp; 22nd February">Sydney &mdash; 21st &amp; 22nd February</option>
-                    <option value="Riyadh - 27th &amp; 28th February">Riyadh &mdash; 27th &amp; 28th February</option>
-                    <option value="Bangkok - 28th February &amp; 1st March">Bangkok &mdash; 28th February &amp; 1st March</option>
-                    <option value="Seattle - 28th February &amp; 1st March">Seattle &mdash; 28th February &amp; 1st March</option>
-                    <option value="Lagos - 28th February &amp; 1st March">Lagos &mdash; 28th February &amp; 1st March</option>
-                    <option value="Tokyo - 7th &amp; 8th March">Tokyo &mdash; 7th &amp; 8th March</option>
-                    <option value="Munich - 7th &amp; 8th March">Munich &mdash; 7th &amp; 8th March</option>
-                    <option value="Nairobi - 14th &amp; 15th March">Nairobi &mdash; 14th &amp; 15th March</option>
-                    <option value="Toronto - 14th &amp; 15th March">Toronto &mdash; 14th &amp; 15th March</option>
-                  </select>
-                </label>
+                  <div>
+                    <span>Access</span>
+                    <strong>VIP Lounge</strong>
+                  </div>
+                  <div>
+                    <span>Guest</span>
+                    <strong>Priority Holder</strong>
+                  </div>
+                  <div>
+                    <span>Manager</span>
+                    <strong>Dedicated NRI Desk</strong>
+                  </div>
+                </div>
+                <div class="nri-fest-vip-pass-seal">VIP</div>
               </div>
-              <label class="nri-fest-consent">
-                <input type="checkbox" id="nri-fest-consent">
-                <span>I agree and authorize to receive calls, SMS and emails with reference to my enquiry for Godrej Properties Ltd.</span>
-              </label>
-              <div class="nri-enquire-submit-wrap nri-fest-submit-wrap">
-                <button type="submit" class="nri-enquire-submit nri-fest-submit">
-                  Register Now
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-                </button>
+              <div class="nri-fest-vip-pass-stub">
+                <span class="nri-fest-vip-pass-stub-tag">ENTRY</span>
+                <strong>NRI Home Fest</strong>
+                <span>Venue &middot; Global Cities</span>
+                <span>Admit One</span>
               </div>
-              <p class="nri-fest-feedback" id="nri-fest-feedback" hidden></p>
-            </form>
+              <span class="nri-fest-vip-pass-shine"></span>
+            </div>
+
+            <ul class="nri-fest-vip-perks">
+              <li>Priority lounge entry</li>
+              <li>On-spot portfolio matching</li>
+              <li>Loan &amp; legal desk access</li>
+            </ul>
+
+            <a href="#nri-fest-form" class="nri-fest-vip-cta">
+              Download VIP Pass
+              <span aria-hidden="true">&rarr;</span>
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="nri-fest-past-expos" id="nri-fest-past-expos" aria-labelledby="nri-fest-past-expos-title">
+      <div class="nri-fest-past-expos-art" aria-hidden="true">
+        <span class="nri-fest-past-orb nri-fest-past-orb--gold"></span>
+        <span class="nri-fest-past-orb nri-fest-past-orb--navy"></span>
+        <span class="nri-fest-past-arc nri-fest-past-arc--left"></span>
+        <span class="nri-fest-past-arc nri-fest-past-arc--right"></span>
+        <span class="nri-fest-past-watermark">LEGACY</span>
+        <span class="nri-fest-past-route"></span>
+      </div>
+
+      <div class="about-wrap nri-fest-past-expos-inner">
+        <header class="nri-fest-past-expos-head">
+          <div class="nri-fest-past-expos-rule" aria-hidden="true">
+            <span></span><i></i><span></span>
           </div>
+          <span class="nri-fest-past-expos-eyebrow">Legacy Across Continents</span>
+          <h2 id="nri-fest-past-expos-title">
+            Past India
+            <em>Property Expos</em>
+          </h2>
+          <p>Successful NRI events across Australia, UAE, UK &amp; Nigeria.</p>
+          <ul class="nri-fest-past-regions" aria-label="Host regions">
+            <li><img src="https://flagcdn.com/w40/au.png" alt="" width="20" height="14" decoding="async"> Australia</li>
+            <li><img src="https://flagcdn.com/w40/ae.png" alt="" width="20" height="14" decoding="async"> UAE</li>
+            <li><img src="https://flagcdn.com/w40/gb.png" alt="" width="20" height="14" decoding="async"> UK</li>
+            <li><img src="https://flagcdn.com/w40/ng.png" alt="" width="20" height="14" decoding="async"> Nigeria</li>
+          </ul>
+        </header>
+
+        <div class="nri-fest-past-expos-grid">
+          <article class="nri-fest-expo-card" style="--i: 0">
+            <span class="nri-fest-expo-index" aria-hidden="true">01</span>
+            <img src="../images/past-expos/perth-invite.png" alt="India Property Expo in Perth, Australia" width="480" height="640" loading="lazy" decoding="async">
+            <div class="nri-fest-expo-card-shade" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-frame" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-body">
+              <span class="nri-fest-expo-badge">Completed</span>
+              <div class="nri-fest-expo-meta">
+                <img src="https://flagcdn.com/w40/au.png" alt="" width="22" height="16" decoding="async">
+                <span>Australia</span>
+              </div>
+              <h3>Perth</h3>
+              <p>16th &amp; 17th May 2026</p>
+            </div>
+          </article>
+
+          <article class="nri-fest-expo-card" style="--i: 1">
+            <span class="nri-fest-expo-index" aria-hidden="true">02</span>
+            <img src="../images/past-expos/dubai-invite.png" alt="India Property Expo in Dubai, UAE" width="480" height="640" loading="lazy" decoding="async">
+            <div class="nri-fest-expo-card-shade" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-frame" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-body">
+              <span class="nri-fest-expo-badge">Completed</span>
+              <div class="nri-fest-expo-meta">
+                <img src="https://flagcdn.com/w40/ae.png" alt="" width="22" height="16" decoding="async">
+                <span>UAE</span>
+              </div>
+              <h3>Dubai</h3>
+              <p>16th &amp; 17th May 2026</p>
+            </div>
+          </article>
+
+          <article class="nri-fest-expo-card" style="--i: 2">
+            <span class="nri-fest-expo-index" aria-hidden="true">03</span>
+            <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=900&amp;q=85" alt="India Property Expo in Leicester, United Kingdom" width="480" height="640" loading="lazy" decoding="async">
+            <div class="nri-fest-expo-card-shade" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-frame" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-body">
+              <span class="nri-fest-expo-badge">Completed</span>
+              <div class="nri-fest-expo-meta">
+                <img src="https://flagcdn.com/w40/gb.png" alt="" width="22" height="16" decoding="async">
+                <span>United Kingdom</span>
+              </div>
+              <h3>Leicester</h3>
+              <p>30th May 2026</p>
+            </div>
+          </article>
+
+          <article class="nri-fest-expo-card" style="--i: 3">
+            <span class="nri-fest-expo-index" aria-hidden="true">04</span>
+            <img src="https://images.unsplash.com/photo-1618828665011-0abd78f423b8?w=900&amp;q=85" alt="India Property Expo in Lagos, Nigeria" width="480" height="640" loading="lazy" decoding="async">
+            <div class="nri-fest-expo-card-shade" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-frame" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-body">
+              <span class="nri-fest-expo-badge">Completed</span>
+              <div class="nri-fest-expo-meta">
+                <img src="https://flagcdn.com/w40/ng.png" alt="" width="22" height="16" decoding="async">
+                <span>Nigeria</span>
+              </div>
+              <h3>Lagos</h3>
+              <p>6th &amp; 7th June 2026</p>
+            </div>
+          </article>
         </div>
 
-        <section class="nri-fest-showcase-wrap" id="nri-fest-showcase" aria-labelledby="nri-fest-cities-title">
-          <header class="nri-fest-block-head nri-fest-block-head--center">
-            <span class="nri-fest-eyebrow">Across India</span>
-            <h2 id="nri-fest-cities-title" class="nri-fest-block-title">India&rsquo;s Most Sought-After Developments</h2>
-            <p class="nri-fest-block-lead">Discover premium homes across India&rsquo;s finest cities.</p>
-          </header>
-          <div class="nri-fest-showcase nri-fest-showcase--map">
-            <div class="nri-fest-showcase-media nri-fest-showcase-media--map">
-              <img src="../images/IndiaMap.avif" alt="Map of India highlighting Godrej Properties cities across Mumbai, Pune, Bengaluru, Hyderabad, Gurugram, Noida and Kolkata" width="1200" height="700" loading="lazy" decoding="async">
-            </div>
+        <div class="nri-fest-past-expos-foot">
+          <div class="nri-fest-past-next">
+            <span class="nri-fest-past-next-label">Next Destination</span>
+            <p>Singapore <em>18th &amp; 19th July 2026</em></p>
           </div>
-        </section>
+          <a href="#nri-fest-form" class="nri-fest-past-expos-cta">
+            Join Upcoming Expo
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="nri-fest-drag" id="nri-fest-drag" aria-labelledby="nri-fest-drag-title" data-drag-gallery>
+      <div class="nri-fest-drag-head about-wrap">
+        <span class="nri-fest-drag-eyebrow">Infinite Gallery</span>
+        <h2 id="nri-fest-drag-title">Drag through <em>expo memories</em></h2>
+        <p>Click and drag in any direction. Click an image to expand.</p>
+      </div>
+
+      <div class="nri-fest-drag-viewport" id="nri-fest-drag-viewport">
+        <div class="nri-fest-drag-canvas" id="nri-fest-drag-canvas"></div>
+        <div class="nri-fest-drag-overlay" id="nri-fest-drag-overlay"></div>
+        <p class="nri-fest-drag-hint" aria-hidden="true">Drag to explore</p>
       </div>
     </section>
   </main>
+
+  <div class="nri-fest-register-modal" id="nri-fest-register-modal" hidden aria-hidden="true">
+    <div class="nri-fest-register-modal-backdrop" data-close-register tabindex="-1"></div>
+    <div class="nri-fest-register-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="nri-fest-register-dialog-title">
+      <button type="button" class="nri-fest-register-modal-close" data-close-register aria-label="Close registration">&times;</button>
+      <div class="nri-fest-register-stage" id="nri-fest-form-stage">
+        <aside class="nri-fest-register-aside">
+          <span class="nri-fest-eyebrow">VIP Access</span>
+          <h2 id="nri-fest-register-dialog-title" class="nri-fest-block-title nri-fest-block-title--light">Register for exclusive access</h2>
+          <p>Book your consultation slot and unlock pre-launch pricing, portfolio walkthroughs and dedicated NRI managers.</p>
+          <ul class="nri-fest-register-perks">
+            <li>Priority VIP lounge entry</li>
+            <li>Project matching with experts</li>
+            <li>Loan &amp; legal desk on-site</li>
+          </ul>
+        </aside>
+        <div class="nri-fest-form-card">
+          <header class="nri-fest-form-head">
+            <h2 class="nri-fest-section-title">Reserve Your Slot</h2>
+            <p class="nri-fest-form-lead">Share a few details and our team will confirm your VIP consultation.</p>
+          </header>
+          <form class="nri-enquire-form nri-fest-register nri-fest-register--pro" id="nri-fest-form" novalidate>
+            <div class="nri-fest-form-grid">
+              <label class="nri-fest-field">
+                <span>First Name*</span>
+                <input type="text" id="nri-fest-fname" required autocomplete="given-name" placeholder="Enter first name">
+              </label>
+              <label class="nri-fest-field">
+                <span>Last Name*</span>
+                <input type="text" id="nri-fest-lname" required autocomplete="family-name" placeholder="Enter last name">
+              </label>
+              <label class="nri-fest-field">
+                <span>Email Id*</span>
+                <input type="email" id="nri-fest-email" required autocomplete="email" placeholder="name@email.com">
+              </label>
+              <label class="nri-fest-field">
+                <span>Mobile*</span>
+                <div class="nri-enquire-phone nri-fest-phone">
+                  <div class="nri-enquire-country">
+                    <img src="https://flagcdn.com/w40/in.png" alt="India" width="22" height="16" id="nri-fest-flag" decoding="async">
+                    <span class="nri-enquire-country-dial" id="nri-fest-dial">+91</span>
+                    <select id="nri-fest-country-code" aria-label="Country code">
+                      <option value="+91" data-flag="in" selected>India (+91)</option>
+                      <option value="+971" data-flag="ae">UAE (+971)</option>
+                      <option value="+1" data-flag="us">USA (+1)</option>
+                      <option value="+44" data-flag="gb">UK (+44)</option>
+                      <option value="+65" data-flag="sg">Singapore (+65)</option>
+                      <option value="+61" data-flag="au">Australia (+61)</option>
+                      <option value="+974" data-flag="qa">Qatar (+974)</option>
+                      <option value="+965" data-flag="kw">Kuwait (+965)</option>
+                      <option value="+973" data-flag="bh">Bahrain (+973)</option>
+                      <option value="+966" data-flag="sa">Saudi Arabia (+966)</option>
+                      <option value="+81" data-flag="jp">Japan (+81)</option>
+                      <option value="+852" data-flag="hk">Hong Kong (+852)</option>
+                      <option value="+82" data-flag="kr">South Korea (+82)</option>
+                      <option value="+49" data-flag="de">Germany (+49)</option>
+                      <option value="+234" data-flag="ng">Nigeria (+234)</option>
+                      <option value="+1" data-flag="ca">Canada (+1)</option>
+                    </select>
+                  </div>
+                  <input type="tel" id="nri-fest-phone" required autocomplete="tel-national" placeholder="Mobile number">
+                </div>
+              </label>
+              <label class="nri-fest-field">
+                <span>Residential Country*</span>
+                <select id="nri-fest-res-country" required>
+                  <option value="" disabled selected>Select Country</option>
+                  <option value="UAE">United Arab Emirates</option>
+                  <option value="USA">United States</option>
+                  <option value="UK">United Kingdom</option>
+                  <option value="Singapore">Singapore</option>
+                  <option value="Australia">Australia</option>
+                  <option value="Canada">Canada</option>
+                  <option value="Qatar">Qatar</option>
+                  <option value="Kuwait">Kuwait</option>
+                  <option value="Bahrain">Bahrain</option>
+                  <option value="Saudi Arabia">Saudi Arabia</option>
+                  <option value="Hong Kong">Hong Kong</option>
+                  <option value="Japan">Japan</option>
+                  <option value="South Korea">South Korea</option>
+                  <option value="Germany">Germany</option>
+                  <option value="Nigeria">Nigeria</option>
+                  <option value="Kenya">Kenya</option>
+                  <option value="Thailand">Thailand</option>
+                  <option value="Other">Other</option>
+                </select>
+              </label>
+              <label class="nri-fest-field">
+                <span>Preferred City in India*</span>
+                <select id="nri-fest-city" required>
+                  <option value="" disabled selected>Select City</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Pune">Pune</option>
+                  <option value="Bengaluru">Bengaluru</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Gurugram">Gurugram</option>
+                  <option value="Noida">Noida</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Kolkata">Kolkata</option>
+                  <option value="Ahmedabad">Ahmedabad</option>
+                  <option value="Chennai">Chennai</option>
+                </select>
+              </label>
+              <label class="nri-fest-field">
+                <span>Select Project*</span>
+                <select id="nri-fest-project" required>
+                  <option value="" disabled selected>Select Project</option>
+                  <option value="Crown Residences at Godrej Golf Links">Crown Residences at Godrej Golf Links</option>
+                  <option value="Godrej Astra">Godrej Astra</option>
+                  <option value="Godrej Vanantara">Godrej Vanantara</option>
+                  <option value="Godrej Meridien">Godrej Meridien</option>
+                  <option value="Godrej Altus">Godrej Altus</option>
+                  <option value="Godrej Aveline">Godrej Aveline</option>
+                  <option value="Godrej Ivara">Godrej Ivara</option>
+                  <option value="Godrej Horizon">Godrej Horizon</option>
+                  <option value="Godrej Parkshire">Godrej Parkshire</option>
+                  <option value="Godrej Connaught One">Godrej Connaught One</option>
+                  <option value="Godrej Regal Pavilion">Godrej Regal Pavilion</option>
+                  <option value="Godrej Arden">Godrej Arden</option>
+                  <option value="Godrej Vrikshya">Godrej Vrikshya</option>
+                  <option value="Godrej Rejuve">Godrej Rejuve</option>
+                  <option value="Godrej Blue">Godrej Blue</option>
+                  <option value="Godrej South Estate">Godrej South Estate</option>
+                  <option value="Godrej Tiara">Godrej Tiara</option>
+                  <option value="Godrej Exquisite">Godrej Exquisite</option>
+                </select>
+              </label>
+              <label class="nri-fest-field">
+                <span>Event Location*</span>
+                <select id="nri-fest-event" required>
+                  <option value="" disabled selected>Select a city</option>
+                  <option value="Doha - 23rd &amp; 24th January">Doha &mdash; 23rd &amp; 24th January</option>
+                  <option value="Singapore - 24th &amp; 25th January">Singapore &mdash; 24th &amp; 25th January</option>
+                  <option value="Kuwait - 30th &amp; 31st January">Kuwait &mdash; 30th &amp; 31st January</option>
+                  <option value="Seoul - 31st January &amp; 1st February">Seoul &mdash; 31st January &amp; 1st February</option>
+                  <option value="Hong Kong - 31st January &amp; 1st February">Hong Kong &mdash; 31st January &amp; 1st February</option>
+                  <option value="Dubai - 7th &amp; 8th February">Dubai &mdash; 7th &amp; 8th February</option>
+                  <option value="Perth - 7th &amp; 8th February">Perth &mdash; 7th &amp; 8th February</option>
+                  <option value="Bahrain - 13th &amp; 14th February">Bahrain &mdash; 13th &amp; 14th February</option>
+                  <option value="Dammam - 13th &amp; 14th February">Dammam &mdash; 13th &amp; 14th February</option>
+                  <option value="Adelaide - 14th &amp; 15th February">Adelaide &mdash; 14th &amp; 15th February</option>
+                  <option value="Frisco - 14th &amp; 15th February">Frisco &mdash; 14th &amp; 15th February</option>
+                  <option value="Abu Dhabi - 21st &amp; 22nd February">Abu Dhabi &mdash; 21st &amp; 22nd February</option>
+                  <option value="Santa Clara - 21st &amp; 22nd February">Santa Clara &mdash; 21st &amp; 22nd February</option>
+                  <option value="London - 21st &amp; 22nd February">London &mdash; 21st &amp; 22nd February</option>
+                  <option value="Sydney - 21st &amp; 22nd February">Sydney &mdash; 21st &amp; 22nd February</option>
+                  <option value="Riyadh - 27th &amp; 28th February">Riyadh &mdash; 27th &amp; 28th February</option>
+                  <option value="Bangkok - 28th February &amp; 1st March">Bangkok &mdash; 28th February &amp; 1st March</option>
+                  <option value="Seattle - 28th February &amp; 1st March">Seattle &mdash; 28th February &amp; 1st March</option>
+                  <option value="Lagos - 28th February &amp; 1st March">Lagos &mdash; 28th February &amp; 1st March</option>
+                  <option value="Tokyo - 7th &amp; 8th March">Tokyo &mdash; 7th &amp; 8th March</option>
+                  <option value="Munich - 7th &amp; 8th March">Munich &mdash; 7th &amp; 8th March</option>
+                  <option value="Nairobi - 14th &amp; 15th March">Nairobi &mdash; 14th &amp; 15th March</option>
+                  <option value="Toronto - 14th &amp; 15th March">Toronto &mdash; 14th &amp; 15th March</option>
+                </select>
+              </label>
+            </div>
+            <label class="nri-fest-consent">
+              <input type="checkbox" id="nri-fest-consent">
+              <span>I agree and authorize to receive calls, SMS and emails with reference to my enquiry for Godrej Properties Ltd.</span>
+            </label>
+            <div class="nri-enquire-submit-wrap nri-fest-submit-wrap">
+              <button type="submit" class="nri-enquire-submit nri-fest-submit">
+                Register Now
+                <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+              </button>
+            </div>
+            <p class="nri-fest-feedback" id="nri-fest-feedback" hidden></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="main-footer-section gpl-footer" id="contact">
     <div class="gpl-footer-body">
       <div class="footer-container">
@@ -562,6 +1035,13 @@
               </a>
             </div>
           </div>
+          <div class="gpl-footer-bar-meta">
+            <span class="gpl-footer-copy">Copyright &copy; 2026. Godrej Properties</span>
+            <nav class="gpl-footer-legal" aria-label="Legal links">
+<a href="#">Disclaimer</a>
+            <a href="#">Sitemap</a>
+          </nav>
+          </div>
         </div>
 
         <div class="gpl-footer-divider" aria-hidden="true">
@@ -570,22 +1050,6 @@
               <polyline points="6 9 12 15 18 9"></polyline>
             </svg>
           </span>
-        </div>
-      </div>
-    </div>
-
-    <div class="gpl-footer-bar">
-      <div class="footer-container gpl-footer-bar-inner">
-        <a href="../index.html" class="gpl-footer-bar-logo">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0gkqUayZ0zT54vogvYWyYPoPOSjTGLl1sKQ&s"
-            alt="Godrej Properties" width="160" height="44" loading="lazy" decoding="async">
-        </a>
-        <div class="gpl-footer-bar-meta">
-          <span class="gpl-footer-copy">Copyright &copy; 2026. Godrej Properties</span>
-          <nav class="gpl-footer-legal" aria-label="Legal links">
-            <a href="#">Disclaimer</a>
-            <a href="#">Sitemap</a>
-          </nav>
         </div>
       </div>
     </div>
@@ -889,6 +1353,7 @@
       </form>
     </div>
   </div>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="../inner-pages.js" defer></script>
   <script src="../javascript.js" defer></script>
 </body>
