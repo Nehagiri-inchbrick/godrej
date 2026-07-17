@@ -63,85 +63,145 @@
   </header>
 
   <main class="inner-main nri-page nri-page--creative nri-fest-page nri-fest-page--expo" data-expo-detail>
-    <section class="nri-expo-hero" aria-labelledby="nri-expo-title">
+    <section class="nri-expo-hero nri-expo-hero--creative" aria-labelledby="nri-expo-title">
       <div class="nri-expo-hero-media" data-expo-image aria-hidden="true"></div>
       <div class="nri-expo-hero-shade" aria-hidden="true"></div>
-      <div class="about-wrap nri-expo-hero-inner">
-        <a href="nri-home-fest.html#nri-fest-upcoming" class="nri-expo-back">&larr; All upcoming expos</a>
-        <div class="nri-expo-hero-meta">
-          <span class="nri-expo-chip" data-expo-region>APAC</span>
-          <span class="nri-expo-chip nri-expo-chip--gold" data-expo-exclusive hidden>Exclusive</span>
+      <div class="nri-expo-hero-art" aria-hidden="true">
+        <span class="nri-expo-arc nri-expo-arc--left"></span>
+        <span class="nri-expo-arc nri-expo-arc--right"></span>
+        <span class="nri-expo-sparkles"></span>
+        <span class="nri-expo-watermark" data-expo-city-mark>SINGAPORE</span>
+      </div>
+
+      <div class="about-wrap nri-expo-hero-grid">
+        <div class="nri-expo-hero-copy">
+          <a href="nri-home-fest.html#nri-fest-upcoming" class="nri-expo-back">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+            All upcoming expos
+          </a>
+          <div class="nri-expo-hero-meta">
+            <span class="nri-expo-chip" data-expo-region>APAC</span>
+            <span class="nri-expo-chip nri-expo-chip--gold" data-expo-exclusive hidden>Exclusive</span>
+            <span class="nri-expo-chip nri-expo-chip--soft">NRI Home Fest 2026</span>
+          </div>
+          <p class="nri-expo-kicker" data-expo-event>Godrej Property Expo</p>
+          <h1 id="nri-expo-title">
+            <span class="nri-expo-city-line" data-expo-city>Singapore</span>
+            <em data-expo-country>Singapore</em>
+          </h1>
+          <p class="nri-expo-tagline">Your private gateway to premium Indian homes — curated for this city stop.</p>
+          <div class="nri-expo-hero-actions">
+            <a href="nri-home-fest.html#nri-fest-form" class="nri-expo-cta nri-expo-cta--primary">Register for this Expo</a>
+            <a href="nri-enquire.html" class="nri-expo-cta nri-expo-cta--ghost">Enquire Now</a>
+          </div>
         </div>
-        <p class="nri-expo-kicker" data-expo-event>Godrej Property Expo</p>
-        <h1 id="nri-expo-title" data-expo-city>Singapore</h1>
-        <p class="nri-expo-country" data-expo-country>Singapore</p>
-        <div class="nri-expo-hero-facts">
-          <div>
-            <span>Date</span>
-            <strong data-expo-date>18–19 Jul 2026</strong>
+
+        <aside class="nri-expo-pass" aria-label="Event pass">
+          <div class="nri-expo-pass-top">
+            <span>Event Pass</span>
+            <strong data-expo-month>JUL</strong>
           </div>
-          <div>
-            <span>Venue</span>
-            <strong data-expo-venue>City Convention Centre</strong>
+          <div class="nri-expo-pass-date">
+            <em data-expo-day>18–19</em>
+            <span data-expo-year>2026</span>
           </div>
-          <div>
-            <span>Access</span>
-            <strong data-expo-access>VIP Registration</strong>
-          </div>
+          <ul class="nri-expo-pass-list">
+            <li>
+              <span>Venue</span>
+              <strong data-expo-venue>City Convention Centre</strong>
+            </li>
+            <li>
+              <span>Access</span>
+              <strong data-expo-access>VIP Registration</strong>
+            </li>
+            <li>
+              <span>Format</span>
+              <strong data-expo-event>Godrej Property Expo</strong>
+            </li>
+          </ul>
+          <a href="nri-home-fest.html#nri-fest-form" class="nri-expo-pass-cta">Reserve VIP Slot</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="nri-expo-strip" aria-label="Quick facts">
+      <div class="about-wrap nri-expo-strip-inner">
+        <div class="nri-expo-strip-item">
+          <span>City</span>
+          <strong data-expo-city>Singapore</strong>
         </div>
-        <div class="nri-expo-hero-actions">
-          <a href="nri-home-fest.html#nri-fest-form" class="nri-expo-cta nri-expo-cta--primary">Register for this Expo</a>
-          <a href="nri-enquire.html" class="nri-expo-cta nri-expo-cta--ghost">Enquire Now</a>
+        <div class="nri-expo-strip-item">
+          <span>Region</span>
+          <strong data-expo-region>APAC</strong>
+        </div>
+        <div class="nri-expo-strip-item">
+          <span>Dates</span>
+          <strong data-expo-date>18–19 Jul 2026</strong>
+        </div>
+        <div class="nri-expo-strip-item">
+          <span>Access</span>
+          <strong data-expo-access>VIP Registration</strong>
         </div>
       </div>
     </section>
 
-    <section class="nri-expo-body">
-      <div class="about-wrap nri-expo-layout">
-        <div class="nri-expo-main">
-          <header class="nri-expo-block-head">
-            <span class="nri-fest-eyebrow">About this stop</span>
-            <h2>What to expect in <em data-expo-city-inline>Singapore</em></h2>
-          </header>
+    <section class="nri-expo-body nri-expo-body--creative">
+      <div class="about-wrap">
+        <header class="nri-expo-block-head nri-expo-block-head--center">
+          <span class="nri-fest-eyebrow">About this stop</span>
+          <h2>What to expect in <em data-expo-city-inline>Singapore</em></h2>
           <p class="nri-expo-lead" data-expo-about>
             Meet Godrej Properties experts, explore premium Indian developments and unlock exclusive NRI offers tailored for this city stop.
           </p>
-          <ul class="nri-expo-highlights" data-expo-highlights></ul>
+        </header>
+
+        <div class="nri-expo-experience" data-expo-highlights></div>
+
+        <div class="nri-expo-agenda">
+          <div class="nri-expo-agenda-copy">
+            <span class="nri-fest-eyebrow">On the day</span>
+            <h3>A curated investor journey</h3>
+            <p>From welcome lounge to private consultations — every moment is designed for confident NRI decisions.</p>
+          </div>
+          <ol class="nri-expo-timeline">
+            <li>
+              <strong>01 · Arrival</strong>
+              <span>VIP check-in and welcome briefing</span>
+            </li>
+            <li>
+              <strong>02 · Showcase</strong>
+              <span>Portfolio walkthrough of signature launches</span>
+            </li>
+            <li>
+              <strong>03 · Consult</strong>
+              <span>One-on-one sessions with project experts</span>
+            </li>
+            <li>
+              <strong>04 · Support</strong>
+              <span>Loan, legal and repatriation desks</span>
+            </li>
+          </ol>
         </div>
 
-        <aside class="nri-expo-side">
-          <div class="nri-expo-card">
-            <h3>Event snapshot</h3>
-            <dl class="nri-expo-dl">
-              <div>
-                <dt>City</dt>
-                <dd data-expo-city>Singapore</dd>
-              </div>
-              <div>
-                <dt>Country</dt>
-                <dd data-expo-country>Singapore</dd>
-              </div>
-              <div>
-                <dt>Region</dt>
-                <dd data-expo-region>APAC</dd>
-              </div>
-              <div>
-                <dt>Dates</dt>
-                <dd data-expo-date>18–19 Jul 2026</dd>
-              </div>
-              <div>
-                <dt>Format</dt>
-                <dd data-expo-event>Godrej Property Expo</dd>
-              </div>
-            </dl>
-            <a href="nri-home-fest.html#nri-fest-form" class="nri-expo-side-cta">Reserve VIP Slot</a>
+        <div class="nri-expo-invite">
+          <div class="nri-expo-invite-copy">
+            <span class="nri-fest-eyebrow">Limited seats</span>
+            <h3>Secure your place in <em data-expo-city-inline>Singapore</em></h3>
+            <p>Register now for priority consultation slots and exclusive on-ground offers.</p>
           </div>
-          <div class="nri-expo-card nri-expo-card--soft">
-            <h3>Need help?</h3>
-            <p>Our NRI desk can confirm venue timings and consultation slots for your preferred city.</p>
-            <a href="nri-enquire.html">Contact NRI team &rarr;</a>
+          <div class="nri-expo-invite-actions">
+            <a href="nri-home-fest.html#nri-fest-form" class="nri-expo-cta nri-expo-cta--primary">Register Now</a>
+            <a href="nri-enquire.html" class="nri-expo-cta nri-expo-cta--dark">Talk to NRI desk</a>
           </div>
-        </aside>
+        </div>
+
+        <section class="nri-expo-related" aria-labelledby="nri-expo-related-title">
+          <header class="nri-expo-block-head">
+            <span class="nri-fest-eyebrow">Keep exploring</span>
+            <h2 id="nri-expo-related-title">Other circuit stops</h2>
+          </header>
+          <div class="nri-expo-related-grid" data-expo-related></div>
+        </section>
       </div>
     </section>
   </main>

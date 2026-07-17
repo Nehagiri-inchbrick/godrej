@@ -671,6 +671,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const params = new URLSearchParams(window.location.search);
     const expo = findNriFestExpo(params.get("id") || "");
     const dateLabel = `${expo.date} ${expo.month} ${expo.year}`;
+    const icons = [
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 21h18"/><path d="M5 21V8l7-4 7 4v13"/><path d="M9 21v-6h6v6"/></svg>',
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7l7-4z"/></svg>',
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>'
+    ];
 
     root.querySelectorAll("[data-expo-city]").forEach((el) => {
       el.textContent = expo.city;
@@ -699,11 +705,22 @@ document.addEventListener("DOMContentLoaded", () => {
     root.querySelectorAll("[data-expo-about]").forEach((el) => {
       el.textContent = expo.about;
     });
+    root.querySelectorAll("[data-expo-month]").forEach((el) => {
+      el.textContent = expo.month.toUpperCase();
+    });
+    root.querySelectorAll("[data-expo-day]").forEach((el) => {
+      el.textContent = expo.date;
+    });
+    root.querySelectorAll("[data-expo-year]").forEach((el) => {
+      el.textContent = expo.year;
+    });
+    root.querySelectorAll("[data-expo-city-mark]").forEach((el) => {
+      el.textContent = expo.city.toUpperCase();
+    });
 
     const exclusiveChip = root.querySelector("[data-expo-exclusive]");
     if (exclusiveChip) {
-      if (expo.exclusive) exclusiveChip.hidden = false;
-      else exclusiveChip.hidden = true;
+      exclusiveChip.hidden = !expo.exclusive;
     }
 
     const imageEl = root.querySelector("[data-expo-image]");
@@ -711,7 +728,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const list = root.querySelector("[data-expo-highlights]");
     if (list) {
-      list.innerHTML = expo.highlights.map((item) => `<li>${item}</li>`).join("");
+      list.innerHTML = expo.highlights
+        .map(
+          (item, i) => `
+        <article class="nri-expo-exp-card" data-index="${String(i + 1).padStart(2, "0")}">
+          <span class="nri-expo-exp-icon" aria-hidden="true">${icons[i % icons.length]}</span>
+          <p>${item}</p>
+        </article>`
+        )
+        .join("");
+    }
+
+    const related = root.querySelector("[data-expo-related]");
+    if (related) {
+      const others = NRI_FEST_EXPOS.filter((item) => item.id !== expo.id).slice(0, 3);
+      related.innerHTML = others
+        .map(
+          (item) => `
+        <a class="nri-expo-related-card" href="nri-expo.html?id=${encodeURIComponent(item.id)}" style="background-image:url('${item.image}')">
+          <span>${item.date} ${item.month}</span>
+          <strong>${item.city}</strong>
+          <em>${item.country} · ${item.region}</em>
+        </a>`
+        )
+        .join("");
     }
 
     document.title = `${expo.city} Expo | NRI Home Fest | Godrej Properties`;
