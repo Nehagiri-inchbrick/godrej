@@ -617,9 +617,30 @@ document.addEventListener("DOMContentLoaded", () => {
     const board = document.querySelector("[data-upcoming-board]");
     if (!board) return;
 
+    const section = board.closest(".nri-fest-upcoming");
+    const gotoHref = section?.getAttribute("data-upcoming-goto");
+
     const tabs = [...board.querySelectorAll(".nri-fest-upcoming-tab")];
     const panels = [...board.querySelectorAll(".nri-fest-upcoming-panel")];
     if (!tabs.length || !panels.length) return;
+
+    const padCount = (n) => String(n).padStart(2, "0");
+
+    // Tab badge = unique country count from each month's expo tickets
+    tabs.forEach((tab) => {
+      const month = tab.dataset.month;
+      const panel = panels.find((p) => p.dataset.panel === month);
+      const countEl = tab.querySelector(".nri-fest-upcoming-tab-count");
+      if (!panel || !countEl) return;
+
+      const countries = new Set(
+        [...panel.querySelectorAll(".nri-fest-ticket-city")]
+          .map((el) => el.textContent.trim())
+          .filter(Boolean)
+      );
+      const count = countries.size;
+      countEl.textContent = `${padCount(count)} ${count === 1 ? "country" : "countries"}`;
+    });
 
     const activate = (month) => {
       tabs.forEach((tab) => {
@@ -648,15 +669,87 @@ document.addEventListener("DOMContentLoaded", () => {
       ticket.classList.add("nri-fest-ticket--link");
       ticket.setAttribute("role", "link");
       ticket.tabIndex = 0;
-      ticket.setAttribute("aria-label", `View ${city} expo details`);
-      const openExpo = () => {
-        window.location.href = `nri-expo.html?id=${encodeURIComponent(id)}`;
+
+      const preselectEvent = () => {
+        const expo =
+          NRI_FEST_EXPOS.find(
+            (item) => item.city === city && item.date === date && item.month === month
+          ) || NRI_FEST_EXPOS.find((item) => item.city === city);
+        if (!expo) return;
+
+        const value = `${expo.city} - ${expo.date} ${expo.month} ${expo.year}`;
+        const option = [...document.querySelectorAll('#nri-fest-event-list [role="option"]')].find(
+          (el) => el.dataset.value === value
+        );
+        if (option) {
+          option.click();
+          return;
+        }
+
+        const native = document.getElementById("nri-fest-event");
+        const trigger = document.getElementById("nri-fest-event-trigger");
+        const triggerText = document.getElementById("nri-fest-event-trigger-text");
+        if (!native || !trigger || !triggerText) return;
+        native.value = value;
+        const dateLabel = `${String(expo.date || "").replace(/[–—]/g, " - ")} ${expo.month}`.trim();
+        const flagMap = {
+          Singapore: "sg",
+          UAE: "ae",
+          Australia: "au",
+          Bahrain: "bh",
+          Qatar: "qa",
+          Nigeria: "ng",
+          USA: "us",
+          Canada: "ca",
+          Vietnam: "vn",
+          Netherlands: "nl",
+          Indonesia: "id",
+          Kuwait: "kw",
+          Germany: "de",
+          Japan: "jp",
+          Ireland: "ie",
+          Malaysia: "my",
+          "United Kingdom": "gb",
+          "Saudi Arabia": "sa"
+        };
+        const flag = flagMap[expo.country] || "un";
+        trigger.classList.add("has-value");
+        triggerText.innerHTML = `
+          <span class="nri-fest-city-trigger-selected">
+            <img src="https://flagcdn.com/w40/${flag}.png" alt="" width="22" height="14" decoding="async">
+            <span>${expo.city} — ${dateLabel}</span>
+          </span>
+        `;
       };
-      ticket.addEventListener("click", openExpo);
+
+      const openTarget = () => {
+        if (gotoHref) {
+          window.location.href = gotoHref;
+          return;
+        }
+
+        // On NRI Home Fest page: open register form (not expo detail)
+        if (typeof window.openNriFestRegister === "function") {
+          window.openNriFestRegister();
+          window.setTimeout(preselectEvent, 40);
+          return;
+        }
+
+        const inPages = /(?:^|\/)pages\//.test(window.location.pathname);
+        window.location.href = inPages
+          ? `nri-expo.html?id=${encodeURIComponent(id)}`
+          : `pages/nri-expo.html?id=${encodeURIComponent(id)}`;
+      };
+
+      ticket.setAttribute(
+        "aria-label",
+        gotoHref ? `Open NRI Home Fest for ${city}` : `Register for ${city} expo`
+      );
+      ticket.addEventListener("click", openTarget);
       ticket.addEventListener("keydown", (e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          openExpo();
+          openTarget();
         }
       });
     });
@@ -1701,6 +1794,205 @@ document.addEventListener("DOMContentLoaded", () => {
     countrySelect?.addEventListener("change", updateCountryDisplay);
     updateCountryDisplay();
 
+    const initEventCityPicker = () => {
+      const root = document.querySelector("[data-event-city-picker]");
+      if (!root) return;
+
+      const trigger = root.querySelector(".nri-fest-city-trigger");
+      const triggerText = root.querySelector(".nri-fest-city-trigger-text");
+      const panel = root.querySelector(".nri-fest-city-panel");
+      const list = root.querySelector(".nri-fest-city-list");
+      const native = root.querySelector("#nri-fest-event");
+      if (!trigger || !panel || !list || !native || !triggerText) return;
+
+      // Escape transformed modal so fixed positioning uses the viewport
+      if (panel.parentElement !== document.body) {
+        document.body.appendChild(panel);
+      }
+
+      const flagByCountry = {
+        Singapore: "sg",
+        UAE: "ae",
+        Australia: "au",
+        Bahrain: "bh",
+        Qatar: "qa",
+        Nigeria: "ng",
+        USA: "us",
+        Canada: "ca",
+        Vietnam: "vn",
+        Netherlands: "nl",
+        Indonesia: "id",
+        Kuwait: "kw",
+        Germany: "de",
+        Japan: "jp",
+        Ireland: "ie",
+        Malaysia: "my",
+        "United Kingdom": "gb",
+        "Saudi Arabia": "sa"
+      };
+
+      const formatExpoDate = (expo) => {
+        const range = String(expo.date || "").replace(/[–—]/g, " - ");
+        return `${range} ${expo.month}`.trim();
+      };
+
+      const formatExpoValue = (expo) => `${expo.city} - ${expo.date} ${expo.month} ${expo.year}`;
+
+      list.innerHTML = "";
+      native.innerHTML = '<option value="" disabled selected>Select a city</option>';
+
+      NRI_FEST_EXPOS.forEach((expo) => {
+        const flag = flagByCountry[expo.country] || "un";
+        const dateLabel = formatExpoDate(expo);
+        const value = formatExpoValue(expo);
+
+        const optionEl = document.createElement("option");
+        optionEl.value = value;
+        optionEl.textContent = `${expo.city} — ${dateLabel}`;
+        native.appendChild(optionEl);
+
+        const li = document.createElement("li");
+        li.setAttribute("role", "option");
+        li.tabIndex = -1;
+        li.dataset.value = value;
+        li.dataset.flag = flag;
+        li.dataset.city = expo.city;
+        li.dataset.date = dateLabel;
+        li.setAttribute("aria-selected", "false");
+        li.innerHTML = `
+          <span class="nri-fest-city-flag"><img src="https://flagcdn.com/w40/${flag}.png" alt="" width="28" height="18" decoding="async"></span>
+          <span class="nri-fest-city-name">${expo.city}</span>
+          <span class="nri-fest-city-date">${dateLabel}</span>
+        `;
+        list.appendChild(li);
+      });
+
+      let options = [...list.querySelectorAll('[role="option"]')];
+
+      const placePanel = () => {
+        const rect = trigger.getBoundingClientRect();
+        const panelHeight = Math.min(280, window.innerHeight * 0.42);
+        const spaceBelow = window.innerHeight - rect.bottom - 12;
+        const openUp = spaceBelow < panelHeight && rect.top > spaceBelow;
+
+        panel.style.left = `${Math.max(12, rect.left)}px`;
+        panel.style.width = `${Math.min(rect.width, window.innerWidth - 24)}px`;
+        panel.style.maxHeight = `${panelHeight + 40}px`;
+
+        if (openUp) {
+          panel.style.top = "auto";
+          panel.style.bottom = `${window.innerHeight - rect.top + 4}px`;
+        } else {
+          panel.style.bottom = "auto";
+          panel.style.top = `${rect.bottom + 4}px`;
+        }
+      };
+
+      const setOpen = (open) => {
+        panel.hidden = !open;
+        trigger.setAttribute("aria-expanded", open ? "true" : "false");
+        if (open) {
+          placePanel();
+          const selected = list.querySelector('[aria-selected="true"]') || options[0];
+          selected?.focus();
+        }
+      };
+
+      const selectOption = (option) => {
+        if (!option) return;
+        const value = option.dataset.value || "";
+        const city = option.dataset.city || "";
+        const date = option.dataset.date || "";
+        const flag = option.dataset.flag || "";
+
+        options.forEach((item) => item.setAttribute("aria-selected", item === option ? "true" : "false"));
+        native.value = value;
+        native.dispatchEvent(new Event("change", { bubbles: true }));
+
+        trigger.classList.add("has-value");
+        triggerText.innerHTML = `
+          <span class="nri-fest-city-trigger-selected">
+            <img src="https://flagcdn.com/w40/${flag}.png" alt="" width="22" height="14" decoding="async">
+            <span>${city} — ${date}</span>
+          </span>
+        `;
+        setOpen(false);
+        trigger.focus();
+      };
+
+      const resetPicker = () => {
+        options.forEach((item) => item.setAttribute("aria-selected", "false"));
+        native.value = "";
+        trigger.classList.remove("has-value");
+        triggerText.textContent = "Select a city";
+        setOpen(false);
+      };
+
+      const bindOptionEvents = () => {
+        options.forEach((option) => {
+          option.addEventListener("click", () => selectOption(option));
+          option.addEventListener("keydown", (e) => {
+            const index = options.indexOf(option);
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              selectOption(option);
+            } else if (e.key === "ArrowDown") {
+              e.preventDefault();
+              options[Math.min(index + 1, options.length - 1)]?.focus();
+            } else if (e.key === "ArrowUp") {
+              e.preventDefault();
+              options[Math.max(index - 1, 0)]?.focus();
+            } else if (e.key === "Escape") {
+              e.preventDefault();
+              setOpen(false);
+              trigger.focus();
+            } else if (e.key === "Home") {
+              e.preventDefault();
+              options[0]?.focus();
+            } else if (e.key === "End") {
+              e.preventDefault();
+              options[options.length - 1]?.focus();
+            }
+          });
+        });
+      };
+
+      bindOptionEvents();
+
+      trigger.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setOpen(panel.hidden);
+      });
+
+      panel.addEventListener("click", (e) => e.stopPropagation());
+
+      window.addEventListener("resize", () => {
+        if (!panel.hidden) placePanel();
+      });
+
+      document.addEventListener("click", (e) => {
+        if (panel.hidden) return;
+        if (root.contains(e.target) || panel.contains(e.target)) return;
+        setOpen(false);
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !panel.hidden) {
+          setOpen(false);
+          trigger.focus();
+        }
+      });
+
+      // Keep panel in viewport while modal form scrolls
+      root.closest(".nri-fest-form-grid")?.addEventListener("scroll", () => {
+        if (!panel.hidden) placePanel();
+      }, { passive: true });
+
+      root._resetEventCityPicker = resetPicker;
+    };
+
+    initEventCityPicker();
+
     if (!form) return;
 
     form.addEventListener("submit", (e) => {
@@ -1726,6 +2018,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       form.reset();
       updateCountryDisplay();
+      document.querySelector("[data-event-city-picker]")?._resetEventCityPicker?.();
     });
   };
 

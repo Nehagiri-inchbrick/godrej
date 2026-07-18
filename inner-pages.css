@@ -4351,7 +4351,7 @@ main.nri-page {
   font-weight: 600;
   color: #1a2744;
   text-align: center;
-  margin: 0 0 2rem;
+  margin: 0 0 .7rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14863,6 +14863,10 @@ main.projects-page--ref {
     linear-gradient(165deg, #f7f4ef 0%, #efe8dc 50%, #f7f4ef 100%);
 }
 
+.nri-fest-upcoming[data-upcoming-goto] .nri-fest-ticket {
+  cursor: pointer;
+}
+
 .nri-fest-upcoming-glow {
   position: absolute;
   width: min(480px, 60vw);
@@ -16308,17 +16312,22 @@ main.projects-page--ref {
 .nri-fest-register-modal-dialog {
   position: relative;
   z-index: 1;
-  width: min(960px, 100%);
-  max-height: min(92vh, 900px);
-  overflow: auto;
-  border-radius: 18px;
-  transform: translateY(18px) scale(0.98);
-  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  width: min(920px, 100%);
+  height: min(94vh, 860px);
+  max-height: min(94vh, 860px);
+  overflow: hidden;
+  border-radius: 16px;
+  opacity: 0;
+  transform: none;
+  transition: opacity 0.28s ease;
   box-shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
 }
 
 .nri-fest-register-modal.is-open .nri-fest-register-modal-dialog {
-  transform: translateY(0) scale(1);
+  opacity: 1;
+  transform: none;
 }
 
 .nri-fest-register-modal-close {
@@ -16347,6 +16356,15 @@ main.projects-page--ref {
 
 .nri-fest-register-modal .nri-fest-register-stage {
   margin: 0;
+  flex: 1;
+  min-height: 0;
+  max-height: 100%;
+  height: 100%;
+  align-items: stretch;
+}
+
+.nri-fest-register-modal .nri-fest-form-card {
+  height: 100%;
 }
 
 body.nri-fest-register-open {
@@ -16363,6 +16381,8 @@ body.nri-fest-register-open {
     linear-gradient(165deg, rgba(17, 26, 44, 0.94) 0%, rgba(26, 39, 68, 0.88) 55%, rgba(26, 39, 68, 0.82) 100%),
     url("../images/Pool-Pan-Cam_1ad984ed8-22a0-4cf6-9fc2-f8e5aa6d4159.webp") center / cover;
   color: rgba(255, 255, 255, 0.88);
+  min-height: 0;
+  overflow: auto;
 }
 
 .nri-fest-register-aside::before {
@@ -16422,6 +16442,7 @@ body.nri-fest-register-open {
 }
 
 .nri-fest-page--expo .nri-fest-form-card {
+  position: relative;
   max-width: none;
   margin: 0;
   border-radius: 0;
@@ -16429,7 +16450,13 @@ body.nri-fest-register-open {
   box-shadow: none;
   background:
     linear-gradient(180deg, #fffefb 0%, #ffffff 40%, #faf8f5 100%);
-  padding: clamp(1.1rem, 2.2vw, 1.45rem) clamp(1rem, 2vw, 1.4rem) clamp(1.1rem, 2.2vw, 1.35rem);
+  padding: 0.7rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  height: 100%;
+  max-height: 100%;
+  overflow: hidden;
 }
 
 .nri-fest-page--expo .nri-fest-form-card::before {
@@ -16437,52 +16464,282 @@ body.nri-fest-register-open {
 }
 
 .nri-fest-form-head {
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.7rem;
-  border-bottom: 1px solid rgba(26, 39, 68, 0.08);
+  flex: 0 0 auto;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.35rem;
 }
 
 .nri-fest-form-head .nri-fest-eyebrow {
-  margin-bottom: 0.25rem;
-  font-size: 0.65rem;
+  margin-bottom: 0.15rem;
+  font-size: 0.6rem;
 }
 
 .nri-fest-page--expo .nri-fest-form-card .nri-fest-section-title {
-  margin: 0 0 0.25rem;
+  margin: 0 !important;
   text-align: left;
   justify-content: flex-start;
-  font-size: clamp(1.2rem, 2.2vw, 1.45rem);
+  font-size: 1.05rem !important;
+  line-height: 1.2;
   color: var(--fest-navy);
+  gap: 0;
+}
+
+.nri-fest-page--expo .nri-fest-form-card .nri-fest-section-title::before,
+.nri-fest-page--expo .nri-fest-form-card .nri-fest-section-title::after {
+  display: none !important;
+  content: none !important;
+  flex: 0 !important;
 }
 
 .nri-fest-form-lead {
-  margin: 0;
-  max-width: 32rem;
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: var(--fest-muted);
+  display: none;
 }
 
 .nri-fest-register--pro {
+  position: relative;
   max-width: none;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 9.25rem;
+}
+
+.nri-fest-field--event-city {
+  position: relative;
+  grid-column: 1 / -1;
+}
+
+.nri-fest-city-native {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  appearance: none !important;
+  background: none !important;
+  pointer-events: none;
+}
+
+.nri-fest-city-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 34px;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(26, 39, 68, 0.12);
+  border-radius: 8px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.8rem;
+  color: var(--fest-navy, #1a2744);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nri-fest-city-trigger:hover {
+  border-color: rgba(201, 156, 86, 0.45);
+}
+
+.nri-fest-city-trigger[aria-expanded="true"],
+.nri-fest-city-trigger:focus {
+  outline: none;
+  border-color: var(--fest-gold, #c99c56);
+  box-shadow: 0 0 0 2px rgba(201, 156, 86, 0.14);
+}
+
+.nri-fest-city-trigger-text {
+  flex: 1;
+  min-width: 0;
+  color: #b0b7c3;
+}
+
+.nri-fest-city-trigger.has-value .nri-fest-city-trigger-text {
+  color: var(--fest-navy, #1a2744);
+  font-weight: 600;
+}
+
+.nri-fest-city-trigger-selected {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.nri-fest-city-trigger-selected img {
+  width: 22px;
+  height: 14px;
+  object-fit: cover;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.nri-fest-city-trigger-chevron {
+  width: 14px;
+  height: 14px;
+  color: #9ca3af;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.nri-fest-city-trigger[aria-expanded="true"] .nri-fest-city-trigger-chevron {
+  transform: rotate(180deg);
+}
+
+.nri-fest-city-panel {
+  position: fixed;
+  z-index: 1300;
+  background: #fff;
+  border: 1px solid rgba(26, 39, 68, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(26, 39, 68, 0.16);
+}
+
+.nri-fest-city-head {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.55rem 0.85rem;
+  background: #1a2744;
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nri-fest-city-head span:last-child {
+  text-align: right;
+  min-width: 5.5rem;
+}
+
+.nri-fest-city-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: min(280px, 42vh);
+  overflow-y: auto;
+}
+
+.nri-fest-city-list [role="option"] {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) auto;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.7rem 0.85rem;
+  border-bottom: 1px solid #e8eef5;
+  color: #1a2744;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.nri-fest-city-list [role="option"]:last-child {
+  border-bottom: none;
+}
+
+.nri-fest-city-list [role="option"]:hover,
+.nri-fest-city-list [role="option"]:focus {
+  outline: none;
+  background: #f4f7fb;
+}
+
+.nri-fest-city-list [role="option"][aria-selected="true"] {
+  background: #eef3f9;
+}
+
+.nri-fest-city-flag {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.nri-fest-city-flag img {
+  width: 28px;
+  height: 18px;
+  object-fit: cover;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(26, 39, 68, 0.08);
+}
+
+.nri-fest-city-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.nri-fest-city-date {
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-align: right;
+  white-space: nowrap;
+  min-width: 5.5rem;
+  color: #1a2744;
 }
 
 .nri-fest-form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem 0.85rem;
+  gap: 0.4rem 0.65rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-right: 0.1rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(26, 39, 68, 0.25) transparent;
+}
+
+.nri-fest-form-actions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 12;
+  flex: none;
+  margin: 0;
+  padding: 0.55rem 1rem 0.7rem;
+  background: #ffffff;
+  border-top: 1px solid rgba(26, 39, 68, 0.1);
+  box-shadow: 0 -6px 16px rgba(26, 39, 68, 0.06);
+}
+
+.nri-fest-form-actions .nri-fest-consent {
+  margin-bottom: 0.4rem;
+  font-size: 0.68rem;
+  line-height: 1.35;
+  gap: 0.4rem;
+}
+
+.nri-fest-form-actions .nri-fest-submit-wrap {
+  margin: 0;
+  width: 100%;
+  display: block;
+}
+
+.nri-fest-form-actions .nri-fest-feedback {
+  margin-top: 0.4rem;
 }
 
 .nri-fest-page--expo .nri-fest-field {
   display: flex;
   flex-direction: column;
-  gap: 0.28rem;
+  gap: 0.18rem;
   margin: 0;
 }
 
 .nri-fest-page--expo .nri-fest-field > span {
-  font-size: 0.64rem;
+  font-size: 0.6rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -16492,13 +16749,13 @@ body.nri-fest-register-open {
 .nri-fest-page--expo .nri-fest-register--pro input,
 .nri-fest-page--expo .nri-fest-register--pro select {
   width: 100%;
-  min-height: 38px;
-  padding: 0.45rem 0.7rem;
+  min-height: 34px;
+  padding: 0.35rem 0.6rem;
   border: 1px solid rgba(26, 39, 68, 0.12);
   border-radius: 8px;
   background: #fff;
   font-family: inherit;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: var(--fest-navy);
   outline: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
@@ -16531,13 +16788,13 @@ body.nri-fest-register-open {
 }
 
 .nri-fest-page--expo .nri-fest-phone {
-  min-height: 38px;
-  padding: 0.2rem 0.45rem 0.2rem 0.55rem;
+  min-height: 34px;
+  padding: 0.15rem 0.4rem 0.15rem 0.5rem;
   border: 1px solid rgba(26, 39, 68, 0.12);
   border-radius: 8px;
   border-bottom: 1px solid rgba(26, 39, 68, 0.12);
   background: #fff;
-  gap: 0.4rem;
+  gap: 0.35rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -16587,22 +16844,24 @@ body.nri-fest-register-open {
 
 .nri-fest-page--expo .nri-fest-form-card .nri-enquire-submit.nri-fest-submit,
 .nri-fest-page--expo .nri-fest-submit {
-  display: inline-flex;
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
   align-items: center;
   justify-content: center;
-  gap: 0.35rem;
-  width: auto;
-  max-width: max-content;
+  gap: 0.4rem;
+  width: 100%;
+  max-width: none;
   min-width: 0;
-  min-height: 0;
-  height: auto;
-  padding: 0.55rem 1.1rem;
+  min-height: 40px;
+  height: 40px;
+  padding: 0.55rem 1rem;
   border: none;
   border-radius: 8px;
   background: linear-gradient(135deg, #d4b07a 0%, #c99c56 55%, #b8894a 100%);
   color: #1a2744;
   font-family: inherit;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -16703,8 +16962,18 @@ body.nri-fest-register-open {
   }
 
   .nri-fest-register-modal-dialog {
-    max-height: calc(100vh - 1.5rem);
-    margin-top: 0.5rem;
+    height: calc(100vh - 0.75rem);
+    max-height: calc(100vh - 0.75rem);
+    margin-top: 0.25rem;
+    width: 100%;
+  }
+
+  .nri-fest-register-aside {
+    display: none;
+  }
+
+  .nri-fest-register--pro {
+    padding-bottom: 7.5rem;
   }
 
   .nri-fest-form-grid {
@@ -16713,8 +16982,8 @@ body.nri-fest-register-open {
 
   .nri-fest-page--expo .nri-fest-form-card .nri-enquire-submit.nri-fest-submit,
   .nri-fest-page--expo .nri-fest-submit {
-    width: auto;
-    max-width: max-content;
+    width: 100%;
+    max-width: none;
   }
 
 }

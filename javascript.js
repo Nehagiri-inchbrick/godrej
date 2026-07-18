@@ -177,16 +177,51 @@ document.addEventListener("DOMContentLoaded", () => {
       venue: "Leicester, United Kingdom",
       subtitle: "India’s finest properties, now in Leicester, UK. VIP registrations opening soon.",
       dates: COMING_SOON_DATES
+    },
+    singaporeJulInvestor: {
+      eventValue: "Singapore Investor Meetings 2026 (Godrej)",
+      visitcountry: "Singapore",
+      dateBanner: "18th - 19th JULY 2026",
+      venue: "Singapore",
+      subtitle: "Exclusive investor meetings on the NRI Home Fest world circuit.",
+      dates: [
+        { value: "18th July", label: "18th July 2026" },
+        { value: "19th July", label: "19th July 2026" }
+      ]
+    },
+    dubaiJulOffice: {
+      eventValue: "Dubai Office Investor Event 2026 (Godrej)",
+      visitcountry: "UAE",
+      dateBanner: "25th JULY 2026",
+      venue: "Dubai, UAE",
+      subtitle: "Exclusive office investor event in Dubai.",
+      dates: [
+        { value: "25th July", label: "25th July 2026" }
+      ]
+    },
+    singaporeJulExpo: {
+      eventValue: "Singapore Property Expo 2026 (Godrej)",
+      visitcountry: "Singapore",
+      dateBanner: "25th - 26th JULY 2026",
+      venue: "Singapore",
+      subtitle: "Godrej Property Expo — plan your Singapore stop this July.",
+      dates: [
+        { value: "25th July", label: "25th July 2026" },
+        { value: "26th July", label: "26th July 2026" }
+      ]
     }
   };
 
-  const HERO_EXPO_KEYS = ["australia", "dubai", "singapore", "leicester", "lagos"];
+  const HERO_EXPO_KEYS = ["singaporeJulInvestor", "dubaiJulOffice", "singaporeJulExpo"];
 
   const SHARED_VIP_DATES = EXPO_BY_KEY.australia.dates;
 
   const resolveExpoKeyFromEventValue = (eventValue) => {
     const v = (eventValue || "").trim().toLowerCase();
     if (!v) return "";
+    if (v.includes("office investor") && v.includes("dubai")) return "dubaiJulOffice";
+    if (v.includes("investor meetings") && v.includes("singapore")) return "singaporeJulInvestor";
+    if (v.includes("property expo") && v.includes("singapore")) return "singaporeJulExpo";
     if (v.includes("dubai")) return "dubai";
     if (v.includes("singapore")) return "singapore";
     if (v.includes("lagos")) return "lagos";
@@ -202,7 +237,11 @@ document.addEventListener("DOMContentLoaded", () => {
       "23rd May": "2026-05-23",
       "24th May": "2026-05-24",
       "6th June": "2026-06-06",
-      "7th June": "2026-06-07"
+      "7th June": "2026-06-07",
+      "18th July": "2026-07-18",
+      "19th July": "2026-07-19",
+      "25th July": "2026-07-25",
+      "26th July": "2026-07-26"
     };
     Object.values(EXPO_BY_KEY).forEach((cfg) => {
       cfg.dates.forEach((d) => {
@@ -975,16 +1014,24 @@ document.addEventListener("DOMContentLoaded", () => {
       if (!expo) return "";
 
       const ctaLabel = expo.comingSoon ? "Coming Soon" : "Book VIP Pass";
+      const title = expo.eventValue.replace(" (Godrej)", "");
+      const dateParts = (expo.dateBanner || "").split(/\s+/);
+      const dateYear = dateParts[dateParts.length - 1] || "2026";
+      const dateMain = dateParts.slice(0, -1).join(" ") || expo.dateBanner;
 
       return `
         <article class="hero-expo-card${expo.comingSoon ? " is-soon" : ""}" data-expo="${key}">
-          <span class="hero-expo-tag">${expo.visitcountry}</span>
-          <h3 class="hero-expo-title">${expo.eventValue.replace(" (Godrej)", "")}</h3>
+          <div class="hero-expo-top">
+            <span class="hero-expo-tag">${expo.visitcountry}</span>
+            ${expo.comingSoon ? '<span class="hero-expo-soon-badge">Soon</span>' : '<span class="hero-expo-live-badge">Open</span>'}
+          </div>
+          <div class="hero-expo-dateblock">
+            <strong>${dateMain}</strong>
+            <em>${dateYear}</em>
+          </div>
+          <h3 class="hero-expo-title">${title}</h3>
+          <p class="hero-expo-sub">${expo.subtitle || ""}</p>
           <ul class="hero-expo-meta">
-            <li class="hero-expo-date">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-              ${expo.dateBanner}
-            </li>
             <li class="hero-expo-venue">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
               ${expo.venue}

@@ -19,7 +19,7 @@
   <header class="main-header inner-header" id="main-header">
     <div class="header-container">
       <a href="../index.html" class="header-logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0gkqUayZ0zT54vogvYWyYPoPOSjTGLl1sKQ&s"
+        <img src="../images/godrej_properties_logo.svg"
           alt="Godrej Properties Logo" width="180" height="50" decoding="async">
       </a>
       <nav class="header-nav inner-nav" id="header-nav">
@@ -123,7 +123,7 @@
             </span>
             <span>
               <strong>Tour Dates</strong>
-              <em>Jan &ndash; Mar 2026</em>
+              <em>July &ndash; Sept 2026</em>
             </span>
           </div>
           <a href="#nri-fest-upcoming" class="nri-fest-hero-pill nri-fest-hero-pill--link" title="View upcoming expos">
@@ -241,15 +241,15 @@
           <div class="nri-fest-upcoming-tabs" role="tablist" aria-label="Expo months">
             <button type="button" class="nri-fest-upcoming-tab is-active" role="tab" id="upcoming-tab-july" aria-selected="true" aria-controls="upcoming-panel-july" data-month="july">
               <span class="nri-fest-upcoming-tab-month">July</span>
-              <span class="nri-fest-upcoming-tab-count">03 stops</span>
+              <span class="nri-fest-upcoming-tab-count">02 countries</span>
             </button>
             <button type="button" class="nri-fest-upcoming-tab" role="tab" id="upcoming-tab-august" aria-selected="false" aria-controls="upcoming-panel-august" data-month="august">
               <span class="nri-fest-upcoming-tab-month">August</span>
-              <span class="nri-fest-upcoming-tab-count">12 stops</span>
+              <span class="nri-fest-upcoming-tab-count">10 countries</span>
             </button>
             <button type="button" class="nri-fest-upcoming-tab" role="tab" id="upcoming-tab-september" aria-selected="false" aria-controls="upcoming-panel-september" data-month="september">
               <span class="nri-fest-upcoming-tab-month">September</span>
-              <span class="nri-fest-upcoming-tab-count">10 stops</span>
+              <span class="nri-fest-upcoming-tab-count">08 countries</span>
             </button>
           </div>
 
@@ -892,47 +892,38 @@
                   <option value="Godrej Exquisite">Godrej Exquisite</option>
                 </select>
               </label>
-              <label class="nri-fest-field">
-                <span>Event Location*</span>
-                <select id="nri-fest-event" required>
+              <div class="nri-fest-field nri-fest-field--event-city" data-event-city-picker>
+                <span id="nri-fest-event-label">Event Location*</span>
+                <button type="button" class="nri-fest-city-trigger" id="nri-fest-event-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="nri-fest-event-label nri-fest-event-trigger-text">
+                  <span class="nri-fest-city-trigger-text" id="nri-fest-event-trigger-text">Select a city</span>
+                  <svg class="nri-fest-city-trigger-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                </button>
+                <div class="nri-fest-city-panel" id="nri-fest-event-panel" hidden>
+                  <div class="nri-fest-city-head" aria-hidden="true">
+                    <span>Country</span>
+                    <span>City</span>
+                    <span>Date</span>
+                  </div>
+                  <ul class="nri-fest-city-list" role="listbox" aria-labelledby="nri-fest-event-label" id="nri-fest-event-list"></ul>
+                </div>
+                <select id="nri-fest-event" required class="nri-fest-city-native" tabindex="-1" aria-hidden="true">
                   <option value="" disabled selected>Select a city</option>
-                  <option value="Doha - 23rd &amp; 24th January">Doha &mdash; 23rd &amp; 24th January</option>
-                  <option value="Singapore - 24th &amp; 25th January">Singapore &mdash; 24th &amp; 25th January</option>
-                  <option value="Kuwait - 30th &amp; 31st January">Kuwait &mdash; 30th &amp; 31st January</option>
-                  <option value="Seoul - 31st January &amp; 1st February">Seoul &mdash; 31st January &amp; 1st February</option>
-                  <option value="Hong Kong - 31st January &amp; 1st February">Hong Kong &mdash; 31st January &amp; 1st February</option>
-                  <option value="Dubai - 7th &amp; 8th February">Dubai &mdash; 7th &amp; 8th February</option>
-                  <option value="Perth - 7th &amp; 8th February">Perth &mdash; 7th &amp; 8th February</option>
-                  <option value="Bahrain - 13th &amp; 14th February">Bahrain &mdash; 13th &amp; 14th February</option>
-                  <option value="Dammam - 13th &amp; 14th February">Dammam &mdash; 13th &amp; 14th February</option>
-                  <option value="Adelaide - 14th &amp; 15th February">Adelaide &mdash; 14th &amp; 15th February</option>
-                  <option value="Frisco - 14th &amp; 15th February">Frisco &mdash; 14th &amp; 15th February</option>
-                  <option value="Abu Dhabi - 21st &amp; 22nd February">Abu Dhabi &mdash; 21st &amp; 22nd February</option>
-                  <option value="Santa Clara - 21st &amp; 22nd February">Santa Clara &mdash; 21st &amp; 22nd February</option>
-                  <option value="London - 21st &amp; 22nd February">London &mdash; 21st &amp; 22nd February</option>
-                  <option value="Sydney - 21st &amp; 22nd February">Sydney &mdash; 21st &amp; 22nd February</option>
-                  <option value="Riyadh - 27th &amp; 28th February">Riyadh &mdash; 27th &amp; 28th February</option>
-                  <option value="Bangkok - 28th February &amp; 1st March">Bangkok &mdash; 28th February &amp; 1st March</option>
-                  <option value="Seattle - 28th February &amp; 1st March">Seattle &mdash; 28th February &amp; 1st March</option>
-                  <option value="Lagos - 28th February &amp; 1st March">Lagos &mdash; 28th February &amp; 1st March</option>
-                  <option value="Tokyo - 7th &amp; 8th March">Tokyo &mdash; 7th &amp; 8th March</option>
-                  <option value="Munich - 7th &amp; 8th March">Munich &mdash; 7th &amp; 8th March</option>
-                  <option value="Nairobi - 14th &amp; 15th March">Nairobi &mdash; 14th &amp; 15th March</option>
-                  <option value="Toronto - 14th &amp; 15th March">Toronto &mdash; 14th &amp; 15th March</option>
                 </select>
+              </div>
+            </div>
+            <div class="nri-fest-form-actions">
+              <label class="nri-fest-consent">
+                <input type="checkbox" id="nri-fest-consent">
+                <span>I agree and authorize to receive calls, SMS and emails with reference to my enquiry for Godrej Properties Ltd.</span>
               </label>
+              <div class="nri-enquire-submit-wrap nri-fest-submit-wrap">
+                <button type="submit" class="nri-enquire-submit nri-fest-submit">
+                  Register Now
+                  <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+                </button>
+              </div>
+              <p class="nri-fest-feedback" id="nri-fest-feedback" hidden></p>
             </div>
-            <label class="nri-fest-consent">
-              <input type="checkbox" id="nri-fest-consent">
-              <span>I agree and authorize to receive calls, SMS and emails with reference to my enquiry for Godrej Properties Ltd.</span>
-            </label>
-            <div class="nri-enquire-submit-wrap nri-fest-submit-wrap">
-              <button type="submit" class="nri-enquire-submit nri-fest-submit">
-                Register Now
-                <svg height="20px" width="20px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
-              </button>
-            </div>
-            <p class="nri-fest-feedback" id="nri-fest-feedback" hidden></p>
           </form>
         </div>
       </div>

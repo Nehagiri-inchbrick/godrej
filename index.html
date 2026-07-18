@@ -114,7 +114,7 @@
   <header class="main-header" id="main-header">
     <div class="header-container">
       <a href="index.html" class="header-logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0gkqUayZ0zT54vogvYWyYPoPOSjTGLl1sKQ&s"
+        <img src="images/godrej_properties_logo.svg"
           alt="Godrej Properties Logo" width="180" height="50" decoding="async">
       </a>
       <nav class="header-nav" id="header-nav">
@@ -162,10 +162,26 @@
   <div class="snap-container">
     <section class="hero" id="home">
       <div class="hero-slider" id="hero-slider">
-        <div class="hero-slide active" data-city="mumbai" data-project="Godrej Trilogy" data-city-name="Mumbai"
+        <div class="hero-slide active" data-city="bangalore" data-project="Godrej Codename" data-city-name="Whitefield, Bangalore"
+          data-desc="Own a Townhouse in Bengaluru at the Price of an Apartment.">
+          <div class="slide-image">
+            <img src="images/whitefield.png" fetchpriority="high" decoding="async" width="1920" height="1080"
+              alt="Godrej Codename Whitefield Bangalore">
+          </div>
+          <div class="slide-overlay"></div>
+        </div>
+        <div class="hero-slide" data-city="hyderabad" data-project="Godrej Brooklyn Avenue" data-city-name="Kukatpally, Hyderabad"
+          data-desc="Inspired by Brooklyn. Crafted for Hyderabad.">
+          <div class="slide-image">
+            <img src="images/avenue.png" loading="lazy" decoding="async" width="1920" height="1080"
+              alt="Godrej Brooklyn Avenue Kukatpally Hyderabad">
+          </div>
+          <div class="slide-overlay"></div>
+        </div>
+        <div class="hero-slide" data-city="mumbai" data-project="Godrej Trilogy" data-city-name="Mumbai"
           data-desc="Iconic towers in Worli offering sea-facing residences and unmatched connectivity to Mumbai's financial districts.">
           <div class="slide-image">
-            <img src="images/worli-banner-desktop-v1-cmhx0xuc90000j2phgabi18bx.webp" fetchpriority="high"
+            <img src="images/worli-banner-desktop-v1-cmhx0xuc90000j2phgabi18bx.webp" loading="lazy"
               decoding="async" width="1920" height="1080" alt="Godrej Trilogy Mumbai">
           </div>
           <div class="slide-overlay"></div>
@@ -239,12 +255,11 @@
       <div class="hero-banner-ui">
         <div class="hero-banner-layout">
           <div class="hero-banner-inner">
-            <span class="slide-label" id="hero-slide-label">Mumbai</span>
-            <h1 class="slide-title" id="hero-slide-title">Godrej Trilogy</h1>
-            <p class="slide-desc" id="hero-slide-desc">Iconic towers in Worli offering sea-facing residences and
-              unmatched connectivity to Mumbai's financial districts.</p>
+            <span class="slide-label" id="hero-slide-label">Whitefield, Bangalore</span>
+            <h1 class="slide-title" id="hero-slide-title">Godrej Codename</h1>
+            <p class="slide-desc" id="hero-slide-desc">Own a Townhouse in Bengaluru at the Price of an Apartment.</p>
             <button type="button" class="hero-cta-btn" id="hero-explore-btn">
-              Explore Mumbai
+              Explore Whitefield, Bangalore
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -279,7 +294,7 @@
             <span class="hero-progress-fill" id="hero-progress-fill"></span>
           </div>
           <div class="hero-nav-compact">
-            <span class="hero-slide-count" id="hero-slide-count">01 / 09</span>
+            <span class="hero-slide-count" id="hero-slide-count">01 / 11</span>
             <button type="button" class="hero-nav-btn prev" aria-label="Previous property" id="hero-prev">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="15 18 9 12 15 6"></polyline>
@@ -291,6 +306,332 @@
               </svg>
             </button>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nri-fest-upcoming" id="nri-fest-upcoming" aria-labelledby="nri-fest-upcoming-title" data-upcoming-goto="pages/nri-home-fest.html">
+      <div class="nri-fest-upcoming-glow" aria-hidden="true"></div>
+      <div class="about-wrap nri-fest-upcoming-inner">
+        <header class="nri-fest-upcoming-head">
+          <span class="nri-fest-upcoming-eyebrow">Q2 World Circuit 2026</span>
+          <h2 id="nri-fest-upcoming-title">Upcoming <em>Expos</em></h2>
+          <p>Plan your city stop. Switch months to explore exclusive investor events and Godrej Property Expos worldwide.</p>
+        </header>
+
+        <div class="nri-fest-upcoming-board" data-upcoming-board>
+          <div class="nri-fest-upcoming-tabs" role="tablist" aria-label="Expo months">
+            <button type="button" class="nri-fest-upcoming-tab is-active" role="tab" id="upcoming-tab-july" aria-selected="true" aria-controls="upcoming-panel-july" data-month="july">
+              <span class="nri-fest-upcoming-tab-month">July</span>
+              <span class="nri-fest-upcoming-tab-count">02 countries</span>
+            </button>
+            <button type="button" class="nri-fest-upcoming-tab" role="tab" id="upcoming-tab-august" aria-selected="false" aria-controls="upcoming-panel-august" data-month="august">
+              <span class="nri-fest-upcoming-tab-month">August</span>
+              <span class="nri-fest-upcoming-tab-count">10 countries</span>
+            </button>
+            <button type="button" class="nri-fest-upcoming-tab" role="tab" id="upcoming-tab-september" aria-selected="false" aria-controls="upcoming-panel-september" data-month="september">
+              <span class="nri-fest-upcoming-tab-month">September</span>
+              <span class="nri-fest-upcoming-tab-count">08 countries</span>
+            </button>
+          </div>
+
+          <div class="nri-fest-upcoming-panels">
+            <div class="nri-fest-upcoming-panel is-active" role="tabpanel" id="upcoming-panel-july" aria-labelledby="upcoming-tab-july" data-panel="july">
+              <aside class="nri-fest-upcoming-rail" aria-hidden="true">
+                <span>07</span>
+                <em>2026</em>
+              </aside>
+              <div class="nri-fest-upcoming-list">
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>18–19</strong><span>Jul</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Singapore</h3>
+                    <p>Investor Meetings</p>
+                    <span class="nri-fest-ticket-city">Singapore</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>25</strong><span>Jul</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">GCC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Dubai</h3>
+                    <p>Office Investor Event</p>
+                    <span class="nri-fest-ticket-city">UAE</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>25–26</strong><span>Jul</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Singapore</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Singapore</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="nri-fest-upcoming-panel" role="tabpanel" id="upcoming-panel-august" aria-labelledby="upcoming-tab-august" data-panel="august" hidden>
+              <aside class="nri-fest-upcoming-rail" aria-hidden="true">
+                <span>08</span>
+                <em>2026</em>
+              </aside>
+              <div class="nri-fest-upcoming-list">
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>8–9</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">APAC</span></div>
+                    <h3>Sydney</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Australia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>14–15</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Manama</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Bahrain</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>15–16</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">GCC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Dubai</h3>
+                    <p>Dubai Real Estate Expo — Sobha</p>
+                    <span class="nri-fest-ticket-city">UAE</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>15–16</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">APAC</span></div>
+                    <h3>Brisbane</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Australia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>21–22</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Doha</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Qatar</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Africa</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Lagos</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Nigeria</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">NA</span></div>
+                    <h3>Atlanta</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">NA</span></div>
+                    <h3>Vancouver</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Canada</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>22–23</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">APAC</span></div>
+                    <h3>Ho Chi Minh City</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Vietnam</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>29–30</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Europe</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Amsterdam</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Netherlands</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>29–30</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">NA</span></div>
+                    <h3>Chicago</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>29–30</strong><span>Aug</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Jakarta</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Indonesia</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="nri-fest-upcoming-panel" role="tabpanel" id="upcoming-panel-september" aria-labelledby="upcoming-tab-september" data-panel="september" hidden>
+              <aside class="nri-fest-upcoming-rail" aria-hidden="true">
+                <span>09</span>
+                <em>2026</em>
+              </aside>
+              <div class="nri-fest-upcoming-list">
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>4–5</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Kuwait City</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Kuwait</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Europe</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Munich</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Germany</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">Europe</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Frankfurt</h3>
+                    <p>Financial Hub Investor Networking</p>
+                    <span class="nri-fest-ticket-city">Germany</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Tokyo</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Japan</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>5–6</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">UK &amp; Ireland</span></div>
+                    <h3>Dublin</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Ireland</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>12–13</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">NA</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>New Jersey</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>12–13</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">APAC</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Kuala Lumpur</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Malaysia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>12–13</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">UK</span></div>
+                    <h3>London</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">United Kingdom</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket">
+                  <div class="nri-fest-ticket-date"><strong>18–19</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top"><span class="nri-fest-ticket-region">GCC</span></div>
+                    <h3>Riyadh</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">Saudi Arabia</span>
+                  </div>
+                </article>
+                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
+                  <div class="nri-fest-ticket-date"><strong>18–19</strong><span>Sep</span></div>
+                  <div class="nri-fest-ticket-body">
+                    <div class="nri-fest-ticket-top">
+                      <span class="nri-fest-ticket-region">NA</span>
+                      <span class="nri-fest-ticket-stamp">Exclusive</span>
+                    </div>
+                    <h3>Austin</h3>
+                    <p>Godrej Property Expo</p>
+                    <span class="nri-fest-ticket-city">USA</span>
+                  </div>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <footer class="nri-fest-upcoming-note">
+            <p>Additional UK destinations TBA &mdash; Q2 FY 2026–27</p>
+            <a href="pages/nri-home-fest.html#nri-fest-form" class="nri-fest-upcoming-cta">Reserve Your Slot</a>
+          </footer>
         </div>
       </div>
     </section>
