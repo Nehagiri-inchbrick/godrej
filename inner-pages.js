@@ -232,7 +232,52 @@ document.addEventListener("DOMContentLoaded", () => {
     el.textContent = count === 0 ? "No projects match your filters" : `${count} project${count === 1 ? "" : "s"} found`;
   };
 
-  const PROJECT_DETAIL_PAGE = "commercial-nexspace.html";
+  const toProjectSlug = (name) =>
+    String(name || "")
+      .toLowerCase()
+      .replace(/&/g, "and")
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+
+  const PROJECT_CATALOG = [];
+
+  const registerProject = (project, category, listHref, categoryLabel) => {
+    let slug = project.slug || toProjectSlug(project.name);
+    if (project.name === "Nexspace") slug = "nexspace";
+    else if (slug === "commercial-nexspace") slug = toProjectSlug(project.name);
+
+    const entry = {
+      ...project,
+      slug,
+      category,
+      listHref,
+      categoryLabel,
+      unitLabel: project.bhk || project.typeLabel || "Project",
+      price: project.price || "Available on Request",
+      possession: project.possession || "On request",
+      badge: project.badge || project.status || "Project",
+      about: `Explore ${project.name} in ${project.location}. ${project.price ? `Priced at ${project.price}. ` : ""}${project.possession ? `Possession: ${project.possession}. ` : ""}A Godrej Properties ${categoryLabel.toLowerCase()} offering with ${project.bhk || project.typeLabel || "premium spaces"}, trusted quality and strong long-term value.`
+    };
+
+    const existing = PROJECT_CATALOG.findIndex((item) => item.slug === entry.slug);
+    if (existing >= 0) PROJECT_CATALOG[existing] = entry;
+    else PROJECT_CATALOG.push(entry);
+    return entry;
+  };
+
+  const findProjectBySlug = (id) =>
+    PROJECT_CATALOG.find((project) => project.slug === id) || PROJECT_CATALOG[0];
+
+  const projectDetailHref = (project) => {
+    const slug =
+      project.name === "Nexspace"
+        ? "nexspace"
+        : project.slug && project.slug !== "commercial-nexspace"
+          ? project.slug
+          : toProjectSlug(project.name);
+    if (slug === "nexspace") return "commercial-nexspace.html";
+    return `project-detail.html?id=${encodeURIComponent(slug)}`;
+  };
 
   const initProjectsCreativePage = () => {
     const page = document.querySelector(".projects-page--creative");
@@ -259,11 +304,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const initResidentialPage = () => {
-    const grid = document.getElementById("residential-grid");
-    if (!grid) return;
-
     const PER_PAGE = 9;
-    const TOTAL_PAGES = 14;
 
     const projects = [
       { name: "Crown Residences at Godrej Golf Links", location: "Greater Noida, Noida", city: "noida", type: "apartment", status: "new-launch", budget: "premium", ready: false, price: "INR 2.85 Cr. onwards", possession: "Feb 2031", bhk: "3 & 4 BHK", badge: "New Launch", img: "../images/godrej-golf-link.webp" },
@@ -285,6 +326,11 @@ document.addEventListener("DOMContentLoaded", () => {
       { name: "Godrej Tiara", location: "Yeshwanthpur, Bengaluru", city: "bangalore", type: "apartment", status: "new-launch", budget: "luxury", ready: false, price: "INR 5.99 Cr. onwards", possession: "May 2030", bhk: "4.5 BHK", badge: "New Launch", img: "../images/6b5d387b-d3e0-440d-8ffa-2ea54780551f.webp" },
       { name: "Godrej Exquisite", location: "Thane, Mumbai", city: "mumbai", type: "apartment", status: "under-construction", budget: "mid", ready: false, price: "INR 2.35 Cr. onwards", possession: "Sep 2026", bhk: "3 BHK", badge: "Under Construction", img: "../images/9142c7e4-3c14-4d83-ac9b-d18aa9717839.webp" },
     ];
+
+    projects.forEach((project) => registerProject(project, "residential", "residential.html", "Residential"));
+
+    const grid = document.getElementById("residential-grid");
+    if (!grid) return;
 
     const searchInput = document.getElementById("residential-search");
     const filterForm = document.getElementById("residential-filters");
@@ -327,7 +373,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderCard = (project) => `
-      <a href="${PROJECT_DETAIL_PAGE}" class="listing-card-link">
+      <a href="${projectDetailHref(project)}" class="listing-card-link">
       <article class="listing-card" data-project="${project.name}">
         <div class="listing-img-wrap">
           <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async" width="900" height="675">
@@ -357,8 +403,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const renderPagination = () => {
       if (!pagination) return;
-      const totalFilteredPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
-      const displayTotal = Math.min(TOTAL_PAGES, totalFilteredPages);
+      const displayTotal = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
       const pages = [];
 
       for (let i = 1; i <= Math.min(5, displayTotal); i += 1) pages.push(i);
@@ -1371,18 +1416,111 @@ document.addEventListener("DOMContentLoaded", () => {
   initResidentialPage();
 
   const initCommercialPage = () => {
+    const projects = [
+      {
+        name: "Nexspace",
+        slug: "nexspace",
+        location: "Panvel, Mumbai",
+        city: "mumbai",
+        type: "office",
+        status: "under-construction",
+        budget: "mid",
+        price: "INR 85 Lakh onwards",
+        possession: "Dec 2031",
+        typeLabel: "Premium Office Spaces",
+        badge: "Under Construction",
+        img: "https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/nexspace-digntal-banners-1166x55-cml3x0rr00000lvphfb093dsy.jpg"
+      },
+      {
+        name: "Godrej Carnival",
+        slug: "godrej-carnival",
+        location: "Mumbai-Pune Expressway, Pune",
+        city: "pune",
+        type: "retail",
+        status: "under-construction",
+        budget: "mid",
+        price: "INR 1.96 Cr. onwards",
+        possession: "Sep 2026",
+        typeLabel: "Premium Retail Spaces",
+        badge: "Under Construction",
+        img: "https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/mobile-banner-1-720-x1600-cmggdomk30001mxj5gk10ctdk-1-cmgt7zm0g0002g3j5h0sk-cmhypc6oq000lmbphaquperyx.webp"
+      },
+      {
+        name: "Godrej Avenue 9",
+        slug: "godrej-avenue-9",
+        location: "Sector 27, Noida",
+        city: "noida",
+        type: "retail",
+        status: "new-launch",
+        budget: "premium",
+        price: "INR 2.70 Cr. onwards",
+        possession: "Mar 2030",
+        typeLabel: "Premium Retail Spaces",
+        badge: "New Launch",
+        img: "https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/thumb-cmg685x0c000c2pph78ohcrqg.jpg"
+      },
+      {
+        name: "Godrej Square",
+        slug: "godrej-square",
+        location: "LBS Marg, Mumbai",
+        city: "mumbai",
+        type: "office",
+        status: "under-construction",
+        budget: "mid",
+        price: "INR 1.95 Cr. onwards",
+        possession: "Oct 2028",
+        typeLabel: "Premium Office Spaces",
+        badge: "Under Construction",
+        img: "https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/78a19508-19f6-4ca8-a0bd-7c8e1878e9f2.jpg"
+      },
+      {
+        name: "Godrej One",
+        slug: "godrej-one",
+        location: "Vikhroli, Mumbai",
+        city: "mumbai",
+        type: "office",
+        status: "ready",
+        budget: "luxury",
+        price: "Available on Request",
+        possession: "Possession Ready",
+        typeLabel: "Premium Office Spaces",
+        badge: "Ready",
+        img: "https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/Godrej One Thmbnail Image04f57f25-a5a0-4827-9115-bd430c60b2b8.webp"
+      },
+      {
+        name: "Godrej BKC",
+        slug: "godrej-bkc",
+        location: "Bandra, Mumbai",
+        city: "mumbai",
+        type: "office",
+        status: "ready",
+        budget: "luxury",
+        price: "Available on Request",
+        possession: "Possession Ready",
+        typeLabel: "Premium Office Spaces",
+        badge: "Ready",
+        img: "https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/Godrej BKC Thmbnail Image 1a38a1372-616f-45eb-ba7f-3cea23318f2d.webp"
+      },
+      {
+        name: "Godrej Eternia",
+        slug: "godrej-eternia",
+        location: "Chandigarh, Chandigarh",
+        city: "chandigarh",
+        type: "mixed",
+        status: "ready",
+        budget: "premium",
+        price: "Available on Request",
+        possession: "Possession Ready",
+        typeLabel: "Office & Retail Spaces",
+        badge: "Ready",
+        img: "https://gplwebsitecdnblob.blob.core.windows.net/godrej-cdn/Images/dw-Godrej-Eternia-Chandigarh-Thumbnail-464X464 64e6ba70-ea43-405c-88a1-38d365b60435.webp"
+      }
+    ];
+
+    projects.forEach((project) => registerProject(project, "commercial", "commercial.html", "Commercial"));
+
     const grid = document.getElementById("commercial-grid");
     if (!grid) return;
-
-    const projects = [
-      { name: "Nexspace", slug: "commercial-nexspace", location: "Panvel, Mumbai", city: "mumbai", type: "office", status: "ready", budget: "premium", img: "https://images.unsplash.com/photo-1486406146926-c627a92fd1f2?w=900&q=90" },
-      { name: "Godrej Carnival", slug: "commercial-nexspace", location: "Mumbai-Pune Expressway, Pune", city: "pune", type: "mixed", status: "under-construction", budget: "mid", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=90" },
-      { name: "Godrej Avenue 11", slug: "commercial-nexspace", location: "Sector 27, Noida", city: "noida", type: "office", status: "new-launch", budget: "premium", img: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=90" },
-      { name: "Godrej Square", slug: "commercial-nexspace", location: "LBS Marg, Mumbai", city: "mumbai", type: "retail", status: "ready", budget: "luxury", img: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=90" },
-      { name: "Godrej One", slug: "commercial-nexspace", location: "Vikhroli, Mumbai", city: "mumbai", type: "office", status: "ready", budget: "luxury", img: "https://images.unsplash.com/photo-1554464037-db9368459810?w=900&q=90" },
-      { name: "Godrej BKC", slug: "commercial-nexspace", location: "Bandra, Mumbai", city: "mumbai", type: "office", status: "under-construction", budget: "luxury", img: "https://images.unsplash.com/photo-1577495501747-42542e815591?w=900&q=90" },
-      { name: "Godrej Eternia", slug: "commercial-nexspace", location: "Chandigarh, Chandigarh", city: "chandigarh", type: "retail", status: "ready", budget: "mid", img: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=900&q=90" },
-    ];
 
     const searchInput = document.getElementById("commercial-search");
     const filterForm = document.getElementById("commercial-filters");
@@ -1411,7 +1549,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderCard = (project) => `
-      <a href="${PROJECT_DETAIL_PAGE}" class="commercial-card-link">
+      <a href="${projectDetailHref(project)}" class="commercial-card-link">
         <article class="commercial-card" data-project="${project.name}">
           <div class="commercial-card-media">
             <img src="${project.img}" alt="${project.name}" loading="lazy" decoding="async" width="900" height="675">
@@ -1419,6 +1557,13 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="commercial-card-body">
             <p class="commercial-card-location">${project.location}</p>
             <h3 class="commercial-card-name">${project.name}</h3>
+            <div class="commercial-card-badge"><span class="badge-dot"></span>${project.badge}</div>
+            <div class="commercial-card-meta">
+              <span class="commercial-card-price">${project.price}</span>
+              <span class="commercial-card-divider">|</span>
+              <span class="commercial-card-possession"><strong>Possession</strong> ${project.possession}</span>
+            </div>
+            <p class="commercial-card-type">${project.typeLabel}</p>
           </div>
         </article>
       </a>
@@ -1444,11 +1589,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initCommercialPage();
 
   const initPlottedPage = () => {
-    const grid = document.getElementById("plotted-grid");
-    if (!grid) return;
-
     const PER_PAGE = 9;
-    const TOTAL_PAGES = 2;
 
     const projects = [
       { name: "Godrej Woodside Estate", location: "Hinjewadi, Pune", city: "pune", state: "maharashtra", status: "new-launch", budget: "mid", price: "INR 1.25 Cr. onwards", possession: "Dec 2026", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=90" },
@@ -1463,6 +1604,11 @@ document.addEventListener("DOMContentLoaded", () => {
       { name: "Godrej Green Cove", location: "Talegaon, Pune", city: "pune", state: "maharashtra", status: "new-launch", budget: "affordable", price: "INR 55 Lac onwards", possession: "Jun 2027", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600047509358-9dc75507daeb?w=900&q=90" },
       { name: "Godrej Palm Retreat", location: "Sector 150, Noida", city: "noida", state: "uttar-pradesh", status: "new-launch", budget: "mid", price: "INR 1.45 Cr. onwards", possession: "Sep 2028", typeLabel: "Plots", badge: "New Launch", badgeClass: "", img: "https://images.unsplash.com/photo-1600210492486-724fe41c1d4a?w=900&q=90" },
     ];
+
+    projects.forEach((project) => registerProject(project, "plotted", "plotted.html", "Plotted"));
+
+    const grid = document.getElementById("plotted-grid");
+    if (!grid) return;
 
     const searchInput = document.getElementById("plotted-search");
     const filterForm = document.getElementById("plotted-filters");
@@ -1496,7 +1642,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const renderCard = (project) => `
-      <a href="${PROJECT_DETAIL_PAGE}" class="listing-card-link">
+      <a href="${projectDetailHref(project)}" class="listing-card-link">
       <article class="listing-card" data-project="${project.name}">
         <div class="listing-img-wrap">
           <img src="${project.img}" alt="${project.name}" class="listing-img" loading="lazy" decoding="async" width="900" height="675">
@@ -1526,8 +1672,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const renderPagination = () => {
       if (!pagination) return;
-      const totalFilteredPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
-      const displayTotal = Math.min(TOTAL_PAGES, totalFilteredPages);
+      const displayTotal = Math.max(1, Math.ceil(filtered.length / PER_PAGE));
 
       pagination.innerHTML = "";
 
@@ -1696,6 +1841,187 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   initProjectDetailPage();
+
+  const initDynamicProjectDetail = () => {
+    const root = document.querySelector("[data-project-detail]");
+    if (!root) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const project = findProjectBySlug(params.get("id") || "");
+    if (!project) return;
+
+    const cityLabel = (project.city || "")
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (c) => c.toUpperCase());
+
+    document.title = `${project.name} | ${project.categoryLabel} | Godrej Properties`;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", project.about);
+
+    const fill = (selector, value) => {
+      document.querySelectorAll(selector).forEach((el) => {
+        el.textContent = value;
+      });
+    };
+
+    fill("[data-project-name]", project.name);
+    fill("[data-project-location]", project.location);
+    fill("[data-project-price]", project.price || "Available on Request");
+    fill("[data-project-possession]", project.possession || "—");
+    fill("[data-project-unit]", project.unitLabel || "—");
+    fill("[data-project-badge]", project.badge || project.status || "—");
+    fill("[data-project-category]", project.categoryLabel);
+    fill("[data-project-about]", project.about);
+
+    root.querySelectorAll("[data-project-image]").forEach((img) => {
+      img.src = project.img;
+      img.alt = project.name;
+    });
+
+    const back = document.querySelector("[data-project-back]");
+    if (back) {
+      back.href = project.listHref;
+      back.setAttribute("aria-label", `Back to ${project.categoryLabel} projects`);
+    }
+
+    const listLink = document.querySelector("[data-project-list-link]");
+    if (listLink) {
+      listLink.href = project.listHref;
+      listLink.textContent = `${project.categoryLabel} Projects`;
+    }
+
+    const highlights = root.querySelector("[data-project-highlights]");
+    if (highlights) {
+      const items = [
+        {
+          title: "Trusted brand",
+          text: "Backed by the Godrej legacy of quality, transparency and long-term value."
+        },
+        {
+          title: project.unitLabel || "Thoughtful planning",
+          text: `Designed for modern living and investment with ${project.unitLabel || "premium configurations"}.`
+        },
+        {
+          title: cityLabel || "Prime location",
+          text: `Located at ${project.location} with strong connectivity and neighbourhood appeal.`
+        },
+        {
+          title: project.badge || "Project status",
+          text: `Current status: ${project.badge || project.status}. Possession timeline: ${project.possession || "on request"}.`
+        }
+      ];
+      highlights.innerHTML = items
+        .map(
+          (item) => `
+        <article class="project-detail-highlight-card">
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </article>`
+        )
+        .join("");
+    }
+
+    const enquireProject = document.getElementById("enquire-project");
+    const scheduleProject = document.getElementById("schedule-tour-project");
+    [enquireProject, scheduleProject].forEach((select) => {
+      if (!select) return;
+      const exists = [...select.options].some((opt) => opt.value === project.name);
+      if (!exists) {
+        const opt = document.createElement("option");
+        opt.value = project.name;
+        opt.textContent = project.name;
+        select.appendChild(opt);
+      }
+      select.value = project.name;
+    });
+
+    initProjectEmiCalculator(project);
+  };
+
+  const parseProjectPriceInr = (priceText) => {
+    const text = String(priceText || "").toLowerCase().replace(/,/g, "");
+    const match = text.match(/([\d.]+)\s*(cr|crore|lakh|lac|lacs)?/);
+    if (!match) return 10000000;
+    const value = parseFloat(match[1]);
+    if (!Number.isFinite(value) || value <= 0) return 10000000;
+    const unit = match[2] || "";
+    if (unit.startsWith("cr")) return Math.round(value * 10000000);
+    if (unit.startsWith("la") || unit.startsWith("lac")) return Math.round(value * 100000);
+    if (value < 1000) return Math.round(value * 10000000);
+    return Math.round(value);
+  };
+
+  const formatInrCompact = (amount) => {
+    const n = Number(amount) || 0;
+    if (n >= 10000000) return `₹${(n / 10000000).toFixed(n % 10000000 === 0 ? 0 : 2)} Cr`;
+    if (n >= 100000) return `₹${(n / 100000).toFixed(n % 100000 === 0 ? 0 : 2)} Lakh`;
+    return `₹${Math.round(n).toLocaleString("en-IN")}`;
+  };
+
+  const formatInrFull = (amount) => `₹${Math.round(Number(amount) || 0).toLocaleString("en-IN")}`;
+
+  const initProjectEmiCalculator = (project) => {
+    const amountInput = document.getElementById("pd-emi-amount");
+    const rateInput = document.getElementById("pd-emi-rate");
+    const tenureInput = document.getElementById("pd-emi-tenure");
+    const amountRange = document.getElementById("pd-emi-amount-range");
+    const rateRange = document.getElementById("pd-emi-rate-range");
+    const tenureRange = document.getElementById("pd-emi-tenure-range");
+    const monthlyEl = document.getElementById("pd-emi-monthly");
+    const principalEl = document.getElementById("pd-emi-principal");
+    const interestEl = document.getElementById("pd-emi-interest");
+    const totalEl = document.getElementById("pd-emi-total");
+    if (!amountInput || !rateInput || !tenureInput || !monthlyEl) return;
+
+    const defaultAmount = parseProjectPriceInr(project?.price);
+    amountInput.value = String(defaultAmount);
+    if (amountRange) {
+      amountRange.min = String(Math.max(1000000, Math.round(defaultAmount * 0.4)));
+      amountRange.max = String(Math.max(defaultAmount * 2, 50000000));
+      amountRange.value = String(defaultAmount);
+    }
+
+    const syncPair = (input, range) => {
+      input?.addEventListener("input", () => {
+        if (range) range.value = input.value;
+        calculate();
+      });
+      range?.addEventListener("input", () => {
+        if (input) input.value = range.value;
+        calculate();
+      });
+    };
+
+    const calculate = () => {
+      const principal = Math.max(0, Number(amountInput.value) || 0);
+      const annualRate = Math.max(0, Number(rateInput.value) || 0);
+      const years = Math.max(1, Number(tenureInput.value) || 1);
+      const months = years * 12;
+      const monthlyRate = annualRate / 12 / 100;
+
+      let emi = 0;
+      if (monthlyRate === 0) emi = principal / months;
+      else {
+        const factor = Math.pow(1 + monthlyRate, months);
+        emi = (principal * monthlyRate * factor) / (factor - 1);
+      }
+
+      const total = emi * months;
+      const interest = Math.max(0, total - principal);
+
+      monthlyEl.textContent = formatInrFull(emi);
+      if (principalEl) principalEl.textContent = formatInrCompact(principal);
+      if (interestEl) interestEl.textContent = formatInrCompact(interest);
+      if (totalEl) totalEl.textContent = formatInrCompact(total);
+    };
+
+    syncPair(amountInput, amountRange);
+    syncPair(rateInput, rateRange);
+    syncPair(tenureInput, tenureRange);
+    calculate();
+  };
+
+  initDynamicProjectDetail();
 
   const initNexspacePage = () => {
     const page = document.querySelector(".nexspace-page");

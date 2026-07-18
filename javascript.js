@@ -874,9 +874,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ],
     pune: [
       { name: "Godrej Rejuve", location: "Keshavnagar, Pune", price: "INR 65.74 L. onwards", possession: "Jan 2023", bhk: "2 BHK", badge: "Possession Ready", img: "images/rejuve.webp" },
-      { name: "The Gale at Godrej Park World", location: "Hinjawadi Phase 1, Pune", price: "INR 1.09 Cr. onwards", possession: "Mar 2029", bhk: "2 & 3 BHK", badge: "New Launch", img: "images/photos/1.png" },
-      { name: "Godrej Ivara", location: "Kharadi, Pune", price: "INR 1.25 cr. onwards", possession: "Aug 2032", bhk: "2, 3 & 4 BHK", badge: "New Launch", img: "images/photos/1.png" },
-      { name: "Godrej Evergreen Square", location: "Hinjawadi Phase 3, Pune", price: "INR 89.99 L. onwards", possession: "Oct 2030", bhk: "2 & 3 BHK", badge: "New Launch", img: "images/photos/1.png" }
+      { name: "Godrej Ivara", location: "Kharadi, Pune", price: "INR 1.25 cr. onwards", possession: "Aug 2032", bhk: "2, 3 & 4 BHK", badge: "New Launch", img: "images/1-elevation-view-cmlz308qv000i0wor1ftgevmg-cmmd38ceg0040cdph88ddfxy8.webp" }
     ],
     kolkata: [
       { name: "Godrej Zen Estate", location: "Off-Diamond Harbour Road, Kolkata", price: "INR 45 L. onwards", possession: "Jun 2027", bhk: "Plots", badge: "New Launch", img: "images/fcd3a1a4-2918-463a-8141-bff4fa4a4a24.webp" },
