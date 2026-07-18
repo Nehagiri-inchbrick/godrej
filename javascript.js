@@ -1087,7 +1087,8 @@ document.addEventListener("DOMContentLoaded", () => {
     track.querySelectorAll(".hero-expo-cta").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.stopPropagation();
-        openVipModal(btn.dataset.expo);
+        if (btn.closest(".is-soon") || btn.textContent.trim() === "Coming Soon") return;
+        window.location.href = "pages/nri-home-fest.html#nri-fest-form";
       });
     });
 
