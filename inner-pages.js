@@ -1108,28 +1108,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initNriFestRegisterModal();
 
+  const NRI_FEST_PAST_EVENT_IMAGES = [
+    "../images/past-events/DSC06351.JPG",
+    "../images/past-events/IMAGE%202.jpg",
+    "../images/past-events/image%203.jpg",
+    "../images/past-events/image%205.jpg",
+    "../images/past-events/IMAGE%206.jpg",
+    "../images/past-events/IMAGE%208.jpg",
+    "../images/past-events/RAJ03057.JPG"
+  ];
+
   const initNriFestHeroLights = () => {
     const mosaic = document.querySelector("[data-hero-mosaic]");
     if (!mosaic) return;
 
-    const images = [
-      "../images/past-expos/dubai.jpg",
-      "../images/past-expos/perth.jpg",
-      "../images/past-expos/leicester.jpg",
-      "../images/past-expos/lagos.jpg",
-      "../images/past-expos/dubai-invite.png",
-      "../images/past-expos/perth-invite.png",
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=70&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=70&auto=format&fit=crop"
-    ];
+    const images = NRI_FEST_PAST_EVENT_IMAGES;
 
     const tileCount = window.innerWidth < 640 ? 24 : window.innerWidth < 900 ? 36 : 48;
     const frag = document.createDocumentFragment();
@@ -1172,20 +1165,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlay = document.getElementById("nri-fest-drag-overlay");
     if (!section || !viewport || !canvas || typeof gsap === "undefined") return;
 
-    const imageUrls = [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cd00?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&q=80&auto=format&fit=crop"
-    ];
+    const imageUrls = NRI_FEST_PAST_EVENT_IMAGES;
 
     const settings = {
       baseWidth: 280,
