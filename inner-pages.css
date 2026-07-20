@@ -17515,3 +17515,162 @@ body.nri-fest-register-open {
     transform: none;
   }
 }
+
+/* ============================================================
+   Contact page — Inchbrick Realty
+   ============================================================ */
+
+.contact-page .contact-quick-inner {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.contact-page .reach-quick-stat strong a {
+  color: var(--reach-navy);
+  text-decoration: none;
+}
+
+.contact-page .reach-quick-stat strong a:hover {
+  color: var(--reach-gold);
+}
+
+.contact-details {
+  padding: clamp(2.5rem, 5vw, 3.5rem) 0 clamp(1.5rem, 3vw, 2rem);
+}
+
+.contact-details-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.contact-detail-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid rgba(201, 156, 86, 0.22);
+  border-radius: 14px;
+  padding: 1.65rem 1.4rem;
+  box-shadow: 0 8px 28px rgba(26, 39, 68, 0.06);
+  transition: transform 0.22s, box-shadow 0.22s;
+}
+
+.contact-detail-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(26, 39, 68, 0.1);
+}
+
+.contact-detail-card--featured {
+  border-color: rgba(201, 156, 86, 0.45);
+  background: linear-gradient(160deg, #fff 0%, #faf8f5 100%);
+}
+
+.contact-detail-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--reach-gold);
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 156, 86, 0.4);
+  background: rgba(201, 156, 86, 0.1);
+}
+
+.contact-detail-icon {
+  display: inline-flex;
+  margin-bottom: 0.85rem;
+}
+
+.contact-detail-icon img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.contact-detail-icon--pin {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, rgba(201, 156, 86, 0.18), rgba(26, 39, 68, 0.08));
+  align-items: center;
+  justify-content: center;
+  color: var(--reach-gold);
+}
+
+.contact-detail-icon--pin svg {
+  width: 22px;
+  height: 22px;
+}
+
+.contact-detail-card h3 {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--reach-navy);
+  margin: 0 0 0.65rem;
+}
+
+.contact-detail-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9ca3af;
+  margin: 0 0 0.35rem;
+}
+
+.contact-detail-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--reach-navy);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.contact-detail-value a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.contact-detail-value a:hover {
+  color: var(--reach-gold);
+}
+
+.contact-detail-value--address {
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.contact-detail-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--reach-gold);
+  text-decoration: none;
+}
+
+.contact-detail-map-link svg {
+  width: 14px;
+  height: 14px;
+}
+
+.contact-detail-map-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .contact-page .contact-quick-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
