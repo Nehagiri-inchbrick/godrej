@@ -802,6 +802,111 @@ document.addEventListener("DOMContentLoaded", () => {
 
   initUpcomingExpoBoard();
 
+  const initPastExposSlider = () => {
+    const root = document.querySelector("[data-past-slider]");
+    const viewport = root?.querySelector("[data-past-viewport]");
+    const track = root?.querySelector("[data-past-track]");
+    const prevBtn = root?.querySelector("[data-past-prev]");
+    const nextBtn = root?.querySelector("[data-past-next]");
+    if (!root || !viewport || !track) return;
+
+    const cards = [...track.querySelectorAll(".nri-fest-expo-card")];
+    if (!cards.length) return;
+
+    let index = 0;
+    let visible = 4;
+    let step = 0;
+
+    const getVisibleCount = () => {
+      const width = viewport.clientWidth;
+      if (width < 560) return 1;
+      if (width < 760) return 2;
+      if (width < 980) return 3;
+      return 4;
+    };
+
+    const layout = () => {
+      visible = getVisibleCount();
+      const styles = getComputedStyle(track);
+      const gap = parseFloat(styles.gap) || 16;
+      const cardWidth = (viewport.clientWidth - gap * (visible - 1)) / visible;
+
+      cards.forEach((card) => {
+        card.style.flex = `0 0 ${cardWidth}px`;
+        card.style.width = `${cardWidth}px`;
+      });
+
+      step = cardWidth + gap;
+      const maxIndex = Math.max(0, cards.length - visible);
+      if (index > maxIndex) index = maxIndex;
+      update();
+    };
+
+    const update = () => {
+      const maxIndex = Math.max(0, cards.length - visible);
+      track.style.transform = `translateX(-${index * step}px)`;
+      if (prevBtn) prevBtn.disabled = index <= 0;
+      if (nextBtn) nextBtn.disabled = index >= maxIndex;
+      root.classList.toggle("is-static", maxIndex === 0);
+    };
+
+    prevBtn?.addEventListener("click", () => {
+      if (index > 0) {
+        index -= 1;
+        update();
+      }
+    });
+
+    nextBtn?.addEventListener("click", () => {
+      const maxIndex = Math.max(0, cards.length - visible);
+      if (index < maxIndex) {
+        index += 1;
+        update();
+      }
+    });
+
+    let startX = 0;
+    let deltaX = 0;
+    let dragging = false;
+
+    viewport.addEventListener(
+      "touchstart",
+      (e) => {
+        startX = e.touches[0].clientX;
+        deltaX = 0;
+        dragging = true;
+        track.style.transition = "none";
+      },
+      { passive: true }
+    );
+
+    viewport.addEventListener(
+      "touchmove",
+      (e) => {
+        if (!dragging) return;
+        deltaX = e.touches[0].clientX - startX;
+        track.style.transform = `translateX(${-(index * step) + deltaX}px)`;
+      },
+      { passive: true }
+    );
+
+    viewport.addEventListener("touchend", () => {
+      if (!dragging) return;
+      dragging = false;
+      track.style.transition = "";
+      if (Math.abs(deltaX) > 40) {
+        if (deltaX < 0) index = Math.min(index + 1, Math.max(0, cards.length - visible));
+        else index = Math.max(index - 1, 0);
+      }
+      update();
+    });
+
+    window.addEventListener("resize", layout);
+    layout();
+  };
+
+  initPastExposSlider();
+
   const initNriExpoDetailPage = () => {
     const root = document.querySelector("[data-expo-detail]");
     if (!root) return;

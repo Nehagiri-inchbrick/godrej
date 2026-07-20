@@ -212,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const HERO_EXPO_KEYS = ["singaporeJulInvestor", "dubaiJulOffice", "singaporeJulExpo"];
+  const HERO_EXPO_KEYS = ["dubaiJulOffice", "singaporeJulExpo"];
 
   const SHARED_VIP_DATES = EXPO_BY_KEY.australia.dates;
 

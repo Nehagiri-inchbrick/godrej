@@ -180,18 +180,6 @@
               </aside>
               <div class="nri-fest-upcoming-list">
                 <article class="nri-fest-ticket nri-fest-ticket--exclusive">
-                  <div class="nri-fest-ticket-date"><strong>18–19</strong><span>Jul</span></div>
-                  <div class="nri-fest-ticket-body">
-                    <div class="nri-fest-ticket-top">
-                      <span class="nri-fest-ticket-region">APAC</span>
-                      <span class="nri-fest-ticket-stamp">Exclusive</span>
-                    </div>
-                    <h3>Singapore</h3>
-                    <p>Investor Meetings</p>
-                    <span class="nri-fest-ticket-city">Singapore</span>
-                  </div>
-                </article>
-                <article class="nri-fest-ticket nri-fest-ticket--exclusive">
                   <div class="nri-fest-ticket-date"><strong>25</strong><span>Jul</span></div>
                   <div class="nri-fest-ticket-body">
                     <div class="nri-fest-ticket-top">
@@ -632,16 +620,31 @@
             Past India
             <em>Property Expos</em>
           </h2>
-          <p>Successful NRI events across Australia, UAE, UK &amp; Nigeria.</p>
+          <p>Successful NRI events across Australia, UAE, UK, Nigeria &amp; Singapore.</p>
           <ul class="nri-fest-past-regions" aria-label="Host regions">
             <li><img src="https://flagcdn.com/w40/au.png" alt="" width="20" height="14" decoding="async"> Australia</li>
             <li><img src="https://flagcdn.com/w40/ae.png" alt="" width="20" height="14" decoding="async"> UAE</li>
             <li><img src="https://flagcdn.com/w40/gb.png" alt="" width="20" height="14" decoding="async"> UK</li>
             <li><img src="https://flagcdn.com/w40/ng.png" alt="" width="20" height="14" decoding="async"> Nigeria</li>
+            <li><img src="https://flagcdn.com/w40/sg.png" alt="" width="20" height="14" decoding="async"> Singapore</li>
           </ul>
         </header>
 
-        <div class="nri-fest-past-expos-grid">
+        <div class="nri-fest-past-slider" data-past-slider>
+          <div class="nri-fest-past-slider-top">
+            <p class="nri-fest-past-slider-hint">Swipe or use arrows to explore more events</p>
+            <div class="nri-fest-past-slider-nav">
+              <button type="button" class="nri-fest-past-slider-btn" data-past-prev aria-label="Previous past expos" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              </button>
+              <button type="button" class="nri-fest-past-slider-btn" data-past-next aria-label="Next past expos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="nri-fest-past-slider-viewport" data-past-viewport>
+            <div class="nri-fest-past-expos-grid" data-past-track>
           <article class="nri-fest-expo-card" style="--i: 0">
             <span class="nri-fest-expo-index" aria-hidden="true">01</span>
             <img src="../images/Parth.webp" alt="India Property Expo in Perth, Australia" width="480" height="640" loading="lazy" decoding="async">
@@ -705,12 +708,31 @@
               <p>6th &amp; 7th June 2026</p>
             </div>
           </article>
+
+          <article class="nri-fest-expo-card" style="--i: 4">
+            <span class="nri-fest-expo-index" aria-hidden="true">05</span>
+            <img src="https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=900&q=85&auto=format&fit=crop" alt="India Property Expo investor meetings in Singapore" width="480" height="640" loading="lazy" decoding="async">
+            <div class="nri-fest-expo-card-shade" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-frame" aria-hidden="true"></div>
+            <div class="nri-fest-expo-card-body">
+              <span class="nri-fest-expo-badge">Completed</span>
+              <div class="nri-fest-expo-meta">
+                <img src="https://flagcdn.com/w40/sg.png" alt="" width="22" height="16" decoding="async">
+                <span>Singapore</span>
+              </div>
+              <h3>Singapore</h3>
+              <p>18th &amp; 19th July 2026</p>
+              <span class="nri-fest-expo-sub">Investor Meetings</span>
+            </div>
+          </article>
+            </div>
+          </div>
         </div>
 
         <div class="nri-fest-past-expos-foot">
           <div class="nri-fest-past-next">
             <span class="nri-fest-past-next-label">Next Destination</span>
-            <p>Singapore <em>18th &amp; 19th July 2026</em></p>
+            <p>Dubai <em>25th July 2026</em></p>
           </div>
           <a href="#nri-fest-form" class="nri-fest-past-expos-cta">
             Join Upcoming Expo
