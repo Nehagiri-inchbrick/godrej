@@ -54,10 +54,10 @@ const splitLayout = `    <div class="invitation-split-layout">
                     </div>
                   </div>
                   <div class="premium-card-body">
-                    <div class="podium-view" onclick="openLightbox('invitation card Australia.png')">
+                    <div class="podium-view" onclick="openLightbox('invitation card Australia.webp')">
                       <div class="podium-base"></div>
                       <div class="podium-glow"></div>
-                      <img src="invitation card Australia.png" loading="lazy" decoding="async" width="600" height="400"
+                      <img src="invitation card Australia.webp" loading="lazy" decoding="async" width="600" height="400"
                         alt="Godrej Properties Expo Perth 2026 VIP Invitation" class="floating-pass">
                     </div>
                   </div>
@@ -88,10 +88,10 @@ const splitLayout = `    <div class="invitation-split-layout">
                     </div>
                   </div>
                   <div class="premium-card-body">
-                    <div class="podium-view" onclick="openLightbox('images/invitation card Dubai.png')">
+                    <div class="podium-view" onclick="openLightbox('images/invitation card Dubai.webp')">
                       <div class="podium-base"></div>
                       <div class="podium-glow"></div>
-                      <img src="images/invitation card Dubai.png" loading="lazy" decoding="async" width="600" height="400"
+                      <img src="images/invitation card Dubai.webp" loading="lazy" decoding="async" width="600" height="400"
                         alt="Godrej Properties Expo Dubai 2026 VIP Invitation" class="floating-pass">
                     </div>
                   </div>
@@ -152,10 +152,10 @@ const splitLayout = `    <div class="invitation-split-layout">
                     </div>
                   </div>
                   <div class="premium-card-body">
-                    <div class="podium-view" onclick="openLightbox('VIP PASS 2026 Australia.png')">
+                    <div class="podium-view" onclick="openLightbox('VIP PASS 2026 Australia.webp')">
                       <div class="podium-base"></div>
                       <div class="podium-glow gold"></div>
-                      <img src="VIP PASS 2026 Australia.png" loading="lazy" decoding="async" width="600" height="400"
+                      <img src="VIP PASS 2026 Australia.webp" loading="lazy" decoding="async" width="600" height="400"
                         alt="Godrej Properties Perth VIP Pass 2026" class="floating-pass horizontal">
                     </div>
                   </div>
@@ -206,10 +206,10 @@ const splitLayout = `    <div class="invitation-split-layout">
                     </div>
                   </div>
                   <div class="premium-card-body">
-                    <div class="podium-view" onclick="openLightbox('VIP PASS 2026 Dubai.png')">
+                    <div class="podium-view" onclick="openLightbox('images/vip-pass.webp')">
                       <div class="podium-base"></div>
                       <div class="podium-glow gold"></div>
-                      <img src="images/VIP PASS 2026 Dubai With logo.png" loading="lazy" decoding="async" width="600"
+                      <img src="images/vip-pass.webp" loading="lazy" decoding="async" width="600"
                         height="400" alt="Godrej Properties Dubai VIP Pass 2026" class="floating-pass horizontal">
                     </div>
                   </div>

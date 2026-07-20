@@ -555,7 +555,7 @@ document.addEventListener("DOMContentLoaded", () => {
     revealEls.forEach((el) => observer.observe(el));
   };
 
-  const nriPages = ["nri-legal", "nri-loan", "nri-faqs", "international-offices", "nri-enquire", "nri-home-fest", "nri-corner", "nri-expo"];
+  const nriPages = ["nri-legal", "nri-loan", "nri-faqs", "nri-home-fest", "nri-corner", "nri-expo"];
   if (nriPages.includes(document.body.dataset.page)) initNriCreativePage();
 
   const nriFestExpoSlug = (city, date, month) =>
@@ -569,17 +569,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const NRI_FEST_EXPO_IMAGES = {
     default: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1400&q=80&auto=format&fit=crop",
     Singapore: "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=1400&q=80&auto=format&fit=crop",
-    Dubai: "../images/past-expos/dubai.jpg",
+    Dubai: "../images/past-expos/dubai.webp",
     Sydney: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=1400&q=80&auto=format&fit=crop",
-    Lagos: "../images/past-expos/lagos.jpg",
+    Lagos: "../images/past-expos/lagos.webp",
     London: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=1400&q=80&auto=format&fit=crop",
     Tokyo: "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=1400&q=80&auto=format&fit=crop",
     Amsterdam: "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?w=1400&q=80&auto=format&fit=crop",
     Atlanta: "https://images.unsplash.com/photo-1575936123452-b67c3203c357?w=1400&q=80&auto=format&fit=crop",
     Chicago: "https://images.unsplash.com/photo-1494522855154-9297ac14b55f?w=1400&q=80&auto=format&fit=crop",
     Austin: "https://images.unsplash.com/photo-1531218150217-54595bc2b934?w=1400&q=80&auto=format&fit=crop",
-    Perth: "../images/past-expos/perth.jpg",
-    Leicester: "../images/past-expos/leicester.jpg"
+    Perth: "../images/past-expos/perth.webp",
+    Leicester: "../images/past-expos/leicester.webp"
   };
 
   const buildNriFestExpo = (partial) => {
@@ -1109,13 +1109,13 @@ document.addEventListener("DOMContentLoaded", () => {
   initNriFestRegisterModal();
 
   const NRI_FEST_PAST_EVENT_IMAGES = [
-    "../images/past-events/DSC06351.JPG",
-    "../images/past-events/IMAGE%202.jpg",
-    "../images/past-events/image%203.jpg",
-    "../images/past-events/image%205.jpg",
-    "../images/past-events/IMAGE%206.jpg",
-    "../images/past-events/IMAGE%208.jpg",
-    "../images/past-events/RAJ03057.JPG"
+    "../images/past-events/DSC06351.webp",
+    "../images/past-events/IMAGE%202.webp",
+    "../images/past-events/image%203.webp",
+    "../images/past-events/image%205.webp",
+    "../images/past-events/IMAGE%206.webp",
+    "../images/past-events/IMAGE%208.webp",
+    "../images/past-events/RAJ03057.webp"
   ];
 
   const initNriFestHeroLights = () => {
@@ -2621,16 +2621,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const indiaCityData = {
-      ahmedabad: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      mumbai: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      delhi: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      bengaluru: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      hyderabad: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      pune: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      kolkata: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      gurugram: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      noida: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
-      chennai: { phone: "1800 102 5601", tel: "18001025601", hours: "9:30 am to 6:30 pm" },
+      ahmedabad: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      mumbai: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      delhi: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      bengaluru: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      hyderabad: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      pune: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      kolkata: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      gurugram: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      noida: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
+      chennai: { phone: "+91 81786 52086", tel: "+918178652086", hours: "9:30 am to 6:30 pm" },
     };
 
     const officeSelect = document.getElementById("reach-office-select");

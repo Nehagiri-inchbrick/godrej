@@ -17,13 +17,13 @@ for (let j = arrStart; j < h.length; j++) {
 const committees = JSON.parse(h.slice(arrStart, end + 1));
 
 const localImages = {
-  "pirojsha-godrej": "../images/leader/pirojsha-godrej-cmo9xg45f000mj2phdlxj25ap.avif",
-  "gaurav-pandey": "../images/leader/gaurav-pandey-cmo9xhcsk000qj2phazf3a2zx.avif",
-  "sutapa-banerjee": "../images/leader/sutapa-banerjee-cmo9xi3er000uj2ph7fbp309g.avif",
-  "dr.-indu-bhushan": "../images/leader/indu-bhushan-cmo9xieem000wj2ph4go0d6k7.avif",
-  "jayashree-vaidyanathan": "../images/leader/jayashree-vaidyanathan-cmoadqmoj001fj2ph6crb5d25.avif",
-  "sumeet-narang": "../images/leader/sumeet-narang-cmo9xj92i0011j2ph0f3y336y.avif",
-  "rajendra-khetawat": "../images/leader/rajendra-khetawat-cmo9xjub80013j2ph9hpydj1l.avif",
+  "pirojsha-godrej": "../images/leader/pirojsha-godrej-cmo9xg45f000mj2phdlxj25ap.webp",
+  "gaurav-pandey": "../images/leader/gaurav-pandey-cmo9xhcsk000qj2phazf3a2zx.webp",
+  "sutapa-banerjee": "../images/leader/sutapa-banerjee-cmo9xi3er000uj2ph7fbp309g.webp",
+  "dr.-indu-bhushan": "../images/leader/indu-bhushan-cmo9xieem000wj2ph4go0d6k7.webp",
+  "jayashree-vaidyanathan": "../images/leader/jayashree-vaidyanathan-cmoadqmoj001fj2ph6crb5d25.webp",
+  "sumeet-narang": "../images/leader/sumeet-narang-cmo9xj92i0011j2ph0f3y336y.webp",
+  "rajendra-khetawat": "../images/leader/rajendra-khetawat-cmo9xjub80013j2ph9hpydj1l.webp",
 };
 
 const arrow =

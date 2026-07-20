@@ -1,4 +1,4 @@
-﻿*,
+*,
 *::before,
 *::after {
   box-sizing: border-box;
@@ -594,7 +594,7 @@ footer {
 
 /* Legacy footer classes (kept for compatibility) */
 .footer-legal {
-  /* unused by gpl-footer — retained for older markup if any */
+  /* unused by gpl-footer � retained for older markup if any */
   outline: none;
 }
 
@@ -6663,7 +6663,7 @@ footer {
   transition: width 0.15s ease;
 }
 
-/* 360Â° Panorama Modal */
+/* 360° Panorama Modal */
 .pano-modal {
   position: fixed;
   inset: 0;
@@ -6868,7 +6868,7 @@ footer {
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: url("images/lifestyle_luxury_bg.png") center right / cover no-repeat;
+  background: url("images/lifestyle_luxury_bg.webp") center right / cover no-repeat;
 }
 
 @keyframes lifestyle-kenburns {
@@ -7563,7 +7563,7 @@ footer {
   color: #fff;
 }
 
-/* Compact Lifestyle Explorer — no image */
+/* Compact Lifestyle Explorer � no image */
 .lifestyle-explorer--compact {
   padding: clamp(2rem, 4vw, 3.25rem) clamp(1.25rem, 4vw, 5%);
 }
@@ -7983,7 +7983,7 @@ footer {
 
 
 
-/* â”€â”€â”€ Hero Banner â€” compact & attractive â”€â”€â”€ */
+/* ─── Hero Banner — compact & attractive ─── */
 .hero#home {
   position: relative;
   min-height: 0 !important;
@@ -8549,7 +8549,7 @@ footer {
   }
 }
 
-/* â”€â”€â”€ Featured Destinations â”€â”€â”€ */
+/* ─── Featured Destinations ─── */
 .featured-destinations {
   background: #f4f5f7;
   padding: 4rem 0 4.5rem;
@@ -9365,7 +9365,7 @@ footer {
   background: #c99c56;
 }
 
-/* Featured Projects — heading + full-bleed viewport slider */
+/* Featured Projects � heading + full-bleed viewport slider */
 .featured-projects--slim {
   --fp-head-h: 4.5rem;
   padding: 0;
@@ -10035,7 +10035,7 @@ footer {
 }
 
 .hbj-read-time::before {
-  content: '·';
+  content: '�';
   margin-right: 0.65rem;
 }
 
@@ -10256,7 +10256,7 @@ footer {
 }
 
 /* ============================================================
-   Our Values — creative bento (homepage)
+   Our Values � creative bento (homepage)
    ============================================================ */
 
 .values-creative {
@@ -10362,7 +10362,7 @@ footer {
   margin: 0;
 }
 
-/* Bento grid — wide, image-forward */
+/* Bento grid � wide, image-forward */
 .values-creative-bento-wrap {
   width: 100%;
 }
@@ -10665,7 +10665,7 @@ footer {
   }
 }
 
-/* Homepage — sharp corners on all sections & columns */
+/* Homepage � sharp corners on all sections & columns */
 .home-page .snap-container :where(
   section,
   article,
@@ -10711,7 +10711,7 @@ footer {
   border-radius: 0 !important;
 }
 
-/* Homepage blog journal — sharp column edges */
+/* Homepage blog journal � sharp column edges */
 .home-page .home-blog-journal :is(
   .hbj-card,
   .hbj-card--featured,
@@ -10734,7 +10734,7 @@ footer {
   border-radius: 0 !important;
 }
 
-/* Homepage — unified section alignment */
+/* Homepage � unified section alignment */
 .home-page {
   --home-max: 1280px;
   --home-gutter: clamp(1.25rem, 4vw, 5%);
