@@ -14590,13 +14590,25 @@ main.projects-page--ref {
   --fest-gold: #c99c56;
   position: relative;
   padding: clamp(2.5rem, 4.5vw, 3.5rem) 0 clamp(3rem, 5.5vw, 4.5rem);
-  overflow: hidden;
+  overflow: visible;
   color: #1a2744;
   text-align: center;
+  scroll-margin-top: 96px;
   background:
     radial-gradient(ellipse 60% 45% at 50% 0%, rgba(201, 156, 86, 0.14) 0%, transparent 58%),
     radial-gradient(ellipse 40% 40% at 100% 85%, rgba(26, 39, 68, 0.05) 0%, transparent 55%),
     linear-gradient(165deg, #f7f4ef 0%, #efe8dc 52%, #f7f4ef 100%);
+}
+
+.nri-fest-past-expos-head-wrap {
+  position: relative;
+  z-index: 3;
+  margin-bottom: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.nri-fest-past-expos-stage {
+  position: relative;
+  overflow: hidden;
 }
 
 .nri-fest-past-expos-art {
@@ -14700,10 +14712,15 @@ main.projects-page--ref {
 .nri-fest-past-expos-inner {
   position: relative;
   z-index: 1;
+  min-width: 0;
 }
 
 .nri-fest-past-expos-head {
-  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
+  position: relative;
+  z-index: 2;
+  display: block;
+  margin: 0;
+  padding: 0;
 }
 
 .nri-fest-past-expos-rule {
@@ -14753,11 +14770,17 @@ main.projects-page--ref {
   display: inline;
   font-style: italic;
   font-weight: 500;
-  background: linear-gradient(135deg, #d4b07a 0%, #c99c56 48%, #a67b3a 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  -webkit-text-fill-color: transparent;
+  color: #c99c56;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .nri-fest-past-expos-head h2 em {
+    background: linear-gradient(135deg, #d4b07a 0%, #c99c56 48%, #a67b3a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
 }
 
 .nri-fest-past-expos-head > p {
@@ -14802,6 +14825,7 @@ main.projects-page--ref {
 .nri-fest-past-slider {
   position: relative;
   margin-bottom: clamp(2rem, 3.5vw, 2.75rem);
+  min-width: 0;
 }
 
 .nri-fest-past-slider-top {
@@ -14865,12 +14889,15 @@ main.projects-page--ref {
 .nri-fest-past-slider-viewport {
   overflow: hidden;
   width: 100%;
+  min-width: 0;
+  touch-action: pan-x pinch-zoom;
+  -webkit-overflow-scrolling: touch;
 }
 
 .nri-fest-past-expos-grid {
   display: flex;
   gap: clamp(0.9rem, 2vw, 1.35rem);
-  align-items: end;
+  align-items: stretch;
   width: max-content;
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform;
@@ -14879,7 +14906,9 @@ main.projects-page--ref {
 .nri-fest-expo-card {
   position: relative;
   flex: 0 0 auto;
-  width: 240px;
+  width: min(240px, 100%);
+  max-width: 100%;
+  min-width: 0;
   aspect-ratio: 3 / 4.2;
   border-radius: 20px;
   overflow: hidden;
@@ -14888,21 +14917,30 @@ main.projects-page--ref {
   box-shadow:
     0 18px 40px rgba(26, 39, 68, 0.14),
     0 0 0 1px rgba(26, 39, 68, 0.08);
-  transform: translateY(calc(var(--i, 0) * 12px));
   transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease;
 }
 
-.nri-fest-expo-card:nth-child(even) {
-  transform: translateY(calc(var(--i, 0) * -4px - 18px));
-}
+@media (min-width: 768px) {
+  .nri-fest-past-expos-grid {
+    align-items: end;
+  }
 
-.nri-fest-expo-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  z-index: 2;
-  box-shadow:
-    0 28px 56px rgba(26, 39, 68, 0.2),
-    0 0 0 1px rgba(201, 156, 86, 0.45),
-    0 0 32px rgba(201, 156, 86, 0.14);
+  .nri-fest-expo-card {
+    transform: translateY(calc(var(--i, 0) * 12px));
+  }
+
+  .nri-fest-expo-card:nth-child(even) {
+    transform: translateY(calc(var(--i, 0) * -4px - 18px));
+  }
+
+  .nri-fest-expo-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    z-index: 2;
+    box-shadow:
+      0 28px 56px rgba(26, 39, 68, 0.2),
+      0 0 0 1px rgba(201, 156, 86, 0.45),
+      0 0 32px rgba(201, 156, 86, 0.14);
+  }
 }
 
 .nri-fest-expo-card img {
@@ -15151,21 +15189,66 @@ main.projects-page--ref {
   }
 }
 
-@media (max-width: 560px) {
-  .nri-fest-past-slider-hint {
+@media (max-width: 767px) {
+  .nri-fest-past-expos-head-wrap {
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .nri-fest-past-expos-head {
+    background: linear-gradient(180deg, #f7f4ef 0%, #f3efe8 100%);
+    border-radius: 12px;
+    padding: 0.25rem 0 0.5rem;
+  }
+
+  .nri-fest-past-expos-head h2 {
+    font-size: clamp(1.65rem, 7.5vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .nri-fest-past-expos-art {
     display: none;
   }
 
-  .nri-fest-expo-card {
-    aspect-ratio: 3 / 4.05;
+  .nri-fest-past-expos-head > p {
+    padding: 0 0.25rem;
   }
 
-  .nri-fest-past-watermark {
-    font-size: 22vw;
+  .nri-fest-past-regions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem;
+    max-width: 100%;
+    padding: 0 0.15rem;
+  }
+
+  .nri-fest-past-regions li {
+    font-size: 0.6rem;
+    padding: 0.28rem 0.55rem;
+  }
+
+  .nri-fest-past-slider-top {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .nri-fest-past-slider-nav {
+    justify-content: center;
+  }
+
+  .nri-fest-past-slider-hint {
+    display: block;
+    text-align: center;
+    width: 100%;
+    font-size: 0.72rem;
   }
 
   .nri-fest-past-expos-foot {
     flex-direction: column;
+    padding: 0 0.15rem;
   }
 
   .nri-fest-past-next {
@@ -15176,6 +15259,36 @@ main.projects-page--ref {
 
   .nri-fest-past-expos-cta {
     width: 100%;
+    justify-content: center;
+  }
+
+  .nri-fest-expo-card-body {
+    padding: 1rem 0.9rem 1.05rem;
+  }
+
+  .nri-fest-expo-card-body h3 {
+    font-size: clamp(1.45rem, 6.5vw, 1.85rem);
+  }
+}
+
+@media (max-width: 560px) {
+  .nri-fest-past-expos {
+    padding-top: clamp(2rem, 6vw, 2.75rem);
+  }
+
+  .nri-fest-past-expos-head h2 {
+    font-size: clamp(1.65rem, 7.5vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .nri-fest-expo-card {
+    aspect-ratio: 3 / 4.05;
+    max-height: min(72vw, 420px);
+  }
+
+  .nri-fest-past-watermark {
+    font-size: 22vw;
+    top: 58%;
   }
 }
 
@@ -15192,6 +15305,7 @@ main.projects-page--ref {
   padding: clamp(2.5rem, 5vw, 3.5rem) 0 0;
   overflow: hidden;
   border-top: 1px solid rgba(201, 156, 86, 0.2);
+  scroll-margin-top: 96px;
 }
 
 .nri-fest-drag-head {
@@ -15339,6 +15453,14 @@ main.projects-page--ref {
 }
 
 @media (max-width: 700px) {
+  .nri-fest-drag-head {
+    padding: 0 clamp(1rem, 4vw, 1.5rem);
+  }
+
+  .nri-fest-drag-head h2 {
+    font-size: clamp(1.65rem, 7.5vw, 2.1rem);
+  }
+
   .nri-fest-drag-viewport {
     height: min(70vh, 560px);
     min-height: 420px;

@@ -594,7 +594,7 @@ footer {
 
 /* Legacy footer classes (kept for compatibility) */
 .footer-legal {
-  /* unused by gpl-footer — retained for older markup if any */
+  /* unused by gpl-footer ? retained for older markup if any */
   outline: none;
 }
 
@@ -6663,7 +6663,7 @@ footer {
   transition: width 0.15s ease;
 }
 
-/* 360Â° Panorama Modal */
+/* 360? Panorama Modal */
 .pano-modal {
   position: fixed;
   inset: 0;
@@ -7563,7 +7563,7 @@ footer {
   color: #fff;
 }
 
-/* Compact Lifestyle Explorer — no image */
+/* Compact Lifestyle Explorer ? no image */
 .lifestyle-explorer--compact {
   padding: clamp(2rem, 4vw, 3.25rem) clamp(1.25rem, 4vw, 5%);
 }
@@ -7983,7 +7983,7 @@ footer {
 
 
 
-/* â”€â”€â”€ Hero Banner â€” compact & attractive â”€â”€â”€ */
+/* ??? Hero Banner ? compact & attractive ??? */
 .hero#home {
   position: relative;
   min-height: 0 !important;
@@ -8353,6 +8353,282 @@ footer {
   background: #c99c56;
 }
 
+/* Home ? active events strip (mobile only, below hero) */
+.home-active-events {
+  display: none;
+  position: relative;
+  z-index: 5;
+  padding: clamp(1.35rem, 3vw, 2rem) 5%;
+  background:
+    linear-gradient(180deg, rgba(8, 12, 20, 0.98) 0%, rgba(12, 18, 28, 0.96) 100%);
+  border-bottom: 1px solid rgba(201, 156, 86, 0.18);
+}
+
+.home-active-events-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.home-active-events-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.home-active-events-eyebrow {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #c99c56;
+  margin-bottom: 0.35rem;
+}
+
+.home-active-events-head h2 {
+  margin: 0;
+  font-family: var(--font-heading, "Outfit", sans-serif);
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.15;
+}
+
+.home-active-events-head h2 em {
+  font-style: normal;
+  color: #e2c48a;
+}
+
+.home-active-events-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+
+.home-active-events-all svg {
+  width: 14px;
+  height: 14px;
+}
+
+.home-active-events-all:hover {
+  color: #e2c48a;
+}
+
+.home-active-events-board {
+  position: relative;
+}
+
+.home-active-events-viewport {
+  overflow: hidden;
+}
+
+.home-active-events-track {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-active-event-card {
+  flex: 0 0 calc(50% - 0.5rem);
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 14px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(201, 156, 86, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.home-active-event-main {
+  min-width: 0;
+  flex: 1;
+}
+
+.home-active-event-tag {
+  display: inline-flex;
+  margin-bottom: 0.35rem;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 156, 86, 0.35);
+  background: rgba(201, 156, 86, 0.1);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #e2c48a;
+}
+
+.home-active-event-title {
+  margin: 0 0 0.3rem;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-active-event-meta {
+  margin: 0;
+  font-size: 0.74rem;
+  color: rgba(255, 255, 255, 0.68);
+  line-height: 1.4;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.home-active-event-date {
+  color: rgba(255, 255, 255, 0.86);
+  font-weight: 600;
+}
+
+.home-active-event-sep {
+  margin: 0 0.35rem;
+  color: rgba(201, 156, 86, 0.55);
+}
+
+.home-active-event-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.55rem;
+  flex-shrink: 0;
+}
+
+.home-active-event-badge {
+  display: inline-flex;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.56rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.home-active-event-badge.is-live {
+  background: rgba(34, 197, 94, 0.16);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  color: #86efac;
+}
+
+.home-active-event-badge.is-soon {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.home-active-event-cta {
+  padding: 0.55rem 0.85rem;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #e2c48a 0%, #c99c56 55%, #b8894a 100%);
+  color: #0a0a0a;
+  font-family: var(--font-body, "Outfit", sans-serif);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.25s, transform 0.25s;
+}
+
+.home-active-event-cta:hover {
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.home-active-event-card.is-soon .home-active-event-cta {
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.home-active-event-card.is-soon .home-active-event-cta:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: none;
+}
+
+.home-active-events-controls {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 0.85rem;
+}
+
+.home-active-events-controls.is-visible {
+  display: flex;
+}
+
+.home-active-events-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, color 0.25s;
+}
+
+.home-active-events-nav-btn:hover:not(:disabled) {
+  background: #c99c56;
+  border-color: #c99c56;
+  color: #0a0a0a;
+}
+
+.home-active-events-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.home-active-events-nav-btn svg {
+  width: 14px;
+  height: 14px;
+}
+
+.home-active-events-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.home-active-events-dot {
+  width: 22px;
+  height: 3px;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.25s, width 0.25s;
+}
+
+.home-active-events-dot.active {
+  width: 32px;
+  background: #c99c56;
+}
+
 .hero-eyebrow {
   display: inline-block;
   font-size: 0.68rem;
@@ -8526,12 +8802,29 @@ footer {
   }
 
   .hero-expos-panel {
-    width: 100%;
-    padding: 1rem 1rem 0.9rem;
+    display: none;
   }
 
-  .hero-expo-title {
-    font-size: 1.2rem;
+  .home-active-events {
+    display: block;
+  }
+
+  .home-active-event-card {
+    flex: 0 0 100%;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .home-active-event-side {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .home-active-events-head {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .hero-static-title {
@@ -8549,7 +8842,7 @@ footer {
   }
 }
 
-/* â”€â”€â”€ Featured Destinations â”€â”€â”€ */
+/* ??? Featured Destinations ??? */
 .featured-destinations {
   background: #f4f5f7;
   padding: 4rem 0 4.5rem;
@@ -9365,7 +9658,7 @@ footer {
   background: #c99c56;
 }
 
-/* Featured Projects — heading + full-bleed viewport slider */
+/* Featured Projects ? heading + full-bleed viewport slider */
 .featured-projects--slim {
   --fp-head-h: 4.5rem;
   padding: 0;
@@ -10035,7 +10328,7 @@ footer {
 }
 
 .hbj-read-time::before {
-  content: '·';
+  content: '?';
   margin-right: 0.65rem;
 }
 
@@ -10256,7 +10549,7 @@ footer {
 }
 
 /* ============================================================
-   Our Values — creative bento (homepage)
+   Our Values ? creative bento (homepage)
    ============================================================ */
 
 .values-creative {
@@ -10362,7 +10655,7 @@ footer {
   margin: 0;
 }
 
-/* Bento grid — wide, image-forward */
+/* Bento grid ? wide, image-forward */
 .values-creative-bento-wrap {
   width: 100%;
 }
@@ -10665,7 +10958,7 @@ footer {
   }
 }
 
-/* Homepage — sharp corners on all sections & columns */
+/* Homepage ? sharp corners on all sections & columns */
 .home-page .snap-container :where(
   section,
   article,
@@ -10711,7 +11004,7 @@ footer {
   border-radius: 0 !important;
 }
 
-/* Homepage blog journal — sharp column edges */
+/* Homepage blog journal ? sharp column edges */
 .home-page .home-blog-journal :is(
   .hbj-card,
   .hbj-card--featured,
@@ -10734,7 +11027,7 @@ footer {
   border-radius: 0 !important;
 }
 
-/* Homepage — unified section alignment */
+/* Homepage ? unified section alignment */
 .home-page {
   --home-max: 1280px;
   --home-gutter: clamp(1.25rem, 4vw, 5%);

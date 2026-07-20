@@ -536,7 +536,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!page) return;
 
     const revealEls = page.querySelectorAll(
-      ".nri-page-body, .nri-contact-bar, .nri-hub-card, .nri-office-card, .nri-legal-card, .nri-enquire-layout, .inner-cta-band, .nri-fest-why, .nri-fest-vip, .nri-fest-vip-card, .nri-fest-past-expos, .nri-fest-drag, .nri-fest-upcoming, .nri-fest-countdown, .nri-fest-register-stage, .nri-fest-why-item, .nri-fest-expo-card, .nri-fest-ticket"
+      ".nri-page-body, .nri-contact-bar, .nri-hub-card, .nri-office-card, .nri-legal-card, .nri-enquire-layout, .inner-cta-band, .nri-fest-why, .nri-fest-vip, .nri-fest-vip-card, .nri-fest-upcoming, .nri-fest-countdown, .nri-fest-register-stage, .nri-fest-why-item, .nri-fest-ticket"
     );
     revealEls.forEach((el) => el.classList.add("nri-reveal"));
 
@@ -814,14 +814,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!cards.length) return;
 
     let index = 0;
-    let visible = 4;
+    let visible = 1;
     let step = 0;
 
     const getVisibleCount = () => {
       const width = viewport.clientWidth;
-      if (width < 560) return 1;
-      if (width < 760) return 2;
-      if (width < 980) return 3;
+      if (width < 640) return 1;
+      if (width < 900) return 2;
+      if (width < 1100) return 3;
       return 4;
     };
 
@@ -829,11 +829,13 @@ document.addEventListener("DOMContentLoaded", () => {
       visible = getVisibleCount();
       const styles = getComputedStyle(track);
       const gap = parseFloat(styles.gap) || 16;
-      const cardWidth = (viewport.clientWidth - gap * (visible - 1)) / visible;
+      const viewportWidth = Math.max(viewport.clientWidth, 1);
+      const cardWidth = Math.max((viewportWidth - gap * (visible - 1)) / visible, 1);
 
       cards.forEach((card) => {
         card.style.flex = `0 0 ${cardWidth}px`;
         card.style.width = `${cardWidth}px`;
+        card.style.maxWidth = "100%";
       });
 
       step = cardWidth + gap;
@@ -844,7 +846,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const update = () => {
       const maxIndex = Math.max(0, cards.length - visible);
-      track.style.transform = `translateX(-${index * step}px)`;
+      track.style.transform = `translate3d(-${index * step}px, 0, 0)`;
       if (prevBtn) prevBtn.disabled = index <= 0;
       if (nextBtn) nextBtn.disabled = index >= maxIndex;
       root.classList.toggle("is-static", maxIndex === 0);
@@ -885,7 +887,7 @@ document.addEventListener("DOMContentLoaded", () => {
       (e) => {
         if (!dragging) return;
         deltaX = e.touches[0].clientX - startX;
-        track.style.transform = `translateX(${-(index * step) + deltaX}px)`;
+        track.style.transform = `translate3d(${-(index * step) + deltaX}px, 0, 0)`;
       },
       { passive: true }
     );
@@ -901,8 +903,24 @@ document.addEventListener("DOMContentLoaded", () => {
       update();
     });
 
-    window.addEventListener("resize", layout);
-    layout();
+    if (typeof ResizeObserver !== "undefined") {
+      const resizeObserver = new ResizeObserver(() => layout());
+      resizeObserver.observe(viewport);
+    } else {
+      window.addEventListener("resize", layout);
+    }
+
+    window.addEventListener("orientationchange", () => {
+      window.setTimeout(layout, 150);
+    });
+
+    if (document.fonts?.ready) {
+      document.fonts.ready.then(layout).catch(() => layout());
+    } else {
+      layout();
+    }
+
+    window.requestAnimationFrame(layout);
   };
 
   initPastExposSlider();

@@ -1127,7 +1127,127 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
+  const initActiveEvents = () => {
+    const track = document.getElementById("home-active-events-track");
+    const dotsWrap = document.getElementById("home-active-events-dots");
+    const btnPrev = document.getElementById("home-active-events-prev");
+    const btnNext = document.getElementById("home-active-events-next");
+    const controls = document.querySelector(".home-active-events-controls");
+
+    if (!track) return;
+
+    track.innerHTML = HERO_EXPO_KEYS.map((key) => {
+      const expo = EXPO_BY_KEY[key];
+      if (!expo) return "";
+
+      const ctaLabel = expo.comingSoon ? "Soon" : "Book VIP";
+      const title = expo.eventValue.replace(" (Godrej)", "");
+      const dateShort = (expo.dateBanner || "").replace(/\s+\d{4}$/, "");
+
+      return `
+        <article class="home-active-event-card${expo.comingSoon ? " is-soon" : ""}" data-expo="${key}">
+          <div class="home-active-event-main">
+            <span class="home-active-event-tag">${expo.visitcountry}</span>
+            <h3 class="home-active-event-title">${title}</h3>
+            <p class="home-active-event-meta">
+              <span class="home-active-event-date">${dateShort}</span>
+              <span class="home-active-event-sep" aria-hidden="true">·</span>
+              <span class="home-active-event-venue">${expo.venue}</span>
+            </p>
+          </div>
+          <div class="home-active-event-side">
+            ${expo.comingSoon
+              ? '<span class="home-active-event-badge is-soon">Coming Soon</span>'
+              : '<span class="home-active-event-badge is-live">Open</span>'}
+            <button type="button" class="home-active-event-cta" data-expo="${key}">${ctaLabel}</button>
+          </div>
+        </article>
+      `;
+    }).join("");
+
+    const cards = track.querySelectorAll(".home-active-event-card");
+    if (!cards.length) return;
+
+    let currentIndex = 0;
+
+    const getVisibleCount = () => {
+      if (window.matchMedia("(max-width: 767px)").matches) return 1;
+      return Math.min(2, cards.length);
+    };
+
+    const getMaxIndex = () => Math.max(0, cards.length - getVisibleCount());
+
+    const buildDots = () => {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = "";
+      const pages = getMaxIndex() + 1;
+      if (pages <= 1) return;
+
+      for (let index = 0; index < pages; index += 1) {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = `home-active-events-dot${index === currentIndex ? " active" : ""}`;
+        dot.setAttribute("aria-label", `Show event ${index + 1}`);
+        dot.addEventListener("click", () => {
+          currentIndex = index;
+          updateSlider();
+        });
+        dotsWrap.appendChild(dot);
+      }
+    };
+
+    const updateSlider = () => {
+      const visible = getVisibleCount();
+      const maxIndex = getMaxIndex();
+      currentIndex = Math.min(currentIndex, maxIndex);
+
+      const gap = parseFloat(getComputedStyle(track).gap) || 16;
+      const cardWidth = cards[0]?.offsetWidth + gap || 0;
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+
+      const showControls = cards.length > visible;
+      controls?.classList.toggle("is-visible", showControls);
+      btnPrev?.toggleAttribute("disabled", currentIndex === 0);
+      btnNext?.toggleAttribute("disabled", currentIndex >= maxIndex);
+
+      dotsWrap?.querySelectorAll(".home-active-events-dot").forEach((dot, index) => {
+        dot.classList.toggle("active", index === currentIndex);
+      });
+    };
+
+    btnPrev?.addEventListener("click", () => {
+      if (currentIndex > 0) {
+        currentIndex -= 1;
+        updateSlider();
+      }
+    });
+
+    btnNext?.addEventListener("click", () => {
+      if (currentIndex < getMaxIndex()) {
+        currentIndex += 1;
+        updateSlider();
+      }
+    });
+
+    track.querySelectorAll(".home-active-event-cta").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (btn.closest(".is-soon") || btn.textContent.trim() === "Soon") return;
+        window.location.href = "pages/nri-home-fest.html#nri-fest-form";
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      buildDots();
+      updateSlider();
+    });
+
+    buildDots();
+    updateSlider();
+  };
+
   initHeroExpos();
+  initActiveEvents();
 
   // Init
   if (heroSlides.length > 0) {
