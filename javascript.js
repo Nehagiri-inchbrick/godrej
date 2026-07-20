@@ -397,18 +397,35 @@ document.addEventListener("DOMContentLoaded", () => {
     updateVipSlots();
   };
 
-  const openVipModal = (maybeKey) => {
-    warmVipBackendConnections();
-    prefetchVipThankYouPages();
-    if (maybeKey && EXPO_BY_KEY[maybeKey]) {
-      applyExpoToForm(maybeKey);
-    } else {
-      applyGenericVipModal();
+  const goToNriHomeFestForm = () => {
+    const path = window.location.pathname || "";
+    const onFestPage = /nri-home-fest\.html/i.test(path);
+
+    if (onFestPage) {
+      if (typeof window.openNriFestRegister === "function") {
+        window.openNriFestRegister();
+        return;
+      }
+      const formTarget = document.getElementById("nri-fest-form") || document.getElementById("nri-fest-form-stage");
+      if (formTarget) {
+        formTarget.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      window.location.hash = "nri-fest-form";
+      return;
     }
-    if (vipModal) vipModal.classList.add("active");
+
+    const inPages = /(?:^|\/)pages(?:\/|$)/i.test(path);
+    window.location.href = inPages
+      ? "nri-home-fest.html#nri-fest-form"
+      : "pages/nri-home-fest.html#nri-fest-form";
+  };
+
+  const openVipModal = () => {
+    goToNriHomeFestForm();
   };
 
   window.openVipModal = openVipModal;
+  window.goToNriHomeFestForm = goToNriHomeFestForm;
 
   const closeVipModal = () => {
     if (vipModal) vipModal.classList.remove("active");
@@ -1923,10 +1940,14 @@ document.addEventListener('DOMContentLoaded', () => {
   enquirePhoneCode?.addEventListener("change", updateEnquirePhoneFlag);
 
   const openEnquireModal = () => {
-    if (!enquireModal) return;
-    enquireModal.classList.add("active");
-    enquireModal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
+    if (typeof window.goToNriHomeFestForm === "function") {
+      window.goToNriHomeFestForm();
+      return;
+    }
+    const inPages = /(?:^|\/)pages(?:\/|$)/i.test(window.location.pathname || "");
+    window.location.href = inPages
+      ? "nri-home-fest.html#nri-fest-form"
+      : "pages/nri-home-fest.html#nri-fest-form";
   };
 
   const closeEnquireModal = () => {
@@ -2005,11 +2026,14 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   const openScheduleTourModal = () => {
-    if (!scheduleTourModal) return;
-    setDefaultScheduleTourDate();
-    scheduleTourModal.classList.add("active");
-    scheduleTourModal.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
+    if (typeof window.goToNriHomeFestForm === "function") {
+      window.goToNriHomeFestForm();
+      return;
+    }
+    const inPages = /(?:^|\/)pages(?:\/|$)/i.test(window.location.pathname || "");
+    window.location.href = inPages
+      ? "nri-home-fest.html#nri-fest-form"
+      : "pages/nri-home-fest.html#nri-fest-form";
   };
 
   const closeScheduleTourModal = () => {
